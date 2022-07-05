@@ -36,13 +36,17 @@ export class CorporateComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    if(localStorage.getItem('language') == 'fr'){
-      this.constant = prismicFrConstants
-      this.langkey = 'fr-fr'
-    }else{
-      this.constant = prismicEnConstants
-      this.langkey = 'en-us'
-    }
+    // if(localStorage.getItem('language') == 'fr'){
+    //   this.constant = prismicFrConstants
+    //   this.langkey = 'fr-fr'
+    // }else{
+    //   this.constant = prismicEnConstants
+    //   this.langkey = 'en-us'
+    // }
+    let domainLanguage = this.commonMtd.getSubDomainLanguage();
+    this.constant = domainLanguage.constant;
+    this.langkey = domainLanguage.langkey;
+    this.apiUrl = domainLanguage.apiUrl;
 
     this.getPrismicDatas();
   }
@@ -50,9 +54,9 @@ export class CorporateComponent implements OnInit {
     let ogSection: any;
     let seoSection: any;
     let twitterSection: any;
-    let id = this.constant['corporateId']
-    let lang = this.langkey
-    return Prismic.api("https://9mmenergydrink.prismic.io/api/v2").then(function (api) {
+    let id = this.constant['corporateId'];
+    let lang = this.langkey;
+    return Prismic.api(this.apiUrl).then(function (api) {
       return api.query(Prismic.Predicates.at('document.id', id),{ lang : lang});
     }).then((function (response) {
       if(response?.results[0]?.data?.page_title){
@@ -61,35 +65,31 @@ export class CorporateComponent implements OnInit {
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
           case 'seo_section':
-           seoSection = prismic;
+            seoSection = prismic;
             break;
-          case 'og_section':
-           ogSection = prismic;
+          case 'ogsection':
+            ogSection = prismic;
             break;
-            case 'twitter_section':               
-             twitterSection = prismic;
-              break;
+          case 'twitter_section':               
+            twitterSection = prismic;
+            break;
           case 'banner_section':
-            console.log("banner_section:", prismic);
+            // console.log("banner_section:", prismic);
             this.bannerSection = prismic;
             break;
           case 'aboutussection':
-              console.log("aboutusSection:", prismic);
-              this.aboutusSection = prismic;
-              break;
+            this.aboutusSection = prismic;
+            break;
           case 'creative_section':
-            console.log("creativeSection:", prismic)
             this.creativeSection = prismic;
           break;
           case 'team_section':
-            console.log("teamSection:", prismic)
             this.teamSection = prismic;
           break;
           case 'testimonialsection':
             this.testimonialSection = prismic;
             break;
           case 'social_proof_section':
-            console.log("socialProofSection:", prismic)
             this.socialProofSection = prismic;
           break;
             

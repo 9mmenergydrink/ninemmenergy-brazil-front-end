@@ -16,7 +16,9 @@ export class CartPageComponent implements OnInit {
   pageTitle = "";
   headerSection: any;
   footerSection: any;
-
+  constant: any;
+  langkey: any;
+  apiUrl: any;
   allProductRemoved = false;
   cartCount;// = JSON.parse(localStorage.getItem('cartCount'));
   cartDetails;
@@ -40,6 +42,10 @@ export class CartPageComponent implements OnInit {
   ngOnInit(): void {
     localStorage.setItem('currPrd', null);
     this.common.clear();
+    let domainLanguage = this.commonMtd.getSubDomainLanguage();
+    this.constant = domainLanguage.constant;
+    this.langkey = domainLanguage.langkey;
+    this.apiUrl = domainLanguage.apiUrl;
     this.getPrismicDatas();
 
     let cDetails = this.common.checkEmpty(JSON.parse(localStorage.getItem('cartDetails')), []);
@@ -222,8 +228,10 @@ export class CartPageComponent implements OnInit {
     let ogSection: any;
     let seoSection: any;
     let twitterSection: any;
-    return Prismic.api("https://9mmenergydrink.prismic.io/api/v2").then(function (api) {
-      return api.query(Prismic.Predicates.at('document.id', 'YJuZ7BEAACIAO6kj'));
+    let id = this.constant['cartPage'];
+    let lang = this.langkey;
+    return Prismic.api(this.apiUrl).then(function (api) {
+      return api.query(Prismic.Predicates.at('document.id', id),{lang : lang});
     }).then((function (response) {
       if(response?.results[0]?.data?.page_title){
         this.pageTitle = response.results[0].data.page_title
@@ -231,11 +239,11 @@ export class CartPageComponent implements OnInit {
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
           case 'seo_section':
-            console.log("seosection:", prismic);
+            // console.log("seosection:", prismic);
             seoSection = prismic;
             break;
-          case 'og_section':
-            console.log("ogsection:", prismic);
+          case 'ogsection':
+            // console.log("ogsection:", prismic);
             ogSection = prismic;
             break;
             case 'twitter_section':          

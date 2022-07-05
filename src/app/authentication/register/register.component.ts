@@ -132,20 +132,20 @@ export class RegisterComponent implements OnInit {
       }
       response.results[0]?.data?.body.forEach(prismic => {
         switch(prismic.slice_type){
-          case 'seosection':
-              seoSection = prismic;
-              break;
-            case 'ogsection':
+          case 'seo_section':
+            seoSection = prismic;
+            break;
+          case 'ogsection':
             ogSection = prismic;
             break;
-            case 'twitter_section':          
-              twitterSection = prismic;
-              break;
+          case 'twitter_section':          
+            twitterSection = prismic;
+            break;
           case 'terms_conditionssection':
             this.termsSection = prismic;
             break;         
-            default:
-              console.log("type:",prismic)
+          default:
+            console.log("type:",prismic)
         }
       })
       this.commonMtd.addMetaTag(seoSection, ogSection, twitterSection);

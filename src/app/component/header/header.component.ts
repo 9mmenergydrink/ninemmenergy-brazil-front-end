@@ -203,13 +203,13 @@ export class HeaderComponent implements OnInit {
             break;
           case 'sub_menus':
             subMenus = prismic;
-              break;
+            break;
           case 'footer':
             localStorage.setItem('footer', JSON.stringify(prismic));
             this.footerSection = prismic;
             break;
-            default:
-              console.log("type:",prismic)
+          default:
+            console.log("type:",prismic)
         }
       })
       let menus=[];

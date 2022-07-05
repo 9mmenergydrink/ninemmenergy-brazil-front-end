@@ -21,6 +21,7 @@ export class SocialResponsibilityComponent implements OnInit {
   messageSection;
   constant: any;
   langkey: any;
+  apiUrl: any;
   cartCount;// = JSON.parse(localStorage.getItem('cartCount'));
 
   constructor(private router: Router, public commonMtd: CommonMethodsService) { 
@@ -29,13 +30,18 @@ export class SocialResponsibilityComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem('language') == 'fr'){
-      this.constant = prismicFrConstants
-      this.langkey = 'fr-fr'
-    }else{
-      this.constant = prismicEnConstants
-      this.langkey = 'en-us'
-    }
+    // if(localStorage.getItem('language') == 'fr'){
+    //   this.constant = prismicFrConstants
+    //   this.langkey = 'fr-fr'
+    // }else{
+    //   this.constant = prismicEnConstants
+    //   this.langkey = 'en-us'
+    // }
+    let domainLanguage = this.commonMtd.getSubDomainLanguage();
+    this.constant = domainLanguage.constant;
+    this.langkey = domainLanguage.langkey;
+    this.apiUrl = domainLanguage.apiUrl;
+
 
     this.getPrismicDatas();
   }
@@ -44,9 +50,9 @@ export class SocialResponsibilityComponent implements OnInit {
     let ogSection: any;
     let seoSection: any;
     let twitterSection: any;
-    let id = this.constant['socialResId']
-    let lang = this.langkey
-    return Prismic.api("https://9mmenergydrink.prismic.io/api/v2").then(function (api) {
+    let id = this.constant['socialResId'];
+    let lang = this.langkey;
+    return Prismic.api(this.apiUrl).then(function (api) {
       return api.query(Prismic.Predicates.at('document.id', id),{ lang : lang});
     }).then((function (response) {
       if(response?.results[0]?.data?.page_title){
@@ -55,27 +61,26 @@ export class SocialResponsibilityComponent implements OnInit {
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
           case 'seo_section':
-           seoSection = prismic;
+            seoSection = prismic;
             break;
-          case 'og_section':
-           ogSection = prismic;
+          case 'ogsection':
+            ogSection = prismic;
             break;
-            case 'twitter_section':               
-             twitterSection = prismic;
-              break;
+          case 'twitter_section':               
+            twitterSection = prismic;
+            break;
           case 'banner_section':
             console.log("banner_section:", prismic);
             this.bannerSection = prismic;
             break;
-          case 'works_section':
+          case 'workssection':
             console.log("works_section:", prismic)
             this.worksSection = prismic;
-          break;
+            break;
           case 'messagesection':
             console.log("messagesection:", prismic);
             this.messageSection = prismic;
             break;
-            
           default:
             console.log("type:", prismic)
         }

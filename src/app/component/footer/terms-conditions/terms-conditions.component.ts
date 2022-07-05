@@ -63,7 +63,7 @@ export class TermsConditionsComponent implements OnInit {
             console.log("ogsection:", prismic);
             ogSection = prismic;
             break;
-            case 'twitter_section':  
+          case 'twitter_section':  
             console.log("twitter_section:", prismic);           
             twitterSection = prismic;
              break;

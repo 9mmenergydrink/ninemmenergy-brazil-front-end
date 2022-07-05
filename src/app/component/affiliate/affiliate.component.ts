@@ -112,49 +112,46 @@ document.body.appendChild(chatScript);*/
 
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
-          case 'seosection':
+          case 'seo_section':
             seoSection = prismic;
             break;
           case 'og_section':
             ogSection = prismic;
             break;
-            case 'twitter_section':       
-              twitterSection = prismic;
-              break;
+          case 'twitter_section':       
+            twitterSection = prismic;
+            break;
           case 'banner_section':
             console.log("banner_section:", prismic);
             this.bannerSection = prismic;
             break;
-            case 'workssection':
+          case 'workssection':
             console.log("works_section:", prismic)
             this.worksSection = prismic;
-          break;
+            break;
           case 'call_to_action_1':
             console.log("call_to_action_1:", prismic);
             this.callToAction1 = prismic;
             break;
-            case 'accordion_section':
+          case 'accordion_section':
             console.log("accordion_section:", prismic)
             lContentSection = prismic;
             this.programTitle=lContentSection.primary.title;
-          break;
+            break;
           case 'call_to_action_2':
             console.log("call_to_action_2:", prismic)
             this.callToAction2 = prismic;
-          break;
+            break;
           case 'subscription_section':
             console.log("subscription_section:", prismic)
             this.subscriptionSection = prismic;
-          break;
+            break;
           case 'social_proof_section':
             console.log("social_proof_section:", prismic)
             this.socialProofSection = prismic;
-          break;
-          
-          
-          
+            break;
           default:
-            console.log("affiliate:", prismic.slice_type)
+            console.log("affiliate:", prismic)
         }
       })
       this.commonMtd.addMetaTag(seoSection, ogSection, twitterSection);
