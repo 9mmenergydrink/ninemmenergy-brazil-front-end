@@ -1,0 +1,351 @@
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+<!-- loading start -->
+
+<body class="loader">
+    <div class="loading">
+        <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
+    </div>
+    <!-- loading end -->
+
+    <!-- animsition-overlay start -->
+    <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
+        <!-- home-slider start -->
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <!-- page-head start -->
+        <section class="page-head flex-min-height-box new-bg-color position-relative custom-banner-height">
+            <!-- page-head-bg -->
+            <div class="page-head-bg overlay-loading2"
+                [style.background-image]="'url('+bannerSection?.primary?.image?.url+')'"></div>
+
+            <!-- flex-min-height-inner start -->
+            <div class="flex-min-height-inner">
+                <!-- flex-container start -->
+                <div class="container top-bottom-padding-120 flex-container response-999">
+                    <!-- column start -->
+                    <div class="six-columns six-offset">
+                        <div class="content-left-margin-40">
+                            <h2 class="overlay-loading2 tr-delay03 medium-title red-color">
+                                {{bannerSection?.primary?.content1}}</h2>
+                            <h3 class="large-title-bold text-color-4">
+                                <span
+                                    class="overlay-loading2 overlay-light-bg-1 tr-delay04">{{bannerSection?.primary?.content2}}</span>
+                            </h3>
+                            <p class="p-style-bold-up text-height-20 d-flex-wrap">
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay03 banner-3text"
+                                    [attr.data-text]="bannerSection?.primary?.content2">{{bannerSection?.primary?.content3}}</span>
+                            </p>
+                            <div class="border-btn-box border-btn-red pointer-large mt-3">
+
+                                <div class="border-btn-inner"><a [attr.data-text]="'shopNow' | translate"
+                                        class="border-btn" (click)="gotoReadMore()">{{'shopNow' | translate}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column end -->
+                </div>
+                <!-- flex-container end -->
+            </div>
+            <!-- flex-min-height-inner end -->
+
+            <!-- scroll-btn end -->
+        </section>
+        <!-- page-head end -->
+        
+        <section class="black-bg flex-min-height-box">
+
+            <div class="col-md-12 top-bottom-padding-20">
+                <div  class="flex-container">
+                    <div class="container top-bottom-padding-20">
+                        <div data-animation-container class="flex-container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="twelve-columns text-center">
+                                        <div class="container text-center">
+                                            <h2 class="large-title title-fill" data-animation="title-fill-anim"
+                                                [attr.data-text]="aboutusSection?.primary?.title">
+                                                {{aboutusSection?.primary?.title}}</h2>&nbsp;
+                                        </div>
+                                        <div class="twelve-columns text-center mt-3" (click)="playVideo(aboutusSection?.primary?.video_url?.url)">
+                                            <img [src]="aboutusSection?.primary?.image?.url" [alt]="(aboutusSection?.primary?.image?.alt)?aboutusSection.items[0].image.alt:''">
+                                            <a class="video-play-button popup-youtube pointer-large">
+                                                <span></span>
+                                            </a>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div data-animation-container class="top-bottom-padding-30 container">
+                        <div class="row px-3">
+                            <!-- column start -->
+                        <div class="four-columns">
+                            <div class="content-right-margin-20">
+                                <h2 data-animation-child class="small-title-oswald red-color overlay-anim-box2" data-animation="overlay-anim2">{{aboutusSection?.primary?.title1}}</h2>
+                                <h3 class="title-style text-color-4">
+                                    <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay01" data-animation="overlay-anim2">{{aboutusSection?.primary?.sub_title}}</span>
+                                </h3>
+                            </div>
+                        </div>
+                        <!-- column end -->
+                        <!-- column start -->
+                        <div class="eight-columns">
+                            <div class="content-left-margin-20">
+                                <p class="p-style-large text-color-5 fade-anim-box tr-delay04" data-animation="fade-anim">
+                                    {{aboutusSection?.primary?.content}}</p>
+                            </div>
+                        </div>
+                        <!-- column end -->
+                        <div class="col-md-12 top-bottom-padding-30">
+                            <div class="row">
+                                <div class="col-lg-4" *ngFor="let item of aboutusSection?.items ">
+                                     <h2 data-animation-child class="medium-title-oswald red-color overlay-anim-box2" data-animation="overlay-anim2">{{item?.title}}</h2>
+                                     <ul class="list-dots">
+                                         <li>
+                                             <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay04 mt-0" data-animation="fade-anim">{{item?.list1}}</p>
+                                         </li>
+                                         <li>
+                                             <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay05 mt-0" data-animation="fade-anim">{{item?.list2}}</p>
+                                         </li>
+                                     </ul>
+                                </div>
+                                  
+                             </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section class="light-bg-1 bottom-padding-90 black-bg">
+            <!-- container start -->
+            <div data-animation-container class="container px-3 bottom-padding-60  text-center">
+                <h2 data-animation-child class="large-title text-color-1 overlay-anim-box2" data-animation="overlay-anim2">{{creativeSection?.primary?.title}}</h2>
+
+                <div class="top-margin-30">
+                    <h3 data-animation-child class="small-title-oswald text-color-2 text-height-20 fade-anim-box tr-delay01" data-animation="fade-anim">{{creativeSection?.primary?.content1}}</h3>
+                    <!-- <p data-animation-child class="p-style-xsmall text-color-1 fade-anim-box tr-delay02" data-animation="fade-anim">{{creativeSection?.primary?.content2}}</p>
+                    <p data-animation-child class="p-style-xsmall text-color-1 fade-anim-box tr-delay03" data-animation="fade-anim">{{creativeSection?.primary?.content3}}</p>
+                    <p data-animation-child class="p-style-xsmall text-color-1 fade-anim-box tr-delay04" data-animation="fade-anim">{{creativeSection?.primary?.content4}}</p> -->
+                </div>
+            </div>
+            <!-- container end -->
+
+            <!-- about-slider start -->
+            <div class="about-slider bottom-padding-40" id="corporateSlider">
+                <!-- swiper-wrapper start -->
+                <div class="swiper-wrapper">
+                    <!-- <div class="swiper-slide" *ngFor="let item of creativeSection?.items">
+                        <img [src]="item?.image.url" [alt]="item?.image.alt">
+                    </div> -->
+                    <div class="swiper-slide">
+                        <img [src]="creativeSection?.items[0]?.image?.url" [alt]="(creativeSection?.items[0]?.image?.alt)?creativeSection.items[0].image.alt:''">
+                    </div>
+                    <div class="swiper-slide">
+                        <img [src]="creativeSection?.items[1]?.image?.url" [alt]="(creativeSection?.items[1]?.image?.alt)?creativeSection.items[1].image.alt:''">
+                    </div>
+                    <div class="swiper-slide">
+                        <img [src]="creativeSection?.items[2]?.image?.url" [alt]="(creativeSection?.items[2]?.image?.alt)?creativeSection.items[2].image.alt:''">
+                    </div>
+                    <div class="swiper-slide">
+                        <img [src]="creativeSection?.items[3]?.image?.url" [alt]="(creativeSection?.items[3]?.image?.alt)?creativeSection.items[3].image.alt:''">
+                    </div>
+
+
+
+                </div>
+                <!-- swiper-wrapper end -->
+
+                <!-- swiper-button-next start -->
+                <div class="swiper-button-next">
+                    <div class="slider-arrow-next-box">
+                        <span class="slider-arrow-next"></span>
+                    </div>
+                </div>
+                <!-- swiper-button-next end -->
+                <!-- swiper-button-prev start -->
+                <div class="swiper-button-prev">
+                    <div class="slider-arrow-prev-box">
+                        <span class="slider-arrow-prev"></span>
+                    </div>
+                </div>
+                <!-- swiper-button-prev end -->
+
+            </div>
+            <!-- about-slider end -->
+        </section>
+        <!-- Team section start -->
+        <section class="dark-bg-2">
+
+            <div class="flex-container container bottom-padding-60 top-padding-120">
+
+                <div class="col-md-12 bottom-padding-60 ">
+                    <div data-animation-container class="content-right-margin-20 team-title-box">
+                        <h2 data-animation-child class="small-title-oswald overlay-anim-box2 red-color" data-animation="overlay-anim2">{{teamSection?.primary?.title}}</h2>
+                        <h3 class="title-style text-color-4">
+                            <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay01" data-animation="overlay-anim2">{{teamSection?.primary?.content1}}</span><br>
+                            <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay02" data-animation="overlay-anim2">{{teamSection?.primary?.content2}}</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="row top-padding-60 ">
+                    <div class="col-md-3 pb-5 " [ngClass]="teamSection?.items[0]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-left-right-margin-10 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="teamSection?.items[0]?.image?.url" [alt]="(teamSection?.items[0]?.image.alt)?teamSection.items[0].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{teamSection?.items[0]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{teamSection?.items[0]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5 " [ngClass]="teamSection?.items[1]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-left-margin-20 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="teamSection?.items[1]?.image.url" [alt]="(teamSection?.items[1]?.image?.alt)?teamSection.items[1].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{teamSection?.items[1]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{teamSection?.items[1]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5" [ngClass]="teamSection?.items[2]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-right-margin-20 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="teamSection?.items[2]?.image.url" [alt]="(teamSection?.items[2]?.image?.alt)?teamSection.items[2].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{teamSection?.items[2]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{teamSection?.items[2]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5" [ngClass]="teamSection?.items[3]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-left-right-margin-10 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="teamSection?.items[3]?.image.url" [alt]="(teamSection?.items[3]?.image?.alt)?teamSection.items[3].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{teamSection?.items[3]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{teamSection?.items[3]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5" [ngClass]="teamSection?.items[4]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-left-margin-20 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="teamSection?.items[4]?.image.url" [alt]="(teamSection?.items[4]?.image?.alt)?teamSection.items[4].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{teamSection?.items[4]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{teamSection?.items[4]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5" [ngClass]="teamSection?.items[5]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-left-margin-20 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="teamSection?.items[5]?.image.url" [alt]="(teamSection?.items[5]?.image?.alt)?teamSection.items[5].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{teamSection?.items[5]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{teamSection?.items[5]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="text-center top-bottom-padding-120 black-bg">
+            <!-- testimonials-slider start -->
+            <div class="testimonials-slider container small testi-black-bg">
+                <!-- swiper-wrapper start -->
+                <div class="swiper-wrapper">
+                    <!-- slide start -->
+                    <!-- <div *ngFor="let item of testimonialSection?.items" class="swiper-slide text-center">
+						<img [src]="item?.image?.url" [alt]="item?.image?.alt">
+						<div class="testimonials-content">
+							<p class="text-color-4 p-style-bold">{{item?.content}}</p>
+						</div>
+						<div class="text-color-1 small-title-oswald">
+							{{item?.name}} <span class="text-color-2">{{item?.role}}</span>
+						</div>
+					</div> -->
+
+                    <div class="swiper-slide text-center">
+                        <img [src]="testimonialSection?.items[0]?.image?.url" [alt]="(testimonialSection?.items[0]?.image?.alt)?testimonialSection.items[0].image.alt:''">
+                        <div class="testimonials-content">
+                            <p class="text-color-4 p-style-bold">{{testimonialSection?.items[0]?.content}}</p>
+                        </div>
+                        <div class="text-color-1 small-title-oswald">
+                            {{testimonialSection?.items[0]?.name}} <span class="text-color-2">{{testimonialSection?.items[0]?.role}}</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide text-center">
+                        <img [src]="testimonialSection?.items[1]?.image?.url" [alt]="(testimonialSection?.items[1]?.image?.alt)?testimonialSection.items[1].image.alt:''">
+                        <div class="testimonials-content">
+                            <p class="text-color-4 p-style-bold">{{testimonialSection?.items[1]?.content}}</p>
+                        </div>
+                        <div class="text-color-1 small-title-oswald">
+                            {{testimonialSection?.items[1]?.name}} <span class="text-color-2">{{testimonialSection?.items[1]?.role}}</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide text-center">
+                        <img [src]="testimonialSection?.items[2]?.image?.url" [alt]="(testimonialSection?.items[2]?.image?.alt)?testimonialSection.items[2].image.alt:''">
+                        <div class="testimonials-content">
+                            <p class="text-color-4 p-style-bold">{{testimonialSection?.items[2]?.content}}</p>
+                        </div>
+                        <div class="text-color-1 small-title-oswald">
+                            {{testimonialSection?.items[2]?.name}} <span class="text-color-2">{{testimonialSection?.items[2]?.role}}</span>
+                        </div>
+                    </div>
+                    <!-- slide end -->
+                </div>
+                <!-- swiper-wrapper end -->
+                <!-- swiper-pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+            <!-- testimonials-slider end -->
+        </div>
+        <section data-animation-container class="dark-bg-2 folk-section">
+            <!-- container start -->
+            <div class="container top-bottom-padding-120" [ngClass]="(socialProofSection?.items?.length>0) ? 'd-block': 'd-none'">
+                <!-- medium-title start -->
+                <div class="text-center small">
+                    <h2 data-animation-child class="large-title text-height-10 text-color-1 overlay-anim-box2" data-animation="overlay-anim2">{{socialProofSection?.primary?.title1}}</h2><br>
+                    <p data-animation-child class="fade-anim-box tr-delay02 text-white medium-title-oswald top-margin-5" data-animation="fade-anim">{{socialProofSection?.primary?.title2}}</p>
+                </div>
+                <!-- medium-title end -->
+
+                <!-- client-list start -->
+                <ul class="client-list  d-flex justify-content-around top-padding-60 pl-5">
+                    <li *ngFor="let item of socialProofSection?.items ">
+                        <a class=" dblock">
+                            <div class=" ">
+                                <img [src]="item?.image?.url" [alt]="(item?.image?.alt)?item.image.alt:''" class="hover-img">
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- client-list end -->
+            </div>
+            <!-- container end -->
+        </section>
+    </main>
+    <!-- animsition-overlay end -->
+    <app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>
+
+</body>

@@ -1,0 +1,62 @@
+<div class="ml-4">
+    <div class="col-md-12 pl-2">
+        <div class="modal-header d-block">
+            <h4 class="modal-title" id="modal-basic-title">{{'cart' | translate}}</h4>
+            <h6 class="product-count ml-0">{{cartCount?.pCount}} {{'products' | translate}}</h6>
+            <button type="button" class="close addtocart-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="">
+                  <div class="cart-scroll">
+                      <ng-container *ngFor="let data of cartDetails; let i = index">
+                          <div class="row mt-2">
+                              <!-- <div class="col-md-1 p-0" style="width: 0%;"></div> -->
+                              <div class="col-lg-4 d-flex justify-content-center">
+                                  <!-- <div class="modal-pop-img">
+                                    <img [src]="data?.image" class="modal-img" alt="productimage">
+                                    <a (click)="onClickClose(data, i)" class="close-thik hover-color"></a>
+                                 </div> -->
+                                 <div class="product__image pt-3 position-relative">
+                                    <a (click)="onClickClose(data, i)" class="addToCardClose card-page-close close-thik hover-color"></a>
+                                    <div class="product-thumbnail ">
+                                       <div class="product-thumbnail__wrapper modal-pop-img">
+                                          <img alt="energy drink pre workout" class="product-thumbnail__image" [src]="data?.image">
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="col-lg-8 col-6">
+                                  <h6 class="top-bottom-padding-10 pb-1">{{data?.title}}</h6>
+                                  <span class="xsmall-title-oswald font-weight-normal text-capitalize pb-1 d-block">{{data?.variantTitle}}</span>
+                                  <input disabled type="text" [(ngModel)]="data.quantity" class="modal-input"> X <span>${{data?.price}}</span>
+                              </div>
+                              
+                          
+                          </div>
+                          <br>
+                      </ng-container>
+                  </div>
+              <!-- <div class="row">
+                  <div class="col-lg-4">
+                      <img src="assets/images/product-1.png" class="modal-img">
+                      <a  class="close-thik"></a>
+                  </div>
+                  <div class="col-lg-8">
+                      <h6 class="top-bottom-padding-10">9MM ENERGY DRINKS</h6>
+                      <input type="text" class="modal-input"> X <span>$128.95</span>
+                  </div>
+              </div> -->
+              <div class="sub-total-sec">
+                  <span>{{'subTotal' | translate}}</span>
+                  <span class="total-amount">${{cartCount?.subTotal}}</span>
+              </div>
+              <button class="update-cart-btn" (click)="onClickViewCart();activeModal.dismiss('Cross click')">{{'viewCart' | translate}}</button><br>    
+              <button [disabled]="cartCount?.pCount == 0" class="check-out-btn" (click)="onClick('/checkout-information');activeModal.dismiss('Cross click')">{{'checkOut' | translate}}</button>
+            </div>
+            
+          </div>
+    </div>
+      
+</div>

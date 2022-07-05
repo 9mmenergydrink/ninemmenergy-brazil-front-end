@@ -1,0 +1,346 @@
+<!-- pointer start -->
+<div class="pointer" id="pointer">
+    <i class="fas fa-long-arrow-alt-right"></i>
+    <i class="fas fa-search"></i>
+    <i class="fas fa-link"></i>
+</div>
+<!-- pointer end -->
+
+<!-- to-top-btn start -->
+<!-- <a class="to-top-btn pointer-small" (click)="scroll(up)">
+	  <span class="to-top-arrow"></span>		    
+</a> -->
+<!-- to-top-btn end -->
+
+<header class="fixed-header">
+    <nav id="navigation" class="navbar-dark navbar-fixed-top" style="height:75px">
+        <!-- header-flex-box start -->
+        <div class="header-flex-box">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 logo-pading">
+                        <a [routerLink]="commonMtd.getRoutePath('home')" class="logo pointer-large animsition-link">
+                            <div class="logo-img-box" [class]="header?.primary?.logo?.url?'d-block':'d-none'">
+                                <img [src]="header?.primary?.logo.url" [alt]="(header?.primary?.logo?.alt)?header.primary.logo.alt:''" class="ninemm-logo">
+                                <img [src]="header?.primary?.logo2.url" [alt]="(header?.primary?.logo2?.alt)?header.primary.logo2.alt:''" class="ninemm-logo2">
+                            </div>
+                        </a>
+                    </div>
+                    <!-- <div class="col-lg-5"></div> -->
+                    <div class="col-lg-10 p-0">
+                        <div class="menu-nav six-columns six-offset">
+                            <div class="d-flex align-items-center justify-content-end pt-2">
+                                <div class="row">
+                                    <ul>
+                                        <!-- <li>OVer{{ 'HOME.TITLE' | translate }}</li> -->
+                                        <!-- <li *ngFor="let item of header?.items;">
+                                            <a *ngIf="item.navlink != 'Zone'" (click)="onClick(item.navlink)" class="hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}">{{item?.menuname}}</a>
+                                            <div *ngIf="item.navlink == 'Zone'" ngbDropdown class="dropdown hidden-arrow">
+                                                <a class="dropdown-toggle" role="button" id="dropdownBasic2" ngbDropdownToggle>
+                                                    Zone
+                                                </a>
+
+                                                <div ngbDropdownMenu class="dropdown-menu shadow p-0 mb-5 bg-white rounded" aria-labelledby="dropdownBasic2">
+                                                    <span class="dropdown-menu-arrow"></span>
+                                                    <a href="https://mma.9mmenergy.com" target="_blank" class="dropdown-item">MMA</a>
+                                                    <a href="https://esports.9mmenergy.com" target="_blank" class="dropdown-item">E-Sports</a>
+                                                    <a href="https://motorsports.9mmenergy.com" target="_blank" class="dropdown-item">Motor Sports</a>
+                                                </div>
+                                            </div>
+                                        </li> -->
+                                        <li class="dropdown header-dropdown" *ngFor="let item of menus; let i=index">
+                                            <a *ngIf="!item?.subMenus?.length" (click)="onClick(item.navlink)" class="hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}">{{item?.menuname}}</a>
+                                            <ng-container *ngIf="item?.subMenus?.length">
+                                                <a (click)="onClick(item.navlink)" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item?.menuname}} <span class="caret"></span></a>
+                                                <ul class="dropdown-menu shadow">
+    
+                                                  <li *ngFor="let subMenu of item?.subMenus;"><a (click)="onClick(subMenu.navlink)">{{subMenu?.menuname}}</a></li>
+                                                  
+                                                </ul>
+                                            </ng-container>
+                                        </li>
+                                        <!-- <li class="cart"><a (click)="onClick('/login')" class="hover-color" [ngClass]="{'yellow-color':menu=='Login'}"><i style="font-size: 20px;" class="far fa-user font-20"></i></a></li> -->
+                                        <!-- <li class="">
+                                            
+                                        </li> -->
+                                        <li *ngIf="!isShowUserMenu" class="cart">
+                                            <a [routerLink]="commonMtd.getRoutePath('login')" [ngClass]="{'yellow-color':(menu=='login' || menu=='myAccount')}" class="hover-color">
+                                                <img class="cartImg" src="assets/images/HOME/icons/white-user.svg" alt="user icon">
+                                            </a>
+                                        </li>
+            
+                                        <li class="cart hover-color p-n dropdown header-dropdown header-user" *ngIf="isShowUserMenu">
+                                            <a class="dropdown-toggle circle text-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                                <!-- <div class="circle btn"> -->
+                                                    <span class="inner-text">{{userShortName}}</span>
+                                                <!-- </div> -->
+                                            </a>
+                                            <ul class="dropdown-menu shadow">
+                                                <!-- <a (click)="onClickuser()" [ngClass]="{'yellow-color':(menu=='login' || menu=='myAccount')}" class="btn dropdown-toggle" role="button" id="dropdownBasic1" ngbDropdownToggle style="padding: 0!important;">
+									<img class="cartImg" src="assets/images/HOME/icons/white-user.svg" alt="cart" >
+								</a> -->
+                                                <!-- <div class="btn dropdown-toggle p-0 border-0" role="button" id="dropdownBasic1" ngbDropdownToggle>
+								<svg width="45" height="45">
+									<circle cx="24" cy="21" r="20" stroke="black" stroke-width="0" fill="#ebcc00"></circle>									  
+									<text fill="#000000" font-size="18" font-family="Verdana" x="10.7" y="28" font-weight="600">{{userShortName}}</text>
+								</svg>
+							</div> -->
+
+                                                <!-- <div class="circle btn dropdown-toggle p-0 border-0" role="button" id="dropdownBasic1" ngbDropdownToggle>
+                                                    <span class="inner-text">{{userShortName}}</span>
+                                                </div> -->
+
+                                                <!-- <div ngbDropdownMenu class="dropdown-menu shadow p-0 mb-5 bg-white rounded" aria-labelledby="dropdownBasic1">
+                                                    <span class="dropdown-menu-arrow"></span> -->
+                                                    <!-- <a class="dropdown-item "><i class="far fa-user" style="font-size: large; letter-spacing: 8px;"></i>{{userName}}</a> -->
+                                                    <li><a class="  " [routerLink]="commonMtd.getRoutePath('myaccount')"><i class="far fa-user" style="font-size: large; letter-spacing: 8px;"></i>{{'myAccount' | translate}}</a></li>
+                                                    <li><a class="  "><i class="far fa-question-circle" style="font-size:large; letter-spacing: 8px;"></i> {{'help' | translate}}</a></li>
+                                                    <li><a class="  " (click)="onClickLogOut()" style="border-bottom: none!important;"><i class="fa fa-power-off" style="font-size: large; letter-spacing: 8px;"></i> {{'logOut' | translate}}</a></li>
+                                                <!-- </div> -->
+                                            </ul>
+                                        </li>
+
+                                        <li *ngIf="!isShowUserMenu" class="cart2 ">
+                                            <a [routerLink]="commonMtd.getRoutePath('login')" [ngClass]="{'yellow-color':(menu=='login' || menu=='myAccount')}" class="hover-color">
+                                                <img class="cartImg" src="assets/images/HOME/icons/black-user.svg" alt="user icon">
+                                            </a>
+                                        </li>
+
+                                        <li class="cart2 p-n dropdown header-dropdown header-user" *ngIf="isShowUserMenu">
+                                            <a class="dropdown-toggle circle text-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                                    <span class="inner-text">{{userShortName}}</span>
+                                            </a>
+                                            <ul class="dropdown-menu shadow">
+                                                    <li><a [routerLink]="commonMtd.getRoutePath('myaccount')"><i class="far fa-user" style="font-size: large; letter-spacing: 8px;"></i>{{'myAccount' | translate}}</a></li>
+                                                    <li><a><i class="far fa-question-circle" style="font-size:large; letter-spacing: 8px;"></i> {{'help' | translate}}</a></li>
+                                                    <li><a (click)="onClickLogOut()" style="border-bottom: none!important;"><i class="fa fa-power-off" style="font-size: large; letter-spacing: 8px;"></i> {{'logOut' | translate}}</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="cart pr-0">
+                                            <a (click)="onClick('cart')" class="hover-color">
+                                                <div class="numberCircle">{{cCount}}</div><img class="cartImg" src="assets/images/HOME/icons/Group 44.svg" alt="cart"></a>
+                                        </li>
+                                        <li class="cart2 pr-0">
+                                            <a (click)="onClick('cart')" class="hover-color">
+                                                <div class="numberCircle">{{cCount}}</div><img class="cartImg" src="assets/images/HOME/icons/Group 44 (1).svg" alt="cart"></a>
+                                        </li>
+                                        <li class="cart pl-0">
+                                            <a (click)="showlang()" class="hover-color"><img class="cartImg" src="assets/images/HOME/icons/Group 457.svg" alt="globe"></a>
+                                        </li>
+                                        <li class="cart2 pl-0">
+                                            <a (click)="showlang()" class="hover-color"><img class="cartImg" src="assets/images/HOME/icons/Group 458.svg" alt="globe"></a>
+                                        </li>
+                                        <li *ngIf="isShowLang" class="d-flex">
+                                            <a (click)="selectLan('en')" class="hover-color" [ngClass]="{'selected':language=='en'}"> En</a>
+                                            <a>&nbsp;|&nbsp;</a>
+                                            <a (click)="selectLan('fr')" class="hover-color" [ngClass]="language=='fr'?'selected':''">Fr</a>
+                                        </li>
+                                        <!-- <li *ngIf="isShowLang">
+								<a (click)="showlang()" class="hover-color">Fr</a>
+							</li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile view icons -->
+            <div class="d-block d-xl-none d-flex pr-2">
+                <!-- order-3 -->
+
+                <div class="icon-sec mr-0">
+                    <li *ngIf="!isShowUserMenu" class="cart">
+                        <a [routerLink]="commonMtd.getRoutePath('login')" [ngClass]="{'yellow-color':(menu=='login' || menu=='myAccount')}" class="hover-color">
+                            <img class="cartImg" src="assets/images/HOME/icons/white-user.svg" alt="user icon">
+                        </a>
+                    </li>
+                    <li *ngIf="isShowUserMenu" class="cart3 m-0">
+                        <div ngbDropdown class="dropdown header-user">
+                            <div class="circle btn dropdown-toggle p-0 border-0" role="button" id="dropdownBasic1" ngbDropdownToggle>
+                                <span class="inner-text">{{userShortName}}</span>
+                            </div>
+                            <div ngbDropdownMenu class="dropdown-menu-mobile shadow p-0 mb-5 bg-white rounded" aria-labelledby="dropdownBasic3">
+                                <span class="dropdown-menu-arrow-mobile"></span>
+                                <a class="dropdown-item" [routerLink]="commonMtd.getRoutePath('myaccount')"><i class="far fa-user" style="font-size: large;letter-spacing: 5px;"></i> {{'myAccount' | translate}}</a>
+                                <a class="dropdown-item"><i class="far fa-question-circle" style="font-size:large;letter-spacing: 5px;"></i> {{'help' | translate}}</a>
+                                <a class="dropdown-item" (click)="onClickLogOut()" style="border-bottom: none!important;"><i class="fa fa-power-off" style="font-size: large;letter-spacing: 5px;"></i> {{'logOut' | translate}}</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li *ngIf="!isShowUserMenu" class="cart2">
+                        <a [routerLink]="commonMtd.getRoutePath('login')" [ngClass]="{'yellow-color':(menu=='login' || menu=='myAccount')}" class="hover-color">
+                            <img class="cartImg" src="assets/images/HOME/icons/black-user.svg" alt="user icon">
+                        </a>
+                    </li>
+                    <li *ngIf="isShowUserMenu" class="cart4 m-0">
+                        <div ngbDropdown class="dropdown header-user">
+                            <div class="circle circle-bg btn dropdown-toggle p-0 border-0" role="button" id="dropdownBasic2" ngbDropdownToggle>
+                                <span class="inner-text inner-text-color">{{userShortName}}</span>
+                            </div>
+                            <!-- <a class="btn dropdown-toggle" role="button" id="dropdownBasic4" ngbDropdownToggle style="padding: 0%!important; margin-left: -25px;">
+					<img class="cartImg" src="assets/images/HOME/icons/black-user.svg" alt="cart"></a> -->
+                            <div ngbDropdownMenu class="dropdown-menu-mobile shadow p-0 mb-5 bg-white rounded" aria-labelledby="dropdownBasic4">
+                                <span class="dropdown-menu-arrow-mobile"></span>
+                                <a class="dropdown-item" [routerLink]="commonMtd.getRoutePath('myaccount')"><i class="far fa-user" style="font-size: large; letter-spacing: 5px;"></i> {{'myAccount' | translate}}</a>
+                                <a class="dropdown-item"><i class="far fa-question-circle" style="font-size:large;letter-spacing: 5px;"></i> {{'help' | translate}}</a>
+                                <a class="dropdown-item" (click)="onClickLogOut()" style="border-bottom: none!important;"><i class="fa fa-power-off" style="font-size: large;letter-spacing: 5px;"></i> {{'logOut' | translate}}</a>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+                <div class=" text-center">
+                    <!-- cart3 -->
+                    <li class="cart3 m-0">
+                        <a (click)="onClick('cart')" class="hover-color">
+                            <div class="numberCircle">{{cCount}}</div><img class="cartImg" src="assets/images/HOME/icons/Group 44.svg" alt="cart"></a>
+                    </li>
+                    <li class="cart4 m-0">
+                        <a (click)="onClick('cart')" class="hover-color">
+                            <div class="numberCircle">{{cCount}}</div><img class="cartImg" src="assets/images/HOME/icons/Group 44 (1).svg" alt="cart"></a>
+                    </li>
+
+                </div>
+                <div class="icon-sec">
+                    <li class="cart">
+                        <a (click)="showlang()" class="hover-color"><img class="cartImg" src="assets/images/HOME/icons/Group 457.svg" alt="globe"></a>
+                    </li>
+                    <li class="cart2">
+                        <a (click)="showlang()" class="hover-color"><img class="cartImg" src="assets/images/HOME/icons/Group 458.svg" alt="globe"></a>
+                    </li>
+                    <li *ngIf="isShowLang" class="d-flex" style=" float: right;margin: -20px 0px 0px 30px;">
+                        <div class="cart text-white">
+                            <a (click)="selectLan('en')" class="hover-color " [ngClass]="{'selected':language=='en'}"> En</a>
+                            <a class="">&nbsp;|&nbsp;</a>
+                            <a (click)="selectLan('fr')" class="hover-color " [ngClass]="language=='fr'?'selected':''">Fr</a>
+                        </div>
+                        <div class="cart2 text-dark">
+                            <a (click)="selectLan('en')" class="hover-color " [ngClass]="{'selected':language=='en'}"> En</a>
+                            <a class="">&nbsp;|&nbsp;</a>
+                            <a (click)="selectLan('fr')" class="hover-color " [ngClass]="language=='fr'?'selected':''">Fr</a>
+                        </div>
+                    </li>
+                </div>
+            </div>
+            <!-- End -->
+
+            <div class="menu-open pointer-large order-4">
+                <!-- <li><a style="margin-left: -75px;" (click)="onClick('/login')" class="hover-color"><i class="far fa-user font-20"></i></a></li> -->
+                <!--<div class="menu-open2">
+				<li class="cart"><a><div class="numberCircle">30</div><img src="assets/images/HOME/icons/Group 44.svg"></a></li>
+				<li class="cart2"><a><div class="numberCircle">30</div><img src="assets/images/HOME/icons/Group 44 (1).svg"></a></li>
+			</div>-->
+                <span class="hamburger"></span>
+            </div>
+            <!-- menu-open end -->
+        </div>
+        <!-- header-flex-box end -->
+    </nav>
+</header>
+
+<!-- header start -->
+<header>
+
+</header>
+<!-- header end -->
+<!-- nav-container start -->
+<nav class="nav-container dark-bg-1">
+    <!--
+	<div class="nav-logo">
+		<img [src]="header?.primary?.logo?.url" [alt]="header?.primary?.logo?.alt">
+	</div> -->
+
+    <!-- menu-close -->
+    <div class="menu-close pointer-large"></div>
+
+    <!-- dropdown-close-box start -->
+    <div class="dropdown-close-box">
+        <div class="dropdown-close pointer-large">
+            <span></span>
+        </div>
+    </div>
+    <!-- dropdown-close-box end -->
+
+    <!-- nav-menu start -->
+    <ul class="nav-menu dark-bg-1">
+        <!-- nav-box start -->
+        <li class="nav-box nav-bg-change active dropdown-open">
+            <a class="pointer-large nav-link" routerLink="/">
+                <span class="nav-btn" [ngClass]="{'active':menu=='Home'}" [attr.data-text]="'home' | translate">{{'home' | translate}}</span>
+            </a>
+
+            <!-- 
+			<ul class="dropdown">
+				<li class="nav-box">
+					<a href="index.html" class="animsition-link pointer-large">
+						<span class="nav-btn active" data-text="Slider Home">Slider Home</span>
+					</a>
+				</li>
+				<li class="nav-box">
+					<a href="video_home.html" class="animsition-link pointer-large">
+						<span class="nav-btn" data-text="Video Bg">Video Bg</span>
+					</a>
+				</li>
+				<li class="nav-box">
+					<a href="home_fullscreen.html" class="animsition-link pointer-large">
+						<span class="nav-btn" data-text="Fullscreen Bg">Fullscreen Bg</span>
+					</a>
+				</li>
+				<li class="nav-box">
+					<a href="home_particles.html" class="animsition-link pointer-large">
+						<span class="nav-btn" data-text="Particles">Particles</span>
+					</a>
+				</li>
+				<li class="nav-box">
+					<a href="home_typewriter.html" class="animsition-link pointer-large">
+						<span class="nav-btn" data-text="Typewriter">Typewriter</span>
+					</a>
+				</li>
+			</ul> -->
+
+            <!--<div class="nav-bg" style="background-image: url(assets/images/HOME/Home/Gamer-1.jpg)"></div>-->
+        </li>
+        <!-- nav-box end -->
+        <!-- nav-box start -->
+        
+         <!-- <li class="dropdown header-dropdown nav-box nav-bg-change" *ngFor="let item of menus; let i=index">
+            <a *ngIf="!item?.subMenus?.length" (click)="onClick(item.navlink)" class="animsition-link pointer-large nav-link nav-btn hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}">{{item?.menuname}}</a>
+            <ng-container *ngIf="item?.subMenus?.length">
+                <div class="d-flex">
+                    <a (click)="onClick(item.navlink, null, item)" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}" class="dropdown-toggle animsition-link pointer-large nav-link nav-btn hover-color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item?.menuname}} </a>
+                    <span (click)="item.isOpenSubMenu=!item?.isOpenSubMenu" class="caret"></span>
+                </div>
+                <a (click)="onClick(item.navlink, null, item)" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}" class="dropdown-toggle animsition-link pointer-large nav-link nav-btn hover-color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item?.menuname}} <span (click)="item.isOpenSubMenu=!item?.isOpenSubMenu" class="caret"></span></a>
+                <ul class="dropdown-menu shadow" [ngClass]="{'d-block':item?.isOpenSubMenu}">
+
+                  <li *ngFor="let subMenu of item?.subMenus;"><a (click)="onClick(subMenu.navlink)">{{subMenu?.menuname}}</a></li>
+                  
+                </ul>
+            </ng-container>
+            
+        </li> -->
+
+        <li class="dropdown header-dropdown sub-menu nav-box nav-bg-change" *ngFor="let item of menus; let i=index">
+            <a *ngIf="!item?.subMenus?.length" (click)="onClick(item.navlink)" class="pointer-large nav-link nav-btn hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}">{{item?.menuname}}</a>
+            <ng-container *ngIf="item?.subMenus?.length">
+                <a (click)="onClick(item.navlink, null, item)" class="animsition-link pointer-large nav-link nav-btn hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}" >{{item?.menuname}}</a>
+                <button class="navbar-toggler text-white" type="button" (click)="onToggle(item, i)" [attr.aria-expanded]="!item?.isOpenSubMenu">
+                    <i class="fa fa-angle-up" *ngIf="!item.isOpenSubMenu"></i>
+                    <i class="fa fa-angle-down" *ngIf="item.isOpenSubMenu"></i>
+                </button>
+                <ul class="collapse navbar-collapse" #collapse="ngbCollapse" [(ngbCollapse)]="item.isOpenSubMenu">
+                    <li *ngFor="let subMenu of item?.subMenus;"><a class="animsition-link pointer-large nav-link nav-btn hover-color" (click)="onClick(subMenu.navlink)">{{subMenu?.menuname}}</a></li>
+                </ul>
+            </ng-container>
+        </li>
+
+        <!-- <li class="nav-box nav-bg-change" *ngFor="let item of header?.items;"><a class="animsition-link pointer-large nav-link nav-btn hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}" (click)="onClick(item.navlink, true)">{{item?.menuname}}</a></li> -->
+        <!--<li class="cart"><a><img src="assets/images/HOME/icons/Group 44.svg"></a></li>
+				<li class="cart2"><a><img src="assets/images/HOME/icons/Group 44 (1).svg"></a></li>-->
+        <!-- nav-box end -->
+    </ul>
+    <!-- nav-menu end -->
+</nav>
+<!-- nav-container end -->

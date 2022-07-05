@@ -1,0 +1,254 @@
+<div class="">
+    <h5 class="my-3" style="font-weight: bold;">
+        {{'yourPersonalInformation' |translate }}
+    </h5>
+    <hr class="my-2">
+    <form [formGroup]="formGroup">
+        <div class="d-flex" *ngIf="!isEditName">
+            <div style="display: grid">
+                <span class="f-size-13 " style="font-weight: lighter;">
+         {{'fullName' |translate }}
+      </span>
+                <span>
+        {{profileDetails?.firstName}} {{profileDetails?.lastName}}
+      </span>
+
+            </div>
+            <div class="ml-auto"><a class="edit-style text-capitalize" (click)="onClickEdit(1)">{{'edit' |translate }}</a></div>
+        </div>
+        <div class="row" *ngIf="isEditName">
+            <div class="col-lg-6">
+                <div class="">
+                    <label> {{'firstName' |translate }}<span class="text-danger pl-1">*</span></label>
+                    <input type="text" formControlName="first_name" name="first_name" [ngClass]="{'error':f?.first_name?.errors&&f?.first_name?.touched}" class="form-control" placeholder="{{'enterFirstName' |translate }}">
+                    <div *ngIf="f?.first_name?.errors?.required && f?.first_name?.touched" class="text-danger">
+                        {{'enterFirstName' |translate }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="">
+                    <label>{{'lastName' | translate }}<span class="text-danger pl-1">*</span></label>
+                    <input type="text" formControlName="last_name" name="last_name" class="form-control" placeholder="{{'enterLastName' |translate }}">
+                    <div *ngIf="f?.last_name?.errors?.required && f?.last_name?.touched" class="text-danger">
+                        {{'enterLastName' | translate }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8"></div>
+            <div class="col-lg-4 my-2 d-flex justify-content-end">
+                <button type="button" class="cancel-btn mr-2" (click)="onClickCancel()">{{'cancel' | translate}}</button>
+                <button type="button" class="save-btn" (click)="onClickSave()">{{'save' | translate}}</button>
+            </div>
+        </div>
+
+
+        <div class="d-flex mt-2" *ngIf="!isEditEmail">
+            <div style="display: grid;">
+                <span class="f-size-13 " style="font-weight: lighter;">
+         {{'emailAddress' |translate }}
+      </span>
+                <span>{{profileDetails?.email}}</span>
+                <span class="f-size-13" style="font-weight: lighter; margin-right: 10px;">
+       {{'forSeciurity' |translate }}<a style="text-decoration: underline;
+        color: #e9cf13;margin-left: 10px;">{{'verifyNow' |translate }}</a>
+      </span>
+            </div>
+            <div class="ml-auto"><a class="edit-style text-capitalize" (click)="onClickEdit(2)">{{'edit' |translate }}</a></div>
+        </div>
+        <!-- Email Edit toggle code start -->
+        <div class="my-3" *ngIf="false">
+            <div class="col-md-12 p-0">
+                <h6 class="">developer1@brandvault360.com</h6>
+                <p class="mt-0">We'll email you a code to verify your email address for security purpose</p>
+                <div class="d-flex justify-content-center my-2">
+                    <button type="button" class="check-out-btn mr-2" (click)="onClickCancel()">Cancel</button>
+                    <button type="button" class="update-cart-btn" (click)="onClickEmailVerify(content)">Email Me</button>
+                </div>
+            </div>
+        </div>
+        <div class="my-3" *ngIf="isEditEmail">
+            <div class="col-md-12 p-0">
+                <div class="col-md-7 p-0">
+
+                    <div class="">
+                        <label for="exampleInputEmail1">{{'email' |translate }} <span class="text-danger">*</span></label>
+                        <input type="email" formControlName="email" name="email" [ngClass]="{'error':f?.email?.errors&&f?.email?.touched}" class="form-control" aria-describedby="emailHelp" placeholder="{{'enterEmail' |translate }}">
+                        <div *ngIf="f?.email?.errors && f?.email?.touched" class="text-danger">
+                            <div *ngIf="f?.email?.errors?.required">{{'enterEmail' |translate }}</div>
+                            <div *ngIf="f?.email?.errors?.pattern">
+                                {{'enterValidEmail' |translate }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end my-2">
+                        <button type="button" class="cancel-btn mr-2" (click)="onClickCancel()">{{'cancel' | translate}}</button>
+                        <button type="button" class="save-btn" (click)="onClickSave()">{{'save' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End -->
+        <div class="d-flex mt-2" *ngIf="!isEditPhone">
+            <div style="display: grid;">
+                <span class="f-size-13 " style="font-weight: lighter;">
+         {{'phoneNumber' |translate }}
+      </span>
+                <span> {{profileDetails?.phone}}</span>
+            </div>
+            <div class="ml-auto"><a class="edit-style" (click)="onClickEdit(3)">
+      {{(profileDetails?.phone)?('edit' | translate):('add' | translate) }}
+    </a></div>
+        </div>
+        <!-- Phone add toggle -->
+        <div class="my-3" *ngIf="false">
+            <div class="col-md-12 p-0">
+                <div class="col-md-7 p-0">
+                    <label for="">Please enter a valid 10 digit phone number.</label>
+                    <input type="text" class="border-lightgray form-control">
+                </div>
+                <p class="mt-0">We'll text you a code to verify your phone number for security purpose</p>
+                <div class="d-flex justify-content-center my-2">
+                    <button type="button" class="check-out-btn mr-2" (click)="onClickCancel()">Cancel</button>
+                    <button type="button" class="update-cart-btn" (click)="onClickPhoneVerify(PhoneContent)">Text Me</button>
+                </div>
+            </div>
+        </div>
+        <!-- Phone input -->
+        <div class="my-3" *ngIf="isEditPhone">
+            <div class="col-md-12 p-0">
+                <div class="col-md-7 p-0">
+                    <div class="">
+                        <label> {{'phoneNumber' |translate }}<span class="text-danger pl-1">*</span></label>
+                        <input type="text" formControlName="phone" name="phone" [ngClass]="{'error':f?.phone?.errors&&f?.phone?.touched}" class="form-control" placeholder="{{'phoneNo' |translate }}">
+                        <div *ngIf="f?.phone?.errors && f?.phone?.touched" class="text-danger">
+                            <div *ngIf="f?.phone?.errors?.required">{{'phoneNo' |translate }}</div>
+                            <div *ngIf="f?.phone?.errors?.pattern || f?.phone?.errors?.minlength || f?.phone?.errors?.maxlength">
+                                {{'pleaseEnterValidPhoneNo' |translate }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end my-2">
+                        <button type="button" class="cancel-btn mr-2" (click)="onClickCancel()">{{'cancel' | translate}}</button>
+                        <button type="button" class="save-btn" (click)="onClickSave()">{{'save' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End -->
+        <!-- Password -->
+        <div style="margin-top: 10px;">
+            <h5 style="font-weight: bold">
+                {{'yourPasswort' |translate }}
+            </h5>
+        </div>
+        <hr class="my-2">
+        <div class="d-flex" *ngIf="!isEditPass">
+            <div style="display: grid;">
+                <span class="f-size-13 " style="font-weight: lighter;">
+        {{'newPassword' |translate }}
+      </span>
+                <span>
+        ********
+      </span>
+            </div>
+            <div class="ml-auto"><a class="edit-style text-capitalize" (click)="onClickEdit(4)">{{'edit' |translate }}</a></div>
+        </div>
+        <div class="row" *ngIf="isEditPass">
+            <div class="col-lg-6">
+                <div class="">
+                    <label> {{'currentPassword' |translate }}<span class="text-danger pl-1">*</span></label>
+                    <input type="password" formControlName="oldPassword" name="oldPassword" [ngClass]="{'error':f?.oldPassword?.errors&&f?.oldPassword?.touched}" class="form-control" placeholder="{{'enterPassword' |translate }}">
+                    <div *ngIf="f?.oldPassword?.errors?.required && f?.oldPassword?.touched" class="text-danger">
+                        {{'enterPassword' |translate }}
+                    </div>
+                    <div *ngIf="passError" class="text-danger">
+                        {{'passwordIncorrect' |translate }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="">
+                    <label for="exampleInputEmail1"> {{'newPassword' |translate }}<span
+                class="text-danger pl-1">*</span></label>
+                    <input type="password" formControlName="password" name="password" [ngClass]="{'error':f?.password?.errors&&f?.password?.touched}" class="form-control" placeholder="{{'enterPassword' |translate }}">
+                    <div *ngIf="f?.password?.errors && f?.password?.touched" class="text-danger">
+                        <div *ngIf="f?.password?.errors?.required">
+                            {{'enterPassword' |translate }}
+                        </div>
+                        <div *ngIf="f?.password?.errors?.minlength">
+                            {{'must8Character' |translate }}
+                        </div>
+                        <div *ngIf="f?.password?.errors?.pattern">
+                            {{'mustLowerCase' |translate }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8"></div>
+            <div class="col-lg-4 my-2 d-flex justify-content-end">
+                <button type="button" class="cancel-btn mr-2" (click)="onClickCancel()">{{'cancel' | translate}}</button>
+                <button type="button" class="save-btn" (click)="onClickSave()">{{'save' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!-- Verify Email popup -->
+<!-- <ng-template #content let-modal class="emailverify-popup">
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="modal-body">
+    <h6>Verify me</h6>
+  </div>
+
+</ng-template> -->
+<ng-template #content let-modal>
+    <div class="modal-body p-3">
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+        <h4>Enter verfication code</h4>
+        <p class="mt-2">We sent a 6 digit code to <span class="text-dark font-weight-bold">developer1@brandvault360.com</span></p>
+        <form action="">
+            <div class="col-md-12 p-0 my-2">
+                <div class="">
+                    <input type="text" class="border-lightgray form-control">
+                </div>
+                <p class="mt-2">Didn't get a code? Check your spam folder or <a><span class="text-dark">resend a new code</span></a></p>
+            </div>
+            <div class="my-2 d-flex justify-content-end">
+                <button type="button" class="check-out-btn mr-2 py-1">Cancel</button>
+                <button type="button" class="update-cart-btn py-1" (click)="onClickToInput()">Submit</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!-- Phone popup -->
+<ng-template #PhoneContent let-modal>
+    <div class="modal-body p-3">
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+        <h4>Enter verfication code</h4>
+        <p class="mt-2">We sent a 6 digit code to <span class="text-dark font-weight-bold">9876543210</span></p>
+        <form action="">
+            <div class="col-md-12 p-0 my-2">
+                <div class="">
+                    <input type="text" class="border-lightgray form-control">
+                </div>
+                <p class="mt-2">Didn't get a text? <a><span class="text-dark">send a new code</span></a></p>
+            </div>
+            <div class="my-2 d-flex justify-content-end">
+                <button type="button" class="check-out-btn mr-2 py-1">Cancel</button>
+                <button type="button" class="update-cart-btn py-1" (click)="onClickToPhoneInput()">Submit</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!-- End -->

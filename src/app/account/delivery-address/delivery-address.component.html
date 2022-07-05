@@ -1,0 +1,168 @@
+<div style="margin: 0px;">
+    <div style="margin-top: 0px;">
+        <h5 class="my-3" style="font-weight: bold;">
+            {{'deliveryAddress' |translate }}
+        </h5>
+    </div>
+    <hr>
+
+    <div class="row" *ngIf="!isAddEditAddress">
+        <!--*ngIf="address?.length"-->
+        <div class="col-md-3 border-lightgray p-3 d-flex align-items-center justify-content-center ml-3 mr-3 border-dashed">
+            <i class="fa fa-plus" style="margin-right: 10px;"></i>
+            <a style="text-decoration: underline;" (click)="isAddEditAddress=true">
+                <p class="m-0">{{'addDeliverAddress' |translate }}</p>
+            </a>
+        </div>
+        <ng-container *ngFor="let address of addresses; let i=index">
+            <div class="col-md-3 border-lightgray p-0 ml-3 mr-3" [ngClass]="{'mt-3':i>1}">
+                <div [ngClass]="{'border-bottom':address?.default}">
+                    <h6 class="m-0 px-3 py-2">{{(address?.default)?('default' |translate):'' }}</h6>
+                </div>
+                <div class="p-3" style="display: grid;">
+                    <span *ngIf="!address?.default"><br></span>
+                    <span>{{address?.name}}</span>
+                    <span *ngIf="address?.address1">{{address?.address1}}</span>
+                    <span *ngIf="address?.address2">{{address?.address2}}</span>
+                    <span *ngIf="address?.city">{{address?.zip}} {{address?.city}}, {{address?.province}}</span>
+                    <span *ngIf="address?.country">{{address?.country}}</span>
+                    <!-- <span style="margin-top: 10px;">
+         {{'preferredAddress' |translate }}
+        </span> -->
+                    <div class="addrs-edit-sec" style="display: flex; justify-content: flex-end; margin-top: 10px;">
+                        <a class="mr-2" style="text-decoration: underline;" (click)="onClickEdit(address, i)">{{'edit' |translate }}</a>
+                        <a class="mr-2" style="text-decoration: underline;" (click)="onClickRemove(address, i)">{{'remove' |translate }}</a>
+                        <!-- <a style="text-decoration: underline;">Set as default</a> -->
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+
+    <section class="contact-info my-4" *ngIf="isAddEditAddress">
+        <form class="info-form auto-fill" [formGroup]="formGroup">
+            <div class="login-sec">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input">
+                            <input [ngClass]="{'error':f?.first_name?.errors&& f?.first_name?.touched}" type="text" class="inputs form-control input__field" formControlName="first_name" name="first_name" placeholder=" ">
+                            <p class="input__label">{{'firstName' | translate}} <span class="text-danger">*</span> </p>
+                        </div>
+                        <div *ngIf="f?.first_name?.errors?.required && f?.first_name?.touched" class="text-danger">
+                            {{'enterFirstName' | translate}}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input">
+                            <input type="text" class="inputs form-control input__field" [ngClass]="{'error':f?.last_name?.errors&& f?.last_name?.touched}" formControlName="last_name" name="last_name" placeholder=" ">
+                            <p class="input__label">{{'lastName' | translate}} <span class="text-danger">*</span> </p>
+                        </div>
+                        <div *ngIf="f?.last_name?.errors?.required && f?.last_name?.touched" class="text-danger">
+                            {{'enterLastName' | translate}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input">
+                    <input type="text" class="inputs form-control input__field" formControlName="phone" name="phone" placeholder=" " [ngClass]="{'error':f?.phone?.errors&& f?.phone?.touched}">
+                    <p class="input__label">{{'phoneNumber' | translate}} <span class="text-danger">*</span> </p>
+                </div>
+                <div *ngIf="f?.phone?.errors?.required && f?.phone?.touched" class="text-danger">
+                    {{'phoneNo' | translate}}
+                </div>
+
+                <div class="input">
+                    <input [ngClass]="{'error':f?.address1?.errors&&f?.address1?.touched}" type="text" class="inputs form-control input__field" formControlName="address1" name="address1" placeholder=" ">
+                    <p class="input__label">{{'address' | translate}} <span class="text-danger">*</span> </p>
+                </div>
+                <div *ngIf="f?.address1?.errors?.required && f?.address1?.touched" class="text-danger">
+                    {{'enterAddress' | translate}}
+                </div>
+
+                <div class="input">
+                    <input type="text" class="inputs form-control input__field" formControlName="address2" name="address2" placeholder=" ">
+                    <p class="input__label">{{'appartment' | translate}} </p>
+                </div>
+
+                <div class="input">
+                    <input [ngClass]="{'error':f?.city?.errors&&f?.city?.touched}" type="text" class="inputs form-control input__field" formControlName="city" name="city" placeholder=" ">
+                    <p class="input__label">{{'city' | translate}} <span class="text-danger">*</span> </p>
+                </div>
+                <div *ngIf="f?.city?.errors?.required && f?.city?.touched" class="text-danger">
+                    {{'enterCity' | translate}}
+                </div>
+
+                <div class="row bottom-margin-15">
+                    <!-- <div class="col-lg-4">
+                <select [ngClass]="{'error':f.country.errors&&f.country.touched}" (change)="onChangeCountry()" formControlName="country"  class="inputs form-control" >
+                  <option *ngFor="let x of countryList" [ngValue]="x" >{{x.name}}</option>
+                </select>
+                <div *ngIf="f.country.errors?.required && f.country.touched" class="text-danger">
+                  {{'selectCountry' | translate}}                           
+              </div>
+            </div>
+            <div class="col-lg-4">
+                <select [ngClass]="{'error':f.province.errors&&f.province.touched}" 
+                formControlName="province" class="inputs form-control">
+                <option *ngFor="let x of stateList" [ngValue]="x" >{{x}}</option>
+                </select>
+                <div *ngIf="f.province.errors?.required && f.province.touched" class="text-danger">
+                  {{'selectState' | translate}}                         
+              </div>
+            </div> -->
+                    <div class="col-lg-4">
+                        <select [ngClass]="{'error':f?.country?.errors&&f?.country?.touched}" (change)="onChangeCountry()" #countrySelect formControlName="country" class="inputs form-control">
+                  <option [ngValue]="null" class="input__label" hidden>{{'selectCountry' | translate}} <span class="text-danger" style="color: #f00;">*</span></option>
+                  <option *ngFor="let x of countryList" [ngValue]="x" >{{x?.name}}</option>
+              </select>
+                        <div *ngIf="f?.country?.errors?.required && f?.country?.touched" class="text-danger">
+                            {{'selectCountry' | translate}}
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <select [ngClass]="{'error':f?.province?.errors&&f?.province?.touched}" #stateSelect formControlName="province" [(ngModel)]="state" class="inputs form-control">
+                  <option [ngValue]="null" class="input__label" hidden>{{'selectState' | translate}} <span class="text-danger" style="color: #f00;">*</span></option>
+                  <option *ngFor="let x of stateList" [ngValue]="x" >{{x}}</option>
+              </select>
+                        <div *ngIf="f?.province?.errors?.required && f?.province?.touched" class="text-danger">
+                            {{'selectState' | translate}}
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="input">
+                            <input [ngClass]="{'error':f?.zip?.errors&&f?.zip?.touched}" type="text" class="inputs form-control input__field" formControlName="zip" name="zip" placeholder=" ">
+                            <p class="input__label">{{'zip' | translate}} <span class="text-danger">*</span></p>
+                        </div>
+                        <div *ngIf="f?.zip?.errors && f?.zip?.touched" class="text-danger">
+                            <div *ngIf="f?.zip?.errors?.required">{{'enterZip' | translate}}</div>
+                            <div *ngIf="f?.zip?.errors?.invalidCode">
+                                {{'validZip' | translate}}
+                            </div>
+                            <div *ngIf="f?.zip?.errors?.countryEmpty">
+                                {{'selectCountry' | translate}}
+                            </div>
+                            <div *ngIf="f?.zip?.errors?.stateEmpty">
+                                {{'pleaseSelectState' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkbox font-13">
+                    <input type="checkbox" id="check" formControlName="default" #check (click)="checkIsDefault()">
+                    <label for="check" class="ml-2">{{'setDefault' | translate}}</label>
+                </div>
+
+                <div class="row checkout-btn">
+                    <div class="col-lg-12 d-flex align-items-center justify-content-center">
+                        <button class="save-btn m-0 col-md-4 mr-2" (click)="onClickSave()">{{'save' | translate}}</button><br>
+                        <button class="cancel-btn m-0 col-md-4" (click)="onClickCancel()">{{'cancel' | translate}}</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </section>
+</div>

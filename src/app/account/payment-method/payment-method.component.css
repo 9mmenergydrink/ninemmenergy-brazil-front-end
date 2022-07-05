@@ -1,0 +1,4 @@
+/* Label styles */
+input, label {
+  display:block;
+}

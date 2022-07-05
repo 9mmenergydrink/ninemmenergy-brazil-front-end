@@ -1,0 +1,279 @@
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+
+<body class="loader">
+    <div class="loading">
+        <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
+    </div>
+    <!-- loading end -->
+
+    <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <!-- page-head start -->
+        <section class="page-head flex-min-height-box new-bg-color position-relative custom-banner-height">
+            <!-- page-head-bg -->
+            <div class="page-head-bg overlay-loading2" [style.background-image]="'url('+bannerSection?.primary?.image?.url+')'"></div>
+
+            <!-- flex-min-height-inner start -->
+            <div class="flex-min-height-inner">
+                <!-- flex-container start -->
+                <div class="container top-bottom-padding-120 flex-container response-999">
+                    <!-- column start -->
+                    <div class="six-columns six-offset">
+                        <div class="content-left-margin-40">
+                            <!-- <h2 class="overlay-loading2 tr-delay03 medium-title red-color">{{bannerSection?.primary?.content1}}</h2> -->
+                            <!-- <h3 class="large-title-bold text-color-4"> -->
+                            <!-- <span class="overlay-loading2 overlay-light-bg-1 tr-delay04">{{bannerSection?.primary?.content2}}</span> -->
+                            <!-- <br> <span class="overlay-loading2 overlay-light-bg-1 tr-delay05">& ideas for</span><br>
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay06">You Business</span> -->
+                            <!-- </h3> -->
+                            <h2 class="overlay-loading2 tr-delay03 medium-title red-color">
+                                {{bannerSection?.primary?.content1}}</h2>
+                            <h3 class="large-title-bold text-color-4">
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay04">{{bannerSection?.primary?.content2}}</span>
+                            </h3>
+                            <p class="text-height-20  text-color-4  d-flex-wrap slide-content fullwidth-text">
+                                <span class="slider-overlay2 slider-tr-delay01" [attr.data-text]="bannerSection?.primary?.content3">{{bannerSection?.primary?.content3}}</span>
+                            </p>
+                            <!-- <p class="d-flex-wrap top-margin-20 text-color-4">
+                                <span class="small-title-oswald text-height-20 fade-loading tr-delay07 top-margin-10">Creative team</span>
+                                <span class="small-title-oswald text-height-20 fade-loading tr-delay08 top-margin-10">Innovation ideas</span>[routerLink]="['/read-more','aboutRead']"
+                                <span class="small-title-oswald text-height-20 fade-loading tr-delay09 top-margin-10">Best services</span> 
+                            </p> -->
+                            <!-- <div class="border-btn-box border-btn-red pointer-large mt-3">
+                                <div class="border-btn-inner"><a [attr.data-text]="'shopNow' | translate"
+                                        class="border-btn" (click)="gotoReadMore()">{{'shopNow' | translate}}</a>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- column end -->
+                </div>
+                <!-- flex-container end -->
+            </div>
+            <!-- flex-min-height-inner end -->
+
+            <!-- scroll-btn start -->
+            <!-- <a href="#down" class="scroll-btn pointer-large">
+                <div class="scroll-arrow-box">
+                    <span class="scroll-arrow"></span>
+                </div>
+                <div class="scroll-btn-flip-box">
+                    <span class="scroll-btn-flip" [attr.data-text]="'scroll' | translate">{{'scroll' |
+                        translate}}</span>
+                </div>
+            </a> -->
+            <!-- scroll-btn end -->
+        </section>
+        <!-- page-head end -->
+
+        <!-- Team section start -->
+        <section class="dark-bg-1">
+            <!-- flex-container start -->
+            <div class="flex-container container bottom-padding-60 top-padding-120">
+                <!-- column start -->
+                <div class="col-md-12 bottom-padding-60">
+                    <div data-animation-container class="content-right-margin-20 team-title-box">
+                        <h2 data-animation-child class="small-title-oswald overlay-anim-box2 red-color" data-animation="overlay-anim2">{{aboutusSection?.primary?.title}}</h2>
+                        <h3 class="title-style text-color-4">
+                            <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay01" data-animation="overlay-anim2">{{aboutusSection?.primary?.sub_title}}</span>
+                        </h3>
+                        <div class="content-left-margin-50">
+                            <p data-animation-child class="p-style-large text-color-5 fade-anim-box tr-delay01" data-animation="fade-anim">{{aboutusSection?.primary?.content}}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- column end -->
+            </div>
+        </section>
+        <!-- page-head end -->
+
+
+        <!-- Team section start -->
+        <section class="dark-bg-2">
+
+            <div class="flex-container container bottom-padding-60 top-padding-120">
+
+                <div class="col-md-12 bottom-padding-60 ">
+                    <div data-animation-container class="content-right-margin-20 team-title-box">
+                        <h2 data-animation-child class="small-title-oswald overlay-anim-box2 red-color" data-animation="overlay-anim2">{{teamSection?.primary?.title}}</h2>
+                        <h3 class="title-style text-color-4">
+                            <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay01" data-animation="overlay-anim2">{{teamSection?.primary?.content1}}</span><br>
+                            <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay02" data-animation="overlay-anim2">{{teamSection?.primary?.content2}}</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="row top-padding-60 ">
+                    <div class="col-md-3 pb-5 " [ngClass]="teamSection?.items[0]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-left-right-margin-10 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="teamSection?.items[0]?.image?.url" [alt]="(teamSection?.items[0]?.image.alt)?teamSection.items[0].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{teamSection?.items[0]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{teamSection?.items[0]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5 " [ngClass]="teamSection?.items[1]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-left-margin-20 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="teamSection?.items[1]?.image?.url" [alt]="(teamSection?.items[1]?.image?.alt)?teamSection.items[1].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{teamSection?.items[1]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{teamSection?.items[1]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5" [ngClass]="teamSection?.items[2]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-right-margin-20 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="teamSection?.items[2]?.image?.url" [alt]="(teamSection?.items[2]?.image?.alt)?teamSection.items[2].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{teamSection?.items[2]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{teamSection?.items[2]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5" [ngClass]="teamSection?.items[3]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-left-right-margin-10 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="teamSection?.items[3]?.image?.url" [alt]="(teamSection?.items[3]?.image?.alt)?teamSection.items[3].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{teamSection?.items[3]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{teamSection?.items[3]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5" [ngClass]="teamSection?.items[4]?.image?.url?'show':'hide'">
+                        <a data-animation-container class="content-left-margin-20 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="teamSection?.items[4]?.image?.url" [alt]="(teamSection?.items[4]?.image?.alt)?teamSection.items[4].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{teamSection?.items[4]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{teamSection?.items[4]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5" [ngClass]="teamSection?.items[5]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-left-margin-20 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="teamSection?.items[5]?.image?.url" [alt]="(teamSection?.items[5]?.image?.alt)?teamSection.items[5].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{teamSection?.items[5]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{teamSection?.items[5]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- addvisor section start -->
+        <section class="dark-bg-2">
+
+            <div class="flex-container container bottom-padding-60 top-padding-120">
+
+                <div class="col-md-12 bottom-padding-60">
+                    <div data-animation-container class="content-right-margin-20 team-title-box">
+                        <h2 data-animation-child class="small-title-oswald overlay-anim-box2 red-color" data-animation="overlay-anim2">{{advisorsSection?.primary?.title}}</h2>
+                        <h3 class="title-style text-color-4">
+                            <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay01" data-animation="overlay-anim2">{{advisorsSection?.primary?.content1}}</span><br>
+                            <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay02" data-animation="overlay-anim2">{{advisorsSection?.primary?.content2}}</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="row top-padding-60">
+                    <div class="col-md-3 pb-5" [ngClass]="advisorsSection?.items[0]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-left-right-margin-10 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="advisorsSection?.items[0]?.image?.url" [alt]="(advisorsSection?.items[0]?.image?.alt)?advisorsSection.items[0].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{advisorsSection?.items[0]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{advisorsSection?.items[0]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5 " [ngClass]="advisorsSection?.items[1]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-left-margin-20 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="advisorsSection?.items[1]?.image?.url" [alt]="(advisorsSection?.items[1]?.image?.alt)?advisorsSection.items[1].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{advisorsSection?.items[1]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{advisorsSection?.items[1]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5" [ngClass]="advisorsSection?.items[2]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-right-margin-20 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="advisorsSection?.items[2]?.image?.url" [alt]="(advisorsSection?.items[2]?.image?.alt)?advisorsSection.items[2].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{advisorsSection?.items[2]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{advisorsSection?.items[2]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5" [ngClass]="advisorsSection?.items[3]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-left-right-margin-10 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="advisorsSection?.items[3]?.image?.url" [alt]="(advisorsSection?.items[3]?.image?.alt)?advisorsSection.items[3].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{advisorsSection?.items[3]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{advisorsSection?.items[3]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5" [ngClass]="advisorsSection?.items[4]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-left-margin-20 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="advisorsSection?.items[4]?.image?.url" [alt]="(advisorsSection?.items[4]?.image?.alt)?advisorsSection.items[4].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{advisorsSection?.items[4]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{advisorsSection?.items[4]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 pb-5" [ngClass]="advisorsSection?.items[5]?.image.url?'show':'hide'">
+                        <a data-animation-container class="content-left-margin-20 hover-box pointer-large d-block">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-1 team-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="advisorsSection?.items[5]?.image?.url" [alt]="(advisorsSection?.items[5]?.image?.alt)?advisorsSection.items[5].image.alt:''">
+                            </div>
+                            <div class="team-content">
+                                <h4 data-animation-child class="small-title-oswald text-color-4  fade-anim-box tr-delay01" data-animation="fade-anim">{{advisorsSection?.items[5]?.name}}<br>
+                                    <p data-animation-child class="justify-content-center p-style-bold-up text-color-4  fade-anim-box tr-delay02 red-color" data-animation="fade-anim">{{advisorsSection?.items[5]?.designation}}</p>
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</body>
+
+<app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>

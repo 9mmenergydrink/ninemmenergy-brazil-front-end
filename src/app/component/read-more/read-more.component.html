@@ -1,0 +1,100 @@
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+
+<body class="loader">
+    <div class="loading">
+        <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
+    </div>
+    <main class="animsition-overlay pt-5" data-animsition-overlay="true">
+        <div id="down" #down class="single-post  top-padding-120 light-bg-1">
+            <div class="flex-container">
+                <div>
+                    <div class=" title-fill d-block text-dark pl-3 pt-3" data-animation="title-fill-anim">
+                        <i class="fa fa-arrow-left"></i>&nbsp; <a (click)="backPage()" class="cont-shop hover-color">{{'back' | translate}}</a>
+                    </div>
+
+                    <h2 class="title-fill d-flex text-center large-title py-3" data-animation="title-fill-anim" [attr.data-text]="readMoreSection?.primary?.title">
+                        {{readMoreSection?.primary?.title}}</h2>
+
+                    <!-- 
+                             <h2 class="title-fill d-flex text-center large-title py-3" data-animation="title-fill-anim"
+                    [attr.data-text]="readMoreSection?.primary?.title">
+                        {{readMoreSection?.primary?.title}}</h2>
+                            <h2 class="large-title title-fill  d-block text-center py-3" data-animation="title-fill-anim"
+                    [attr.data-text]="readMoreSection?.primary?.title">{{readMoreSection?.primary?.title}}</h2> -->
+                    <div class="content-left-right-margin-40">
+                        <div class="light-bg-2 pt-1">
+
+                            <a class="photo-popup pointer-zoom" href="{{readMoreSection?.primary?.image?.url}}">
+                                <img [src]="readMoreSection?.primary?.image?.url" [alt]="(readMoreSection?.primary?.image?.alt)?readMoreSection.primary.image.alt:''">
+                            </a>
+                            <!-- content-margin-block start -->
+                            <div class="content-margin-block">
+                                <!-- entry-content start -->
+                                <article class="entry-content">
+                                    <p class="p-style-medium text-color-1">{{readMoreSection?.primary?.content}}</p>
+                                    <blockquote class="quote-content">
+                                        <p class="p-style-bold text-justify text-color-4">{{readMoreSection?.primary?.highlight_content}}</p>
+                                    </blockquote>
+                                    <ng-container *ngFor="let item of readMoreSection?.items">
+                                        <h2 class="title-style break-title text-color-1 top-margin-30">
+                                            {{item?.title}}</h2>
+                                        <p class="p-style-medium text-color-1">{{item?.content1}}</p>
+                                        <!-- post-img-flex start -->
+                                        <div class="post-img-flex">
+                                            <a class="post-img-box photo-popup" *ngIf="item?.image1?.url">
+                                                <div class="pointer-zoom">
+                                                    <img class="hover-img" [src]="item?.image1?.url" [alt]="(item?.image1?.alt)?item.image1.alt:''">
+                                                </div>
+                                            </a>
+                                            <a class="post-img-box photo-popup" *ngIf="item?.image2?.url">
+                                                <div class="pointer-zoom">
+                                                    <img class="hover-img" [src]="item?.image2?.url" [alt]="(item?.image2?.alt)?item.image2.alt:''">
+                                                </div>
+                                            </a>
+                                            <a class="post-img-box photo-popup" *ngIf="item?.image3?.url">
+                                                <div class="pointer-zoom">
+                                                    <img class="hover-img" [src]="item?.image3?.url" [alt]="(item?.image3?.alt)?item.image3.alt:''">
+                                                </div>
+                                            </a>
+                                            <a class="post-img-box photo-popup" *ngIf="item?.image4?.url">
+                                                <div class="pointer-zoom">
+                                                    <img class="hover-img" [src]="item?.image4?.url" [alt]="(item?.image4?.alt)?item.image4.alt:''">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <!-- post-img-flex end -->
+                                        <p class="p-style-medium text-color-1"> {{item?.content2}}</p>
+                                    </ng-container>
+                                </article>
+                                <!-- entry-content end -->
+
+                                <!-- post-share start -->
+                                <div class="post-share">
+                                    <span class="xsmall-title-oswald text-color-2">{{'shareThisArticle' | translate}}: </span>
+                                    <ul class="post-share-social text-color-1">
+                                        <li><a class="pointer-small hover-color" target="_blank" (click)="socialShare('instagram')"><i class="fab fa-instagram"></i></a>
+                                        </li>
+                                        <li><a class="pointer-small hover-color" target="_blank" (click)="socialShare('facebook')"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li><a class="pointer-small hover-color" target="_blank" (click)="socialShare('pinterest')"><i class="fab fa-pinterest-p"></i></a>
+                                        </li>
+                                        <!--  <li><a class="pointer-small hover-color" target="_blank" href="https://behance.net"><i
+                                            class="fab fa-behance"></i></a>
+                                </li> -->
+                                    </ul>
+                                </div>
+                                <!-- post-share end -->
+                            </div>
+                            <!-- content-margin-block end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>
+
+</body>
+<!-- <a class="photo-popup pointer-zoom" >
+    {{readMoreSection?.primary?.content}}
+</a> -->

@@ -1,0 +1,52 @@
+<!-- <meta name="robots" content="index, follow">  -->
+<meta name="google-site-verification" content="QdLjwtyqNDH_RzgKsa3B55mv3tLUiN15c09FvVEP4r4" />
+
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+
+<body class="loader">
+    <div class="loading">
+        <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
+    </div>
+    <!-- loading end -->
+    <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <!-- page-head start -->
+        <section class="page-head flex-min-height-box new-bg-color position-relative custom-banner-height">
+            <!-- page-head-bg -->
+            <div class="page-head-bg overlay-loading2" [style.background-image]="'url('+bannerSection?.primary?.image?.url+')'"></div>
+            <!-- flex-min-height-inner start -->
+            <div class="flex-min-height-inner">
+                <!-- flex-container start -->
+                <div class="container top-bottom-padding-120 flex-container response-999">
+                    <!-- column start -->
+                    <div class="six-columns six-offset mt-5">
+                        <div class="content-left-margin-40">
+                            <h2 class="overlay-loading2 medium-title red-color">
+                                {{bannerSection?.primary?.content1}}
+                            </h2>
+                            <h3 class="large-title-bold text-color-4">
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay02">{{bannerSection?.primary?.content2}}</span>
+                            </h3>
+                            <p class="p-style-bold-up text-height-20 d-flex-wrap">
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay03 banner-3text" [attr.data-text]="bannerSection?.primary?.content3">{{bannerSection?.primary?.content3}}</span>
+                            </p>
+                            <div class="border-btn-box border-btn-red pointer-large mt-3">
+                                <div class="border-btn-inner"><a [attr.data-text]="'shopNow' | translate" class="border-btn" (click)="gotoReadMore()">{{'shopNow' | translate}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column end -->
+                </div>
+                <!-- flex-container end -->
+            </div>
+            <!-- flex-min-height-inner end -->
+        </section>
+
+    </main>
+</body>
+
+<app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>

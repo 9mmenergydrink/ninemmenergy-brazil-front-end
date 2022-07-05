@@ -1,0 +1,657 @@
+<!-- <meta name="robots" content="index, follow"> -->
+
+<!-- <link rel="canonical" href="https://www.9mmenergy.com/astaxanthin-benefits" /> -->
+
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+<!-- loading start -->
+
+<body class="loader">
+    <div class="loading">
+        <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
+    </div>
+    <!-- loading end -->
+    <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
+        <!-- page-head start -->
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <section class="page-head flex-min-height-box new-bg-color position-relative custom-banner-height">
+            <!-- page-head-bg -->
+            <div class="page-head-bg overlay-loading2" [style.background-image]="'url('+bannerSection?.primary?.image?.url+')'"></div>
+
+            <!-- flex-min-height-inner start -->
+            <div class="flex-min-height-inner">
+                <!-- flex-container start -->
+                <div class="container top-bottom-padding-120 flex-container response-999 custom-mobile-banner">
+                    <!-- column start -->
+                    <div class="six-columns six-offset mt-5">
+                        <div class="content-left-margin-40">
+                            <!-- <h2 class="large-title-bold">
+                                <span class="load-title-fill tr-delay03"
+                                    [attr.data-text]="bannerSection?.primary?.content1">{{bannerSection?.primary?.content1}}</span><br>
+                                <span class="load-title-fill tr-delay04"
+                                    [attr.data-text]="bannerSection?.primary?.content2">{{bannerSection?.primary?.content2}}</span><br>
+                                <span class="load-title-fill tr-delay05"
+                                    [attr.data-text]="bannerSection?.primary?.content3">{{bannerSection?.primary?.content3}}</span>
+                            </h2> -->
+                            <!-- <h2 class="large-title-bold fullwidth-text red-color">
+                                <span>{{bannerSection?.primary?.content1}}</span><br>
+                                <span>{{bannerSection?.primary?.content2}}</span><br>
+                                <span>{{bannerSection?.primary?.content3}}</span>
+                            </h2> -->
+                            <h2 class="overlay-loading2 medium-title red-color">
+                                {{bannerSection?.primary?.content1}}</h2>
+                            <h3 class="large-title-bold text-color-4">
+                                <!-- <span class="overlay-loading2 overlay-light-bg-1 tr-delay04 red-color">{{bannerSection?.primary?.content1}}</span><br>
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay05 red-color">{{bannerSection?.primary?.content2}}</span><br> -->
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay02">{{bannerSection?.primary?.content2}}</span>
+                            </h3>
+
+                            <p class="p-style-bold-up text-height-20 d-flex-wrap">
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay03 banner-3text" [attr.data-text]="bannerSection?.primary?.content3">{{bannerSection?.primary?.content3}}</span>
+                            </p>
+                            <div class="border-btn-box border-btn-red pointer-large mt-3">
+                                <div class="border-btn-inner"><a [attr.data-text]="'shopNow' | translate" class="border-btn" (click)="gotoShop()">{{'shopNow' | translate}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column end -->
+                </div>
+                <!-- flex-container end -->
+            </div>
+            <!-- flex-min-height-inner end -->
+
+            <!-- scroll-btn start -->
+            <!-- <a (click)="scroll(down)" class="scroll-btn pointer-large">
+                <div class="scroll-arrow-box">
+                    <span class="scroll-arrow"></span>
+                </div>
+                <div class="scroll-btn-flip-box">
+                    <span class="scroll-btn-flip" [attr.data-text]="'scroll' | translate">{{'scroll' | translate}}</span>
+                </div>
+            </a> -->
+            <!-- scroll-btn end -->
+        </section>
+        <!-- page-head end -->
+
+        <!-- section start -->
+        <section id="down" #down class="dark-bg-1 top-bottom-padding-120">
+            <div class="container text-center">
+                <h2 class="large-title title-fill" data-animation="title-fill-anim" [attr.data-text]="productSection?.primary?.title">{{productSection?.primary?.title}}</h2>
+            </div>
+
+            <div class="container top-padding-90">
+                <div data-animation-container class="flex-container justify-content-center">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="twelve-columns text-center" (click)="playVideo(productSection?.primary?.video_url?.url)">
+                                <img [src]="productSection?.items[0]?.image?.url" [alt]="(productSection?.items[0]?.image?.alt)?productSection.items[0].image.alt:''">
+                                <!-- <a href="https://d3ksuly178az4c.cloudfront.net/9MM%20Energy%20Drink%20-%20Commercial%20-%20Reach%20Your%20Target%202160%20x%203840.webm"
+                                    class="video-play-button popup-youtube pointer-large">
+                                    <span></span>
+                                </a> -->
+                                <a class="video-play-button popup-youtube pointer-large">
+                                    <span></span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- top-padding-90 start -->
+            <div class="">
+                <!-- container start -->
+                <!-- <div class="container">
+                <div class="services-bg" [style.background-image]="'url('+productSection?.items[0].image.url+')'"></div>	
+            </div> -->
+                <!-- container end -->
+
+                <!-- flex-container start -->
+                <div class="container small top-padding-60 flex-container response-999 services-content">
+                    <!-- column start -->
+                    <div class="four-columns">
+                        <div data-animation-container class="content-right-margin-20">
+                            <h2 data-animation-child class="small-title-oswald red-color overlay-anim-box2" data-animation="overlay-anim2">{{productSection?.items[0]?.title1}}</h2>
+                            <h3 class="title-style text-color-4">
+                                <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay01" data-animation="overlay-anim2">{{productSection?.items[0]?.title2}}</span>
+                                <!-- <br>
+                            <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay02" data-animation="overlay-anim2">booth semiotics</span><br>
+                            <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay03" data-animation="overlay-anim2">3 wolf moon</span> -->
+                            </h3>
+                            <ul class="list-dots">
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay04" data-animation="fade-anim">{{productSection?.items[0]?.content1}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay05" data-animation="fade-anim">{{productSection?.items[0]?.content2}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay06" data-animation="fade-anim">{{productSection?.items[0]?.content3}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay07" data-animation="fade-anim">{{productSection?.items[0]?.content4}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay08" data-animation="fade-anim">{{productSection?.items[0]?.content5}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay09" data-animation="fade-anim">{{productSection?.items[0]?.content6}}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- column end -->
+                    <!-- column start -->
+                    <div class="eight-columns">
+                        <div class="content-left-margin-20">
+                            <p class="p-style-large text-color-5 fade-anim-box tr-delay04" data-animation="fade-anim">
+                                {{productSection?.items[0]?.paragraph}}</p>
+                            <div class="border-btn-box border-btn-red pointer-large mt-2">
+                                <div class="border-btn-inner">
+                                    <a class="border-btn letter-space" [attr.data-text]="'readTheClinicalStudies' | translate" [routerLink]="commonMtd.getRoutePath('clinical')">{{'readTheClinicalStudies'| translate}}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column end -->
+                </div>
+                <!-- flex-container end -->
+            </div>
+            <!-- top-padding-90 end -->
+
+            <!-- top-padding-90 start -->
+            <div class="top-padding-90">
+                <div class="container video-2">
+                    <div class="row">
+                        <div class="col-lg-6 sponser-left-section p-0">
+                            <img [src]="productSection?.items[1]?.image?.url" class="shop-left-banner" [alt]="(productSection?.items[1]?.image?.alt)?productSection.items[1].image.alt:''">
+                        </div>
+
+                        <div class="col-lg-6 shop-right-section d-flex justify-content-center align-items-center">
+                            <div class="content">
+                                <!-- <h3 _ngcontent-xaa-c125="" class="text-white font-weight-normal">
+                                    {{productSection?.items[1]?.image_title1}}
+                                </h3>
+                                <h2 class="large-title text-white">{{productSection?.items[1]?.image_title2}}</h2>
+                                <h4 class="">{{productSection?.items[1]?.image_title3}}</h4>                                
+                                <div class="shop-btn" (click)="gotoReadMore()">{{'shopNow' | translate}}</div> -->
+                                <h3 _ngcontent-xaa-c125="" class="title-style text-color-4 text-center" *ngIf="productSection?.items[1]?.image_title1">
+                                    {{productSection?.items[1]?.image_title1}}
+                                </h3>
+                                <p class="custom-p text-center" *ngIf="productSection?.items[1]?.image_content">{{productSection?.items[1]?.image_content}}
+                                </p>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="shop-btn    " (click)="gotoShop()">{{'shopNow' | translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- container start -->
+                <!-- <div class="container">
+                <div class="services-bg" [style.background-image]="'url('+productSection?.items[1].image.url+')'">
+                    <div class="InnerContent"> 
+                        <h3 _ngcontent-xaa-c125="" class="text-white font-weight-normal">
+                            ENERGY DRINK WITH 
+                        </h3>
+                        <h2 class="large-title text-white">ASTA-10</h2>
+                        <h4 class="red-color">made with Astaxanthin</h4>
+                            <div _ngcontent-exx-c53="" class="slider-tr-delay07 top-margin-30">
+                                <div _ngcontent-exx-c53="" class="border-btn-box border-btn-red pointer-large">
+                                    <div _ngcontent-exx-c53="" class="border-btn-inner">
+                                        <a _ngcontent-exx-c53="" href="#" data-text="SHOP NOW" class="border-btn">SHOP NOW</a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>	
+            </div> -->
+                <!-- container end -->
+
+                <!-- flex-container start -->
+                <div class="container small top-padding-60 flex-container response-999 services-content">
+                    <!-- column start -->
+                    <div class="four-columns">
+                        <div data-animation-container class="content-right-margin-20">
+                            <h2 data-animation-child class="small-title-oswald red-color overlay-anim-box2" data-animation="overlay-anim2">{{productSection?.items[1]?.title1}}</h2>
+                            <h3 class="title-style text-color-4">
+                                <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay01" data-animation="overlay-anim2">{{productSection?.items[1]?.title2}}</span>
+                                <!-- <br>
+                            <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay02" data-animation="overlay-anim2">fanny pack</span><br>
+                            <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay03" data-animation="overlay-anim2">meditation PBR&B</span> -->
+                            </h3>
+                            <ul class="list-dots">
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay04" data-animation="fade-anim">{{productSection?.items[1]?.content1}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay05" data-animation="fade-anim">{{productSection?.items[1]?.content2}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay06" data-animation="fade-anim">{{productSection?.items[1]?.content3}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay07" data-animation="fade-anim">{{productSection?.items[1]?.content4}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay08" data-animation="fade-anim">{{productSection?.items[1]?.content5}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay09" data-animation="fade-anim">{{productSection?.items[1]?.content6}}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- column end -->
+                    <!-- column start -->
+                    <div class="eight-columns">
+                        <div class="content-left-margin-20">
+                            <p class="p-style-large text-color-5 fade-anim-box tr-delay04" data-animation="fade-anim">
+                                {{productSection?.items[1]?.paragraph}}</p>
+                            <div class="border-btn-box border-btn-red pointer-large mt-2">
+                                <div class="border-btn-inner">
+                                    <a class="border-btn letter-space" [attr.data-text]="'readTheClinicalStudies' | translate" [routerLink]="commonMtd.getRoutePath('clinical')">{{'readTheClinicalStudies'| translate}}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column end -->
+                </div>
+                <!-- flex-container end -->
+            </div>
+            <!-- top-padding-90 end -->
+
+            <!-- top-padding-90 start -->
+            <div class="top-padding-90">
+                <div class="container video-2">
+                    <div class="row">
+                        <div class="col-lg-6 sponser-left-section p-0">
+                            <img [src]="productSection?.items[2]?.image?.url" class="shop-left-banner" [alt]="(productSection?.items[2]?.image?.alt)?productSection.items[2].image.alt:''">
+                        </div>
+
+                        <div class="col-lg-6 shop-right-section d-flex justify-content-center align-items-center text-left">
+                            <div class="content">
+                                <h3 _ngcontent-xaa-c125="" class="title-style text-color-4 text-center" *ngIf="productSection?.items[2]?.image_title1">
+                                    {{productSection?.items[2]?.image_title1}}
+                                </h3>
+                                <p class="custom-p text-center" *ngIf="productSection?.items[2]?.image_content">{{productSection?.items[2]?.image_content}}
+                                </p>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="shop-btn" (click)="gotoShop()">{{'shopNow' | translate}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- container start -->
+                <!-- <div class="container">
+                <div class="services-bg" [style.background-image]="'url('+productSection?.items[2].image.url+')'">
+                    <div class="InnerContent ContentPosition2"> 
+                        <h3 _ngcontent-xaa-c125="" class="title-style text-color-4">
+                            Lorem ipsum dolor sit amet
+                        </h3>
+                        <p class="custom-p">Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit, sed do eiusmod tempor incididunt
+                            </p>
+                        <div _ngcontent-exx-c53="" class="slider-tr-delay07 top-margin-30 d-flex justify-content-center">
+                            <div _ngcontent-exx-c53="" class="border-btn-box border-btn-red pointer-large">
+                                <div _ngcontent-exx-c53="" class="border-btn-inner">
+                                    <a _ngcontent-exx-c53="" href="#" data-text="SHOP NOW" class="border-btn">SHOP NOW</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>	
+            </div> -->
+                <!-- container end -->
+
+                <!-- flex-container start -->
+                <div class="container small top-padding-60 flex-container response-999 services-content">
+                    <!-- column start -->
+                    <div class="four-columns">
+                        <div data-animation-container class="content-right-margin-20">
+                            <h2 data-animation-child class="small-title-oswald red-color overlay-anim-box2" data-animation="overlay-anim2">{{productSection?.items[2]?.title1}}</h2>
+                            <h3 class="title-style text-color-4">
+                                <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay01" data-animation="overlay-anim2">{{productSection?.items[2]?.title2}}</span>
+                                <!-- <br>
+                            <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay02" data-animation="overlay-anim2">XOXO umami godar</span><br>
+                            <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay03" data-animation="overlay-anim2">Cold-pressed blue</span> -->
+                            </h3>
+                            <ul class="list-dots">
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay04" data-animation="fade-anim">{{productSection?.items[2]?.content1}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay05" data-animation="fade-anim">{{productSection?.items[2]?.content2}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay06" data-animation="fade-anim">{{productSection?.items[2]?.content3}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay07" data-animation="fade-anim">{{productSection?.items[2]?.content4}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay08" data-animation="fade-anim">{{productSection?.items[2]?.content5}}</p>
+                                </li>
+                                <li>
+                                    <p data-animation-child class="p-letter-style text-color-4 fade-anim-box tr-delay09" data-animation="fade-anim">{{productSection?.items[2]?.content6}}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- column end -->
+                    <!-- column start -->
+                    <div class="eight-columns">
+                        <div class="content-left-margin-20">
+                            <p class="p-style-large text-color-5 fade-anim-box tr-delay04" data-animation="fade-anim">
+                                {{productSection?.items[2]?.paragraph}}</p>
+                            <div class="border-btn-box border-btn-red pointer-large mt-2">
+                                <div class="border-btn-inner">
+                                    <a class="border-btn letter-space" [attr.data-text]="'readTheClinicalStudies' | translate" [routerLink]="commonMtd.getRoutePath('clinical')">{{'readTheClinicalStudies'| translate}}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column end -->
+                </div>
+                <!-- flex-container end -->
+            </div>
+            <!-- top-padding-90 end -->
+        </section>
+        <!-- section end -->
+
+        <!-- progress-container start -->
+        <section class="dark-bg-1 flex-min-height-box progress-container prograss-sec">
+            <!-- flex-min-height-inner start -->
+            <div class="flex-min-height-inner">
+                <!-- flex-container start -->
+                <div class="flex-container container top-bottom-padding-120">
+                    <!-- column start -->
+                    <div class="six-columns bottom-padding-60 col-md-6">
+                        <div class="progress-bg overlay-anim-box2" data-animation="overlay-anim2" [style.background-image]="'url('+skillSection?.primary?.image?.url+')'"></div>
+                    </div>
+                    <!-- column end -->
+                    <!-- column start -->
+                    <div class="six-columns col-md-6">
+                        <div class="content-left-margin-40">
+                            <!-- medium-title start -->
+                            <!-- <h2 data-animation-container class="medium-title text-center">
+                                <span data-animation-child class="title-fill" data-animation="title-fill-anim"
+                                    [attr.data-text]="skillSection?.primary?.title">{{skillSection?.primary?.title}}</span>
+                            </h2> -->
+                            <!-- medium-title end -->
+                            <h2 data-animation-container class="medium-title text-center fullwidth-text red-color" [attr.data-text]="skillSection?.primary?.title">
+                                {{skillSection?.primary?.title}}
+                            </h2>
+                            <div class="top-margin-30" data-animation-container>
+                                <!-- progress-box start -->
+                                <!--  <div class="progress-box" *ngFor="let item of skillSection?.items">
+                                <div data-animation-child class="p-letter-style title-fill white-fill" data-animation="title-fill-anim" data-text="Graphic Design">{{item?.skill}}</div>
+                                <div data-animation-child class="p-letter-style title-fill white-fill tr-delay02 progress-counter" data-animation="title-fill-anim" [attr.data-text]="item?.percent">{{item?.percentage}}%</div>
+                                                            <ngb-progressbar type="warning" [value]="item?.percentage" height=".1rem">{{item?.percentage}}%</ngb-progressbar>
+                            </div> -->
+                                <div class="progress-box">
+                                    <div data-animation-child class="p-letter-style title-fill white-fill" data-animation="title-fill-anim" [attr.data-text]="skillSection?.items[0]?.skill">
+                                        {{skillSection?.items[0]?.skill}}</div>
+                                    <div data-animation-child class="p-letter-style title-fill white-fill tr-delay02 progress-counter" data-animation="title-fill-anim" [attr.data-text]="skillSection?.items[0]?.percent">
+                                        {{skillSection?.items[0]?.percentage}}%</div>
+                                    <!-- <div class="progress-zero" [attr.data-progress]="skillSection?.items[0].percentage">
+                                    <div class="progress-full" data-animation-child data-animation="slide-progress"></div>   
+                                    <div class="progress-full progress-full-red" data-animation-child data-animation="slide-progress" data-animation-delay="200ms"></div>
+                                </div> -->
+                                    <ngb-progressbar type="warning" [value]="skillSection?.items[0]?.percentage" height=".1rem">{{skillSection?.items[0]?.percentage}}%</ngb-progressbar>
+                                </div>
+                                <!-- progress-box end -->
+                                <!-- progress-box start -->
+                                <div class="progress-box">
+                                    <div data-animation-child class="p-letter-style title-fill white-fill tr-delay01" data-animation="title-fill-anim" [attr.data-text]="skillSection?.items[1]?.skill">
+                                        {{skillSection?.items[1]?.skill}}</div>
+                                    <div data-animation-child class="p-letter-style title-fill white-fill tr-delay03 progress-counter" data-animation="title-fill-anim" [attr.data-text]="skillSection?.items[1]?.percent">
+                                        {{skillSection?.items[1]?.percentage}}%</div>
+                                    <!-- <div class="progress-zero" [attr.data-progress]="skillSection?.items[1].percentage">
+                                    <div class="progress-full" data-animation-child data-animation="slide-progress" data-animation-delay="100ms"></div>
+                                    <div class="progress-full progress-full-red" data-animation-child data-animation="slide-progress" data-animation-delay="300ms"></div>                    
+                                </div> -->
+                                    <ngb-progressbar type="warning" [value]="skillSection?.items[1]?.percentage" height=".1rem">{{skillSection?.items[1]?.percentage}}%</ngb-progressbar>
+                                </div>
+                                <!-- progress-box end -->
+                                <!-- progress-box start -->
+                                <div class="progress-box">
+                                    <div data-animation-child class="p-letter-style title-fill white-fill tr-delay02" data-animation="title-fill-anim" [attr.data-text]="skillSection?.items[2]?.skill">
+                                        {{skillSection?.items[2]?.skill}}</div>
+                                    <div data-animation-child class="p-letter-style title-fill white-fill tr-delay04 progress-counter" data-animation="title-fill-anim" [attr.data-text]="skillSection?.items[2]?.percent">
+                                        {{skillSection?.items[2]?.percentage}}%</div>
+                                    <!--  <div class="progress-zero" [attr.data-progress]="skillSection?.items[2].percentage">
+                                    <div class="progress-full" data-animation-child data-animation="slide-progress" data-animation-delay="200ms"></div>
+                                    <div class="progress-full progress-full-red" data-animation-child data-animation="slide-progress" data-animation-delay="400ms"></div>                    
+                                </div> -->
+                                    <ngb-progressbar type="warning" [value]="skillSection?.items[2]?.percentage" height=".1rem">{{skillSection?.items[2]?.percentage}}%</ngb-progressbar>
+                                </div>
+                                <!-- progress-box end -->
+                                <!-- progress-box start -->
+                                <div class="progress-box">
+                                    <div data-animation-child class="p-letter-style title-fill white-fill tr-delay03" data-animation="title-fill-anim" [attr.data-text]="skillSection?.items[3]?.skill">
+                                        {{skillSection?.items[3]?.skill}}</div>
+                                    <div data-animation-child class="p-letter-style title-fill white-fill tr-delay05 progress-counter" data-animation="title-fill-anim" [attr.data-text]="skillSection?.items[3]?.percent">
+                                        {{skillSection?.items[3]?.percentage}}%</div>
+                                    <!-- <div class="progress-zero" [attr.data-progress]="skillSection?.items[3].percentage">
+                                    <div class="progress-full" data-animation-child data-animation="slide-progress" data-animation-delay="300ms"></div>   
+                                    <div class="progress-full progress-full-red" data-animation-child data-animation="slide-progress" data-animation-delay="500ms"></div>                 
+                                </div> -->
+                                    <ngb-progressbar type="warning" [value]="skillSection?.items[3]?.percentage" height=".1rem">{{skillSection?.items[3]?.percentage}}%</ngb-progressbar>
+                                </div>
+                                <!-- progress-box end -->
+                                <!-- progress-box start -->
+                                <div class="progress-box">
+                                    <div data-animation-child class="p-letter-style title-fill white-fill tr-delay04" data-animation="title-fill-anim" [attr.data-text]="skillSection?.items[4]?.skill">
+                                        {{skillSection?.items[4]?.skill}}</div>
+                                    <div data-animation-child class="p-letter-style title-fill white-fill tr-delay06 progress-counter" data-animation="title-fill-anim" [attr.data-text]="skillSection?.items[4]?.percent">
+                                        {{skillSection?.items[4]?.percentage}}%</div>
+                                    <!-- <div class="progress-zero" [attr.data-progress]="skillSection?.items[4]?.percentage">
+                                    <div class="progress-full" data-animation-child data-animation="slide-progress" data-animation-delay="400ms"></div>       
+                                    <div class="progress-full progress-full-red" data-animation-child data-animation="slide-progress" data-animation-delay="600ms"></div>             
+                                </div> -->
+                                    <ngb-progressbar type="warning" [value]="skillSection?.items[4]?.percentage" height=".1rem">{{skillSection?.items[4]?.percentage}}%</ngb-progressbar>
+                                </div>
+                                <!-- progress-box end -->
+                                <!-- progress-box start -->
+                                <div class="progress-box">
+                                    <div data-animation-child class="p-letter-style title-fill white-fill tr-delay05" data-animation="title-fill-anim" [attr.data-text]="skillSection?.items[5]?.skill">
+                                        {{skillSection?.items[5]?.skill}}</div>
+                                    <div data-animation-child class="p-letter-style title-fill white-fill tr-delay07 progress-counter" data-animation="title-fill-anim" [attr.data-text]="skillSection?.items[5]?.percent">
+                                        {{skillSection?.items[5]?.percentage}}%</div>
+                                    <!--  <div class="progress-zero" data-progress="87%">
+                                    <div class="progress-full" data-animation-child data-animation="slide-progress" data-animation-delay="500ms"></div>     
+                                    <div class="progress-full progress-full-red" data-animation-child data-animation="slide-progress" data-animation-delay="700ms"></div>               
+                                </div> -->
+                                    <ngb-progressbar type="warning" [value]="skillSection?.items[5]?.percentage" height=".1rem">{{skillSection?.items[5]?.percentage}}%</ngb-progressbar>
+                                </div>
+                                <!-- progress-box end -->
+                                <div class="d-flex justify-content-center">
+                                    <div class="border-btn-box border-btn-red pointer-large mt-2">
+                                        <div class="border-btn-inner">
+                                            <a class="border-btn letter-space" [attr.data-text]="'readTheClinicalStudies' | translate" [routerLink]="commonMtd.getRoutePath('clinical')">{{'readTheClinicalStudies'| translate}}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column end -->
+                </div>
+                <!-- flex-container end -->
+            </div>
+            <!-- flex-min-height-inner end -->
+        </section>
+        <!-- progress-container end -->
+
+        <!-- section start -->
+        <section>
+            <!-- container start -->
+            <div class="container bottom-padding-60 top-padding-120">
+                <!-- text-center start -->
+                <div data-animation-container class="text-center">
+                    <h2 data-animation-child class="large-title text-height-10 text-color-1 overlay-anim-box2" data-animation="overlay-anim2">{{serviceSection?.primary?.title1}}</h2><br>
+                    <p data-animation-child class="fade-anim-box tr-delay02 text-color-1 medium-title-oswald top-margin-5" data-animation="fade-anim">{{serviceSection?.primary?.title2}}</p>
+                </div>
+                <!-- text-center end -->
+
+                <!-- flex-container start -->
+                <div class="flex-container response-999 top-padding-60">
+                    <!-- column start -->
+                    <div class="four-columns top-bottom-padding-10">
+                        <a data-animation-container class="content-right-margin-20 hover-box pointer-large d-block light-bg-2">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-2 expertise-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="serviceSection?.items[0]?.image?.url" [alt]="(serviceSection?.items[0]?.image?.alt)?serviceSection.items[0].image.alt:''">
+                            </div>
+                            <div class="expertise content-padding-l-r-20 content-padding-bottom-20">
+                                <h3 data-animation-child class="small-title-oswald text-color-1 hover-content fade-anim-box tr-delay01" data-animation="fade-anim">{{serviceSection?.items[0]?.title}}</h3><br>
+                                <p data-animation-child class="p-style-xsmall text-color-1 hover-content fade-anim-box tr-delay02" data-animation="fade-anim">{{serviceSection?.items[0]?.content}}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- column end -->
+                    <!-- column start -->
+                    <div class="four-columns top-bottom-padding-10">
+                        <a data-animation-container class="content-left-right-margin-10 hover-box pointer-large d-block light-bg-2">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-2 expertise-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="serviceSection?.items[1]?.image?.url" [alt]="(serviceSection?.items[1]?.image?.alt)?serviceSection.items[1].image.alt:''">
+                            </div>
+                            <div class="expertise content-padding-l-r-20 content-padding-bottom-20">
+                                <h3 data-animation-child class="small-title-oswald text-color-1 hover-content fade-anim-box tr-delay01" data-animation="fade-anim">{{serviceSection?.items[1]?.title}}</h3><br>
+                                <p data-animation-child class="p-style-xsmall text-color-1 hover-content fade-anim-box tr-delay02" data-animation="fade-anim">{{serviceSection?.items[1]?.content}}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- column end -->
+                    <!-- column start -->
+                    <div class="four-columns top-bottom-padding-10">
+                        <a data-animation-container class="content-left-margin-20 hover-box pointer-large d-block light-bg-2">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-2 expertise-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="serviceSection?.items[2]?.image?.url" [alt]="(serviceSection?.items[2]?.image?.alt)?serviceSection.items[2].image.alt:''">
+                            </div>
+                            <div class="expertise content-padding-l-r-20 content-padding-bottom-20">
+                                <h3 data-animation-child class="small-title-oswald text-color-1 hover-content fade-anim-box tr-delay01" data-animation="fade-anim">{{serviceSection?.items[2]?.title}}</h3><br>
+                                <p data-animation-child class="p-style-xsmall text-color-1 hover-content fade-anim-box tr-delay02" data-animation="fade-anim">{{serviceSection?.items[2]?.content}}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- column end -->
+                    <!-- column start -->
+                    <div class="four-columns top-bottom-padding-10">
+                        <a data-animation-container class="content-right-margin-20 hover-box pointer-large d-block light-bg-2">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-2 expertise-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="serviceSection?.items[3]?.image?.url" [alt]="(serviceSection?.items[3]?.image?.alt)?serviceSection.items[3].image.alt:''">
+                            </div>
+                            <div class="expertise content-padding-l-r-20 content-padding-bottom-20">
+                                <h3 data-animation-child class="small-title-oswald text-color-1 hover-content fade-anim-box tr-delay01" data-animation="fade-anim">{{serviceSection?.items[3]?.title}}</h3><br>
+                                <p data-animation-child class="p-style-xsmall text-color-1 hover-content fade-anim-box tr-delay02" data-animation="fade-anim">{{serviceSection?.items[3]?.content}}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- column end -->
+                    <!-- column start -->
+                    <div class="four-columns top-bottom-padding-10">
+                        <a data-animation-container class="content-left-right-margin-10 hover-box pointer-large d-block light-bg-2">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-2 expertise-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="serviceSection?.items[4]?.image?.url" [alt]="(serviceSection?.items[4]?.image?.alt)?serviceSection.items[4].image.alt:''">
+                            </div>
+                            <div class="expertise content-padding-l-r-20 content-padding-bottom-20">
+                                <h3 data-animation-child class="small-title-oswald text-color-1 hover-content fade-anim-box tr-delay01" data-animation="fade-anim">{{serviceSection?.items[4]?.title}}</h3><br>
+                                <p data-animation-child class="p-style-xsmall text-color-1 hover-content fade-anim-box tr-delay02" data-animation="fade-anim">{{serviceSection?.items[4]?.content}}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- column end -->
+                    <!-- column start -->
+                    <div class="four-columns top-bottom-padding-10">
+                        <a data-animation-container class="content-left-margin-20 hover-box pointer-large d-block light-bg-2">
+                            <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-2 expertise-img-box" data-animation="overlay-anim2">
+                                <img class="hover-img" [src]="serviceSection?.items[5]?.image?.url" [alt]="(serviceSection?.items[5]?.image?.alt)?serviceSection.items[5].image.alt:''">
+                            </div>
+                            <div class="expertise content-padding-l-r-20 content-padding-bottom-20">
+                                <h3 data-animation-child class="small-title-oswald text-color-1 hover-content fade-anim-box tr-delay01" data-animation="fade-anim">{{serviceSection?.items[5]?.title}}</h3><br>
+                                <p data-animation-child class="p-style-xsmall text-color-1 hover-content fade-anim-box tr-delay02" data-animation="fade-anim">{{serviceSection?.items[5]?.content}}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- column end -->
+                </div>
+                <!-- flex-container end -->
+            </div>
+            <!-- container end -->
+        </section>
+        <!-- section end -->
+
+        <!-- section start -->
+        <section class="dark-bg-2">
+            <!-- container start -->
+            <div class="container small top-bottom-padding-120">
+                <!-- medium-title start -->
+                <div data-animation-container class="text-center">
+                    <h2 data-animation-child class="large-title-oswald red-color overlay-anim-box2" data-animation="overlay-anim2">{{clientSection?.primary?.title1}}</h2>
+                </div>
+                <!-- <h2 data-animation-container class="medium-title text-center">
+                    <span data-animation-child class="load-title-fill tr-delay01" data-animation="title-fill-anim"
+                        [attr.data-text]="clientSection?.primary?.title1">{{clientSection?.primary?.title1}}</span>
+                    <span data-animation-child class="load-title-fill tr-delay02" data-animation="title-fill-anim"
+                        [attr.data-text]="clientSection?.primary?.title2">{{clientSection?.primary?.title2}}</span>
+                    <span data-animation-child class="load-title-fill tr-delay03" data-animation="title-fill-anim"
+                        [attr.data-text]="clientSection?.primary?.title3">{{clientSection?.primary?.title3}}</span>
+                </h2>  -->
+                <!-- medium-title end -->
+
+                <!-- client-list start -->
+                <ul class="client-list d-flex-wrap top-padding-60">
+                    <li *ngFor="let item of clientSection?.items">
+                        <a class="pointer-large dblock">
+                            <div class="brand-box">
+                                <img [src]="item?.image?.url" [alt]="(item?.image?.alt)?item.image.alt:''" class="hover-opac-img">
+                                <!-- <img *ngIf="item?.json.url==null" [src]="item?.image2?.url" [alt]="item?.image2?.alt" class="opac-img"> -->
+                                <lottie-player class="opac-img" *ngIf="item?.json?.url!=null" autoplay loop mode="normal" [src]="item?.json?.url"></lottie-player>
+                            </div>
+                        </a>
+                    </li>
+                    <!-- <li class="empty-spot-box">
+                    <a data-animation-container href="#" class="pointer-large p-style-bold-up empty-spot d-block">
+                        <span data-animation-child class="title-fill" data-animation="title-fill-anim" data-text="This spot">This spot</span>
+                        <span data-animation-child class="title-fill tr-delay01" data-animation="title-fill-anim" data-text="Awaits">Awaits</span>
+                        <span data-animation-child class="title-fill tr-delay02" data-animation="title-fill-anim" data-text="You">You</span>
+                    </a>
+                </li> -->
+                </ul>
+                <!-- client-list end -->
+            </div>
+            <!-- container end -->
+        </section>
+        <!-- section end -->
+        <section class="dark-bg-2 folk-section">
+            <!-- container start -->
+            <div class="container  top-bottom-padding-120">
+                <!-- medium-title start -->
+                <div data-animation-container class="text-center small">
+                    <h2 data-animation-child class="large-title text-height-10 text-color-1 overlay-anim-box2" data-animation="overlay-anim2">{{socialProofSection?.primary?.title1}}</h2><br>
+                    <p data-animation-child class="fade-anim-box tr-delay02 text-white medium-title-oswald top-margin-5" data-animation="fade-anim">{{socialProofSection?.primary?.title2}}</p>
+                </div>
+                <!-- medium-title end -->
+
+                <!-- client-list start -->
+                <ul class="client-list   d-flex justify-content-around top-padding-60 pl-5">
+                    <li *ngFor="let item of socialProofSection?.items ">
+                        <a class=" dblock">
+                            <div class=" ">
+                                <img [src]="item?.image?.url" [alt]="(item?.image?.alt)?item.image.alt:''" class="hover-img">
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- client-list end -->
+            </div>
+            <!-- container end -->
+        </section>
+    </main>
+</body>
+<app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>

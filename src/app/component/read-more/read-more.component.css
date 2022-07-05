@@ -1,0 +1,5 @@
+.title-fill:after {
+    color: #ebcc00;
+    background: white;
+    transition-delay: .3s;
+}

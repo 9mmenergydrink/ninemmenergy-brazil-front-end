@@ -1,0 +1,66 @@
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+
+<body>
+    <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
+        <!-- page-head start -->
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <section class="page-head flex-min-height-box dark-bg-1 header-shop">
+            <!-- page-head-bg -->
+            <div class="page-head-bg overlay-loading2"></div>
+        </section>
+        <!-- page-head end -->
+
+        <div class="top-bottom-padding-30 fa-back min-height-ipad ">
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4" style="padding-left: 50px;padding-right: 50px;">
+                    <div class="white-card">
+                        <section>
+                            <div class="login-panel">
+                                <div class="yellow-color login-text">{{'logIn' |translate }}</div>
+                                <p style="margin-top: 10px;">{{'loginDetails' |translate }}</p>
+                            </div>
+
+                        </section>
+                        <section>
+                            <form class="auto-fill" [formGroup]="formGroup" (ngSubmit)="submit()">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">{{'email' |translate }}</label>
+                                    <input type="email" formControlName="email" name="email" [ngClass]="{'error':f?.email?.errors&&f?.email?.touched}" class="form-control" placeholder="{{'enterEmail' |translate }}">
+                                    <div *ngIf="f?.email?.errors && f?.email?.touched" class="text-danger">
+                                        <div *ngIf="f?.email?.errors?.required">{{'enterEmail' |translate }}</div>
+                                        <div *ngIf="f?.email?.errors?.pattern">
+                                            {{'enterValidEmail' |translate }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="exampleInputEmail1">{{'password' |translate }}</label>
+                                    <input type="password" name="password" formControlName="password" [ngClass]="{'error':f?.password?.errors&&f?.password?.touched}" class="form-control" placeholder="{{'enterPassword' |translate }}">
+                                    <div *ngIf="f?.password?.errors?.required && f?.password?.touched" class="text-danger">
+                                        {{'enterPassword' |translate }}
+                                    </div>
+                                </div>
+                                <div class="form-group text-right font-13">
+                                    <a [routerLink]="commonMtd.getRoutePath('forgotpassword')" class="hover-color">{{'forgotYourPassword' |translate }}</a>
+                                </div>
+
+                                <div class="col-md-12 text-center form-group p-0">
+                                    <button [disabled]="!formGroup.valid" type="submit" class="update-cart-btn">{{'signIn' |translate }}</button>
+                                </div>
+                                <div class="text-center"><a class="hover-color" [routerLink]="commonMtd.getRoutePath('register')">{{'createAccount' |translate }}</a>
+                                </div>
+
+                            </form>
+                        </section>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+        </div>
+    </main>
+    <app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>
+</body>

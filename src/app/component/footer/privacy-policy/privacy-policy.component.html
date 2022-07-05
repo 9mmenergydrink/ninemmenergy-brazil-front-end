@@ -1,0 +1,52 @@
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+
+<body class="loader">
+    <div class="loading">
+        <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
+    </div>
+    <div class="col-md-12 top-padding-90" id="up" #up></div>
+    <main class="animsition-overlay top-padding-90 blog-inner" data-animsition-overlay="true">
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <div class="container my-5 terms">
+            <ng-container *ngFor="let item of contentSection">
+                <h1 *ngIf="item?.type=='heading1'" class="red-color text-lowercase first-letter-cabs">
+                    {{item?.text}}</h1>
+                <h2 *ngIf="item?.type=='heading2'" class=" text-lowercase first-letter-cabs font-weight-normal">
+                    {{item?.text}}</h2>
+                <h3 *ngIf="item?.type=='heading3'" class=" text-lowercase first-letter-cabs font-weight-normal">
+                    {{item?.text}}</h3>
+                <h4 *ngIf="item?.type=='heading4'" class=" text-lowercase first-letter-cabs font-weight-normal">
+                    {{item?.text}}</h4>
+                <h5 *ngIf="item?.type=='heading5'" class=" text-lowercase first-letter-cabs font-weight-normal">
+                    {{item?.text}}</h5>
+                <h6 *ngIf="item?.type=='heading6'" class=" text-lowercase first-letter-cabs font-weight-normal">
+                    {{item?.text}}</h6>
+                <ng-container *ngIf="item?.type=='paragraph'">
+                    <p [ngClass]="{'mb-3':contentSection[i-1]?.type!='paragraph'}" *ngIf="!item?.isInnerHtml" class=" text-color-1 mt-1">{{item?.text}}</p>
+                    <p [ngClass]="{'mb-3':contentSection[i-1]?.type!='paragraph'}" *ngIf="item?.isInnerHtml" [innerHtml]="item?.text" class=" text-color-1 mt-1"></p>
+                </ng-container>
+
+                <ul *ngIf="item?.type=='list-item'" class="ml-4 mb-3 blog-ul" [ngClass]="{'mt-3':contentSection[i-1]?.type!='list-item'}">
+                    <li *ngFor="let data1 of item?.list" class="text-left text-color-1">
+                        <span *ngIf="!data1?.isInnerHtml">{{data1?.text}}</span>
+                        <div *ngIf="data1?.isInnerHtml" [innerHtml]="data1?.text"></div>
+                    </li>
+                </ul>
+                <ol *ngIf="item?.type=='o-list-item'" class="ml-4 mb-3 blog-ol" [ngClass]="{'mt-3':contentSection[i-1]?.type!='list-item'}">
+                    <li *ngFor="let data2 of item?.list" class="text-left text-color-1">
+                        <span *ngIf="!data2?.isInnerHtml">{{data2?.text}}</span>
+                        <div *ngIf="data2?.isInnerHtml" [innerHtml]="data2?.text"></div>
+                    </li>
+                </ol>
+                <a *ngIf="item?.type=='image'" class="post-img-box photo-popup" href="{{item?.url}}">
+                    <div class="pointer-zoom mt-2">
+                        <img [src]="item?.url" [alt]="(item?.alt)?item.alt:''">
+                    </div>
+                </a>
+            </ng-container>
+        </div>
+    </main>
+    <app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>
+</body>

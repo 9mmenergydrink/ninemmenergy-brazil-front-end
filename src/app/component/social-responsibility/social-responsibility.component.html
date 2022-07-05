@@ -1,0 +1,205 @@
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+<!-- loading start -->
+
+<body class="loader">
+    <div class="loading">
+        <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
+    </div>
+    <!-- loading end -->
+    <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <!-- page-head start -->
+        <section class="page-head flex-min-height-box new-bg-color position-relative custom-banner-height">
+            <!-- page-head-bg -->
+            <div class="page-head-bg overlay-loading2"
+                [style.background-image]="'url('+bannerSection?.primary?.image?.url+')'"></div>
+
+            <!-- flex-min-height-inner start -->
+            <div class="flex-min-height-inner">
+                <!-- flex-container start -->
+                <div class="container top-bottom-padding-120 flex-container response-999">
+                    <!-- column start -->
+                    <div class="six-columns six-offset">
+                        <div class="content-left-margin-40">
+                            <h2 class="overlay-loading2 tr-delay03 medium-title red-color">
+                                {{bannerSection?.primary?.content1}}</h2>
+                            <h3 class="large-title-bold text-color-4">
+                                <span
+                                    class="overlay-loading2 overlay-light-bg-1 tr-delay04">{{bannerSection?.primary?.content2}}</span>
+                            </h3>
+                            <p class="p-style-bold-up text-height-20 d-flex-wrap">
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay03 banner-3text" [attr.data-text]="bannerSection?.primary?.content2">{{bannerSection?.primary?.content3}}</span></p>
+
+                            <div class="border-btn-box border-btn-red pointer-large mt-3">
+                                <div class="border-btn-inner"><a [attr.data-text]="'shopNow' | translate"
+                                        class="border-btn" (click)="gotoReadMore()">{{'shopNow' | translate}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column end -->
+                </div>
+                <!-- flex-container end -->
+            </div>
+            <!-- flex-min-height-inner end -->
+
+            <!-- scroll-btn end -->
+        </section>
+        <!-- page-head end -->
+
+
+       <!-- section start -->
+       <section class="black-bg py-4">
+        <!-- container start -->
+        <div data-animation-container class="container small bottom-padding-20 text-center">
+            <h2 data-animation-child class="large-title text-height-10 text-color-1 overlay-anim-box2"
+                data-animation="overlay-anim2">{{worksSection?.primary?.title}}</h2><br>
+            <p data-animation-child class="fade-anim-box tr-delay02 text-color-1 medium-title-oswald top-margin-5"
+                data-animation="fade-anim">{{worksSection?.primary?.subtitle}}</p>
+        </div>
+        <!-- container end -->
+
+        <div data-animation-container class="container video-2 portfolio-content flex-min-height-box">
+            <div class="row bottom-padding-20">
+                <div class="col-lg-6">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-8">
+                                <!-- column start -->
+                                <div class="six-columns bottom-padding-20">
+                                    <div>
+                                        <h2 data-animation-child class="small-title-oswald overlay-anim-box2 red-color" data-animation="overlay-anim2"> {{worksSection?.items[0]?.site_name}}</h2>
+                                        <h3 class="title-style text-color-1">
+                                            <span data-animation-child
+                                                class="overlay-anim-box2 overlay-dark-bg-2 tr-delay01 text-white"
+                                                data-animation="overlay-anim2">{{worksSection?.items[0]?.title}}</span>
+                                        </h3>
+                                        <p data-animation-child class="overlay-anim-box2 overlay-dark-bg-2 tr-delay01 p-style-small text-color-5" data-animation="overlay-anim2">
+                                            {{worksSection?.items[0]?.content}}
+                                        </p>
+                                    </div>
+                                    <div class="border-btn-box border-btn-red pointer-large mt-3">
+                                        <div class="border-btn-inner"><a [attr.data-text]="'shopNow' | translate"
+                                                class="border-btn" (click)="gotoReadMore()">{{'shopNow' | translate}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- column end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- <div data-animation-child class="" id="wi1">
+                        <img [src]="worksSection?.items[0]?.image?.url"
+                            [alt]="(worksSection?.items[0]?.image?.alt)?worksSection.items[0].image.alt:''">
+                    </div> -->
+                    <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-2 tr-delay01" data-animation="overlay-anim2">
+                        <img [src]="worksSection?.items[0]?.image?.url" [alt]="(worksSection?.items[0]?.image?.alt)?worksSection.items[0].image.alt:''" class="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-animation-container class="container video-2 portfolio-content flex-min-height-box">
+            <div class="row bottom-padding-90 mobile-direction-reverse">
+                <div class="col-lg-6">
+                    <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-2 tr-delay01" data-animation="overlay-anim2">
+                        <img [src]="worksSection?.items[1]?.image?.url" [alt]="(worksSection?.items[1]?.image?.alt)?worksSection.items[1].image.alt:''" class="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-lg-8">
+                                <!-- column start -->
+                                <div class="six-columns bottom-padding-90">
+                                    <div>
+                                        <h2 data-animation-child class="small-title-oswald overlay-anim-box2 red-color" data-animation="overlay-anim2"> {{worksSection?.items[1]?.site_name}}</h2>
+                                        <h3 class="title-style text-color-1">
+                                            <span data-animation-child
+                                                class="overlay-anim-box2 overlay-dark-bg-2 tr-delay01 text-white"
+                                                data-animation="overlay-anim2">{{worksSection?.items[1]?.title}}</span>
+                                        </h3>
+                                        <p data-animation-child class="overlay-anim-box2 overlay-dark-bg-2 tr-delay01 p-style-small text-color-5" data-animation="overlay-anim2">
+                                            {{worksSection?.items[1]?.content}}
+                                        </p>
+                                    </div>
+
+                                    <div class="border-btn-box border-btn-red pointer-large mt-3">
+                                        <div class="border-btn-inner"><a [attr.data-text]="'shopNow' | translate"
+                                                class="border-btn" (click)="gotoReadMore()">{{'shopNow' | translate}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- column end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-animation-container class="container video-2 portfolio-content flex-min-height-box">
+            <div class="row bottom-padding-20">
+                <div class="col-lg-6">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-8">
+                                <!-- column start -->
+                                <div  class="six-columns bottom-padding-20">
+                                    <div>
+                                        <h2 data-animation-child class="small-title-oswald overlay-anim-box2 red-color" data-animation="overlay-anim2"> {{worksSection?.items[2]?.site_name}}</h2>
+                                        <h3 class="title-style text-color-1">
+                                            <span data-animation-child
+                                                class="overlay-anim-box2 overlay-dark-bg-2 tr-delay01 text-white"
+                                                data-animation="overlay-anim2">{{worksSection?.items[2]?.title}}</span>
+                                        </h3>
+                                        <p data-animation-child class="overlay-anim-box2 overlay-dark-bg-2 tr-delay01 p-style-small text-color-5" data-animation="overlay-anim2">
+                                            {{worksSection?.items[2]?.content}}
+                                        </p>
+
+                                    </div>
+                                    <div class="border-btn-box border-btn-red pointer-large mt-3">
+                                        <div class="border-btn-inner"><a [attr.data-text]="'shopNow' | translate"
+                                                class="border-btn" (click)="gotoReadMore()">{{'shopNow' | translate}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- column end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div data-animation-child class="overlay-anim-box2 overlay-dark-bg-2 tr-delay01" data-animation="overlay-anim2">
+                        <img [src]="worksSection?.items[2]?.image?.url" [alt]="(worksSection?.items[2]?.image?.alt)?worksSection.items[2].image.alt:''" class="">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end -->
+    <section class="dark-bg-2 top-bottom-padding-30">
+        <div data-animation-container class="container small bottom-padding-20 text-center">
+            <h2 data-animation-child class="large-title text-height-10 text-color-1 overlay-anim-box2"
+                data-animation="overlay-anim2">{{messageSection?.primary?.title}}</h2><br>
+            <p data-animation-child class="fade-anim-box tr-delay02 text-white font-weight-normal p-style-bold top-margin-5"
+                data-animation="fade-anim">{{messageSection?.primary?.subtitle}}</p>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="ontra-form" id="ontrapoet">
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+</body>
+<app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>

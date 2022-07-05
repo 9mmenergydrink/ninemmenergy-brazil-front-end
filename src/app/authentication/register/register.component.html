@@ -1,0 +1,124 @@
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+
+<body>
+    <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
+        <!-- page-head start -->
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <section class="page-head flex-min-height-box dark-bg-1 header-shop">
+            <!-- page-head-bg -->
+            <div class="page-head-bg overlay-loading2"></div>
+        </section>
+        <!-- page-head end -->
+
+        <div class="top-bottom-padding-30 fa-back min-height-ipad">
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4" style="padding-left: 50px;padding-right: 50px;">
+                    <div class="white-card">
+                        <section>
+                            <div class="login-panel">
+                                <div class="yellow-color login-text text-uppercase">{{'createAccount' |translate }}</div>
+                                <p style="margin-top: 10px;">{{'welcome' |translate }}</p>
+                            </div>
+
+                        </section>
+                        <section>
+                            <form class="auto-fill" [formGroup]="formGroup" (ngSubmit)="submit()">
+                                <div class="form-group">
+                                    <label> {{'firstName' |translate }}<span class="text-danger pl-1">*</span></label>
+                                    <input type="text" formControlName="first_name" name="first_name" [ngClass]="{'error':f?.first_name?.errors&&f?.first_name?.touched}" class="form-control" placeholder="{{'enterFirstName' |translate }}">
+                                    <div *ngIf="f?.first_name?.errors?.required && f?.first_name?.touched" class="text-danger">
+                                        {{'enterFirstName' |translate }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>{{'lastName' | translate }}<span class="text-danger pl-1">*</span></label>
+                                    <input type="text" formControlName="last_name" name="last_name" class="form-control" placeholder="{{'enterLastName' |translate }}">
+                                    <div *ngIf="f?.last_name?.errors?.required && f?.last_name?.touched" class="text-danger">
+                                        {{'enterLastName' | translate }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">{{'email' |translate }} <span class="text-danger">*</span></label>
+                                    <input type="email" formControlName="email" name="email" [readonly]="!isAccountCreate" [ngClass]="{'error':f?.email?.errors&&f?.email?.touched}" class="form-control" aria-describedby="emailHelp" placeholder="{{'enterEmail' |translate }}">
+                                    <div *ngIf="f?.email?.errors && f?.email?.touched" class="text-danger">
+                                        <div *ngIf="f?.email?.errors?.required">{{'enterEmail' |translate }}</div>
+                                        <div *ngIf="f?.email?.errors?.pattern">
+                                            {{'enterValidEmail' |translate }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <ng-container *ngIf="!isAccountCreate">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1"> {{'password' |translate }}<span
+                                                class="text-danger">*</span></label>
+                                        <input type="password" formControlName="password" name="password" [ngClass]="{'error':f?.password?.errors&&f?.password?.touched}" class="form-control" placeholder="{{'enterPassword' |translate }}">
+                                        <div *ngIf="f?.password?.errors && f?.password?.touched" class="text-danger">
+                                            <div *ngIf="f?.password?.errors?.required">
+                                                {{'enterPassword' |translate }}
+                                            </div>
+                                            <div *ngIf="f?.password?.errors?.minlength">
+                                                {{'must8Character' |translate }}
+                                            </div>
+                                            <div *ngIf="f?.password?.errors?.pattern">
+                                                {{'mustLowerCase' |translate }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">  {{'confirmPassword' |translate }}<span
+                                                class="text-danger">*</span></label>
+                                        <input type="password" formControlName="confPassword" name="confPassword" [ngClass]="{'error':f?.confPassword?.errors&&f?.confPassword?.touched}" class="form-control" placeholder="{{'confirmPassword' |translate }}">
+                                        <div *ngIf="f?.confPassword?.errors && f?.confPassword?.touched" class="text-danger">
+                                            <div *ngIf="f?.confPassword?.errors?.required">{{'enterValdPassword' |translate }}
+                                            </div>
+                                            <div *ngIf="f?.confPassword?.errors?.NoPassswordMatch">{{'passwordDontMatch' |translate }}
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </ng-container>
+                                <div class="form-group">
+                                    <div class="checkbox font-13">
+                                        <input id="terms" type="checkbox" formControlName="agree" [ngClass]="{'error':f?.agree?.errors&&f?.agree?.touched}" name="agree">
+                                        <label for="terms"><span>&nbsp;{{'termsAndService' |translate }}<a (click)="mmTerms()" class="yellow-color hover-color"> {{'terms' |translate }}</a></span></label>
+                                    </div>
+                                    <div *ngIf="f?.agree?.errors?.required && f?.agree?.touched&&formGroup.hasError('required', 'agree')" class="text-danger font-13">
+                                        {{'selectAgree' |translate }}
+                                    </div>
+                                    <!-- checkbox .// -->
+                                </div>
+                                <!-- form-group// -->
+
+                                <div class="col-md-12 text-center form-group p-0">
+                                    <button [disabled]="!formGroup.valid" type="submit" class="update-cart-btn">{{'signUp' |translate }}</button>
+                                </div>
+                                <div class="text-center"> {{'alreadyRegister' |translate }}<a class="yellow-color hover-color" [routerLink]="commonMtd.getRoutePath('login')">  {{'logIn' |translate }}</a></div>
+                                <!-- <div class="text-center"> {{'alreadyRegister' |translate }}<a class="yellow-color hover-color" href="/login">  {{'logIn' |translate }}</a></div> -->
+
+                            </form>
+                        </section>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+        </div>
+
+        <!-- Commented on 02.02.2022 for show terms of service page  
+            <div class="top-bottom-padding-20 white-card" *ngIf="isShowTerms">
+            <i class="fa fa-arrow-left"></i>&nbsp; <a (click)="isShowTerms=false" class="cont-shop hover-color"> {{'back' |translate }}</a>
+            <h5 class="yellow-color top-bottom-padding-20">{{termsSection?.primary?.header}}</h5>
+            <h6 style="margin-bottom: 20px;"> {{'lastUpdate' |translate }}{{termsSection?.primary?.updateddate}}</h6>
+            <ng-container *ngFor="let data of termsSection?.items">
+                <h7>{{data?.title}}</h7>
+                <p style="margin-top: 10px;margin-bottom: 20px;font-size: 12px;">{{data?.content[0]?.text}}</p>
+            </ng-container>
+        </div> -->
+
+    </main>
+    <app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>
+</body>

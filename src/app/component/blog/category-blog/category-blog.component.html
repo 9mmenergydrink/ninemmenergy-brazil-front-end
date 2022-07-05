@@ -1,0 +1,67 @@
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+
+<!-- loading start -->
+
+<body class="loader">
+    <div class="loading">
+        <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
+    </div>
+    <!-- loading end -->
+
+    <main class="animsition-overlay top-bottom-padding-90 pb-0" data-animsition-overlay="true" id="up" #up>
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <div class=" title-fill d-block text-dark pl-3 top-padding-90" data-animation="title-fill-anim">
+            <i class="fa fa-arrow-left"></i>&nbsp; <a [routerLink]="commonMtd.getRoutePath('blog')" class="cont-shop hover-color">{{'back' | translate}}</a>
+        </div>
+        <b *ngIf="categoryPost?.length == 0 && categoryInfo" style="min-height: 154px;" class="d-flex justify-content-center p-2">{{'emptyBlogCategory' | translate}}</b>
+        <div *ngIf="categoryPost?.length">
+            <div class="container my-5">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let item of categoryPost">
+                            <article class="">
+                                <div class="light-bg-2">
+                                    <a (click)="commonMtd.goToInner('blog', item)" class="pointer-large animsition-link hover-box d-block">
+                                        <div class="overlay-loading2 overlay-dark-bg-2">
+                                            <img class="hover-img" [src]="item?.data?.image?.url" [alt]="(item?.data?.image?.alt)?item.data.image.alt:''">
+                                        </div>
+                                        <div class="content-padding-l-r-20" data-animation-container>
+                                            <h3 class="medium-text text-color-1 top-margin-30 ">
+                                                <div data-animation-child class="overlay-loading2 overlay-dark-bg-2 cat-title-ellipsis">{{item?.data?.title}}</div>
+                                                <!-- <br><span data-animation-child class="overlay-loading2 hover-content overlay-dark-bg-2 tr-delay01" data-animation="overlay-anim2">party organic</span><br>
+                                            <span data-animation-child class="overlay-loading2 hover-content overlay-dark-bg-2 tr-delay02" data-animation="overlay-anim2">umami kombucha</span> -->
+                                            </h3>
+                                            <!-- <p data-animation-child
+                                            class="overlay-loading2 hover-content tr-delay03 p-style-medium text-color-2 mt-2 text-ellipsis"
+                                            >{{item?.short_description}}</p> -->
+                                        </div>
+                                    </a>
+                                    <div class="content-padding-l-r-20 content-padding-bottom-20" data-animation-container>
+                                        <ul *ngIf="item?.pin" data-animation-child class="overlay-loading2 blog-category top-margin-30 text-color-2">
+                                            <li><i class="fas fa-thumbtack text-color-3"></i></li>
+                                            <li class="p-letter-style pointer-small hover-color"><a>{{item?.pin}}</a></li>
+                                            <!-- <li class="p-letter-style pointer-small hover-color"><a >design</a></li>
+                                        <li class="p-letter-style pointer-small hover-color"><a >art</a></li> -->
+                                        </ul>
+                                        <ul data-animation-child class="blog-tags top-margin-10 overlay-loading2 tr-delay01 text-color-2">
+                                            <li><i class="fas fa-tags text-color-3"></i></li>
+                                            <li class="p-letter-style pointer-small hover-color"><a>{{item?.data?.tag}}</a></li>
+                                            <!-- <li class="p-letter-style pointer-small hover-color"><a >post formats</a></li> -->
+                                        </ul>
+                                        <div data-animation-child class="blog-autor-date top-margin-30 overlay-loading2 tr-delay02 text-color-1">
+                                            <a class="xsmall-title-oswald pointer-small hover-color">{{item?.data?.author_name}}</a>
+                                            <a class="xsmall-title-oswald pointer-small hover-color">{{item?.data?.date}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>

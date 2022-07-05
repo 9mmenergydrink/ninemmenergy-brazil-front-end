@@ -1,0 +1,170 @@
+<div >
+  <div style="margin-top: 0px;">
+    <h5 class="my-3" style="font-weight: bold;">
+       {{'paymentMethod' |translate }}
+    </h5>
+  </div>
+  <hr>
+  <!-- Begin Payment Type-->
+  <div class="row">
+    <div class="col-md-6" (click)="collapse.toggle(); giftcardclose=false" [attr.aria-expanded]="!isCollapsed">
+      <span style="font-weight: bold;">
+        {{'creditOrDebit' |translate }}
+      </span>
+      <div class="border-lightgray" style="
+      padding: 10px; align-items: center; margin-top: 10px;
+      display: flex; width: 200px; height: 100px;">
+        <i class="fa fa-plus" style="margin-right: 10px;"></i>
+        <a style="text-decoration: underline;">{{'addACreditOrDebit' |translate }}</a>
+      </div>
+    </div>
+  </div>
+  <!-- End Payment Type-->
+  <!-- Begin Add Card Details -->
+  <div class="border-lightgray top-arrow pay-card-box" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+    <div style="margin-top: 20px;">
+      <span style="font-weight: bold;">
+        {{'addCreditOrDebit' |translate }}
+      </span>
+    </div>
+    <hr>
+    <div class="row pay-form">
+      <div class="col-lg-6">
+        <span style="font-weight: bold;">
+          {{'cardInformation'|translate}}
+        </span>
+        <div class="d-flex ">
+          <div style="margin-right: 5px;" class="w-100">
+            <label style="font-weight: lighter;">{{'firstName' |translate }}<span class="text-danger font-weight-bold pl-1">*</span></label>
+            <input type="text" class="w-100 border-lightgray" style="height: 35px;">
+          </div>
+          <div class="w-100">
+            <label style="font-weight: lighter;">{{'lastName' |translate }}<span class="text-danger font-weight-bold pl-1">*</span></label>
+            <input class="w-100" type="text" class="border-lightgray" style="height: 35px;">
+          </div>
+        </div>
+        <div class="d-flex w-100">
+          <div style="margin-right: 5px;" class="w-100">
+            <label style="font-weight: lighter;">{{'cardNumber' |translate }} <span class="text-danger font-weight-bold ">*</span></label>
+            <input type="text" class="border-lightgray" style="height: 35px; width: 101%;">
+            <img src="assets/images/card.png" alt="card" style="width:100px;">
+          </div>
+        </div>
+        <div class="d-flex">
+          <div class="col-md-4 mr-2 p-0">
+            <label style="font-weight: lighter;">  {{'expirationDate' |translate }}<span class="text-danger font-weight-bold ">*</span></label>
+            <input type="text" class="w-100 border-lightgray" style="height: 35px;">
+          </div>
+          <div class="col-md-4 d-flex align-items-end p-0 mr-2">
+            <label style="font-weight: lighter;"></label>
+            <input class="w-100 border-lightgray" type="text" style="height: 35px;">
+          </div>
+          <div class="col-md-4 p-0 mr-2">
+            <label style="font-weight: lighter;"> {{'securityCode' |translate }} <span class="text-danger font-weight-bold ">*</span></label>
+            <input class="w-100 border-lightgray" type="text" style="height: 35px;">
+          </div>
+        </div>
+        <div class="d-flex w-100">
+          <div style="margin-right: 5px;" class="w-100">
+            <label style="font-weight: lighter;">  {{'phoneNumber' |translate }}<span class="text-danger font-weight-bold pl-1">*</span></label>
+            <input type="text" class="border-lightgray" style="height: 35px; width: 101%;">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mt-2">
+        <span style="font-weight: bold;">
+           {{'billingAddress' |translate }}
+        </span>
+        <div class="d-flex justify-content-between align-items-center border-lightgray mt-2"  style="padding: 6px;">
+          <p class="m-0 w-70">{{'rochelle' |translate }}</p>
+          <a class="ml-auto mb-auto" style="text-decoration: underline;color: black; float:right;">{{'change' |translate }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center" style="margin-top: 30px;">
+      <button type="submit" class="save-btn" style="margin-right: 10px;"><span>{{'save' |translate }}</span></button>
+      <button type="submit" class="cancel-btn"><span>{{'cancel' |translate }}</span></button>
+    </div>
+  </div>
+  <!-- End Add Card Details -->
+  <div class="row mt-3"> 
+   <div class="col-md-6" (click)="collapse.toggle(); giftcardclose=false" [attr.aria-expanded]="isCollapsed">
+      <span style="font-weight: bold; margin-top: 10px;">
+         {{'giftCard' |translate }}
+      </span>
+      <div class="border-lightgray" style="
+      padding: 10px; align-items: center; margin-top: 10px;
+      display: flex; width: 200px; height: 100px;">
+        <i class="fa fa-plus" style="margin-right: 10px;"></i>
+        <a style="text-decoration: underline;"> {{'addAGiftCard' |translate }}</a>
+      </div>
+    </div>
+  </div>
+  <!-- gift card details -->
+  <div class="border-lightgray top-arrow pay-card-box" #collapse="ngbCollapse" [(ngbCollapse)]="!isCollapsed||giftcardclose">
+    <div style="margin-top: 20px;">
+      <span style="font-weight: bold;">
+        {{'giftCard' |translate }}
+      </span>
+    </div>
+    <hr>
+    <div class="row pay-form">
+      <div class="col-lg-6">
+        <span style="font-weight: bold;">
+          {{'cardInformation'|translate}}
+        </span>
+        <div class="d-flex ">
+          <div style="margin-right: 5px;" class="w-100">
+            <label style="font-weight: lighter;">{{'firstName' |translate }} <span class="text-danger font-weight-bold ">*</span></label>
+            <input type="text" class="w-100 border-lightgray" style="height: 35px;">
+          </div>
+          <div class="w-100">
+            <label style="font-weight: lighter;">{{'lastName' |translate }} <span class="text-danger font-weight-bold ">*</span></label>
+            <input class="w-100" type="text" class="border-lightgray" style="height: 35px;">
+          </div>
+        </div>
+        <div class="d-flex w-100">
+          <div style="margin-right: 5px;" class="w-100">
+            <label style="font-weight: lighter;">{{'cardNumber' |translate }} <span class="text-danger font-weight-bold ">*</span></label>
+            <input type="text" class="border-lightgray" style="height: 35px; width: 101%;">
+            <img src="assets/images/card.png" alt="card" style="width:100px;">
+          </div>
+        </div>
+        <div class="d-flex">
+          <div class="col-md-4 mr-2 p-0">
+            <label style="font-weight: lighter;">{{'expirationDate' |translate }} <span class="text-danger font-weight-bold">*</span></label>
+            <input type="text" class="w-100 border-lightgray" style="height: 35px;">
+          </div>
+          <div class="col-md-4 d-flex align-items-end p-0 mr-2">
+            <label style="font-weight: lighter;"></label>
+            <input class="w-100 border-lightgray" type="text" style="height: 35px;">
+          </div>
+          <div class="col-md-4 p-0 mr-2">
+            <label style="font-weight: lighter;"> {{'securityCode' |translate }} <span class="text-danger font-weight-bold ">*</span></label>
+            <input class="w-100 border-lightgray" type="text" style="height: 35px;">
+          </div>
+        </div>
+        <div class="d-flex w-100">
+          <div style="margin-right: 5px;" class="w-100">
+            <label style="font-weight: lighter;">{{'phoneNumber' |translate }}<span class="text-danger font-weight-bold pl-1">*</span></label>
+            <input type="text" class="border-lightgray" style="height: 35px; width: 101%;">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mt-2">
+        <span style="font-weight: bold;">
+          {{'billingAddress' |translate }}
+        </span>
+        <div class="d-flex justify-content-between align-items-center border-lightgray mt-2"  style="padding: 6px;">
+          <p class="m-0 w-70">{{'rochelle' |translate }}</p>
+          <a class="ml-auto mb-auto" style="text-decoration: underline;color: black; float:right;">{{'change' |translate }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center" style="margin-top: 30px;">
+      <button type="submit" class="save-btn" style="margin-right: 10px;"><span>{{'save' |translate }}</span></button>
+      <button type="submit" class="cancel-btn"><span>{{'cancel' |translate }}</span></button>
+    </div>
+  </div>
+  <!-- End -->
+</div>

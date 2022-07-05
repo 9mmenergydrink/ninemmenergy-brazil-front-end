@@ -1,0 +1,355 @@
+<a class="to-top-btn pointer-small" (click)="scroll(up)">
+    <span class="to-top-arrow"></span>
+</a>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+<div class="pointer" id="pointer">
+    <i class="fas fa-long-arrow-alt-right"></i>
+    <i class="fas fa-search"></i>
+    <i class="fas fa-link"></i>
+</div>
+<div class="row" #up>
+    <div class="col-lg-6">
+        <a href="" class="pointer-large animsition-link">
+            <img class="checkout-logo" src="assets/images/HOME/LOGO/Logoblack.png" alt="logo">
+        </a>
+        <p class="info-links">
+            <a href="/cart-page" class="hover-color">{{'cart' | translate}}</a> >
+            <a class="highlight-text">{{'information' | translate}}</a> >
+            <a class="cursor-default" (click)="onClickShipping()">{{'shipping' | translate}}</a> >
+            <a class="cursor-default" (click)="onClickPayment()">{{'payment' | translate}}</a>
+        </p>
+        <!-- Mobile design collapse -->
+        <div class="col-lg-12 summery-title mt-3">
+            <div class="d-flex justify-content-between align-items-center" (click)="collapse.toggle();" [attr.aria-expanded]="!isCollapsed">
+                <div class="d-flex align-items-center">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    <h4 class="ml-3 font-weight-normal checkout-title">Show order summary</h4>
+                    <i class="fa fa-angle-down ml-3 mt-2"></i>
+                </div>
+                <span>${{total}}</span>
+            </div>
+            <div class="" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+                <div class="order-summary__sections">
+                    <div class="order-summary__section order-summary__section--product-list">
+                        <div class="order-summary__section__content">
+                            <table class="product-table">
+                                <caption class="visually-hidden">Shopping cart</caption>
+                                <tbody data-order-summary-section="line-items">
+                                    <tr class="product" *ngFor="let data of cartDetails">
+                                        <td class="product__image">
+                                            <div class="product-thumbnail ">
+                                                <div class="product-thumbnail__wrapper">
+                                                    <img alt="energy drink pre workout" class="product-thumbnail__image" [src]="data.image">
+                                                </div>
+                                                <span class="product-thumbnail__quantity" aria-hidden="true">{{data?.quantity}}</span>
+                                            </div>
+                                        </td>
+                                        <th class="product__description" scope="row">
+                                            <span class="product__description__name order-summary__emphasis">{{data?.title}}</span>
+                                            <span class="product__description__variant order-summary__small-text">{{data?.variantTitle}}</span>
+                                        </th>
+                                        <td class="product__quantity">
+                                            <span class="visually-hidden">
+                              1
+                              </span>
+                                        </td>
+                                        <td class="product__price">
+                                            <span class="order-summary__emphasis skeleton-while-loading">${{data?.total}}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="order-summary__section order-summary__section--total-lines" data-order-summary-section="payment-lines">
+                        <table class="total-line-table col">
+                            <tbody class="total-line-table__tbody">
+                                <tr class="total-line total-line--subtotal">
+                                    <th class="total-line__name" scope="row">{{'subTotal' | translate}}</th>
+                                    <td class="total-line__price text-right">
+                                        <span class="order-summary__emphasis skeleton-while-loading">
+                            ${{cartCount?.subTotal}}
+                           </span>
+                                    </td>
+                                </tr>
+                                <tr class="total-line total-line--shipping">
+                                    <th class="total-line__name" scope="row">
+                                        <span>
+                            {{'shipping' | translate}}
+                           </span>
+                                    </th>
+                                    <td class="total-line__price text-right">
+                                        <span class="skeleton-while-loading order-summary__emphasis">
+                            ${{shipping}}
+                           </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="total-line-table__footer">
+                                <tr class="total-line">
+                                    <th class="total-line__name payment-due-label" scope="row">
+                                        <span class="payment-due-label__total">{{'total' | translate}}</span>
+                                    </th>
+                                    <td class="total-line__price payment-due text-right">
+                                        <span class="payment-due__currency remove-while-loading">USD</span>
+                                        <span class="payment-due__price skeleton-while-loading--lg" data-checkout-payment-due-target="2400">
+                            ${{total}}
+                           </span>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End -->
+        <section class="contact-info my-4">
+            <span class="checkout-title">{{'contactInformation' | translate}}</span>
+            <p *ngIf="!profile" class="con-login">{{'alreadyHaveAccount' | translate}}&nbsp;<a class="hover-color" (click)="onClickLogin()">{{'logIn' | translate}}</a></p>
+            <form class="info-form auto-fill" [formGroup]="formGroup">
+                <ng-container *ngIf="!profile">
+                    <div class="input">
+                        <input (blur)="onChangeMobile($event)" [ngClass]="{'error':(f.email.errors&&f.email.touched&&!f.email.errors?.invalidPhone) ||(isMobile &&ff.form?.controls!=null && ff.form.controls['phone']?.errors)}" type="email" #email formControlName="email" name="email"
+                            class="inputs form-control input__field" placeholder="">
+                        <p class="input__label">{{'emailMobile' | translate}}</p>
+                        <form #ff="ngForm" [formGroup]="phoneForm">
+                            <ngx-intl-tel-input *ngIf="isMobile" [cssClass]="'custom'" [preferredCountries]="preferredCountries" [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true" [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                                [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.UnitedStates" [maxLength]="15" [phoneValidation]="true" [separateDialCode]="separateDialCode" class="mobileCode" [numberFormat]="PhoneNumberFormat.National" name="phone"
+                                formControlName="phone" (countryChange)="changeSelectedCountryCode($event)">
+                            </ngx-intl-tel-input>
+                        </form>
+                    </div>
+
+                    <div *ngIf="(f.email.errors && f.email.touched) || ff.form?.controls['phone']?.errors" class="text-danger">
+                        <div *ngIf="f.email.errors?.required">{{'enterEmailMobile' | translate}}</div>
+                        <div *ngIf="f.email.errors?.invalidEmail">
+                            {{'validEmail' | translate}}
+                        </div>
+                        <div *ngIf="isMobile && ff.form?.controls['phone']?.errors && !f.email.errors?.invalidEmail && !f.email.errors?.required">
+                            {{'validPhone' | translate}}
+                        </div>
+                    </div>
+                </ng-container>
+                <div class="col-md-12 d-flex mt-3 p-0 align-items-center" *ngIf="profile">
+                    <div class="usercircle p-0 border-0" aria-expanded="false">
+                        <span class="">{{profile.shortName}}</span>
+                    </div>
+                    <div class="ml-3">
+                        <h6>{{profile.name}} ({{profile.email}})</h6>
+                        <a (click)="onClickLogOut()"> Logout</a>
+                    </div>
+                </div>
+                <div class="checkbox top-margin-10">
+                    <input id="check2" type="checkbox" formControlName="accepts_marketing">
+                    <label for="check2">&nbsp;{{'exclusiveOffers' | translate}}</label>
+                </div>
+
+
+                <div class="login-sec">
+                    <span class="checkout-title">{{'shippingAddress' | translate}}</span>
+
+                    <div *ngIf="profile">
+                        <select (change)="onChangeAddress()" formControlName="address" class="inputs form-control">
+                                                    
+                        <option *ngFor="let x of profile.addresses" [ngValue]="x" >
+                            {{x.name}}<ng-container *ngIf="x.address1">, {{x.address1}}, {{x.address2?(x.address2+","):''}} 
+                            {{x.zip}} {{x.city}} {{x.province_code}}, {{x.country}}</ng-container></option>
+                    </select>
+                        <div *ngIf="f.address.errors?.required && f.address.touched" class="text-danger">
+                            {{'selectCountry' | translate}}
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="input">
+                                <input [ngClass]="{'error':f.first_name.errors&& f.first_name.touched}" type="text" class="inputs form-control input__field" formControlName="first_name" name="first_name" placeholder=" ">
+                                <p class="input__label">{{'firstName' | translate}} <span class="text-danger">*</span> </p>
+                            </div>
+                            <div *ngIf="f.first_name.errors?.required && f.first_name.touched" class="text-danger">
+                                {{'enterFirstName' | translate}}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="input">
+                                <input [ngClass]="{'error':f.last_name.errors&& f.last_name.touched}" type="text" class="inputs form-control input__field" formControlName="last_name" name="last_name" placeholder=" ">
+                                <p class="input__label">{{'lastName' | translate}} <span class="text-danger">*</span> </p>
+                            </div>
+                            <div *ngIf="f.last_name.errors?.required && f.last_name.touched" class="text-danger">
+                                {{'enterLastName' | translate}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input">
+                        <input type="text" #address class="inputs form-control input__field" [ngClass]="{'error':f.address1.errors&&f.address1.touched}" formControlName="address1" name="address1" placeholder=" ">
+                        <p class="input__label">{{'address' | translate}} <span class="text-danger">*</span> </p>
+                    </div>
+                    <div *ngIf="f.address1.errors?.required && f.address1.touched" class="text-danger">
+                        {{'enterAddress' | translate}}
+                    </div>
+                    <div class="input">
+                        <input type="text" class="inputs form-control input__field" formControlName="address2" name="address2" placeholder=" ">
+                        <p class="input__label">{{'appartment' | translate}}</p>
+                    </div>
+
+                    <div class="input">
+                        <input type="text" class="inputs form-control input__field" [ngClass]="{'error':f.city.errors&&f.city.touched}" formControlName="city" name="city" placeholder=" ">
+                        <p class="input__label">{{'city' | translate}} <span class="text-danger">*</span> </p>
+                    </div>
+                    <div *ngIf="f.city.errors?.required && f.city.touched" class="text-danger">
+                        {{'enterCity' | translate}}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <select [ngClass]="{'error':f.country.errors&&f.country.touched}" (change)="onChangeCountry()" #countrySelect formControlName="country" class="inputs form-control">
+                                <option [ngValue]="null" class="input__label" hidden>{{'selectCountry' | translate}} <span class="text-danger" style="color: #f00;">*</span></option>
+                                <option *ngFor="let x of countryList" [ngValue]="x" >{{x.name}}</option>
+                            </select>
+                            <div *ngIf="f.country.errors?.required && f.country.touched" class="text-danger">
+                                {{'selectCountry' | translate}}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <select [ngClass]="{'error':f.province.errors&&f.province.touched}" #stateSelect formControlName="province" [(ngModel)]="state" class="inputs form-control">
+                                <option [ngValue]="null" class="input__label" hidden>{{'selectState' | translate}} <span class="text-danger" style="color: #f00;">*</span></option>
+                                <option *ngFor="let x of stateList" [ngValue]="x" >{{x}}</option>
+                            </select>
+                            <div *ngIf="f.province.errors?.required && f.province.touched" class="text-danger">
+                                {{'selectState' | translate}}
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="input">
+                                <input [ngClass]="{'error':f.zip.errors&&f.zip.touched}" type="text" class="inputs form-control input__field" formControlName="zip" name="zip" placeholder=" ">
+                                <p class="input__label">{{'zip' | translate}} <span class="text-danger">*</span> </p>
+                            </div>
+                            <div *ngIf="f.zip.errors && f.zip.touched" class="text-danger">
+                                <div *ngIf="f.zip.errors.required">{{'enterZip' | translate}}</div>
+                                <div *ngIf="f.zip.errors.invalidCode">
+                                    {{'validZip' | translate}}
+                                </div>
+                                <div *ngIf="f.zip.errors.countryEmpty">
+                                    {{'selectCountry' | translate}}
+                                </div>
+                                <div *ngIf="f.zip.errors.stateEmpty">
+                                    {{'pleaseSelectState' | translate}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ng-container *ngIf="isMobile==false">
+                        <div class="input">
+                            <input [ngClass]="{'error':f.phone?.errors&& f.phone.touched}" type="text" class="inputs form-control input__field" formControlName="phone" name="phone" placeholder=" ">
+                            <p class="input__label">{{'phone' | translate}} <span class="text-danger">*</span> </p>
+                        </div>
+                        <div *ngIf="f.phone.errors?.required && f.phone.touched" class="text-danger">
+                            {{'enterPhoneNumber' | translate}}
+                        </div>
+                    </ng-container>
+
+                    <div class="top-margin-15 checkbox">
+                        <input type="checkbox" id="check" formControlName="isSaveInfo">
+                        <label for="check">&nbsp;{{'saveThisInformationForNextTime' | translate}}</label>
+                    </div>
+
+                    <div class="row checkout-btn">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-6">
+                            <button [disabled]="!formGroup.valid" class="update-cart-btn" (click)="onClickShipping()">{{'continueToShipping' | translate}}</button><br>
+                            <button class="check-out-btn" (click)="onClickReturn()">{{'returnToCart' | translate}}</button>
+                        </div>
+                        <div class="col-lg-3"></div>
+                    </div>
+
+                </div>
+            </form>
+
+        </section>
+    </div>
+    <div class="col-lg-6 checkout-right mobile-checkout-right">
+        <div class="container">
+            <div class="checkout-right-table">
+                <div class="order-summary__sections">
+                    <div class="order-summary__section order-summary__section--product-list">
+                        <div class="order-summary__section__content">
+                            <table class="product-table">
+                                <caption class="visually-hidden">Shopping cart</caption>
+                                <tbody data-order-summary-section="line-items">
+                                    <tr class="product" *ngFor="let data of cartDetails">
+                                        <td class="product__image">
+                                            <div class="product-thumbnail ">
+                                                <div class="product-thumbnail__wrapper">
+                                                    <img alt="energy drink pre workout" class="product-thumbnail__image" [src]="data.image">
+                                                </div>
+                                                <span class="product-thumbnail__quantity" aria-hidden="true">{{data?.quantity}}</span>
+                                            </div>
+                                        </td>
+                                        <th class="product__description" scope="row">
+                                            <span class="product__description__name order-summary__emphasis">{{data?.title}}</span>
+                                            <span class="product__description__variant order-summary__small-text">{{data?.variantTitle}}</span>
+                                        </th>
+                                        <td class="product__quantity">
+                                            <span class="visually-hidden">
+                                      1
+                                      </span>
+                                        </td>
+                                        <td class="product__price">
+                                            <span class="order-summary__emphasis skeleton-while-loading">${{data?.total}}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="order-summary__section order-summary__section--total-lines" data-order-summary-section="payment-lines">
+                        <table class="total-line-table col">
+                            <tbody class="total-line-table__tbody">
+                                <tr class="total-line total-line--subtotal">
+                                    <th class="total-line__name" scope="row">{{'subTotal' | translate}}</th>
+                                    <td class="total-line__price text-right">
+                                        <span class="order-summary__emphasis skeleton-while-loading">
+                                    ${{cartCount?.subTotal}}
+                                   </span>
+                                    </td>
+                                </tr>
+                                <tr class="total-line total-line--shipping">
+                                    <th class="total-line__name" scope="row">
+                                        <span>
+                                    {{'shipping' | translate}}
+                                   </span>
+                                    </th>
+                                    <td class="total-line__price text-right">
+                                        <span class="skeleton-while-loading order-summary__emphasis">
+                                    ${{shipping}}
+                                   </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="total-line-table__footer">
+                                <tr class="total-line">
+                                    <th class="total-line__name payment-due-label" scope="row">
+                                        <span class="payment-due-label__total">{{'total' | translate}}</span>
+                                    </th>
+                                    <td class="total-line__price payment-due text-right">
+                                        <span class="payment-due__currency remove-while-loading">USD</span>
+                                        <span class="payment-due__price skeleton-while-loading--lg" data-checkout-payment-due-target="2400">
+                                    ${{total}}
+                                   </span>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="border-top py-2 px-5">{{'allRight' | translate}}</div>
+    </div>

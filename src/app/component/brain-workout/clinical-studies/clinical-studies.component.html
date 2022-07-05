@@ -1,0 +1,183 @@
+<!-- <meta name="robots" content="index, follow"> -->
+
+<!-- <link rel="canonical" href="https://www.9mmenergy.com/clinical-studies" /> -->
+
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+<!-- loading start -->
+
+<body class="loader">
+    <div class="loading">
+        <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
+    </div>
+    <!-- loading end -->
+    <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
+        <!-- page-head start -->
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <section class="page-head flex-min-height-box new-bg-color position-relative custom-banner-height">
+            <!-- page-head-bg -->
+            <div class="page-head-bg overlay-loading2" [style.background-image]="'url('+bannerSection?.primary?.image?.url+')'"></div>
+
+            <!-- flex-min-height-inner start -->
+            <div class="flex-min-height-inner">
+                <!-- flex-container start -->
+                <div class="container top-bottom-padding-120 flex-container response-999 custom-mobile-banner">
+                    <!-- column start -->
+                    <div class="six-columns six-offset mt-5">
+                        <div class="content-left-margin-40">
+                            <h2 class="overlay-loading2 medium-title red-color">
+                                {{bannerSection?.primary?.content1}}</h2>
+                            <h3 class="large-title-bold text-color-4" *ngIf="bannerSection?.primary?.content2">
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay02">{{bannerSection?.primary?.content2}}</span>
+                            </h3>
+
+                            <p class="p-style-bold-up text-height-20 d-flex-wrap">
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay03 banner-3text" [attr.data-text]="bannerSection?.primary?.content3">{{bannerSection?.primary?.content3}}</span>
+                            </p>
+                            <!-- <div class="border-btn-box border-btn-red pointer-large mt-3">
+                                <div class="border-btn-inner"><a [attr.data-text]="'shopNow' | translate"
+                                        class="border-btn">{{'shopNow' | translate}}</a>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- column end -->
+                </div>
+                <!-- flex-container end -->
+            </div>
+            <!-- flex-min-height-inner end -->
+
+        </section>
+        <!-- page-head end -->
+        <section class="new-bg-color">
+            <div class="container bottom-padding-60 top-padding-120">
+                <div data-animation-container="" class="text-center animated">
+                    <h2 data-animation-child="" data-animation="overlay-anim2" class="large-title text-height-10 text-color-1 overlay-anim-box2 animated overlay-anim2" [attr.data-text]="clinicalStudiesHeader?.primary?.title1">{{clinicalStudiesHeader?.primary?.title1}}</h2>
+                    <br>
+                    <p data-animation-child="" data-animation="fade-anim" class="fade-anim-box tr-delay02 text-color-1 medium-title-oswald top-margin-5 animated fade-anim text-white" [attr.data-text]="clinicalStudiesHeader?.primary?.title2">{{clinicalStudiesHeader?.primary?.title2}}</p>
+                </div>
+                <div class="flex-container response-999 top-padding-60">
+                    <div class="four-columns top-bottom-padding-10" *ngFor="let item of clinicalStudiesSection">
+                        <a data-animation-container="" class="content-right-margin-20 hover-box pointer-large d-block light-bg-2 animated">
+                            <div data-animation-child="" data-animation="overlay-anim2" class="overlay-anim-box2 overlay-dark-bg-2 expertise-img-box animated overlay-anim2">
+                                <img class="hover-img" [src]="item?.primary?.image?.url" [alt]="(item?.primary?.image?.alt)?item.primary.image.alt:''"></div>
+                            <div class="expertise content-padding-l-r-20 content-padding-bottom-20">
+                                <h3 data-animation-child="" data-animation="fade-anim" class="small-title-oswald text-color-1 hover-content fade-anim-box tr-delay01 animated fade-anim">{{item?.primary?.title}}</h3>
+                                
+                                <p data-animation-child="" data-animation="fade-anim" class="p-style-xsmall text-color-1 hover-content fade-anim-box tr-delay02 animated fade-anim mb-2">{{item?.primary?.content}}</p>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="shop-btn m-0" (click)="commonMtd.goToInner('neurotrackerclinical', item)">{{'readFullClinicalStudy' | translate}}</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- <div class="four-columns bottom-padding-60">
+                     <a data-animation-container="" href="#" class="content-left-right-margin-10 hover-box pointer-large d-block light-bg-2 animated">
+                        <div data-animation-child="" data-animation="overlay-anim2" class="overlay-anim-box2 overlay-dark-bg-2 expertise-img-box animated overlay-anim2"><img class="hover-img" src="https://images.prismic.io/9mmenergydrink/a454209e-e894-4f71-a010-70efea8a2315_02.jpg?auto=compress,format&amp;rect=0,0,540,362&amp;w=540&amp;h=362" alt="image2"></div>
+                        <div class="expertise content-padding-l-r-20 content-padding-bottom-20">
+                           <h3 data-animation-child="" data-animation="fade-anim" class="small-title-oswald text-color-1 hover-content fade-anim-box tr-delay01 animated fade-anim">GAMERS</h3>
+                           <br>
+                           <p data-animation-child="" data-animation="fade-anim" class="p-style-xsmall text-color-1 hover-content fade-anim-box tr-delay02 animated fade-anim mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                              enim ad minim veniam, quis nostrud
+                           </p>
+                           <div class="d-flex justify-content-center align-items-center">
+                                <div class="shop-btn m-0">READ FULL CLINICAL STUDY</div>
+                           </div>
+                        </div>
+                     </a>
+                  </div>
+                  <div class="four-columns bottom-padding-60">
+                     <a data-animation-container="" href="#" class="content-left-margin-20 hover-box pointer-large d-block light-bg-2 animated">
+                        <div data-animation-child="" data-animation="overlay-anim2" class="overlay-anim-box2 overlay-dark-bg-2 expertise-img-box animated overlay-anim2"><img class="hover-img" src="https://images.prismic.io/9mmenergydrink/47d9008b-3c56-47dc-9f29-5f05c46064cb_03.jpg?auto=compress,format&amp;rect=0,0,540,362&amp;w=540&amp;h=362" alt="image3"></div>
+                        <div class="expertise content-padding-l-r-20 content-padding-bottom-20">
+                           <h3 data-animation-child="" data-animation="fade-anim" class="small-title-oswald text-color-1 hover-content fade-anim-box tr-delay01 animated fade-anim">MMA ATHLETES</h3>
+                           <br>
+                           <p data-animation-child="" data-animation="fade-anim" class="p-style-xsmall text-color-1 hover-content fade-anim-box tr-delay02 animated fade-anim mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                              enim ad minim veniam, quis nostrud
+                           </p>
+                           <div class="d-flex justify-content-center align-items-center">
+                            <div class="shop-btn m-0">READ FULL CLINICAL STUDY</div>
+                           </div>
+                        </div>
+                     </a>
+                  </div>
+                  <div class="four-columns bottom-padding-60 pb-0">
+                     <a data-animation-container="" href="#" class="content-right-margin-20 hover-box pointer-large d-block light-bg-2 animated">
+                        <div data-animation-child="" data-animation="overlay-anim2" class="overlay-anim-box2 overlay-dark-bg-2 expertise-img-box animated overlay-anim2"><img class="hover-img" src="https://images.prismic.io/9mmenergydrink/277ecfd5-7b2d-4d4a-b510-54e8120e10ca_Screen+Shot+2021-08-09+at+4.43.48+PM.png?auto=compress,format&amp;rect=0,0,1220,818&amp;w=540&amp;h=362" alt="null"></div>
+                        <div class="expertise content-padding-l-r-20 content-padding-bottom-20">
+                           <h3 data-animation-child="" data-animation="fade-anim" class="small-title-oswald text-color-1 hover-content fade-anim-box tr-delay01 animated fade-anim">FIRST RESPONDERS</h3>
+                           <br>
+                           <p data-animation-child="" data-animation="fade-anim" class="p-style-xsmall text-color-1 hover-content fade-anim-box tr-delay02 animated fade-anim">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                              enim ad minim veniam, quis nostrud
+                           </p>
+                        </div>
+                     </a>
+                  </div>
+                  <div class="four-columns bottom-padding-60">
+                    <a data-animation-container="" href="#" class="content-left-margin-20 hover-box pointer-large d-block light-bg-2 animated">
+                       <div data-animation-child="" data-animation="overlay-anim2" class="overlay-anim-box2 overlay-dark-bg-2 expertise-img-box animated overlay-anim2"><img class="hover-img" src="https://images.prismic.io/9mmenergydrink/47d9008b-3c56-47dc-9f29-5f05c46064cb_03.jpg?auto=compress,format&amp;rect=0,0,540,362&amp;w=540&amp;h=362" alt="image3"></div>
+                       <div class="expertise content-padding-l-r-20 content-padding-bottom-20">
+                          <h3 data-animation-child="" data-animation="fade-anim" class="small-title-oswald text-color-1 hover-content fade-anim-box tr-delay01 animated fade-anim">MMA ATHLETES</h3>
+                          <br>
+                          <p data-animation-child="" data-animation="fade-anim" class="p-style-xsmall text-color-1 hover-content fade-anim-box tr-delay02 animated fade-anim">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                             enim ad minim veniam, quis nostrud
+                          </p>
+                       </div>
+                    </a>
+                 </div>
+                  <div class="four-columns bottom-padding-60 pb-0">
+                     <a data-animation-container="" href="#" class="content-left-margin-20 hover-box pointer-large d-block light-bg-2 animated">
+                        <div data-animation-child="" data-animation="overlay-anim2" class="overlay-anim-box2 overlay-dark-bg-2 expertise-img-box animated overlay-anim2"><img class="hover-img" src="https://images.prismic.io/9mmenergydrink/5cab3891-6093-4259-8044-2e3c4b904fed_shutterstock_551691832.jpg?auto=compress,format&amp;rect=0,160,2970,1991&amp;w=540&amp;h=362" alt="null"></div>
+                        <div class="expertise content-padding-l-r-20 content-padding-bottom-20">
+                           <h3 data-animation-child="" data-animation="fade-anim" class="small-title-oswald text-color-1 hover-content fade-anim-box tr-delay01 animated fade-anim">ACTIVE MILITARY</h3>
+                           <br>
+                           <p data-animation-child="" data-animation="fade-anim" class="p-style-xsmall text-color-1 hover-content fade-anim-box tr-delay02 animated fade-anim">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                              enim ad minim veniam, quis nostrud
+                           </p>
+                        </div>
+                     </a>
+                  </div>
+                  <div class="four-columns bottom-padding-60">
+                    <a data-animation-container="" href="#" class="content-left-margin-20 hover-box pointer-large d-block light-bg-2 animated">
+                       <div data-animation-child="" data-animation="overlay-anim2" class="overlay-anim-box2 overlay-dark-bg-2 expertise-img-box animated overlay-anim2"><img class="hover-img" src="https://images.prismic.io/9mmenergydrink/47d9008b-3c56-47dc-9f29-5f05c46064cb_03.jpg?auto=compress,format&amp;rect=0,0,540,362&amp;w=540&amp;h=362" alt="image3"></div>
+                       <div class="expertise content-padding-l-r-20 content-padding-bottom-20">
+                          <h3 data-animation-child="" data-animation="fade-anim" class="small-title-oswald text-color-1 hover-content fade-anim-box tr-delay01 animated fade-anim">MMA ATHLETES</h3>
+                          <br>
+                          <p data-animation-child="" data-animation="fade-anim" class="p-style-xsmall text-color-1 hover-content fade-anim-box tr-delay02 animated fade-anim">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                             enim ad minim veniam, quis nostrud
+                          </p>
+                       </div>
+                    </a>
+                 </div> -->
+                    <div class="eight-columns top-bottom-padding-10">
+                        <a data-animation-container="" class="red-bg content-right-margin-20 hover-box pointer-large d-block light-bg-2 animated">
+                            <div data-animation-child="" data-animation="overlay-anim2" class="overlay-anim-box2 overlay-dark-bg-2 expertise-img-box animated overlay-anim2">
+                                <img class="hover-img" [src]="callToActionSection?.primary?.image?.url" [alt]="(callToActionSection?.primary?.image?.alt)?callToActionSection.primary.image.alt:''">
+                            </div>
+                            <div class="expertise content-padding-l-r-20 content-padding-bottom-20 red-bg m-0 d-flex align-items-center justify-content-center py-5">
+                                <div class="content">
+                                    <h3 _ngcontent-xaa-c125="" class="title-style text-color-4 text-center"> {{callToActionSection?.primary?.title}} </h3>
+                                    <p class="custom-p text-center mb-3">{{callToActionSection?.primary?.content}} </p>
+                                    <!-- The world most powerful super antioxidant ever formulated in an energy drink -->
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <div class="shop-btn m-0" (click)="gotoShop()">{{'tryFreeNow' | translate}}</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div> we alwin
+        </section>
+    </main>
+</body>
+<app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>

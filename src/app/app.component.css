@@ -1,0 +1,87 @@
+.lloader {
+  position: fixed;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  visibility: visible;
+  -webkit-transition: .5s cubic-bezier(.76, .06, .85, .07);
+      -o-transition: .5s cubic-bezier(.76, .06, .85, .07);
+          transition: .5s cubic-bezier(.76, .06, .85, .07);
+  z-index: 101;
+  width: 100px;
+  height: 100px;
+}
+
+.lloader:before {
+content: '';
+width: 100%;
+height: 100%;
+border: 2px solid transparent;
+/* #111517 */
+border-left-color: white;
+-webkit-animation: 1.2s loading-anim cubic-bezier(.767, .01, .18, 1.01) infinite both;
+      animation: 1.2s loading-anim cubic-bezier(.767, .01, .18, 1.01) infinite both;
+  border-radius: 50%;
+  display: block;
+}
+@-webkit-keyframes loading-anim {
+
+  0% {
+    -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+  }
+
+}
+
+@keyframes loading-anim {
+
+  0% {
+    -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+           transform: rotate(360deg);
+  }
+
+}
+
+.loader-background:before,
+  .loader-background:after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      z-index: 99;
+      /* background: #111517; */
+      /* background: rgba(240, 238, 238, 0.4); */
+      background: rgb(76 71 71 / 50%);
+      -webkit-transition: 1s cubic-bezier(.858, .01, .068, .99);
+          -o-transition: 1s cubic-bezier(.858, .01, .068, .99);
+              transition: 1s cubic-bezier(.858, .01, .068, .99);
+  }
+
+  .loader-background:before {
+      left: 100%;
+      -webkit-transform: translateX(-100%);
+          -ms-transform: translateX(-100%);
+              transform: translateX(-100%);
+      visibility: visible;
+  }
+
+  .loader-background:after {
+      left: -100%;
+      -webkit-transform: translateX(0);
+          -ms-transform: translateX(0);
+              transform: translateX(0);
+      visibility: hidden;
+      -webkit-transition-delay: .5s;
+          -o-transition-delay: .5s;
+              transition-delay: .5s;
+  }

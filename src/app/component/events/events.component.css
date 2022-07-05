@@ -1,0 +1,24 @@
+/* ngb-pagination ::ng-deep ul > li:not(.active) > a {
+    background-color:transparent !important;
+    border: none;
+    color: white;
+}
+
+ngb-pagination ::ng-deep ul > li.active > a {
+    background-color:#ebcc00 !important;
+    border-color: transparent!important;
+}
+
+
+ngb-pagination ::ng-deep ul > li > a:focus{
+box-shadow: none;
+
+}
+
+ngb-pagination ::ng-deep ul > li > a.page-link{
+    border: none!important;
+} */
+
+.overlay-loading2 {
+    display: inherit;
+}

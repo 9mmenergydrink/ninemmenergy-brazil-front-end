@@ -1,0 +1,134 @@
+/* .dropdown-item{
+    color: black;
+    padding: .9rem 1rem;
+    font-weight: 100!important;
+    border-bottom: 0.5px solid rgb(209, 209, 209);
+}
+.dropdown-item:hover{
+  color: #ebcc00!important;
+  border-bottom: none!important;
+  background-color:  #333333!important;
+}
+
+.dropdown-menu{
+font-family: 'Oswald', sans-serif;
+font-size: 14px;
+border: none!important;
+}
+.dropdown-menu-mobile{
+  top: 35%!important;
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  width:140px;
+  }
+.btn:focus{
+  box-shadow: none;
+}
+.dropdown-menu-arrow {
+    top: -18px;
+    left: 5%;
+    width: 0;
+    height: 0;
+    position: relative;
+  }
+  .dropdown-menu-arrow:before,
+  .dropdown-menu-arrow:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 7px 8px;
+    border-style: solid;
+    border-color: transparent;
+    z-index: 1001;
+  }
+  .dropdown-menu-arrow:after {
+    bottom: -18px;
+    left: 1px;
+    border-bottom-color: #fff;
+    display: none;
+  }
+  .dropdown-menu-arrow:before {
+    bottom: -17px;
+    right: -8px;   
+  }
+  .dropdown-menu-arrow-mobile {
+    top: -18px;
+    left: 78%;
+    width: 0;
+    height: 0;
+    position: relative;
+  }
+  .dropdown-menu-arrow-mobile:before,
+  .dropdown-menu-arrow-mobile:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 7px 8px;
+    border-style: solid;
+    border-color: transparent;
+    z-index: 1001;
+    display: none;
+  }
+  .dropdown-menu-arrow-mobile:after {
+    bottom: -18px;
+    left: 1px;
+    border-bottom-color: #fff;
+  }
+  .dropdown-menu-arrow-mobile:before {
+    bottom: -17px;
+    right: -8px;   
+  }
+
+
+
+ */
+ .p-n{
+  padding-top: 2px;
+    padding-left: 7px;
+    padding-right: 4px;
+    padding-bottom: 0px;
+}
+.header-user .dropdown-toggle::after {
+  display: none !important;
+}
+/* .dropdown-toggle::after {
+  content: none;
+} */
+  .circle {
+    background: #ebcc00;
+    width: 35px;
+    height: 35px;
+    border-radius: 47%;
+    /*color: black;
+    text-align: center;
+     border: solid 3px white; 
+    font-family: Segoe UI Light;
+     box-shadow: 0px 0px 5px black; */
+    cursor: pointer;
+}
+.inner-text{
+  font-size: 17px;
+    /* position: relative;
+    top: 4.4px;
+    left: 0.2px; */
+    line-height: 2;
+    color: white;
+    /*font-weight: 900;
+     text-shadow: 1px 1px 1px #706868; */
+     letter-spacing: 0;
+}
+
+.circle-bg{
+  background: #000000 !important;
+  border-radius: 50% !important;
+}
+
+.inner-text-color{
+  color: #ebcc00 !important;
+}
+.cartImg{
+  max-width: inherit;
+}

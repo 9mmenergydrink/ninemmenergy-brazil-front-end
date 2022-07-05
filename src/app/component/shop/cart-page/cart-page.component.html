@@ -1,0 +1,159 @@
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+<!-- loading start -->
+
+<body class="loader">
+    <div class="loading">
+        <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
+    </div>
+    <!-- loading end -->
+    <!-- animsition-overlay start -->
+    <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
+        <!-- page-head start -->
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+
+        <section class="page-head flex-min-height-box dark-bg-1 header-shop">
+            <!-- page-head-bg -->
+            <!-- <div class="page-head-bg overlay-loading2"></div> -->
+        </section>
+        <!-- page-head end -->
+        <div class="cart-container">
+            <i class="fa fa-arrow-left"></i>&nbsp; <a [routerLink]="commonMtd.getRoutePath('shop')" class="cont-shop hover-color">{{'continueShopping' | translate}}</a>
+            <p class="your-cart">{{'yourShoppingCart' | translate}}</p>
+            <p class="mt-0">{{cartCount?.pCount}} <span class="ml-1">{{'products' | translate}}</span></p>
+        </div>
+
+        <div class="cart-container min-height-ipad ">
+            <b *ngIf="!allProductRemoved && (!cartList || cartList?.length == 0)" style="min-height: 154px;" class="d-flex justify-content-center p-2">{{'emptyCart' | translate}}</b>
+            <div class="row" *ngIf="allProductRemoved || cartList?.length">
+                <div class="col-lg-8">
+
+                    <div *ngIf="allProductRemoved" class="d-flex justify-content-center p-2">{{'allProductRemoved' | translate}}<b>&nbsp;'{{'updateCart' | translate}}' {{'button' | translate}}</b></div>
+                    <ng-container *ngIf="cartList?.length">
+                        <table class="cart-table table-responsive desktop-cart">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th class="text-left pro-details">{{'productDetails' | translate}}</th>
+                                    <th class="text-center pro-price">{{'price' | translate}}</th>
+                                    <th class="text-center pro-quan">{{'quantity' | translate}}</th>
+                                    <th class="text-center pro-tot">{{'total' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let data of cartList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
+                                <td class="product__image pt-3">
+                                    <a (click)="onClickClose(data, i)" class="card-page-close close-thik hover-color"></a>
+                                    <div class="product-thumbnail ">
+                                        <div class="product-thumbnail__wrapper modal-pop-img">
+                                            <img alt="energy drink pre workout" class="product-thumbnail__image" [src]="data.image">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="cart-img-td text-center">
+                                    <!-- <div class="modal-pop-img">
+                                        <img [src]="data.image" class="img-thumbnail2" alt="productimage">
+                                        <a (click)="onClickClose(data, i)" class="card-page-close close-thik hover-color"></a>
+                                    </div> -->
+                                    <h6 class="cart-p-td">{{data?.title}}</h6>
+                                    <span class="xsmall-title-oswald font-weight-normal text-capitalize">{{data?.variantTitle}}</span>
+                                </td>
+                                <td class="text-center">
+                                    <h6>${{data?.price}}</h6>
+                                </td>
+                                <td class="text-center">
+                                    <div class="input-group d-flex justify-content-center ml-2">
+                                        <input type="button" (click)="minus(data,i)" class="button-minus" value="-">
+                                        <input type="text" [(ngModel)]="data.quantity" class="quantity-field" disabled>
+                                        <input type="button" (click)="plus(data,i)" class="button-plus" value="+">
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <h6>${{data?.total}}</h6>
+                                </td>
+                            </tr>
+
+                        </table>
+                        <table class="cart-table table-responsive mobile-cart">
+                            <thead>
+                                <tr>
+                                    <th class="text-left pro-details">{{'productDetails' | translate}}</th>
+                                    <th></th>
+                                    <!-- <th class="text-center pro-price">{{'price' | translate}}</th> -->
+                                    <!-- <th class="text-center pro-quan">{{'quantity' | translate}}</th> -->
+                                    <th class="text-center pro-tot">{{'total' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <th></th>
+                            <tr *ngFor="let data of cartList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
+                                <td class="product__image">
+                                    <a (click)="onClickClose(data, i)" class="card-page-close close-thik hover-color"></a>
+                                    <div class="product-thumbnail ">
+                                        <div class="product-thumbnail__wrapper modal-pop-img">
+                                            <img alt="energy drink pre workout" class="product-thumbnail__image" [src]="data?.image">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="cart-img-td">
+                                    <!-- <div class="modal-pop-img">
+                                        <img [src]="data.image" class="img-thumbnail2" alt="productimage">
+                                        <a (click)="onClickClose(data, i)" class="card-page-close close-thik hover-color"></a>
+                                    </div> -->
+                                    <h6 class="cart-p-td">{{data?.title}}</h6>
+                                    <span class="xsmall-title-oswald font-weight-normal text-capitalize">{{data?.variantTitle}}</span>
+                                    <div class="input-group">
+                                        <input type="button" (click)="minus(data,i)" class="button-minus" value="-">
+                                        <input type="text" [(ngModel)]="data.quantity" class="quantity-field" disabled>
+                                        <input type="button" (click)="plus(data,i)" class="button-plus" value="+">
+                                    </div>
+                                    <h6>${{data?.price}}</h6>
+                                </td>
+
+                                <td class="text-center">
+                                    <h6>${{data?.total}}</h6>
+                                </td>
+                            </tr>
+
+                        </table>
+                        <div class="text-center" *ngIf="cartList?.length > 3">
+                            <div class="border-btn-box border-btn-red pointer-large mt-3 mb-3">
+                                <div class="border-btn-inner pagination-common">
+                                    <ngb-pagination [collectionSize]="cartList.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="2" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <!-- <ngb-pagination class="d-flex justify-content-center p-2" [collectionSize]="cartList.length" [(page)]="page" [pageSize]="pageSize"
+                            [maxSize]="2"
+                            [rotate]="true" [boundaryLinks]="true">
+            </ngb-pagination> -->
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="cart-update-sec">
+                        <section class="cart-total">
+                            <div class="row">
+                                <div class="col-md-6 col-6">
+                                    <h6>{{'subTotalCap' | translate}}</h6>
+                                </div>
+                                <div class="col-md-6 col-6 text-right">
+                                    <h3>$ {{prevCount?.subTotal}}</h3>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="cart-update">
+                            <h6>{{'note' | translate}}</h6>
+                            <textarea [(ngModel)]="prevCount.note" class="form-control"></textarea>
+                            <p class="cart-notes">{{'taxes' | translate}}</p>
+                            <button class="update-cart-btn" (click)="onClickUpdateCart()">{{'updateCart' | translate}}</button><br>
+                            <button [disabled]="cartCount?.pCount == 0" class="check-out-btn" (click)="onClickInfo()">{{'checkOut' | translate}}</button>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- animsition-overlay end -->
+    <app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>
+</body>

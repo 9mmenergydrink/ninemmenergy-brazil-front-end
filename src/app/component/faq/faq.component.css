@@ -1,0 +1,8 @@
+.click-icon {
+    font-size: 30px;
+    line-height: 0;
+    box-shadow: none;
+}
+.click-icon:focus {
+    outline: none;
+}

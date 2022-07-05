@@ -1,0 +1,255 @@
+<a class="to-top-btn pointer-small" (click)="scroll(up)">
+    <span class="to-top-arrow"></span>
+</a>
+<div class="pointer" id="pointer">
+    <i class="fas fa-long-arrow-alt-right"></i>
+    <i class="fas fa-search"></i>
+    <i class="fas fa-link"></i>
+</div>
+<div class="row" #up>
+    <div class="col-lg-6">
+        <a href="" class="pointer-large animsition-link">
+            <img class="checkout-logo" src="assets/images/HOME/LOGO/Logoblack.png" alt="logo">
+        </a>
+        <p class="info-links">
+            <a (click)="onClickCart()" class="hover-color">{{'cart' | translate}}</a> >
+            <a (click)="onClickInfo()" class="hover-color">{{'information' | translate}}</a> >
+            <a (click)="onClickShipping()" class="hover-color">{{'shipping' | translate}}</a> >
+            <a class="highlight-text">{{'payment' | translate}}</a>
+        </p>
+        <h1 class="pageTitle-seo">{{pageTitle}}</h1>
+        <!-- Mobile design collapse -->
+        <div class="col-lg-12 summery-title mt-3">
+            <div class="d-flex justify-content-between align-items-center" (click)="collapse.toggle();" [attr.aria-expanded]="!isCollapsed">
+                <div class="d-flex align-items-center">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    <h4 class="ml-3 font-weight-normal checkout-title">Show order summary</h4>
+                    <i class="fa fa-angle-down ml-3 mt-2"></i>
+                </div>
+                <span>${{total}}</span>
+            </div>
+            <div class="" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+                <div class="order-summary__sections">
+                    <div class="order-summary__section order-summary__section--product-list">
+                        <div class="order-summary__section__content">
+                            <table class="product-table">
+                                <caption class="visually-hidden">Shopping cart</caption>
+                                <tbody data-order-summary-section="line-items">
+                                    <tr class="product" *ngFor="let data of cartDetails">
+                                        <td class="product__image">
+                                            <div class="product-thumbnail ">
+                                                <div class="product-thumbnail__wrapper">
+                                                    <img alt="energy drink pre workout" class="product-thumbnail__image" [src]="data.image">
+                                                </div>
+                                                <span class="product-thumbnail__quantity" aria-hidden="true">{{data?.quantity}}</span>
+                                            </div>
+                                        </td>
+                                        <th class="product__description" scope="row">
+                                            <span class="product__description__name order-summary__emphasis">{{data?.title}}</span>
+                                            <span class="product__description__variant order-summary__small-text">{{data?.variantTitle}}</span>
+                                        </th>
+                                        <td class="product__quantity">
+                                            <span class="visually-hidden">
+                                      1
+                                      </span>
+                                        </td>
+                                        <td class="product__price">
+                                            <span class="order-summary__emphasis skeleton-while-loading">${{data?.total}}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="order-summary__section order-summary__section--total-lines" data-order-summary-section="payment-lines">
+                        <table class="total-line-table col">
+                            <tbody class="total-line-table__tbody">
+                                <tr class="total-line total-line--subtotal">
+                                    <th class="total-line__name" scope="row">{{'subTotal' | translate}}</th>
+                                    <td class="total-line__price text-right">
+                                        <span class="order-summary__emphasis skeleton-while-loading">
+                                    ${{cartCount?.subTotal}}
+                                   </span>
+                                    </td>
+                                </tr>
+                                <tr class="total-line total-line--shipping">
+                                    <th class="total-line__name" scope="row">
+                                        <span>
+                                    {{'shipping' | translate}}
+                                   </span>
+                                    </th>
+                                    <td class="total-line__price text-right">
+                                        <span class="skeleton-while-loading order-summary__emphasis">
+                                    ${{shipping}}
+                                   </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="total-line-table__footer">
+                                <tr class="total-line">
+                                    <th class="total-line__name payment-due-label" scope="row">
+                                        <span class="payment-due-label__total">{{'total' | translate}}</span>
+                                    </th>
+                                    <td class="total-line__price payment-due text-right">
+                                        <span class="payment-due__currency remove-while-loading">USD</span>
+                                        <span class="payment-due__price skeleton-while-loading--lg" data-checkout-payment-due-target="2400">
+                                    ${{total}}
+                                   </span>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End -->
+        <section class="contact-info my-4">
+            <!-- payment-info -->
+            <form class="info-form auto-fill">
+                <div class="form-group1">
+                    <div class="contact-box">
+                        <span class="c-title ">{{'contact' | translate}}</span>
+                        <a class="c-mail">{{contact}}</a>
+                        <a class="hover-color c-link" (click)="changeContact()">{{'change' | translate}}</a>
+                    </div>
+                    <div class="contact-box">
+                        <span class="c-mail c-title">{{'shippingTo' | translate}}</span>
+                        <p class="mt-1 c-mail">{{address}}</p>
+                        <a class="hover-color c-link" (click)="changeAddress()">{{'change' | translate}}</a>
+                    </div>
+                    <div class="contact-box">
+                        <span class="c-title" style="font-family: 'Open Sans', sans-serif;">{{'method' | translate}}</span>
+                        <p class="mt-1 c-mail">{{'internationalShipping' | translate}} - ${{shipping}}</p>
+                    </div>
+                    <!-- <input type="text" name="" class="inputs" placeholder="Contact">
+                    <input type="text" name="" class="inputs" placeholder="Shipping to">
+                    <input type="text" name="" class="inputs" style="border:none" placeholder="Method"> -->
+                </div>
+
+                <div class="login-sec">
+                    <span class="checkout-title">{{'paymentMethod' | translate}}</span>
+                    <p class="checkout-subtitle">{{'allTransactions' | translate}}</p>
+                    <section>
+                        <img src="assets/images/Mask Group 4.png" class="mask-img" alt="cartImage">
+                        <img src="assets/images/Mask Group 5.png" class="mask-img" alt="cartImage">
+                        <img src="assets/images/Mask Group 7.png" class="mask-img" alt="cartImage">
+                    </section>
+
+                    <div class="form-group2">
+                        <div class="checkout-form-title">{{'cardDetails' | translate}}</div>
+                        <div class="checkout-form-input">
+                            <input type="text" class="inputs form-control" id="name" required name="name" ng-model="inputText" placeholder="{{'cardNumber' | translate}}">
+                            <input type="text" class="inputs form-control" id="name" required name="name" ng-model="inputText" placeholder="{{'nameCard' | translate}}">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" class="inputs form-control" id="name" required name="name" ng-model="inputText" placeholder="{{'expiryDate' | translate}}">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" class="inputs form-control" id="name" required name="name" ng-model="inputText" placeholder="{{'securityCode' | translate}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="checkout-title">{{'billingAddress' | translate}}</span>
+                <p class="checkout-subtitle">{{'selectTheAddress' | translate}}</p>
+                <div class="form-group1">
+                    <input type="text" name="" class="inputs" ng-model="inputText" placeholder="{{'sameShippingAddress' | translate}}">
+                    <input type="text" name="" class="inputs" ng-model="inputText" placeholder="{{'differentBillingAddress' | translate}}">
+
+                </div>
+                <div class="row checkout-btn">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
+                        <button class="update-cart-btn" (click)="onClickPay()">{{'payNow' | translate}}</button><br>
+                        <button class="check-out-btn" (click)="onClickShipping()">{{'returnToShipping' | translate}}</button>
+                    </div>
+                    <div class="col-lg-3"></div>
+                </div>
+            </form>
+
+        </section>
+    </div>
+    <div class="col-lg-6 checkout-right mobile-checkout-right">
+        <div class="container">
+            <div class="checkout-right-table">
+                <div class="order-summary__sections">
+                    <div class="order-summary__section order-summary__section--product-list">
+                        <div class="order-summary__section__content">
+                            <table class="product-table">
+                                <caption class="visually-hidden">Shopping cart</caption>
+                                <tbody data-order-summary-section="line-items">
+                                    <tr class="product" *ngFor="let data of cartDetails">
+                                        <td class="product__image">
+                                            <div class="product-thumbnail ">
+                                                <div class="product-thumbnail__wrapper">
+                                                    <img alt="energy drink pre workout" class="product-thumbnail__image" [src]="data.image">
+                                                </div>
+                                                <span class="product-thumbnail__quantity" aria-hidden="true">{{data?.quantity}}</span>
+                                            </div>
+                                        </td>
+                                        <th class="product__description" scope="row">
+                                            <span class="product__description__name order-summary__emphasis">{{data?.title}}</span>
+                                            <span class="product__description__variant order-summary__small-text">{{data?.variantTitle}}</span>
+                                        </th>
+                                        <td class="product__quantity">
+                                            <span class="visually-hidden">
+                                      1
+                                      </span>
+                                        </td>
+                                        <td class="product__price">
+                                            <span class="order-summary__emphasis skeleton-while-loading">${{data?.total}}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="order-summary__section order-summary__section--total-lines" data-order-summary-section="payment-lines">
+                        <table class="total-line-table col">
+                            <tbody class="total-line-table__tbody">
+                                <tr class="total-line total-line--subtotal">
+                                    <th class="total-line__name" scope="row">{{'subTotal' | translate}}</th>
+                                    <td class="total-line__price text-right">
+                                        <span class="order-summary__emphasis skeleton-while-loading">
+                                    ${{cartCount?.subTotal}}
+                                   </span>
+                                    </td>
+                                </tr>
+                                <tr class="total-line total-line--shipping">
+                                    <th class="total-line__name" scope="row">
+                                        <span>
+                                    {{'shipping' | translate}}
+                                   </span>
+                                    </th>
+                                    <td class="total-line__price text-right">
+                                        <span class="skeleton-while-loading order-summary__emphasis">
+                                    ${{shipping}}
+                                   </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="total-line-table__footer">
+                                <tr class="total-line">
+                                    <th class="total-line__name payment-due-label" scope="row">
+                                        <span class="payment-due-label__total">{{'total' | translate}}</span>
+                                    </th>
+                                    <td class="total-line__price payment-due text-right">
+                                        <span class="payment-due__currency remove-while-loading">USD</span>
+                                        <span class="payment-due__price skeleton-while-loading--lg" data-checkout-payment-due-target="2400">
+                                    ${{total}}
+                                   </span>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="border-top py-2 px-5">{{'allRight' | translate}}</div>
+    </div>

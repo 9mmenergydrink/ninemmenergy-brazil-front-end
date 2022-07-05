@@ -1,0 +1,16 @@
+/* @media only screen and (max-width: 1000px) {
+  .tabText {
+    display: none;
+  }
+} */
+
+@media only screen and (max-width: 1000px) {
+  ::ng-deep .col-lg-3 {
+    /* width: 55px !important; */
+  }
+
+  ::ng-deep .col-lg-8 {
+    /* width: 86% !important; */
+  }
+}
+body {font-family: 'Open Sans', sans-serif;}

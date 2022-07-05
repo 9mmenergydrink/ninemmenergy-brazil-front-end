@@ -1,0 +1,129 @@
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+
+<body>
+    <main class="animsition-overlay min-height-ipad" data-animsition-overlay="true" id="up" #up>
+        <!-- page-head start -->
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <section class="page-head flex-min-height-box dark-bg-1 header-shop">
+            <!-- page-head-bg -->
+            <div class="page-head-bg overlay-loading2"></div>
+        </section>
+        <!-- page-head end -->
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark account-menu d-lg-none">
+            <a class="navbar-brand pl-3">{{'myAccount' |translate }}</a>
+            <button class="navbar-toggler" type="button" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed">
+    <!-- <span class="navbar-toggler-icon"></span> -->
+    <i class="fa fa-arrow-up" *ngIf="!isCollapsed"></i>
+    <i class="fa fa-arrow-down" *ngIf="isCollapsed"></i>
+  </button>
+            <div class="collapse navbar-collapse" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+                <!-- <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" >Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" >Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" >Link</a>
+      </li>    
+    </ul> -->
+                <div class="col-lg-3 fa-back">
+                    <div class="d-block">
+                        <div id="orders" (click)="tabClickEvent('orders')">
+                            <i class="fa fa-shopping-cart" style="margin: 10px;"></i>
+                            <span class="tabText">{{'orders' |translate }}</span>
+                        </div>
+                        <div id="profile" (click)="tabClickEvent('profile')">
+                            <i class="fas fa-user" style="margin: 10px;"></i>
+                            <span class="tabText">{{'profilePasword' |translate }}</span>
+                        </div>
+                        <!-- <div id="delivery" (click)="tabClickEvent('delivery')">
+                            <i class="fas fa-truck" style="margin: 10px;"></i>
+                            <span class="tabText">{{'deliveryAddress' |translate }}</span>
+                        </div>
+                        <div id="payment" (click)="tabClickEvent('payment')">
+                            <i class="far fa-credit-card" style="margin: 10px;"></i>
+                            <span class="tabText">{{'paymentMethods' |translate }}</span>
+                        </div> -->
+                        <div id="communication" (click)="tabClickEvent('communication')">
+                            <i class="fa fa-envelope" style="margin: 10px;"></i>
+                            <span class="tabText">{{'communicationsPrivacy' |translate }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <h4 class="myaccount-heading my-3 ml-2">{{'myAccount' |translate }}</h4>
+        </div>
+        <div class="top-bottom-padding-30 container pt-0">
+            <div class="row">
+                <!-- Begin My account sidebar -->
+                <div class="col-lg-3 fa-back d-none d-lg-block">
+                    <!-- <div class="d-block">
+                        <div id="orders" (click)="tabClickEvent('orders')">
+                            <i class="fa fa-shopping-cart" style="margin: 10px;"></i>
+                            <span class="tabText">{{'orders' |translate }}</span>
+                        </div>
+                        <div id="profile" (click)="tabClickEvent('profile')">
+                            <i class="fas fa-user" style="margin: 10px;"></i>
+                            <span class="tabText">{{'profilePasword' |translate }}</span>
+                        </div>
+                        <div id="delivery" (click)="tabClickEvent('delivery')">
+                            <i class="fas fa-truck" style="margin: 10px;"></i>
+                            <span class="tabText">{{'deliveryAddresses' |translate }}</span>
+                        </div>
+                        <div id="payment" (click)="tabClickEvent('payment')">
+                            <i class="far fa-credit-card" style="margin: 10px;"></i>
+                            <span class="tabText">{{'paymentMethods' |translate }}</span>
+                        </div>
+                        <div id="communication" (click)="tabClickEvent('communication')">
+                            <i class="fa fa-envelope" style="margin: 10px;"></i>
+                            <span class="tabText">{{'communicationsPrivacy' |translate }}</span>
+                        </div>
+                    </div> -->
+
+                    <ul class="side-bar">
+                        <li id="orders" (click)="tabClickEvent('orders')">
+                            <i class="fa fa-shopping-cart m-2"></i>
+                            <a class="hover-color"><span class="tabText">{{'orders' |translate }}</span></a>
+                        </li>
+                        <li id="profile" (click)="tabClickEvent('profile')">
+                            <i class="fas fa-user m-2"></i>
+                            <a class="hover-color"> <span class="tabText">{{'profilePasword' |translate }}</span></a>
+                        </li>
+                        <!-- <li id="delivery" (click)="tabClickEvent('delivery')">
+                            <i class="fas fa-truck m-2"></i>
+                            <a class="hover-color"><span class="tabText">{{'deliveryAddresses' |translate }}</span></a>
+                        </li>
+                        <li id="payment" (click)="tabClickEvent('payment')">
+                            <i class="far fa-credit-card m-2"></i>
+                            <a class="hover-color"><span class="tabText">{{'paymentMethods' |translate }}</span></a>
+                        </li> -->
+                        <li id="communication" (click)="tabClickEvent('communication')">
+                            <i class="fa fa-envelope m-2"></i>
+                            <a class="hover-color"><span class="tabText">{{'communicationsPrivacy' |translate }}</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End My account sidebar -->
+                <!-- Begin My account Active Tab Content -->
+                <!--*ngIf="accountData"-->
+                <div class="col-lg-8">
+                    <app-orders *ngIf="activeTab === 'orders'" [order]="order"></app-orders>
+                    <app-profile-pwd *ngIf="activeTab === 'profile'" [profile]="profile"></app-profile-pwd>
+                    <app-delivery-address *ngIf="activeTab === 'delivery'" [countries]="countries" [address]="address"></app-delivery-address>
+                    <app-payment-method *ngIf="activeTab === 'payment'"></app-payment-method>
+                    <app-communication-privacy *ngIf="activeTab === 'communication'"></app-communication-privacy>
+                </div>
+            </div>
+            <!-- End My account Active Tab Content -->
+        </div>
+    </main>
+    <app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>
+
+</body>

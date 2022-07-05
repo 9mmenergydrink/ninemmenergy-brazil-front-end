@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{'cancelOrder' | translate}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+        <!-- <label> {{'name' | translate }}<span class="text-danger pl-1">*</span></label> -->
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>{{'reason' | translate}}<span class="text-danger pl-1">*</span></label>
+            <select class="form-control" [(ngModel)]="selectedReason">
+                <option *ngFor="let reason of reasonList" [ngValue]="reason">{{reason?.name}}</option> 
+            </select>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="cancel-btn mr-2" (click)="activeModal.close('Close click')">{{'close' | translate}}</button>
+    <button type="button" class="order-btn" (click)="cancelReason()">{{'submit' | translate}}</button>
+</div>

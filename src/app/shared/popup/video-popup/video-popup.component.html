@@ -1,0 +1,11 @@
+<!-- <ng-template #videopopup let-modal class="modal-dialog modal-xl"> -->
+    <div class="">
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      <!-- <iframe class="iframe-size" [src]="videoUrl" title="" frameborder="0"  autoplay=1 allow='autoplay' allowfullscreen></iframe> -->
+      <div class="iframe-size">
+        <video [src]="videoUrl" autoplay loop playsinline preload="auto"></video>
+      </div>
+    </div>
+  <!-- </ng-template> -->

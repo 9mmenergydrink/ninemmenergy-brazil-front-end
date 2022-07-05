@@ -1,0 +1,62 @@
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+
+<body class="loader">
+    <!-- <div class="loading">
+        <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
+    </div> -->
+    <!-- loading end -->
+    <main class="animsition-overlay top-padding-90" data-animsition-overlay="true" id="up" #up>
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <div class="col-md-12 top-padding-90">
+            <section>
+                <div class="container-fluid top-bottom-padding-120">
+                    <div data-animation="title-fill-anim" class="title-fill d-block text-dark mt-2">
+                        <i class="fa fa-arrow-left"></i>&nbsp; <a [routerLink]="commonMtd.getRoutePath('clinical')" class="cont-shop hover-color">{{'ClinicalStudies' | translate}}</a></div>
+                    <!-- <h6 class="text-left mt-2"><i class="fa fa-arrow-left"></i> </h6> -->
+                    <h2 class="text-center mb-2 mt-3">{{studyDetails?.primary?.studies_name}}</h2>
+                    <table class="table table-striped table-responsive">
+                        <thead class="red-bg text-white">
+                            <tr>
+                                <th width="100px">{{'study' | translate}}</th>
+                                <th>{{'information' | translate}}</th>
+                                <th>{{'humanSubject' | translate}}</th>
+                                <th>{{'dbpc' | translate}}</th>
+                                <th>{{'psee' | translate}}</th>
+                                <th>{{'ssc' | translate}}</th>
+                                <th>{{'ph' | translate}}</th>
+                                <th>{{'age' | translate}}</th>
+                                <th>{{'ds' | translate}}</th>
+                                <th>{{'sr' | translate}}</th>
+                                <th>{{'cs' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of studyDetails?.items">
+                                <td>
+                                    <!-- [href]="item.pdf_link.url" target="_new" -->
+                                    {{item?.study}}
+                                </td>
+                                <td>
+                                    <div class="shop-btn m-0 px-3 py-2" (click)="openPdf(item?.pdf_link.url)" target="_new" title="Open PDF File">{{'details' | translate}}</div>
+                                </td>
+                                <td>{{item?.human_subject}}</td>
+                                <td>{{item?.dbpc}}</td>
+                                <td>{{item?.psee}}</td>
+                                <td>{{item?.ssc}}</td>
+                                <td>{{item?.population_healthy}}</td>
+                                <td>{{item?.age}}</td>
+                                <td>{{item?.duration_of_study}}</td>
+                                <td>{{item?.significant_results}}</td>
+                                <td>{{item?.claim_supported}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+<app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>

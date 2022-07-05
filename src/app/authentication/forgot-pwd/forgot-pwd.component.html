@@ -1,0 +1,88 @@
+<app-header [headerSection]="headerSection" [cartCount]="cartCount">
+
+</app-header>
+
+<body>
+    <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <!-- page-head start -->
+        <section class="page-head flex-min-height-box dark-bg-1 header-shop">
+            <!-- page-head-bg -->
+            <div class="page-head-bg overlay-loading2"></div>
+        </section>
+        <!-- page-head end -->
+
+        <div class="top-bottom-padding-30 fa-back min-height-ipad ">
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4" style="padding-left: 50px;padding-right: 50px;">
+                    <div class="white-card">
+                        <section>
+                            <div class="login-panel">
+                                <div class="yellow-color login-text">{{title1 | translate}}</div>
+                                <p style="margin-top: 10px;">{{title2 | translate}}</p>
+                            </div>
+
+                        </section>
+                        <section>
+                            <form class="auto-fill" [formGroup]="formGroup">
+                                <div class="form-group" *ngIf="v==0">
+                                    <label for="exampleInputEmail1">{{'email' |translate }}</label>
+                                    <input type="email" formControlName="email" name="email" [ngClass]="{'error':f?.email?.errors&&f?.email?.touched}" class="form-control" placeholder="{{'enterEmail' |translate }}">
+                                    <div *ngIf="f?.email?.errors && f?.email?.touched" class="text-danger">
+                                        <div *ngIf="f?.email?.errors?.required">{{'enterEmail' |translate }}</div>
+                                        <div *ngIf="f?.email?.errors?.pattern">
+                                            {{'enterValidEmail' |translate }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <ng-container *ngIf="v==2">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">{{'newPassword' |translate }} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="password" formControlName="password" name="password" [ngClass]="{'error':f?.password?.errors&&f?.password?.touched}" class="form-control" placeholder=" {{'enterPassword' |translate }}">
+                                        <div *ngIf="f?.password?.errors && f?.password?.touched" class="text-danger">
+                                            <div *ngIf="f?.password?.errors?.required">
+                                                {{'enterPassword' |translate }}
+                                            </div>
+                                            <div *ngIf="f?.password?.errors?.minlength">
+                                                {{'must8Character' |translate }}
+                                            </div>
+                                            <div *ngIf="f?.password?.errors?.pattern">
+                                                {{'mustLowerCase' |translate }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">{{'confirmPassword' |translate }} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="password" formControlName="confPassword" name="confPassword" [ngClass]="{'error':f?.confPassword?.errors&&f?.confPassword?.touched}" class="form-control" placeholder="{{'confirmPassword' |translate }}">
+                                        <div *ngIf="f?.confPassword?.errors && f?.confPassword?.touched" class="text-danger">
+                                            <div *ngIf="f?.confPassword?.errors?.required">
+                                                {{'enterValdPassword' |translate }}
+                                            </div>
+                                            <div *ngIf="f?.confPassword?.errors?.NoPassswordMatch">{{'passwordDontMatch' |translate }}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </ng-container>
+                                <div class="form-group text-center" *ngIf="v==1">
+                                    <i class="fa fa-check-circle" style="font-size:55px"></i>
+                                </div>
+                                <div class="col-md-12 text-center form-group p-0">
+                                    <button (click)="submit()" [disabled]="!formGroup.valid" type="button" class="update-cart-btn">{{btnName | translate}}</button>
+                                </div>
+
+                            </form>
+                        </section>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+        </div>
+    </main>
+    <app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>
+</body>

@@ -1,0 +1,300 @@
+<app-header [headerSection]="headerSection" [cartCount]="cartCount">
+
+</app-header>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+<!-- loading start -->
+
+<body class="loader">
+    <div class="loading">
+        <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
+    </div>
+    <!-- loading end -->
+
+    <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <!-- page-head start -->
+        <section class="page-head flex-min-height-box new-bg-color position-relative custom-banner-height">
+            <!-- page-head-bg -->
+            <div class="page-head-bg overlay-loading2" [style.background-image]="'url('+bannerSection?.primary?.image?.url+')'"></div>
+
+            <!-- flex-min-height-inner start -->
+            <div class="flex-min-height-inner">
+                <!-- flex-container start -->
+                <div class="container top-bottom-padding-120 flex-container response-999">
+                    <!-- column start -->
+                    <div class="six-columns six-offset mt-5">
+                        <div class="content-left-margin-40">
+                            <!-- <h2 class="large-title-bold">
+                                <span class="load-title-fill tr-delay03"
+                                    [attr.data-text]="bannerSection?.primary?.content1">{{bannerSection?.primary?.content1}}</span><br>
+                                <span class="load-title-fill tr-delay04"
+                                    [attr.data-text]="bannerSection?.primary?.content2">{{bannerSection?.primary?.content2}}</span><br>
+                                <span class="load-title-fill tr-delay05"
+                                    [attr.data-text]="bannerSection?.primary?.content3">{{bannerSection?.primary?.content3}}</span>
+                            </h2> -->
+                            <h2 class="overlay-loading2 medium-title red-color">
+                                {{bannerSection?.primary?.content1}}</h2>
+                            <h3 class="large-title-bold text-color-4">
+                                <!-- <span class="overlay-loading2 overlay-light-bg-1 tr-delay04 red-color">{{bannerSection?.primary?.content1}}</span><br>
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay05 red-color">{{bannerSection?.primary?.content2}}</span><br> -->
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay02">{{bannerSection?.primary?.content2}}</span>
+                            </h3>
+                            <p class="p-style-bold-up text-height-20 d-flex-wrap">
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay03 banner-3text" [attr.data-text]="bannerSection?.primary?.content3">{{bannerSection?.primary?.content3}}</span>
+                            </p>
+                            <div class="border-btn-box border-btn-red pointer-large mt-3">
+                                <div class="border-btn-inner"><a [attr.data-text]="'shopNow' | translate" class="border-btn" (click)="gotoReadMore()">{{'shopNow' | translate}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column end -->
+                </div>
+                <!-- flex-container end -->
+            </div>
+            <!-- flex-min-height-inner end -->
+
+            <!-- scroll-btn start -->
+            <!-- <a  (click)="scroll(down)" class="scroll-btn pointer-large">
+                 <div class="scroll-arrow-box">
+                    <span class="scroll-arrow"></span>
+                </div>
+                <div class="scroll-btn-flip-box">
+                    <span class="scroll-btn-flip" [attr.data-text]="'scroll' | translate">{{'scroll' | translate}}
+                     </span>
+                </div>
+            </a> -->
+            <!-- scroll-btn end -->
+        </section>
+        <!-- page-head end -->
+
+        <!-- blog start -->
+        <div id="down" #down class="blog container bottom-padding-30 top-padding-120 light-bg-1">
+            <!-- flex-container start -->
+            <div class="flex-container">
+                <!-- column start -->
+                <div class="eight-columns latest-news">
+                    <!-- blog-entry start -->
+
+                    <article class="bottom-padding-90">
+                        <div class="light-bg-2" *ngIf="recentPosts[0]">
+                            <a (click)="onClickBlog(recentPosts[0])" class="pointer-large animsition-link hover-box d-block">
+                                <div class="overlay-loading2 overlay-dark-bg-2" *ngIf="recentPosts[0]?.data?.image?.url">
+                                    <img class="hover-img" [src]="recentPosts[0]?.data?.image?.url" [alt]="(recentPosts[0]?.data?.image?.alt)?recentPosts[0].data.image.alt:''">
+                                </div>
+                                <div class="content-padding-l-r-20" data-animation-container>
+                                    <h3 class="title-style text-color-1 top-margin-30 text-height-12">
+                                        <div data-animation-child class="overlay-loading2 overlay-dark-bg-2">{{recentPosts[0]?.data?.title}}</div>
+                                        <!-- <br><span data-animation-child class="overlay-loading2 hover-content overlay-dark-bg-2 tr-delay01" data-animation="overlay-anim2">party organic</span><br>
+                                        <span data-animation-child class="overlay-loading2 hover-content overlay-dark-bg-2 tr-delay02" data-animation="overlay-anim2">umami kombucha</span> -->
+                                    </h3>
+                                    <p data-animation-child class="overlay-loading2 hover-content tr-delay03 p-style-medium text-color-2 mt-2 text-ellipsis">{{recentPosts[0]?.data?.description}}</p>
+                                </div>
+                            </a>
+                            <div class="content-padding-l-r-20 content-padding-bottom-20" data-animation-container>
+                                <ul *ngIf="recentPosts[0]?.data?.pin" data-animation-child class="overlay-loading2 blog-category top-margin-30 text-color-2">
+                                    <li><i class="fas fa-thumbtack text-color-3"></i></li>
+                                    <!-- <li class="p-letter-style pointer-small hover-color"><a>{{recentPosts[0]?.pin}}</a></li> -->
+                                    <!-- <li class="p-letter-style pointer-small hover-color"><a >art</a></li> -->
+                                </ul>
+                                <ul data-animation-child class="blog-tags top-margin-10 overlay-loading2 tr-delay01 text-color-2">
+                                    <li><i class="fas fa-tags text-color-3"></i></li>
+                                    <li class="p-letter-style pointer-small hover-color"><a>{{recentPosts[0]?.data?.tag}}</a></li>
+                                    <!-- <li class="p-letter-style pointer-small hover-color"><a >post formats</a></li> -->
+                                </ul>
+                                <div data-animation-child class="blog-autor-date top-margin-30 overlay-loading2 tr-delay02 text-color-1">
+                                    <a class="xsmall-title-oswald pointer-small hover-color">{{recentPosts[0]?.data?.author_name}}</a>
+                                    <a class="xsmall-title-oswald pointer-small hover-color">{{recentPosts[0]?.data?.date}}</a>
+                                </div>
+                                <div class="shop-btn ml-0" (click)="onClickBlog(recentPosts[0])">{{'readMore' | translate}}</div>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- left image right content section -->
+                    <article *ngFor="let item of contentSection | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;let i=index" class="bottom-padding-90">
+                        <div class="light-bg-2">
+                            <a (click)="onClickBlog(item)" class="pointer-large animsition-link hover-box row">
+                                <div class="col-md-5 p-0 overlay-loading2 overlay-dark-bg-2 blo-img">
+                                    <img class="hover-img" [src]="item?.data?.image?.url" [alt]="(item?.data?.image?.alt)?item.data.image.alt:''">
+                                </div>
+                                <div class="col-md-7 content-padding-l-r-20 my-2" data-animation-container>
+                                    <h3 class="title-style text-color-1 text-height-12">
+                                        <div data-animation-child class="overlay-loading2 overlay-dark-bg-2 title-ellipsis">{{item?.data?.title}}</div>
+                                        <!-- <br><span data-animation-child class="overlay-loading2 hover-content overlay-dark-bg-2 tr-delay01" data-animation="overlay-anim2">party organic</span><br>
+                                        <span data-animation-child class="overlay-loading2 hover-content overlay-dark-bg-2 tr-delay02" data-animation="overlay-anim2">umami kombucha</span> -->
+                                    </h3>
+                                    <p data-animation-child class="overlay-loading2 tr-delay03 p-style-medium text-color-2 mt-2 text-ellipsis">{{item?.data?.description}}</p>
+                                    <div class="content-padding-l-r-20 pl-0" data-animation-container>
+                                        <ul *ngIf="item?.data?.pin" data-animation-child class="overlay-loading2 blog-category  text-color-2">
+                                            <li><i class="fas fa-thumbtack text-color-3"></i></li>
+                                            <!-- <li class="p-letter-style pointer-small hover-color"><a>{{item?.pin}}</a></li> -->
+                                            <!-- <li class="p-letter-style pointer-small hover-color"><a >art</a></li> -->
+                                        </ul>
+                                        <ul data-animation-child class="blog-tags overlay-loading2 tr-delay01 text-color-2">
+                                            <li><i class="fas fa-tags text-color-3"></i></li>
+                                            <li class="p-letter-style pointer-small hover-color"><a>{{item?.data?.tag}}</a></li>
+                                            <!-- <li class="p-letter-style pointer-small hover-color"><a >post formats</a></li> -->
+                                        </ul>
+                                        <div data-animation-child class="blog-autor-date top-margin-10 overlay-loading2 tr-delay02 text-color-1">
+                                            <a class="xsmall-title-oswald pointer-small hover-color">{{item?.data?.author_name}}</a>
+                                            <a class="xsmall-title-oswald pointer-small hover-color">{{item?.data?.date}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </article>
+                    <div class="text-center" *ngIf="contentSection?.length > 2">
+                        <div class="border-btn-box border-btn-red pointer-large mt-3 mb-3">
+                            <div class="border-btn-inner pagination-common">
+                                <ngb-pagination [collectionSize]="contentSection?.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="2" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+                </div>
+                <!-- column end -->
+                <!-- column start -->
+                <aside class="four-columns bottom-padding-90 custom-aside">
+                    <!-- sidebar start -->
+                    <div class="sidebar content-left-margin-40 red-bg">
+                        <!-- sidebar-box start -->
+                        <div class="sidebar-box">
+                            <!-- form search start -->
+                            <!-- <div class="pt-4">
+                                <form class="form-search">
+                                    <input type="text" class="search-control pointer-small"  placeholder="Search...">
+                                    <button class="search-btn pointer-large" type="button" ><i
+                                            class="fas fa-search"></i></button>
+                                </form>
+                            </div>  -->
+                            <!-- form search end -->
+
+                            <!-- widget-categories start -->
+                            <div class="widget-categories pt-4">
+                                <h4 class="p-style-bold-up red-color pb-2">{{sideBarSection?.primary?.category_title}}</h4>
+                                <ul class="red-color">
+                                    <li *ngFor="let item of categorySection">
+                                        <a (click)="getCategoryPost(item)" class="pointer-small small-title-oswald">{{item?.data?.name}}
+                                            ({{item?.count}})</a>
+                                        <!-- <a [ngStyle]="{'display': category!=item?.category ? 'block':'none'}"
+                                            class="pointer-small small-title-oswald"
+                                            (click)="getCategoryPost(item.category)">{{item?.category}}
+                                            ({{item?.count}})</a>
+                                        <a [ngStyle]="{'display': category==item?.category ? 'block':'none'}"
+                                            class="pointer-small small-title-oswald"
+                                            (click)="getCategoryPost(item.category)"
+                                            style="color:#ebcc00;">{{item?.category}}
+                                            ({{item?.count}})</a> -->
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- widget-categories end -->
+
+                            <!-- recent posts start RECENT POSTS-->
+                            <div class="pt-4">
+                                <h4 class="p-style-bold-up red-color pb-2">{{sideBarSection?.primary?.recent_post_title}}</h4>
+                                <!-- recent posts content start -->
+                                <div class="">
+                                    <!-- recent-entry start -->
+                                    <div class="recent-entry" *ngFor="let item of recentPosts" (click)="onClickBlog(item)">
+                                        <a class="recent-entry-img-box pointer-large ">
+                                            <img [src]="item?.data?.image?.url" [alt]="(item?.data?.image?.alt)?item.data.image.alt:''">
+                                        </a>
+                                        <div class="recent-desc">
+                                            <a class="xsmall-title-oswald text-color-4 pointer-large animsition-link">{{item?.data?.title}}</a>
+                                            <div class="p-style-xsmall text-color-4 text-height-10 top-margin-5">
+                                                {{item?.data?.date}}</div>
+                                        </div>
+                                    </div>
+                                    <!-- recent-entry end -->
+                                    <!-- recent-entry start -->
+                                    <!-- <div class="recent-entry">
+                                        <a href="single_post.html" class="recent-entry-img-box pointer-large animsition-link">
+                                            <img src="assets/images/blog/pexels-photo-348523.jpeg" alt="title">
+                                        </a>
+                                        <div class="recent-desc">
+                                            <a href="single_post.html" class="xsmall-title-oswald text-color-4 pointer-large animsition-link">Chambray enamel pin synth shabby</a>
+                                            <div class="p-style-xsmall text-color-4 text-height-10 top-margin-5">December 18, 2018</div>
+                                        </div>
+                                    </div>recent-entry end -->
+                                    <!-- recent-entry start -->
+                                    <!-- <div class="recent-entry">
+                                        <a href="single_post.html" class="recent-entry-img-box pointer-large animsition-link">
+                                            <img src="assets/images/blog/pexels-photo-1057120.jpeg" alt="title">
+                                        </a>
+                                        <div class="recent-desc">
+                                            <a href="single_post.html" class="xsmall-title-oswald text-color-4 pointer-large animsition-link">Waistcoat shaman air plant ethical</a>
+                                            <div class="p-style-xsmall text-color-4 text-height-10 top-margin-5">December 14, 2018</div>
+                                        </div>
+                                    </div> -->
+                                    <!-- recent-entry end -->
+                                    <!-- recent-entry start -->
+                                    <!-- <div class="recent-entry">
+                                        <a href="single_post.html" class="recent-entry-img-box pointer-large animsition-link">
+                                            <img src="assets/images/blog/pexels-photo-1280553.jpeg" alt="title">
+                                        </a>
+                                        <div class="recent-desc">
+                                            <a href="single_post.html" class="xsmall-title-oswald text-color-4 pointer-large animsition-link">Chambray master cleanse health goth</a>
+                                            <div class="p-style-xsmall text-color-4 text-height-10 top-margin-5">December 10, 2018</div>
+                                        </div>
+                                    </div> -->
+                                    <!-- recent-entry end -->
+                                </div>
+                                <!-- recent posts content end -->
+                            </div>
+                            <!-- recent posts end -->
+
+                            <!-- widget-tags start -->
+                            <div class="widget-tags pt-4">
+                                <h4 class="p-style-bold-up red-color pb-2">{{sideBarSection?.primary?.tag_title}}</h4>
+                                <ul class="d-flex-wrap red-color">
+                                    <li *ngFor="let item of tagSection">
+                                        <!-- <a (click)="tagArticle(item?.tag)"
+                                            class="pointer-small small-title-oswald">{{item?.tag}}</a> -->
+                                        <!-- /..........this change replaced 01/12/2021............../ -->
+                                        <!-- <a [ngStyle]="{'display': tag!=item?.tag ? 'block':'none'}" class="pointer-small small-title-oswald" (click)="tagArticle(item?.tag)">{{item?.tag}}</a>
+                                        <a [ngStyle]="{'display': tag==item?.tag ? 'block':'none'}" class="pointer-small small-title-oswald" (click)="tagArticle(item?.tag)" style="color:#ebcc00;">{{item?.tag}}</a> -->
+                                        <p class="tag-content">{{item[0]}}</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- widget-tags end -->
+
+                            <!-- widget-instagram start -->
+                            <div class="widget-instagram pt-4 pb-3">
+                                <h4 class="p-style-bold-up red-color pb-3">{{sideBarSection?.primary?.instagram_title}}</h4>
+                                <ul class="d-flex-wrap">
+                                    <li *ngFor="let item of instagramSection">
+                                        <div class="hover-box hidden-box99 pointer-small">
+                                            <a class="pointer-open d-block" (click)="onClickInstaPost(item?.username)">
+                                                <!-- <img class="hover-img" [src]="item?.media_url" [alt]="'post' | translate"> -->
+                                                <ng-container *ngIf="item?.media_type!='VIDEO'">
+                                                    <img height="150" class="hover-img" [src]="item?.media_url" [alt]="'post' | translate">
+                                                </ng-container>
+                                                <ng-container *ngIf="item?.media_type=='VIDEO'">
+                                                    <video width="100%" height="150" [src]="item?.media_url" controls preload="metadata" playsinline></video>
+                                                </ng-container>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div id="instafeed"></div>
+                            </div>
+                            <!-- widget-instagram end -->
+                        </div>
+                        <!-- sidebar-box end -->
+                    </div>
+                    <!-- sidebar end -->
+                </aside>
+                <!-- column end -->
+            </div>
+            <!-- flex-container end -->
+        </div>
+        <!-- blog end -->
+    </main>
+</body>
+<app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>

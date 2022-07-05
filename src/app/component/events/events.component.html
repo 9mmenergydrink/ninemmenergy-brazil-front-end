@@ -1,0 +1,208 @@
+<!-- <meta name="robots" content="index, follow">  -->
+<meta name="google-site-verification" content="QdLjwtyqNDH_RzgKsa3B55mv3tLUiN15c09FvVEP4r4" />
+
+<!-- <link rel="canonical" href="https://www.9mmenergy.com/events" /> -->
+
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+
+<body class="loader">
+    <div class="loading">
+        <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
+    </div>
+    <!-- loading end -->
+    <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <!-- page-head start -->
+        <section class="page-head flex-min-height-box new-bg-color position-relative custom-banner-height">
+            <!-- page-head-bg -->
+            <div class="page-head-bg overlay-loading2" [style.background-image]="'url('+bannerSection?.primary?.image?.url+')'"></div>
+            <!-- flex-min-height-inner start -->
+            <div class="flex-min-height-inner">
+                <!-- flex-container start -->
+                <div class="container top-bottom-padding-120 flex-container response-999">
+                    <!-- column start -->
+                    <div class="six-columns six-offset mt-5">
+                        <div class="content-left-margin-40">
+                            <h2 class="overlay-loading2 medium-title red-color">
+                                {{bannerSection?.primary?.content1}}</h2>
+                            <h3 class="large-title-bold text-color-4">
+                                <!-- <span
+                                    class="overlay-loading2 overlay-light-bg-1 tr-delay04 red-color">{{bannerSection?.primary?.content1}}</span><br> -->
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay02">{{bannerSection?.primary?.content2}}</span>
+                            </h3>
+                            <p class="p-style-bold-up text-height-20 d-flex-wrap">
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay03 banner-3text" [attr.data-text]="bannerSection?.primary?.content3">{{bannerSection?.primary?.content3}}</span>
+                            </p>
+                            <div class="border-btn-box border-btn-red pointer-large mt-3">
+                                <div class="border-btn-inner"><a [attr.data-text]="'shopNow' | translate" class="border-btn" (click)="gotoReadMore()">{{'shopNow' | translate}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column end -->
+                </div>
+                <!-- flex-container end -->
+            </div>
+            <!-- flex-min-height-inner end -->
+            <!-- scroll-btn start -->
+            <!-- <a (click)="scroll(down)" class="scroll-btn pointer-large">
+                <div class="scroll-arrow-box">
+                    <span class="scroll-arrow"></span>
+                </div>
+                <div class="scroll-btn-flip-box">
+                    <span class="scroll-btn-flip" [attr.data-text]="'scroll' | translate">{{'scroll' | translate}}</span>
+                </div>
+            </a> -->
+            <!-- scroll-btn end -->
+        </section>
+        <!-- section start -->
+        <section id="down" #down class="dark-bg-1 top-bottom-padding-120">
+            <div class="container text-center" *ngIf="lfaEvent && motorEvent">
+                <!-- <h2 class="large-title title-fill d-block" data-animation="title-fill-anim"
+                    [attr.data-text]="upcomingSection?.primary?.title">{{upcomingSection?.primary?.title}}</h2> -->
+                <div class="btn-group btn-group-toggle tab pt-2" ngbRadioGroup [(ngModel)]="currentOrientation">
+                    <label ngbButtonLabel class="btn-outline-warning btn-lg px-5 overlay-loading2">
+                        <input ngbButton type="radio" value="Corporate Events" (click)="onClick(1)">{{'shows' | translate}}
+                    </label>
+                    <label ngbButtonLabel class="btn-outline-warning btn-lg overlay-loading2">
+                        <input ngbButton type="radio" value="Shows" (click)="onClick(2)">{{'corporateEvents' | translate}}
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="container text-center pt-4">
+                <h2 class="large-title overlay-loading2 ">
+                    {{filteredEvents?.primary?.title}}</h2>
+                <!-- <h2 class="large-title title-fill d-block" data-animation="title-fill-anim"
+                    [attr.data-text]="filteredEvents?.primary?.title">{{filteredEvents?.primary?.title}}</h2> -->
+                <p class="p-style-large text-color-5 fade-anim-box tr-delay01 animated fade-anim mb-4" data-animation="fade-anim">
+                    <span class="overlay-loading2 overlay-light-bg-1 tr-delay04" [attr.data-text]="filteredEvents?.primary?.content">{{filteredEvents?.primary?.content}}</span>
+                </p>
+
+                <div *ngFor="let data of filteredEvents?.items  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i=index, let o=odd, let e=even, let l=last" class="flex-container event-desktop" [ngClass]="{evenitem:e,odditem:o}">
+                    <div class="flex-all-events tire-hover">
+                        <div class="col-lg-5">
+                            <ng-container>
+                                <a data-animation-container class="content-left-right-margin-10 hover-box pointer-large d-block">
+                                    <img [src]="data?.image?.url" class="hover-img tire-hover" [alt]="(data?.image?.alt)?data.image.alt:''">
+                                </a>
+                            </ng-container>
+                        </div>
+                        <div class="col-lg-2 event-list" [ngClass]="{lastitem:l}">
+                            <li>
+                                <a class="pointer-large ">
+                                    <div class="brand-box">
+                                        <img [src]="data?.icon?.url" [alt]="(data?.icon?.alt)?data.icon.alt:''" class="hover-opac-img image-tire">
+                                        <!-- <img *ngIf="item?.json.url==null" [src]="item?.image2?.url" [alt]="item?.image2?.alt" class="opac-img"> -->
+                                        <lottie-player class="opac-img" *ngIf="data?.icon_animation_json?.url!=null" autoplay loop mode="normal" [src]="data?.icon_animation_json?.url">
+                                        </lottie-player>
+                                    </div>
+                                </a>
+                            </li>
+                            <!-- <ng-container>
+                                <img [src]="data?.side_image?.url" class="hover-img" [alt]="data?.side_image?.alt">
+                            </ng-container> -->
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="content-left-margin-40">
+                                <h2 class="text-color-4">
+                                    <span class="overlay-loading2 overlay-light-bg-1 tr-delay04 red-color">{{data?.name}}</span>
+                                </h2>
+                                <h3 class="text-color-4 checkout-title" *ngIf="data?.teams_name">
+                                    <span class="overlay-loading2 overlay-light-bg-1 tr-delay04" [attr.data-text]="data?.teams_name">{{data?.teams_name}}</span>
+                                </h3>
+                                <p data-animation-child data-animation="fade-anim" class="p-style-xsmall text-color-4 text-height-10 top-margin-5 fade-anim-box tr-delay04 animated fade-anim">
+                                    {{data?.display_date}}
+                                </p>
+                                <h3 class="text-color-4 checkout-title">
+                                    <p data-animation-child data-animation="fade-anim" class="p-style-xsmall text-color-4 text-height-10 top-margin-5 fade-anim-box tr-delay04 animated fade-anim">
+                                        {{data?.location}}
+                                    </p>
+                                </h3>
+                                <!-- <h3 class="text-color-4 checkout-title">
+                                    <span class="overlay-loading2 overlay-light-bg-1 tr-delay04" [attr.data-text]="data?.event_date">{{data?.event_date | date:'MMM d, y | h:mm a'}}</span>
+                                </h3>
+                                <h3 class="text-color-4 checkout-title">
+                                    <span class="overlay-loading2 overlay-light-bg-1 tr-delay04" [attr.data-text]="data?.event_address">{{data?.event_address}}</span>
+                                </h3> -->
+                                <!-- <div class="border-btn-box border-btn-red pointer-large mt-3 mb-3">
+                                    <div class="border-btn-inner"><a [attr.data-text]="'buyTickets' | translate" class="border-btn">{{'buyTickets' | translate}}</a></div>
+                                </div> -->
+                            </div>
+                            <!-- <ng-container>
+                                <img [src]="data?.main_image?.url" class="hover-img" [alt]="data?.main_image?.alt">
+                            </ng-container> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Event section mobile view -->
+                <div class="container event-mobile">
+                    <div class="col-md-12">
+                        <div class="event-box" *ngFor="let data of filteredEvents?.items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i=index, let o=odd, let e=even, let l=last">
+                            <div class="">
+                                <img class="event-loop-img" [src]="data?.icon?.url" [alt]="(data?.icon?.alt)?data.icon.alt:''">
+                                <div class="event-after-line"></div>
+                            </div>
+                            <div class="mt-2">
+                                <img class="hover-img" [src]="data?.image?.url" [alt]="(data?.image?.alt)?data.image.alt:''">
+                            </div>
+                            <div class="text-center event-content mt-1">
+                                <h2 class="text-color-4"><span class="overlay-loading2 overlay-light-bg-1 tr-delay04 red-color">{{data?.name}}</span>
+                                </h2>
+                                <h3 class="text-color-4 checkout-title" *ngIf="data?.teams_name"><span class="overlay-loading2 overlay-light-bg-1 tr-delay04" [attr.data-text]="data?.teams_name">{{data?.teams_name}}</span></h3>
+                                <p data-animation-child="" data-animation="fade-anim" class="p-style-xsmall text-color-4 text-height-10 top-margin-5 fade-anim-box tr-delay04 animated fade-anim">
+                                    {{data?.display_date}}</p>
+                                <h3 class="text-color-4">
+                                    <p data-animation-child="" data-animation="fade-anim" class=" text-color-4 text-height-10 top-margin-5 fade-anim-box tr-delay04 animated fade-anim">
+                                        {{data?.location}} </p>
+                                </h3>
+                                <!-- <div class="border-btn-box border-btn-red pointer-large mt-3 mb-3">
+                                    <div class="border-btn-inner"><a [attr.data-text]="'buyTickets' | translate" class="border-btn">{{'buyTickets' | translate}}</a></div>
+                                </div> -->
+                                <div [ngClass]="{'event-after-line':!l}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+                <div class="border-btn-box border-btn-red pointer-large mt-3" *ngIf="filteredEvents?.items?.length > 5">
+                    <div class="border-btn-inner pagination-common pagi-white">
+                        <ngb-pagination [collectionSize]="filteredEvents?.items?.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+        <section data-animation-container class="dark-bg-2 folk-section">
+            <!-- container start -->
+            <div class="container top-bottom-padding-120" [ngClass]="(socialProofSection?.items?.length>0) ? 'd-block': 'd-none'">
+                <!-- medium-title start -->
+                <div class="text-center small">
+                    <h2 data-animation-child class="large-title text-height-10 text-color-1 overlay-anim-box2" data-animation="overlay-anim2">{{socialProofSection?.primary?.title1}}</h2><br>
+                    <p data-animation-child class="fade-anim-box tr-delay02 text-white medium-title-oswald top-margin-5" data-animation="fade-anim">{{socialProofSection?.primary?.title2}}</p>
+                </div>
+                <!-- medium-title end -->
+
+                <!-- client-list start -->
+                <ul class="client-list   d-flex justify-content-around top-padding-60 pl-5">
+                    <li *ngFor="let item of socialProofSection?.items ">
+                        <a class=" dblock">
+                            <div class=" ">
+                                <img [src]="item?.image?.url" [alt]="(item?.image?.alt)?item.image.alt:''" class="hover-img">
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- client-list end -->
+            </div>
+            <!-- container end -->
+        </section>
+    </main>
+</body>
+
+<app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>

@@ -1,0 +1,55 @@
+/* Order item search styles */
+.order-search {
+  position: relative;
+  border: 1px solid #1E2328; /*#1b2a2f*/
+}
+.order-search input {color: #1E2328; /*#1b2a2f*/}
+/* Begin Arrow Icon styles */
+.arrow {
+  border: solid #ebcc00;;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left: 10px;
+  margin-bottom: 2px;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+/* End Arrow Icon styles */
+
+/* Order Track Icon styles */
+.trackcompIcon {
+  color: white;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 15px;
+}
+
+/* Order Track Completed Line styles */
+.trackcompline {
+  height: 3px;
+  width: 50px;
+  position: relative;
+  background-color: gray;
+  top: 21px;
+  right: 13px;
+}
+
+/* Order Track Pending Line styles */
+.trackpenline {
+  height: 3px;
+  width: 50px;
+  right: 63px;
+  position: relative;
+  background-color: gray;
+  top: 21px;
+}

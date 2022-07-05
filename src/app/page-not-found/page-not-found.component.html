@@ -1,0 +1,73 @@
+<!-- <div class="container">
+    <div class="text-center center-xy">
+      <p><span class="font-weight-bold a-link vline-right pr-2">404</span>&nbsp;&nbsp;The page you are looking for is not found.</p>  
+    </div>
+  </div> -->
+  <app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+  <body>
+    <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
+  <div class="container top-bottom-padding-120 flex-container pb-0" style="margin-top: 75px;">
+    <div class="col-md-12">
+      <div data-animation-container="" class="text-center animated">
+        <h2 data-animation-child="" data-animation="overlay-anim2" class="large-title text-height-10 text-color-1 overlay-anim-box2 animated overlay-anim2 text-spacing2 ">{{contentSection?.primary?.title1}}</h2><br>
+        <p data-animation-child="" data-animation="fade-anim" class="text-transform-normal fade-anim-box tr-delay02 text-color-1 medium-title-oswald top-margin-5 animated fade-anim">{{contentSection?.primary?.title2}}</p>
+      </div>
+    </div>
+    <div class="col-md-12 d-flex justify-content-center">
+      <img [src]="contentSection?.primary?.image?.url" [alt]="(contentSection?.primary?.image?.alt)?contentSection?.primary?.image.alt:''" style="width:300px;">
+    </div>
+    <div data-animation-container="" class="col-md-12 text-center animated" *ngIf="products?.length">
+      <p data-animation-child="" data-animation="fade-anim" class="text-transform-normal fade-anim-box tr-delay02 text-color-1 medium-title-oswald top-margin-5 animated fade-anim">{{contentSection?.primary?.title3}}</p>
+    </div>
+  </div>
+  
+  <section id="down" #down class="top-bottom-padding-120 pt-0" *ngIf="products?.length">
+    <!-- Product section start -->
+    <div class="mx-3">
+        <div *ngIf="empty" style="color: antiquewhite;text-align: center;">{{'comingZoon' | translate}}</div>
+        <div class="row mx-md-5 px-md-5 d-flex justify-content-center">
+            <div class="col-lg-4 top-padding-75 pointer-large" *ngFor="let item of products  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i=index">
+              <div class="product-back" (click)="onClickProduct(item)">
+                    <div class="total-hover">
+                      <div class="img-hover">
+                        <img class="product-img" [src]="item?.image?.src" [alt]="(item?.image?.alt)?item.image.alt:''" (click)="onClickProduct(item)">
+                    </div>
+                        <div class="details text-center">
+                          <p class="d-flex flex-column margin-seven mt-0">
+                              <span class="title1-shop mt-5">{{item?.title}}</span>
+                              <span class="title2-shop font-small">{{item?.variants[0]?.title}}</span>
+                              <span class="title3-shop mb-3 p-1">${{item?.variants[0]?.price}}</span>
+                          </p>
+                        </div>
+                        <div class="details-hover text-center">
+                          <div class="d-flex flex-column">
+                              <span class="title1-shop-hover mt-5">{{item?.title}}</span>
+                              <span class="title2-shop-hover font-small">{{item?.variants[0]?.title}}</span>
+                              <div class="d-flex p-1 mb-2">
+                                  <span class="title3-shop-hover flex-shop-90">${{item?.variants[0]?.price}}</span>
+                                  <ul class="ml-auto flex-shop-10 cart-click cart-hover">
+                                      <li class="d-none"><a (click)="onClickProduct(item)" class="hover-color  " style="cursor: pointer;"><i class="fas fa-eye p-0"></i></a></li>
+                                      <li class="hover-color cart-hover">
+                                          <a (click)="onClickCart(item, $event)" class="cart-hover"><img class="cartImg" src="assets/images/HOME/icons/add-cart.svg" alt="cart"></a>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center" *ngIf="products?.length > 6">
+            <div class="border-btn-box border-btn-red pointer-large mt-3">
+                <div class="border-btn-inner">
+                    <ngb-pagination [collectionSize]="products?.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5" [rotate]="true"></ngb-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container end -->
+</section>
+</main>
+</body>
+  <app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>

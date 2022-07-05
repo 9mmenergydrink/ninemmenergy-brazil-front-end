@@ -1,0 +1,337 @@
+<!-- <meta name="robots" content="index, follow"> -->
+
+<!-- <link rel="canonical" href="https://www.9mmenergy.com/shop" /> -->
+
+<app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+<!-- loading start -->
+
+<body class="loader">
+    <div class="loading">
+        <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
+    </div>
+    <!-- loading end -->
+
+    <!-- animsition-overlay start -->
+    <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
+        <!-- page-head start -->
+        <a class="to-top-btn pointer-small" (click)="scroll(up)">
+            <span class="to-top-arrow"></span>
+        </a>
+        <section class="page-head flex-min-height-box new-bg-color shop-bg ">
+            <!-- page-head-bg -->
+            <div class="page-head-bg overlay-loading2" [style.background-image]="bannerSection?.primary?.bannerimage?.url"></div>
+            <!-- flex-min-height-inner start -->
+            <div class="flex-min-height-inner">
+                <!-- flex-container start -->
+                <div class="container top-bottom-padding-120 flex-container response-999">
+                    <!-- column start -->
+                    <div class="six-columns six-offset">
+                        <div class="content-left-margin-40 custom-banner-height pt-4">
+                            <!-- <h2 class="large-title-bold">
+                                    <span class="load-title-fill tr-delay03" [attr.data-text]="bannerSection?.primary?.content1">{{bannerSection?.primary?.content1}}</span><br>
+                                    <span class="load-title-fill tr-delay04" [attr.data-text]="bannerSection?.primary?.content2">{{bannerSection?.primary?.content2}}</span><br>
+                                    <span class="load-title-fill tr-delay05" [attr.data-text]="bannerSection?.primary?.content3">{{bannerSection?.primary?.content3}}</span>
+                                </h2> -->
+                            <!-- <h2 class="large-title-bold red-color">
+                                    <span class="" [attr.data-text]="bannerSection?.primary?.content1">{{bannerSection?.primary?.content1}}</span><br>
+                                    <span class="" [attr.data-text]="bannerSection?.primary?.content2">{{bannerSection?.primary?.content2}}</span><br>
+                                    <span class="" [attr.data-text]="bannerSection?.primary?.content3">{{bannerSection?.primary?.content3}}</span>
+                                </h2> -->
+                            <h2 class="overlay-loading2 medium-title red-color">
+                                {{bannerSection?.primary?.content1}}</h2>
+                            <h3 class="large-title-bold text-color-4">
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay03">{{bannerSection?.primary?.content2}}</span>
+                                <!-- <span class="overlay-loading2 overlay-light-bg-1 tr-delay05 red-color">{{bannerSection?.primary?.content2}}</span><br> -->
+                                <!-- <span class="overlay-loading2 overlay-light-bg-1 tr-delay06 red-color">{{bannerSection?.primary?.content3}}</span> -->
+                            </h3>
+
+                            <p class="p-style-bold-up text-height-20 d-flex-wrap">
+                                <!-- <span class="overlay-loading2 overlay-light-bg-1 tr-delay04" [attr.data-text]="bannerSection?.primary?.content3">{{bannerSection?.primary?.content3}}</span> -->
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay04 shop-banner-3text"><span class="list-dot">&#183;</span>{{bannerSection?.primary?.points[0]?.text}}</span>
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay04  pt-1 shop-banner-3text"><span class="list-dot">&#183;</span>{{bannerSection?.primary?.points[1]?.text}}</span>
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay04  pt-1 shop-banner-3text"><span class="list-dot">&#183;</span>{{bannerSection?.primary?.points[2]?.text}}</span>
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay04  pt-1 shop-banner-3text"><span class="list-dot">&#183;</span>{{bannerSection?.primary?.points[3]?.text}}</span>
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay04  pt-1 shop-banner-3text"><span class="list-dot">&#183;</span>{{bannerSection?.primary?.points[4]?.text}}</span>
+                                <span class="overlay-loading2 overlay-light-bg-1 tr-delay04  pt-1 shop-banner-3text"><span class="list-dot">&#183;</span>{{bannerSection?.primary?.points[5]?.text}}</span>
+                            </p>
+                            <!-- <div class="twelve-columns text-left top-padding-90"><button id="send" type="submit" class="border-btn-box pointer-large"><span class="border-btn-inner"><span data-text="SHOP" class="border-btn">SHOP</span><span class="btn-wait">Wait...</span></span></button></div> -->
+                            <div class="border-btn-box border-btn-red pointer-large mt-3">
+                                <div class="border-btn-inner"><a [attr.data-text]="'shopNow' | translate" (click)="gotoReadMore()" class="border-btn">{{'shopNow' | translate}}</a></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- column end -->
+                </div>
+                <!-- flex-container end -->
+            </div>
+            <!-- flex-min-height-inner end -->
+
+            <!-- scroll-btn start -->
+            <!-- <a (click)="scroll(down)" class="scroll-btn pointer-large">
+                    <div class="scroll-arrow-box">
+                        <span class="scroll-arrow"></span>
+                    </div>
+                    <div class="scroll-btn-flip-box">
+                        <span class="scroll-btn-flip" [attr.data-text]="'scroll' | translate">{{'scroll' | translate}}</span>
+                    </div>
+                </a> -->
+            <!-- scroll-btn end -->
+        </section>
+        <!-- page-head end -->
+
+        <!-- dark-bg-2 start -->
+        <section id="down" #down class="dark-bg-1 top-bottom-padding-120" *ngIf="collections?.length">
+            <!-- container start -->
+            <!-- <div class="custom-container container"> -->
+            <div class="mx-3">
+                <!-- <div class="text-center">
+                        <h2 class="large-title text-height-10 title-fill fullwidth-text" data-animation="title-fill-anim" [attr.data-text]="productSection?.primary?.heading">{{productSection?.primary?.heading}}</h2><br>
+                    </div> -->
+                <div class="container text-center">
+                    <h2 class="large-title title-fill" data-animation="title-fill-anim" [attr.data-text]="productSection?.primary?.heading">{{productSection?.primary?.heading}}</h2>
+                </div>
+                <!-- filter-buttons start -->
+                <div class="filter-buttons top-padding-20">
+                    <ng-container *ngFor="let data of collections; let i=index">
+                        <button [ngClass]="{'active':cIndex==i}" class="filter-button-box pointer-small active mb-0 filter-wrap" data-filter="*" (click)="onClickCollection(data)">
+                            <span class="filter-button-flip " [attr.data-text]="data.title">{{data?.title}}</span>
+                        </button>
+                    </ng-container>
+
+                </div>
+                <!-- filter-buttons end -->
+                <div *ngIf="empty" style="color: antiquewhite;text-align: center;">{{'comingSoon' | translate}}</div>
+                <!-- <div class="row works mx-md-5 px-md-5 d-flex justify-content-center">                        
+                        <div class="col-lg-4 " *ngFor="let item of products; let i=index">
+                            <a>                            
+                                <div class="work_item pointer-large hover-box hidden-box container-zoom " [ngClass]="getProductClass(i)">
+                                    <div class="product-hover">
+                                        <p class="zoom-content d-grid ">{{item?.title}} &nbsp;<span class="zoom-content3 text-dark d-grid ">9MM ENERGY DRINK</span><span class="sponser-content d-grid ">{{item?.variants[0]?.title}}</span></p>
+                                        <div class="cart-icon d-flex justify-content-center ml-5 m-0">
+                                            <p class="zoom-content3 text-dark ml-auto ">${{item?.variants[0]?.price}}</p>
+                                            <ul class=" ml-auto">
+                                                <li class="d-none"><a (click)="onClickProduct(item)" class="hover-color  " style="cursor: pointer;"><i class="fas fa-eye p-0"></i></a></li>
+                                                <li (click)="onClickCart(item)" class="hover-color  "><a  style="cursor: pointer;"><i class="fas fa-shopping-cart p-0"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <img [src]="item?.image?.src" [alt]="product" (click)="onClickProduct(item)">
+                                    
+                                    <div class="product-title">
+                                        <p class="zoom-content d-grid">{{item?.title}} &nbsp;<span class="zoom-content3 d-grid py-2">9MM ENERGY DRINK</span><span class="sponser-content d-grid pt-1">{{item?.variants[0]?.title}}</span></p>
+                                        <p class="zoom-content3 pt-2">${{item?.variants[0]?.price}}</p>
+                                    </div>
+                                </div>                       
+                            </a>
+                        </div>
+                </div>   -->
+                <div class="row mx-md-5 px-md-5 d-flex justify-content-center">
+                    <div class="col-lg-4 top-padding-75 pointer-large" *ngFor="let item of products  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i=index">
+                        <div class="product-back" [ngClass]="getProductClass(i)" (click)="onClickProduct(item)">
+                            <div class="total-hover">
+                                <!-- <div class="imgnew-hover">
+                                    <img class="shopnew-img" src="assets/images/HOME/9mm-beyond3.png" alt="product" (click)="onClickProduct(item)">
+                                </div>
+                                <div class="text-center">
+                                    <p class="d-flex flex-column margin-seven m-0">
+                                        <span class="title1new-shop">{{item?.title}}</span>
+                                        <span class="title2new-shop font-small">{{item?.variants[0]?.title}}</span>
+                                        <span class="title3new-shop">${{item?.variants[0]?.price}}</span>
+                                    </p>
+                                </div> -->
+                                <!-- <img  class="product-img" height="280" [src]="item?.image?.src" alt="product" (click)="onClickProduct(item)"> -->
+
+                                <div class="img-hover">
+                                    <img class="product-img" [src]="item?.image?.src" [alt]="(item?.image?.alt)?item.image.alt:''" (click)="onClickProduct(item)">
+                                    <!-- <img class="product-img" src="assets/images/HOME/9mm-beyond3.png" alt="product" height="280" (click)="onClickProduct(item)"> -->
+                                </div>
+                                <div class="details text-center">
+                                    <p class="d-flex flex-column margin-seven mt-0">
+                                        <span class="title1-shop mt-5">{{item?.title}}</span>
+                                        <span class="title2-shop font-small">{{item?.variants[0]?.title}}</span>
+                                        <span class="title3-shop mb-3 p-1">${{item?.variants[0]?.price}}</span>
+                                    </p>
+                                </div>
+                                <div class="details-hover text-center">
+                                    <div class="d-flex flex-column">
+                                        <span class="title1-shop-hover mt-5">{{item?.title}}</span>
+                                        <!-- <span class="title3-shop-hover font-small">Fastest recovery ever</span> -->
+                                        <span class="title2-shop-hover font-small">{{item?.variants[0]?.title}}</span>
+
+                                        <div class="d-flex p-1 mb-2">
+                                            <span class="title3-shop-hover flex-shop-90">${{item?.variants[0]?.price}}</span>
+                                            <ul class="ml-auto flex-shop-10 cart-click cart-hover">
+                                                <li class="d-none"><a (click)="onClickProduct(item)" class="hover-color  " style="cursor: pointer;"><i class="fas fa-eye p-0"></i></a></li>
+                                                <li class="hover-color cart-hover">
+                                                    <a (click)="onClickCart(item, $event)" class="cart-hover"><img class="cartImg" src="assets/images/HOME/icons/add-cart.svg" alt="cart"></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!-- <ul class="ml-auto">
+                                        <li class="d-none"><a (click)="onClickProduct(item)" class="hover-color  " style="cursor: pointer;"><i class="fas fa-eye p-0"></i></a></li>
+                                        <li (click)="onClickCart(item)" class="hover-color  "><a  style="cursor: pointer;"><i class="fas fa-shopping-cart p-0"></i></a></li>
+                                    </ul> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center" *ngIf="products?.length > 6">
+                    <div class="border-btn-box border-btn-red pointer-large mt-3">
+                        <div class="border-btn-inner">
+                            <ngb-pagination [collectionSize]="products?.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5" [rotate]="true"></ngb-pagination>
+                        </div>
+                    </div>
+                </div>
+                <!--				
+                    <div class="works">
+                        <div *ngIf="empty" style="color: antiquewhite;text-align: center;"> Coming Soon</div>                        
+                        <a *ngFor="let item of products; let i =index" (click)="onClickProduct(item)" routerLink="/shopinner"  class="animsition-link grid-item uiux">                            
+                            <div class="work_item pointer-large hover-box hidden-box container-zoom" [ngClass]="getProductClass(i)">
+                                <img [src]="item?.image?.src" [alt]="product">
+                                <p class="zoom-content">{{item?.vendor}} &nbsp;<span class="zoom-content2">{{item?.variants[0]?.title}}</span></p>
+                                <p class="zoom-content3">${{item?.variants[0]?.price}}</p>
+                            </div>                       
+                        </a>
+                    </div>
+                    -->
+
+
+            </div>
+            <!-- container end -->
+        </section>
+        <!-- dark-bg-2 end -->
+
+        <div class="text-center top-bottom-padding-120 mb-5">
+            <!-- testimonials-slider start -->
+            <div class="testimonials-slider container small">
+                <!-- swiper-wrapper start -->
+                <div class="swiper-wrapper">
+                    <!-- slide start -->
+                    <!-- <div *ngFor="let item of testimonialSection?.items" class="swiper-slide text-center">
+							<img [src]="item?.image?.url" [alt]="item?.image?.alt">
+							<div class="testimonials-content">
+								<p class="text-color-4 p-style-bold">{{item?.content}}</p>
+							</div>
+							<div class="text-color-1 small-title-oswald">
+								{{item?.name}} <span class="text-color-2">{{item?.role}}</span>
+							</div>
+						</div> -->
+
+                    <div class="swiper-slide text-center">
+                        <img [src]="testimonialSection?.items[0]?.image?.url" [alt]="(testimonialSection?.items[0]?.image?.alt)?testimonialSection.items[0].image.alt:''">
+                        <div class="testimonials-content">
+                            <p class="text-color-4 p-style-bold">{{testimonialSection?.items[0]?.content}}</p>
+                        </div>
+                        <div class="text-color-1 small-title-oswald">
+                            {{testimonialSection?.items[0]?.name}} <span class="text-color-2">{{testimonialSection?.items[0]?.role}}</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide text-center">
+                        <img [src]="testimonialSection?.items[1]?.image?.url" [alt]="(testimonialSection?.items[1]?.image?.alt)?testimonialSection.items[1].image.alt:''">
+                        <div class="testimonials-content">
+                            <p class="text-color-4 p-style-bold">{{testimonialSection?.items[1]?.content}}</p>
+                        </div>
+                        <div class="text-color-1 small-title-oswald">
+                            {{testimonialSection?.items[1]?.name}} <span class="text-color-2">{{testimonialSection?.items[1]?.role}}</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide text-center">
+                        <img [src]="testimonialSection?.items[2]?.image?.url" [alt]="(testimonialSection?.items[2]?.image?.alt)?testimonialSection.items[2].image.alt:''">
+                        <div class="testimonials-content">
+                            <p class="text-color-4 p-style-bold">{{testimonialSection?.items[2]?.content}}</p>
+                        </div>
+                        <div class="text-color-1 small-title-oswald">
+                            {{testimonialSection?.items[2]?.name}} <span class="text-color-2">{{testimonialSection?.items[2]?.role}}</span>
+                        </div>
+                    </div>
+                    <!-- slide end -->
+                </div>
+                <!-- swiper-wrapper end -->
+                <!-- swiper-pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+            <!-- testimonials-slider end -->
+        </div>
+
+        <div class="container video-2 mt-3">
+            <div class="row">
+                <div class="col-lg-6 sponser-left-section">
+                    <div class="col-lg-10">
+                        <div class="sponser-margin align-items-center d-flex sponsor-flex">
+                            <!-- <span class="reach-title text-height-10">{{sponserSection?.primary?.title1}}</span>&nbsp; &nbsp;  -->
+                            <!-- <span class="target-title text-height-10">{{sponserSection?.primary?.title2}}</span> -->
+                            <!-- <p class="sponser-content">{{sponserSection?.primary?.content}}</p><br> -->
+                            <img class="m-auto" [src]="sponserSection?.primary?.image1?.url" [alt]="(sponserSection?.primary?.image1?.alt)?sponserSection.primary.image1.alt:''" style="width: 230px;">
+                            <div class="ml-auto mr-auto mt-5 mb-4">
+                                <div class="shop-btn m-0" (click)="gotoReadMore()">{{sponserSection?.primary?.buttontext}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-4"> -->
+                    <img [src]="sponserSection?.primary?.bannerimage?.url" class="banner-image" [alt]="(sponserSection?.primary?.bannerimage?.alt)?sponserSection.primary.bannerimage.alt:''">
+                </div>
+                <!-- </div> -->
+
+                <div class="col-lg-6 sponser-right-section">
+
+                    <p class="poweredby-text">{{sponserSection?.primary?.titleright}}</p>
+                    <img [src]="sponserSection?.primary?.image2?.url" class="poweredby-img" [alt]="(sponserSection?.primary?.image2?.alt)?sponserSection.primary.image2.alt:''"><br>
+                    <img [src]="sponserSection?.primary?.image3?.url" class="poweredby-img2" [alt]="(sponserSection?.primary?.image3?.alt)?sponserSection.primary.image3.alt:''">
+                </div>
+            </div>
+        </div>
+        <section class="dark-bg-2">
+            <!-- container start -->
+            <div class="container small top-bottom-padding-120">
+                <!-- medium-title start -->
+                <div data-animation-container class="text-center">
+                    <h2 data-animation-child class="large-title-oswald red-color overlay-anim-box2" data-animation="overlay-anim2">{{clientSection?.primary?.title}}</h2>
+                </div>
+                <!-- medium-title end -->
+
+                <!-- client-list start -->
+                <ul class="client-list d-flex-wrap top-padding-60">
+                    <li *ngFor="let item of clientSection?.items">
+                        <a class="pointer-large dblock">
+                            <div class="brand-box">
+                                <img [src]="item?.image?.url" [alt]="(item?.image?.alt)?item.image.alt:''" class="hover-opac-img">
+                                <!-- <img *ngIf="item?.json.url==null" [src]="item?.image2?.url" [alt]="item?.image2?.alt" class="opac-img"> -->
+                                <lottie-player class="opac-img" *ngIf="item?.json?.url!=null" autoplay loop mode="normal" [src]="item?.json?.url"></lottie-player>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- client-list end -->
+            </div>
+            <!-- container end -->
+        </section>
+    </main>
+    <!-- animsition-overlay end -->
+    <app-footer [footerSection]="footerSection" [headerSection]="headerSection"></app-footer>
+
+    <!-- Product Schema -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": "9mm Beyond Energy",
+            "image": "https://cdn.shopify.com/s/files/1/0562/4922/1311/products/Original.png?v=1631790959",
+            "description": "Get 9mm Energy drink and the Neuro Tracker to start your cognitive enhancement journey to reach your goals while avoiding caffeine jitters and adrenal stress.",
+            "brand": "9mm Beyond Energy",
+            "offers": {
+                "@type": "Offer",
+                "url": "https://9mmenergy.com/shop",
+                "priceCurrency": "USD",
+                "price": "24",
+                "availability": "https://schema.org/OnlineOnly",
+                "itemCondition": "https://schema.org/NewCondition"
+            }
+        }
+    </script>
+
+</body>

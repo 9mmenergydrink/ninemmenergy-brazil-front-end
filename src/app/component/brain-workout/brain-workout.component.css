@@ -1,0 +1,16 @@
+.client-list li  {
+    /* border-right: 1px solid #888888; */
+    height: 0%;
+}
+.client-list li a {
+    border-bottom:none;
+    border-right:1px solid #888888;
+}
+
+
+.client-list li:nth-child(5n) a {
+    border-right: none;
+}
+.border-btn {
+    color: transparent !important;
+}
