@@ -27,6 +27,7 @@ export const environment = {
   prismicmma: 'https://mma-9mmenergydrinks.prismic.io/api/v2',
   prismicesports: 'https://esports-9mmenergydrinks.prismic.io/api/v2',
   prismicmotor: 'https://motorsports.prismic.io/api/v2',
+  prismicbrazil: 'https://9mmenergydrink-brazil.prismic.io/api/v2',
 
   imageUrl:'https://9mmenergydrink-gallery.s3.us-east-2.amazonaws.com/'  
 };

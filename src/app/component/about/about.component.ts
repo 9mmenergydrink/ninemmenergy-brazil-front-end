@@ -26,6 +26,7 @@ export class AboutComponent implements OnInit {
   teamSection;
   constant: any;
   langkey: any;
+  apiUrl: any;
   cartCount;// = JSON.parse(localStorage.getItem('cartCount'));
   common: CommonMethods;
   constructor(private router: Router,private modalService: NgbModal,config: NgbModalConfig, 
@@ -38,13 +39,17 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {
      // this.commonMtd.getLanguageDetails(localStorage.getItem('language'));
-    if(localStorage.getItem('language') == 'fr'){
-      this.constant = prismicFrConstants
-      this.langkey = 'fr-fr'
-    }else{
-      this.constant = prismicEnConstants
-      this.langkey = 'en-us'
-    }
+    // if(localStorage.getItem('language') == 'fr'){
+    //   this.constant = prismicFrConstants
+    //   this.langkey = 'fr-fr'
+    // }else{
+    //   this.constant = prismicEnConstants
+    //   this.langkey = 'en-us'
+    // }
+    let domainLanguage = this.commonMtd.getSubDomainLanguage();
+    this.constant = domainLanguage.constant;
+    this.langkey = domainLanguage.langkey;
+    this.apiUrl = domainLanguage.apiUrl;
     this.getPrismicDatas();
     this.common.clear();
   }
@@ -64,10 +69,10 @@ export class AboutComponent implements OnInit {
     let ogSection: any;
     let seoSection: any;
     let twitterSection: any;
-    let id = this.constant['aboutId']
-    let lang = this.langkey
-    return Prismic.api("https://9mmenergydrink.prismic.io/api/v2").then(function (api) {
-      return api.query(Prismic.Predicates.at('document.id', id),{ lang : lang});
+    let id = this.constant['aboutId'];
+    let lang = this.langkey;
+    return Prismic.api(this.apiUrl).then(function (api) {
+      return api.query(Prismic.Predicates.at('document.id', id),{lang : lang});
     }).then((function (response) {
       if(response?.results[0]?.data?.page_title){
         this.pageTitle = response.results[0].data.page_title
@@ -75,14 +80,14 @@ export class AboutComponent implements OnInit {
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
           case 'seo_section':
-           seoSection = prismic;
+            seoSection = prismic;
             break;
           case 'og_section':
-           ogSection = prismic;
+            ogSection = prismic;
             break;
-            case 'twitter_section':               
-             twitterSection = prismic;
-              break;
+          case 'twitter_section':               
+            twitterSection = prismic;
+            break;
           case 'banner_section':
             console.log("banner_section:", prismic);
             this.bannerSection = prismic;
@@ -106,15 +111,15 @@ export class AboutComponent implements OnInit {
           case 'works_section':
             console.log("works_section:", prismic)
             this.worksSection = prismic;
-          break;
+            break;
           case 'creative_section':
             console.log("creative_section:", prismic);
             this.creativeSection = prismic;
             break;
-            case 'social_proof_section':
-              console.log("social_proof_section:", prismic)
-              this.socialProofSection = prismic;
-              break;
+          case 'social_proof_section':
+            console.log("social_proof_section:", prismic)
+            this.socialProofSection = prismic;
+            break;
           default:
             console.log("type:", prismic)
         }

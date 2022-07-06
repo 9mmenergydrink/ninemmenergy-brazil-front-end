@@ -139,14 +139,14 @@ export class HomeComponent implements OnInit {
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
           case 'seosection':
-           seoSection = prismic;
+            seoSection = prismic;
             break;
           case 'ogsection':
-           ogSection = prismic;
+            ogSection = prismic;
             break;
-            case 'twitter_section':          
-             twitterSection = prismic;
-              break;
+          case 'twitter_section':          
+            twitterSection = prismic;
+            break;
           case 'slidersection':
             for (let index in prismic.items) {
               prismic.items[index].content3 = prismic.items[index].content3.toLowerCase();
@@ -162,6 +162,7 @@ export class HomeComponent implements OnInit {
             break;
           case 'video2section':
             this.video2Section = prismic;
+            console.log("prismic ", this.video2Section);
             //this.video2Section.primary.image.url = "url("+this.video2Section.primary.image.url+")";
             break;
           case 'folkssection':
@@ -179,11 +180,12 @@ export class HomeComponent implements OnInit {
           case 'news_letter_section':
             this.newsletterSection = prismic;
             break;
-            case 'social_proof_section':
+          case 'social_proof_section':
             this.socialProofSection = prismic;
+            console.log("social proof section ", prismic);
             break;
           default:
-            // console.log("type: HOME", prismic)
+            console.log("type: HOME", prismic)
         }
       })
        this.commonMtd.addMetaTag(seoSection, ogSection, twitterSection);

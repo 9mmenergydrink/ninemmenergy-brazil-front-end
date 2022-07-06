@@ -67,14 +67,14 @@ export class LoginComponent implements OnInit {
         switch (prismic.slice_type) {
           case 'seo_section':
             console.log("seosection:", prismic);
-           seoSection = prismic;
+            seoSection = prismic;
             break;
-          case 'og_section':
+          case 'ogsection':
             console.log("ogsection:", prismic);
-           ogSection = prismic;
+            ogSection = prismic;
             break;
           case 'twitter_section':
-           twitterSection = prismic;
+            twitterSection = prismic;
             break;
           default:
             console.log("type:", prismic)

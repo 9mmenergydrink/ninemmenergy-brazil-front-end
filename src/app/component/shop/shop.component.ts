@@ -283,7 +283,7 @@ export class ShopComponent implements OnInit {
 
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
-          case 'seosection':
+          case 'seo_section':
            seoSection = prismic;
             break;
           case 'ogsection':
@@ -310,7 +310,7 @@ export class ShopComponent implements OnInit {
             this.clientSection = prismic;
             break;
           default:
-            console.log("type:", prismic.slice_type)
+            console.log("type:", prismic)
         }
       })
       this.commonMtd.addMetaTag(seoSection, ogSection, twitterSection);

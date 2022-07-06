@@ -168,7 +168,7 @@ export class ContactComponent implements OnInit {
       }
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
-          case 'seosection':
+          case 'seo_section':
             seoSection = prismic;
             break;
           case 'ogsection':

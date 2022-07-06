@@ -62,25 +62,23 @@ export class PageNotFoundComponent implements OnInit {
       // console.log(response.results[0]?.data)
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
-          case 'seosection':
-            console.log("seosection:", prismic);
-           seoSection = prismic;
-            break;
-          case 'ogsection':
-            console.log("ogsection:", prismic);
-           ogSection = prismic;
+          case 'seo_section':
+            console.log("seo_section:", prismic);
+            seoSection = prismic;
+          break;
+          case 'og_section':
+            console.log("og_section:", prismic);
+            ogSection = prismic;
             break;
           case 'twitter_section':
-           twitterSection = prismic;
+            twitterSection = prismic;
             break;
-          
           case 'content_section':
-            console.log("contentSection:", prismic)
+            console.log("contentSection:", prismic);
             this.contentSection = prismic;
             break;
-          
           default:
-            console.log("type:", prismic.slice_type)
+            console.log("type:", prismic);
         }
       })
       this.commonMtd.addMetaTag(seoSection, ogSection, twitterSection);
