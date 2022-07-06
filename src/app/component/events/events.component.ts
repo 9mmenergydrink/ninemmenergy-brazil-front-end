@@ -4,8 +4,6 @@ import "@lottiefiles/lottie-player";
 import { Router } from '@angular/router';
 import { CommonMethods } from 'src/app/common/common-methods';
 import { DatePipe } from '@angular/common';
-import { prismicEnConstants } from 'src/app/common/prismic-Enconstants';
-import { prismicFrConstants } from 'src/app/common/prismic-Frconstants';
 import { CommonMethodsService } from 'src/app/shared/common-methods/common-methods.service';
 
 @Component({
@@ -72,28 +70,23 @@ export class EventsComponent implements OnInit {
       return api.query(Prismic.Predicates.at('document.id', id),{ lang : lang});
     }).then((function (response) {
       if(response?.results[0]?.data?.page_title){
-        this.pageTitle = response.results[0].data.page_title
+        this.pageTitle = response?.results[0]?.data?.page_title
       }
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
           case 'seo_section':
-            console.log("seosection:", prismic);
            seoSection = prismic;
             break;
           case 'og_section':
-            console.log("ogsection:", prismic);
            ogSection = prismic;
             break;
           case 'twitter_section':             
            twitterSection = prismic;
             break;
           case 'banner_section':
-            console.log("bannersection:", prismic)
             this.bannerSection = prismic;
             break;
           case 'corporate_events':
-          console.log("corporate_events:", prismic)
-         
             var today = new Date(this.datePipe.transform(new Date(),'yyyy-MM-dd')+' 00:00:00.000');
             let filteredSEvents  = prismic;
             filteredSEvents.items = prismic.items.filter(m =>{
@@ -120,7 +113,6 @@ export class EventsComponent implements OnInit {
             this.showsSection = filteredSEvents;
             break;
             case 'shows_section':
-              console.log("shows_section:", prismic);
             var today = new Date(this.datePipe.transform(new Date(),'yyyy-MM-dd')+' 00:00:00.000');
            
             let filteredEvents  = prismic;
@@ -151,7 +143,6 @@ export class EventsComponent implements OnInit {
             break;
 
             case 'corporate_events_section':
-              console.log("shows_section:", prismic);
             var today = new Date(this.datePipe.transform(new Date(),'yyyy-MM-dd')+' 00:00:00.000');
            
             let filteredMEvents  = prismic;
@@ -182,22 +173,15 @@ export class EventsComponent implements OnInit {
 
 
             case 'corporate_upcoming_events_section':
-              console.log("corporate_upcoming_events_section:", prismic)
               this.upcomingCorporate=prismic
               this.upcomingSection = prismic;
             break;
               case 'upcoming_shows_section':
-                console.log("upcoming_shows_section:", prismic)
               this.upcomingShows=prismic
               break;
               case 'social_proof_section':
-                console.log("prismic:", prismic)
                 this.socialProofSection = prismic;
                 break;
-          // case 'client_section':
-          //   console.log("client_section:", prismic)
-          //   this.clientSection = prismic;
-          //   break;
           default:
             console.log("type:", prismic)
         }

@@ -2,7 +2,7 @@ export const prismicPtConstants = {
     headerId: "Yr2SBhMAACIAVbZS", //10
     homeDataId: "YXEg_BQAACgANeSH",
     blogId: "YXEhMxQAACkANeWK",
-    eventsId: "YXEhDxQAACYANeTg",
+    eventsId: "YsAVdxUAACkAtvkz", //K-1
     squeezeId: "YXEhThQAACYANeYG",
     clubId: "YXEhXxQAACgANeZY",
     shopId: "Yr_WlRUAACoAteGa", //7
@@ -21,4 +21,7 @@ export const prismicPtConstants = {
     forgotPage: "YZM6gBEAACMAMmtO",
     pageNotId: "Yr7QZhUAACoAsX3l", //13
     faqId: "YsBGsBUAACoAt9cz", //4
+    ourTeam:"Yr7RzRUAACgAsYRJ", //K-2
+    whatsInsideId:"Yr7diRUAACgAsbba", //K-3
+    ourProductId:"Yr1JNRMAACMAVHVf" //K-4
 }

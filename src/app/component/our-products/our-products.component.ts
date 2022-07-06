@@ -33,15 +33,12 @@ export class OurProductsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    if(localStorage.getItem('language') == 'fr'){
-      this.constant = prismicFrConstants
-      this.langkey = 'fr-fr'
-    }else{
-      this.constant = prismicEnConstants
-      this.langkey = 'en-us'
-    }
-
+    let domainLanguage = this.commonMtd.getSubDomainLanguage();
+    this.constant = domainLanguage.constant;
+    this.langkey = domainLanguage.langkey;
+    this.apiUrl = domainLanguage.apiUrl;
     this.getPrismicDatas();
+    this.common.clear();
   }
   getPrismicDatas() {
     let ogSection: any;
@@ -49,7 +46,7 @@ export class OurProductsComponent implements OnInit {
     let twitterSection: any;
     let id = this.constant['ourProductId']
     let lang = this.langkey
-    return Prismic.api("https://9mmenergydrink.prismic.io/api/v2").then(function (api) {
+    return Prismic.api(this.apiUrl).then(function (api) {
       return api.query(Prismic.Predicates.at('document.id', id),{ lang : lang});
     }).then((function (response) {
       if(response?.results[0]?.data?.page_title){
@@ -57,46 +54,34 @@ export class OurProductsComponent implements OnInit {
       }
       
       response.results[0]?.data?.body.forEach(prismic => {
-        console.log(prismic.slice_type);
         switch (prismic.slice_type) {
           case 'seo_section':
            seoSection = prismic;
             break;
-          case 'og_section':
+          case 'ogsection':
            ogSection = prismic;
             break;
             case 'twitter_section':               
              twitterSection = prismic;
               break;
           case 'banner_section':
-            console.log("banner_section:", prismic);
             this.bannerSection = prismic;
             break;
           case 'creative_section':
-              console.log("creativeSection:", prismic);
               this.creativeSection = prismic;
               break;
-          // case 'works_section':
-          //   console.log("works_section:", prismic)
-          //   this.worksSection = prismic;
-          // break;
-
           case 'our_product_section':
-            console.log("our_product_section:", prismic)
             this.ourProductSection = prismic;
           break;
           
           case 'workssection':
-            console.log("workssection:", prismic)
             this.worksSection = prismic;
           break;
 
           case 'icon_section':
-            console.log("iconSection:", prismic)
             this.iconSection = prismic;
           break;
           case 'sponsorsection':
-            console.log("sponserSection:", prismic)
             this.sponserSection = prismic;
           break;
             

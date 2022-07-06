@@ -101,12 +101,10 @@ export class ShopInnerComponent implements OnInit {
     this.apiUrl = domainLanguage.apiUrl;
 
     this.common.clear();
-    if (environment.mainDomain.includes(origin) || environment.europeDomain.includes(origin)) {
       let data = localStorage.getItem("isLoadingFirst")
       if(data == 'false')
       return;
       this.getProductDetails();
-    }
 
     this.formGroup = this.formBuilder.group({
       'display_name': ['', Validators.required],

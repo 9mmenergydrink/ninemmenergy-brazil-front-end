@@ -29,13 +29,10 @@ export class WhatsInsideComponent implements OnInit {
   constructor(private router: Router,private commonMtd:CommonMethodsService) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem('language') == 'fr'){
-      this.constant = prismicFrConstants
-      this.langkey = 'fr-fr'
-    }else{
-      this.constant = prismicEnConstants
-      this.langkey = 'en-us'
-    }
+    let domainLanguage = this.commonMtd.getSubDomainLanguage();
+    this.constant = domainLanguage.constant;
+    this.langkey = domainLanguage.langkey;
+    this.apiUrl = domainLanguage.apiUrl;
 
     this.getPrismicDatas();
   }
@@ -45,7 +42,7 @@ export class WhatsInsideComponent implements OnInit {
     let twitterSection: any;
     let id = this.constant['whatsInsideId']
     let lang = this.langkey
-    return Prismic.api("https://9mmenergydrink.prismic.io/api/v2").then(function (api) {
+    return Prismic.api(this.apiUrl).then(function (api) {
       return api.query(Prismic.Predicates.at('document.id', id),{ lang : lang});
     }).then((function (response) {
       if(response?.results[0]?.data?.page_title){
@@ -53,10 +50,10 @@ export class WhatsInsideComponent implements OnInit {
       }
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
-          case 'seo_section':
+          case 'seosection':
            seoSection = prismic;
             break;
-          case 'og_section':
+          case 'ogsection':
            ogSection = prismic;
             break;
             case 'twitter_section':               
