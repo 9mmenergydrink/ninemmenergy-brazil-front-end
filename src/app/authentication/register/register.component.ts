@@ -17,7 +17,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  pageTitle = "";
+  prismicData;
   termsSection;
   subScription;
   footerSection;
@@ -47,13 +47,6 @@ export class RegisterComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    // if(localStorage.getItem('language') == 'fr'){
-    //   this.constant = prismicFrConstants
-    //   this.langkey = 'fr-fr'
-    // }else{
-    //   this.constant = prismicEnConstants
-    //   this.langkey = 'en-us'
-    // }
     let domainLanguage = this.commonMtd.getSubDomainLanguage();
     this.constant = domainLanguage.constant;
     this.langkey = domainLanguage.langkey;
@@ -127,9 +120,8 @@ export class RegisterComponent implements OnInit {
     return Prismic.api(this.apiUrl).then(function (api) {
       return api.query(Prismic.Predicates.at('document.id', id),{ lang : lang});
     }).then((function (response) {
-      if(response?.results[0]?.data?.page_title){
-        this.pageTitle = response.results[0].data.page_title
-      }
+      this.prismicData = response?.results[0]?.data;
+console.log("this.prismicData", this.prismicData)
       response.results[0]?.data?.body.forEach(prismic => {
         switch(prismic.slice_type){
           case 'seo_section':

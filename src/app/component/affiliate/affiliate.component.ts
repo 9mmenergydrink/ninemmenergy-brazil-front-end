@@ -122,32 +122,27 @@ document.body.appendChild(chatScript);*/
             twitterSection = prismic;
             break;
           case 'banner_section':
-            console.log("banner_section:", prismic);
             this.bannerSection = prismic;
             break;
           case 'workssection':
-            console.log("works_section:", prismic)
             this.worksSection = prismic;
             break;
           case 'call_to_action_1':
-            console.log("call_to_action_1:", prismic);
             this.callToAction1 = prismic;
             break;
-          case 'accordion_section':
-            console.log("accordion_section:", prismic)
+          case 'affiliate_program_section':
+            
             lContentSection = prismic;
-            this.programTitle=lContentSection.primary.title;
+            this.programTitle=prismic?.primary?.title;
+            console.log("accordion_section:", this.programTitle)
             break;
           case 'call_to_action_2':
-            console.log("call_to_action_2:", prismic)
             this.callToAction2 = prismic;
             break;
           case 'subscription_section':
-            console.log("subscription_section:", prismic)
             this.subscriptionSection = prismic;
             break;
           case 'social_proof_section':
-            console.log("social_proof_section:", prismic)
             this.socialProofSection = prismic;
             break;
           default:

@@ -14,7 +14,7 @@ import { CommonMethodsService } from 'src/app/shared/common-methods/common-metho
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  pageTitle = "";
+  prismicData;
   footerSection;
   headerSection;
   cartCount;// = JSON.parse(localStorage.getItem('cartCount'));
@@ -60,9 +60,8 @@ export class LoginComponent implements OnInit {
     return Prismic.api(this.apiUrl).then(function (api) {
       return api.query(Prismic.Predicates.at('document.id', id),{ lang : lang});
     }).then((function (response) {
-      if (response?.results[0]?.data?.page_title) {
-        this.pageTitle = response.results[0].data.page_title
-      }
+        this.prismicData = response?.results[0]?.data
+        console.log("this.prismicData ", this.prismicData )
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
           case 'seo_section':

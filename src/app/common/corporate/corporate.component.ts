@@ -74,7 +74,6 @@ export class CorporateComponent implements OnInit {
             twitterSection = prismic;
             break;
           case 'banner_section':
-            // console.log("banner_section:", prismic);
             this.bannerSection = prismic;
             break;
           case 'aboutussection':

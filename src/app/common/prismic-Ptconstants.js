@@ -19,12 +19,13 @@ export const prismicPtConstants = {
     socialResId: "YsKTZhUAACoAwhcp", //15
     corporateId: "Yr15IhMAACMAVUVC", //16
     loginId: "YsBLoBUAACoAt-05", //11
-    createPage: "YsKQ8hUAACsAwgwL", //12
+    createPage: "YsVSPBAAACMAm81H", //12
     cartPage: "YsBNkhUAACkAt_Xh", //18
-    forgotPage: "YZM6gBEAACMAMmtO",
+    forgotPage: "YsVSjRAAACMAm87A",
     pageNotId: "Yr7QZhUAACoAsX3l", //13
     faqId: "YsBGsBUAACoAt9cz", //4
     ourTeam:"Yr7RzRUAACgAsYRJ", //K-2
-    whatsInsideId:"Yr7diRUAACgAsbba", //K-3
-    ourProductId:"Yr1JNRMAACMAVHVf" //K-4
+    whatsInsideId:"Yr1WPRMAACQAVKd0", //K-3
+    ourProductId:"Yr1JNRMAACMAVHVf", //K-4
+    forgetPwId:"YsVSjRAAACMAm87A" //K-5
 }

@@ -1,5 +1,5 @@
 <app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
-<h1 class="pageTitle-seo">{{pageTitle}}</h1>
+<!-- <h1 class="pageTitle-seo">{{pageTitle}}</h1> -->
 
 <body>
     <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
@@ -20,8 +20,8 @@
                     <div class="white-card">
                         <section>
                             <div class="login-panel">
-                                <div class="yellow-color login-text text-uppercase">{{'createAccount' |translate }}</div>
-                                <p style="margin-top: 10px;">{{'welcome' |translate }}</p>
+                                <div class="yellow-color login-text text-uppercase">{{prismicData?.title}}</div>
+                                <p style="margin-top: 10px;">{{prismicData?.content}}</p>
                             </div>
 
                         </section>
@@ -97,7 +97,7 @@
                                 <div class="col-md-12 text-center form-group p-0">
                                     <button [disabled]="!formGroup.valid" type="submit" class="update-cart-btn">{{'signUp' |translate }}</button>
                                 </div>
-                                <div class="text-center"> {{'alreadyRegister' |translate }}<a class="yellow-color hover-color" [routerLink]="commonMtd.getRoutePath('login')">  {{'logIn' |translate }}</a></div>
+                                <div class="text-center"> {{prismicData?.content2}}<a class="yellow-color hover-color" [routerLink]="commonMtd.getRoutePath('login')">  {{'logIn' |translate }}</a></div>
                                 <!-- <div class="text-center"> {{'alreadyRegister' |translate }}<a class="yellow-color hover-color" href="/login">  {{'logIn' |translate }}</a></div> -->
 
                             </form>
