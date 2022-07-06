@@ -102,7 +102,6 @@ export class FooterComponent implements OnInit {
             this.logoSection = prismic;
             break;
           case 'social_link_section':
-            console.log("socialLinkSection:",prismic)
             this.socialLinkSection = prismic;
             break;
           case 'menu_section':
@@ -111,7 +110,7 @@ export class FooterComponent implements OnInit {
           case 'contact_section':            
             this.contactSection = prismic;
             break;
-            default:
+          default:
               // console.log("footer type:",prismic)
         }
       })

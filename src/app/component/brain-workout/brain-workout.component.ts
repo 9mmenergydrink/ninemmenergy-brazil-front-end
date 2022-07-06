@@ -90,25 +90,25 @@ export class BrainWorkoutComponent implements OnInit {
         switch (prismic.slice_type) {
           case 'seo_section':
             console.log("seosection:", prismic);
-           seoSection = prismic;
+            seoSection = prismic;
             break;
-          case 'og_section':
+          case 'ogsection':
             console.log("ogsection:", prismic);
-           ogSection = prismic;
+            ogSection = prismic;
             break;
-            case 'twitter_section':              
-             twitterSection = prismic;
-              break;
-          case 'bannersection':
+          case 'twitter_section':              
+            twitterSection = prismic;
+            break;
+          case 'banner_section':
             console.log("bannersection:", prismic)
             this.bannerSection = prismic;
             break;
-            case 'read_more_section':
-              console.log("read_more_section:", prismic);
-              this.readMoreSection = prismic;
-              break;
-          case 'commercial_section':
-            console.log("commercial_section:", prismic)
+          case 'read_more_section':
+            console.log("read_more_section:", prismic);
+            this.readMoreSection = prismic;
+            break;
+          case 'product_section':
+            console.log("product_section:", prismic)
             this.productSection = prismic;
             break;
           case 'commercial_content':
@@ -124,7 +124,7 @@ export class BrainWorkoutComponent implements OnInit {
             this.clientSection = prismic;
             break;
           default:
-            console.log("type:", prismic.slice_type)
+            console.log("type:", prismic)
         }
       })
       this.commonMtd.addMetaTag(seoSection, ogSection, twitterSection);

@@ -323,9 +323,8 @@ export class ShopInnerComponent implements OnInit {
 
   getPrismicDatas() {
     let id = this.constant['shopinner'];
-    let lang = this.langkey
+    let lang = this.langkey;
     return Prismic.api(this.apiUrl).then(function (api) {
-      //return api.query(Prismic.Predicates.at('document.id', 'YJuY_REAACEAO6TD'));
       return api.query(Prismic.Predicates.at('document.id', id), { lang: lang });
     }).then((function (response) {
       if (response?.results[0]?.data?.page_title) {
@@ -334,7 +333,6 @@ export class ShopInnerComponent implements OnInit {
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
           case 'seo_section':
-            console.log("seosection:", prismic);
             this.seoSection = prismic;
             break;
           // case 'og_section':
@@ -348,12 +346,12 @@ export class ShopInnerComponent implements OnInit {
           case 'sponsorsection':
             this.sponserSection = prismic;
             break;
-          case 'testmonialsection':
+          case 'testimonialsection':
             console.log("testmonialsection:", prismic)
             this.testimonialSection = prismic;
             break;
           default:
-            console.log("type:", prismic.slice_type)
+            console.log("type:", prismic)
         }
       })
       this.setMetaTags();

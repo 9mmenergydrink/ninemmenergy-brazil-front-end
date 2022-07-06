@@ -54,7 +54,7 @@ export class PrivacyPolicyComponent implements OnInit {
 
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
-          case 'seosection':
+          case 'seo_section':
             console.log("seosection:", prismic);
             seoSection = prismic;
             break;
@@ -62,14 +62,14 @@ export class PrivacyPolicyComponent implements OnInit {
             console.log("ogsection:", prismic);
             ogSection = prismic;
             break;
-            case 'twitter_section':  
+          case 'twitter_section':  
             console.log("twitter_section:", prismic);           
             twitterSection = prismic;
              break;
           case 'content_section':
             lContentSection = prismic;
             break;
-            default:
+          default:
             console.log("privacy:", prismic)
         }       
         
