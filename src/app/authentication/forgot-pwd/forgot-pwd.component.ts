@@ -22,12 +22,17 @@ export class ForgotPwdComponent implements OnInit {
   headerSection;
   cartCount;// = JSON.parse(localStorage.getItem('cartCount'));
   formGroup: FormGroup;
+  prismicData;
   v = 0;
   customerId: number;
   url: string;
   token: string;
   private subScription: Subscription;
   common: CommonMethods;
+  constant: any;
+  langkey: any;
+  apiUrl: any;
+
   constructor(public translate: TranslateService, private formBuilder: FormBuilder, private service: ApiService, private route: ActivatedRoute,
     private toastr: ToastrService, private router: Router, private commonMtd:CommonMethodsService) {
       this.cartCount = commonMtd.getCartCountDetails();
@@ -48,6 +53,10 @@ export class ForgotPwdComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let domainLanguage = this.commonMtd.getSubDomainLanguage();
+    this.constant = domainLanguage.constant;
+    this.langkey = domainLanguage.langkey;
+    this.apiUrl = domainLanguage.apiUrl;
     this.getPrismicDatas();
     localStorage.setItem('menu', 'Login');
 
@@ -91,30 +100,32 @@ export class ForgotPwdComponent implements OnInit {
   get f() {
     return this.formGroup.controls;
   }
-  getPrismicDatas() {
+  getPrismicDatas(){
     let ogSection: any;
     let seoSection: any;
     let twitterSection: any;
-    return Prismic.api("https://9mmenergydrink.prismic.io/api/v2").then(function (api) {
-      return api.query(Prismic.Predicates.at('document.id', 'YJuYcxEAACIAO6Ir'));
+    let id = this.constant['forgetPwId'];
+    let lang = this.langkey;
+    return Prismic.api(this.apiUrl).then(function (api) {
+      return api.query(Prismic.Predicates.at('document.id', id),{ lang : lang});
     }).then((function (response) {
-
+      this.prismicData = response?.results[0]?.data;
       response.results[0]?.data?.body.forEach(prismic => {
-        switch (prismic.slice_type) {
+        switch(prismic.slice_type){
           case 'seo_section':
-            console.log("seosection:", prismic);
-           seoSection = prismic;
+            seoSection = prismic;
             break;
-          case 'og_section':
-            console.log("ogsection:", prismic);
-           ogSection = prismic;
+          case 'ogsection':
+            ogSection = prismic;
             break;
-            case 'twitter_section':          
-             twitterSection = prismic;
-              break;
-
+          case 'twitter_section':          
+            twitterSection = prismic;
+            break;
+          case 'terms_conditionssection':
+            this.termsSection = prismic;
+            break;         
           default:
-            console.log("type:", prismic)
+            console.log("type:",prismic)
         }
       })
       this.commonMtd.addMetaTag(seoSection, ogSection, twitterSection);
@@ -122,6 +133,7 @@ export class ForgotPwdComponent implements OnInit {
       console.log("Something went wrong: ", err);
     });
   }
+
   submit() {
     if (this.formGroup.valid) {
       if (!this.formGroup.value.password) {

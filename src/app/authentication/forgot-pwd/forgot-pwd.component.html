@@ -21,8 +21,8 @@
                     <div class="white-card">
                         <section>
                             <div class="login-panel">
-                                <div class="yellow-color login-text">{{title1 | translate}}</div>
-                                <p style="margin-top: 10px;">{{title2 | translate}}</p>
+                                <div class="yellow-color login-text">{{prismicData?.title}}</div>
+                                <p style="margin-top: 10px;">{{prismicData?.content}}</p>
                             </div>
 
                         </section>
@@ -73,7 +73,7 @@
                                     <i class="fa fa-check-circle" style="font-size:55px"></i>
                                 </div>
                                 <div class="col-md-12 text-center form-group p-0">
-                                    <button (click)="submit()" [disabled]="!formGroup.valid" type="button" class="update-cart-btn">{{btnName | translate}}</button>
+                                    <button (click)="submit()" [disabled]="!formGroup.valid" type="button" class="update-cart-btn">{{'send' | translate}}</button>
                                 </div>
 
                             </form>

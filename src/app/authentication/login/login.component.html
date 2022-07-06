@@ -1,5 +1,4 @@
 <app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
-<h1 class="pageTitle-seo">{{pageTitle}}</h1>
 
 <body>
     <main class="animsition-overlay" data-animsition-overlay="true" id="up" #up>
@@ -20,8 +19,8 @@
                     <div class="white-card">
                         <section>
                             <div class="login-panel">
-                                <div class="yellow-color login-text">{{'logIn' |translate }}</div>
-                                <p style="margin-top: 10px;">{{'loginDetails' |translate }}</p>
+                                <div class="yellow-color login-text">{{prismicData?.title}}</div>
+                                <p style="margin-top: 10px;">{{prismicData?.content}}</p>
                             </div>
 
                         </section>

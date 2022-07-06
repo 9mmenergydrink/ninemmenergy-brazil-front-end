@@ -54,7 +54,7 @@ export class ShopComponent implements OnInit {
     this.apiUrl = domainLanguage.apiUrl;
 
     this.common.clear();
-    if (environment.mainDomain.includes(origin) || environment.europeDomain.includes(origin))
+    // if (environment.mainDomain.includes(origin) || environment.europeDomain.includes(origin))
       this.getCollections();
     this.getPrismicDatas();
     this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
