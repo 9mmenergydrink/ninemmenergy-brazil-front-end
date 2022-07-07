@@ -4,8 +4,6 @@ export const prismicPtConstants = {
     blogId: "Ysa1QxEAACcA5jx8",
     aboutId: "Yr2YwBMAACUAVdUa", //17
     eventsId: "YsAVdxUAACkAtvkz", //K-1
-    squeezeId: "YXEhThQAACYANeYG",
-    clubId: "YXEhXxQAACgANeZY",
     shopId: "Yr_WlRUAACoAteGa", //7
     brainWorkoutId: "YsAKQxUAACkAtsbo", //8
     contactId: "YsAjSRUAACgAtziH", //6
@@ -21,7 +19,7 @@ export const prismicPtConstants = {
     loginId: "YsBLoBUAACoAt-05", //11
     createPage: "YsVSPBAAACMAm81H", //12
     cartPage: "YsBNkhUAACkAt_Xh", //18
-    forgotPage: "YsVSjRAAACMAm87A",
+    forgotPage: "YsVSjRAAACMAm87A", //K-5
     pageNotId: "Yr7QZhUAACoAsX3l", //13
     faqId: "YsBGsBUAACoAt9cz", //4
     ourTeam:"Yr7RzRUAACgAsYRJ", //K-2

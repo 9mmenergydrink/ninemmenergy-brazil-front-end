@@ -104,7 +104,7 @@ export class ForgotPwdComponent implements OnInit {
     let ogSection: any;
     let seoSection: any;
     let twitterSection: any;
-    let id = this.constant['forgetPwId'];
+    let id = this.constant['forgotPage'];
     let lang = this.langkey;
     return Prismic.api(this.apiUrl).then(function (api) {
       return api.query(Prismic.Predicates.at('document.id', id),{ lang : lang});
