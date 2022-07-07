@@ -28,11 +28,14 @@ export class AccountComponent implements OnInit {
   accountData: any;
   orderData: any;
   common;
-
+  sideBarMenuSection;
   order;
   profile;
   address;
   customerId = "";
+  constant: any;
+  langkey: any;
+  apiUrl: any;
   constructor(private apiService: ApiService, private toastr: ToastrService, public router: Router, public translate: TranslateService, 
     private commonMtd:CommonMethodsService){
     this.cartCount = commonMtd.getCartCountDetails();
@@ -43,7 +46,6 @@ export class AccountComponent implements OnInit {
     self = this;
     commonMtd.cancelSuccess.subscribe((v) => {
       if(v){
-        this.activeTab = 'orders';
         console.log("reload order list");
         this.getAccountData();
       }
@@ -51,41 +53,48 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let domainLanguage = this.commonMtd.getSubDomainLanguage();
+    this.constant = domainLanguage.constant;
+    this.langkey = domainLanguage.langkey;
+    this.apiUrl = domainLanguage.apiUrl;
     this.getPrismicDatas();
     this.getCountries();
     this.getAccountData();
-    document.getElementById('orders').style.color = '#e9cf13';
   }
   scroll(el: HTMLElement) {
     el.scrollIntoView();
   }
+  
   getPrismicDatas() {
     let ogSection: any;
     let seoSection: any;
     let twitterSection: any;
-    return Prismic.api("https://9mmenergydrink.prismic.io/api/v2").then(function (api) {
-      return api.query(Prismic.Predicates.at('document.id', 'YJuYcxEAACIAO6Ir'));
+    let id = this.constant['myAccountId'];
+    let lang = this.langkey;
+    return Prismic.api(this.apiUrl).then(function (api) {
+      return api.query(Prismic.Predicates.at('document.id', id),{ lang : lang});
     }).then((function (response) {
-      if(response?.results[0]?.data?.page_title){
-        this.pageTitle = response.results[0].data.page_title
-      }
       response.results[0]?.data?.body.forEach(prismic => {
         switch (prismic.slice_type) {
           case 'seo_section':
-          seoSection = prismic;
+            seoSection = prismic;
             break;
-          case 'og_section':
-          ogSection = prismic;
+          case 'ogsection':
+            ogSection = prismic;
             break;
-            case 'twitter_section':          
+          case 'twitter_section':               
             twitterSection = prismic;
+            break;
+            case 'side_bar_menu_section':
+              this.sideBarMenuSection = prismic;
               break;
           default:
+            console.log("type:", prismic)
         }
       })
       this.commonMtd.addMetaTag(seoSection, ogSection, twitterSection);
     }).bind(this), function (err) {
-      // console.log("Something went wrong: ", err);
+      console.log("Something went wrong: ", err);
     });
   }
 
@@ -157,12 +166,11 @@ export class AccountComponent implements OnInit {
   }
   // Get tab click event
   tabClickEvent(name) {
-    document.getElementById(name).style.color = '#e9cf13';
     if(name == 'orders') {
       this.getOrderDetails(this.customerId);
+      this.activeTab = name;
     }
     if (name !== this.activeTab)
-      document.getElementById(this.activeTab).style.color = 'black';
     this.activeTab = name;
   }
 

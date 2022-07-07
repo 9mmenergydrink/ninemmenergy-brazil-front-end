@@ -73,18 +73,15 @@ export class BlogComponent implements OnInit {
         response.results[0]?.data?.body.forEach(prismic => {
           switch (prismic.slice_type) {
             case 'seo_section':
-              console.log("seosection:", prismic);
               this.seoSection = prismic;
               break;
             case 'og_section':
-              console.log("ogsection:", prismic);
               this.ogSection = prismic;
               break;
             case 'twitter_section':
               this.twitterSection = prismic;
               break;
-            case 'bannersection':
-              console.log("bannersection:", prismic);
+            case 'banner_section':
               this.bannerSection = prismic;
               break;
               case 'blog_side_bar_section':               
@@ -94,15 +91,6 @@ export class BlogComponent implements OnInit {
 
               this.shareSection = prismic;
               break;
-
-           /* case 'tag_clouds_section':
-              console.log("tag_clouds_section:", prismic);
-              this.tagSection = prismic;
-              break;*/
-            /* case 'instagram_section':
-               console.log("instagram_section:", prismic);
-               this.instagramSection = prismic;
-               break;*/
             default:
               console.log("type:", prismic)
           }

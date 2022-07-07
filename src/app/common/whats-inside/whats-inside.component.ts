@@ -45,6 +45,7 @@ export class WhatsInsideComponent implements OnInit {
     return Prismic.api(this.apiUrl).then(function (api) {
       return api.query(Prismic.Predicates.at('document.id', id),{ lang : lang});
     }).then((function (response) {
+      console.log("response", response)
       if(response?.results[0]?.data?.page_title){
         this.pageTitle = response.results[0].data.page_title
       }
@@ -60,23 +61,18 @@ export class WhatsInsideComponent implements OnInit {
              twitterSection = prismic;
               break;
           case 'banner_section':
-            console.log("banner_section:", prismic);
             this.bannerSection = prismic;
             break;
           case 'creative_section':
-              console.log("creativeSection:", prismic);
               this.creativeSection = prismic;
               break;
           case 'workssection':
-            console.log("worksSection:", prismic)
             this.worksSection = prismic;
           break;
           case 'folkssection':
-            console.log("folksSection:", prismic)
             this.folksSection = prismic;
           break;
           case 'product_section':
-            console.log("productSection:", prismic)
             this.productSection = prismic;
           break;
             

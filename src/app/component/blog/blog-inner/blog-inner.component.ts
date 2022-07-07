@@ -354,8 +354,8 @@ this.commonMtd.addMetaTag(lContentItem?.data.seoSection, lContentItem?.data.ogSe
     })
     lContentItem.more_contents = tContent;
 
-    if (lContentItem?.data?.author_description[0]?.text) {
-      lContentItem.data.author_description[0].rawText = lContentItem.data.author_description[0].text;
+    if (lContentItem?.data?.author_description?.length) {
+      lContentItem.data.author_description[0].rawText = lContentItem?.data?.author_description[0]?.text;
       let item = lContentItem.data.author_description[0];
       let txt = "<span>";
       let prev = 0;
@@ -480,7 +480,7 @@ this.commonMtd.addMetaTag(lContentItem?.data.seoSection, lContentItem?.data.ogSe
     })
     lContentItem.subcontents = tContent;
 
-    if (lContentItem?.data?.author_description[0]) {
+    if (lContentItem?.data?.author_description?.length) {
       let item = lContentItem.data.author_description[0];
       let txt = "<span>";
       let prev = 0;

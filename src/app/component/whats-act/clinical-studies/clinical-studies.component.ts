@@ -23,6 +23,8 @@ export class ClinicalStudiesComponent implements OnInit {
   langkey: any;
   clinicalStudiesHeader: any;
   common: CommonMethods;
+  apiUrl: any;
+
   constructor(private router: Router, private commonMtd:CommonMethodsService) { 
     this.cartCount = commonMtd.getCartCountDetails();
     commonMtd.addIndexMeta(true);
@@ -30,13 +32,11 @@ export class ClinicalStudiesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem('language') == 'fr'){
-      this.constant = prismicFrConstants
-      this.langkey = 'fr-fr'
-    }else{
-      this.constant = prismicEnConstants
-      this.langkey = 'en-us'
-    }
+    let domainLanguage = this.commonMtd.getSubDomainLanguage();
+    this.constant = domainLanguage.constant;
+    this.langkey = domainLanguage.langkey;
+    this.apiUrl = domainLanguage.apiUrl;
+    
     this.getPrismicDatas();
      this.common.clear();
   }
@@ -48,7 +48,7 @@ export class ClinicalStudiesComponent implements OnInit {
     let clinicalStudiesList;
     let id = this.constant['clinicalStudiesId'];
     let lang = this.langkey;
-    return Prismic.api("https://9mmenergydrink.prismic.io/api/v2").then(function (api) {
+    return Prismic.api(this.apiUrl).then(function (api) {
       return api.query(Prismic.Predicates.at('document.id', id),{ lang : lang});
     }).then((async function (response) {
       if(response?.results[0]?.data?.page_title){
