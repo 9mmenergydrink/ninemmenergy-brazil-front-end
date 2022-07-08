@@ -26,5 +26,7 @@ export const prismicPtConstants = {
     whatsInsideId:"Yr1WPRMAACQAVKd0", //K-3
     ourProductId:"Yr1JNRMAACMAVHVf", //K-4
     forgetPwId:"YsVSjRAAACMAm87A", //K-5
-    myAccountId:"YsZ4wREAACcA5TmL"
+    myAccountId:"YsZ4wREAACcA5TmL",
+    neurotrackerClinicalStudiesId:"YsfqmBEAACUA67eR",
+    clinicalStudiesId : "YsfttxEAACcA68V4"
 }

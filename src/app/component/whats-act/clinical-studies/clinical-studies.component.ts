@@ -71,8 +71,7 @@ export class ClinicalStudiesComponent implements OnInit {
             case 'clinical_studies':            
               this.clinicalStudiesHeader = prismic;
               break;
-          case 'call_to_action':
-            console.log("callToActionSection:",prismic)
+          case 'call_to_action_1':
                 this.callToActionSection = prismic;
                 break;
          default:
