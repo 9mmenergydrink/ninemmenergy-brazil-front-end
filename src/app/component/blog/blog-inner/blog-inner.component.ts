@@ -148,7 +148,7 @@ interval;
             break;
           }
         })
-      this.commonMtd.isLoading.next(false);
+      this.apiService.isLoading.next(false);
     }).bind(this), function (err) {
       console.log("Something went wrong: ", err);
       this.commonMtd.isLoading.next(false);
