@@ -26,6 +26,7 @@ export class WhatsActComponent implements OnInit{
   constant: any;
   langkey: any;
   clientSection;
+  apiUrl;
   common: CommonMethods;
   constructor(private router:Router,private modalService: NgbModal, public commonMtd:CommonMethodsService) {
     this.cartCount = commonMtd.getCartCountDetails();
@@ -34,13 +35,10 @@ export class WhatsActComponent implements OnInit{
    }
 
   ngOnInit(): void {
-    if(localStorage.getItem('language') == 'fr'){
-      this.constant = prismicFrConstants
-      this.langkey = 'fr-fr'
-    }else{
-      this.constant = prismicEnConstants
-      this.langkey = 'en-us'
-    }
+    let domainLanguage = this.commonMtd.getSubDomainLanguage();
+    this.constant = domainLanguage.constant;
+    this.langkey = domainLanguage.langkey;
+    this.apiUrl = domainLanguage.apiUrl;
     this.getPrismicDatas();
     this.common.clear();
   }
@@ -58,7 +56,7 @@ export class WhatsActComponent implements OnInit{
     let twitterSection: any;
     let id = this.constant['whatsActId']
     let lang = this.langkey
-    return Prismic.api("https://9mmenergydrink.prismic.io/api/v2").then(function (api) {
+    return Prismic.api(this.apiUrl).then(function (api) {
       return api.query(Prismic.Predicates.at('document.id', id),{ lang : lang});
     }).then((function (response) {
       if(response?.results[0]?.data?.page_title){
@@ -66,16 +64,16 @@ export class WhatsActComponent implements OnInit{
       }
       response.results[0]?.data?.body.forEach(prismic => {
         switch(prismic.slice_type){
-            case 'seo_section':
+            case 'seosection':
              seoSection = prismic;
               break;
-            case 'og_section':
+            case 'ogsection':
            ogSection = prismic;
             break;
             case 'twitter_section':          
              twitterSection = prismic;
               break;
-          case 'bannersection':
+          case 'banner_section':
             this.bannerSection = prismic;
             break;
           case 'product_section':
@@ -90,8 +88,7 @@ export class WhatsActComponent implements OnInit{
            case 'client_section':
          this.clientSection = prismic;
          break;
-         case 'shop_proof_section':
-              console.log("social_proof_section:", prismic)
+         case 'social_proof_section':
               this.socialProofSection = prismic;
               break;
          default:
