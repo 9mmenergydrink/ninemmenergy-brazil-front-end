@@ -536,12 +536,12 @@ this.commonMtd.addMetaTag(lContentItem?.data.seoSection, lContentItem?.data.ogSe
   ImagefileUploadService() {
     this.subScription = this.apiService.fileUpload(`Customer/uploadFile`, this.files).subscribe((res: any) => {
       if (res.status = "7400") {
-        this.toastr.success("Photo Uploaded Successfully", "Save");
+        this.toastr.success(this.translate.instant('photoUploaded'), "Save");
         this.fileName = environment.imageUrl + res.fileName;
         console.log(res.fileName, this.ngForm.value.imageUrl, this.fileName);
       }
       else {
-        this.toastr.error("Upload Failed", "Error");
+        this.toastr.error(this.translate.instant('uploadFailed'), "Error");
       }
     }, err => {
 
@@ -563,7 +563,7 @@ this.commonMtd.addMetaTag(lContentItem?.data.seoSection, lContentItem?.data.ogSe
       console.log(this.ngForm.value);
       this.subScription = this.apiService.addComment(this.ngForm.value).subscribe((res: any) => {
         if (res.status === "7400") {
-          this.toastr.success("Comment Posted", "Success");
+          this.toastr.success(this.translate.instant('commentPosted'), "Success");
           this.submitted = false;
           this.ngForm.value.imageUrl = '';
           this.ngForm.reset();
@@ -573,7 +573,7 @@ this.commonMtd.addMetaTag(lContentItem?.data.seoSection, lContentItem?.data.ogSe
         }
       })
     }
-    else return this.toastr.warning("Enter Valid Data");
+    else return this.toastr.warning(this.translate.instant('enterValidData'));
   }
  
   socialShare(media) {
