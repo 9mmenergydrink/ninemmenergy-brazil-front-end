@@ -27,7 +27,7 @@ export class CommonMethodsService {
     let origin = window.location.origin;
     if (temp) {
       this.metaTagService.addTags([
-        { name: 'robots', content: 'index, nofollow' }
+        { name: 'robots', content: 'noindex, nofollow' }
       ]);
     } else if (environment.motorDomain.includes(origin) || environment.motorFRDomain.includes(origin) ||
       environment.mmaFRDomain.includes(origin) || environment.mmaDomain.includes(origin) ||
@@ -38,7 +38,7 @@ export class CommonMethodsService {
       ]);
     } else {
       this.metaTagService.addTags([
-        { name: 'robots', content: 'index, follow' }
+        { name: 'robots', content: 'noindex, nofollow' }
       ]);
     }
     if (flag) {
