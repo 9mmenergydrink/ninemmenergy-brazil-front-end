@@ -126,12 +126,12 @@
                                             <a (click)="onClick('cart')" class="hover-color">
                                                 <div class="numberCircle">{{cCount}}</div><img class="cartImg" src="assets/images/HOME/icons/Group 44 (1).svg" alt="cart"></a>
                                         </li>
-                                        <li class="cart pl-0">
+                                        <!-- <li class="cart pl-0">
                                             <a (click)="showlang()" class="hover-color"><img class="cartImg" src="assets/images/HOME/icons/Group 457.svg" alt="globe"></a>
                                         </li>
                                         <li class="cart2 pl-0">
                                             <a (click)="showlang()" class="hover-color"><img class="cartImg" src="assets/images/HOME/icons/Group 458.svg" alt="globe"></a>
-                                        </li>
+                                        </li> -->
                                         <li *ngIf="isShowLang" class="d-flex">
                                             <a (click)="selectLan('en')" class="hover-color" [ngClass]="{'selected':language=='en'}"> En</a>
                                             <a>&nbsp;|&nbsp;</a>

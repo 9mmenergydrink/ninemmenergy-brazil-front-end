@@ -3,7 +3,7 @@ export const environment = {
  
   // For live
    apiUrl: 'https://app.9mmenergy.com/',
-   uiUrl:'https://9mmenergy.com/',
+   uiUrl:'http://brazil.9mmenergy.com.s3-website.us-east-2.amazonaws.com/',
    oldUiUrl:'https://www.9mmenergy.com/',
    contactUrl: `https://9mmenergy.com/contact-us`,
 
@@ -13,10 +13,11 @@ export const environment = {
   //  contactUrl: `http://app.9mmenergydrink.s3-website.us-east-2.amazonaws.com/contact-us`,
   // mainDomain: 'http://app.9mmenergydrink.s3-website.us-east-2.amazonaws.com/', 
   europeDomain: 'https://eu.9mmenergy.com/',
-  mainDomain: 'https://9mmenergy.com/',
+  mainDomain: 'http://brazil.9mmenergy.com.s3-website.us-east-2.amazonaws.com/',
   mmaDomain: 'https://mma.9mmenergy.com/',
   esportsDomain: 'https://esports.9mmenergy.com/',
   motorDomain: 'https://motorsports.9mmenergy.com/',
+  brazilDomain: 'http://brazil.9mmenergy.com.s3-website.us-east-2.amazonaws.com/',
 
   mmaFRDomain: 'https://artsmartiauxmixtes.9mmenergy.com/',
   esportsFRDomain: 'https://esport.9mmenergy.com/',
