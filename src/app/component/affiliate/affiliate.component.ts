@@ -150,7 +150,6 @@ document.body.appendChild(chatScript);*/
         }
       })
       this.commonMtd.addMetaTag(seoSection, ogSection, twitterSection);
-      this.messageScript();
       let tContent = [];
         let lIndex;
         lContentSection?.primary?.content?.forEach((item,index) => {
@@ -245,20 +244,11 @@ subscribe() {
     })
   }
 }
-messageScript() {
-  console.log("callToAction2 ", this.callToAction2);
-  let enquiry_script = this.callToAction2?.primary?.popup_form_script;
-  $("#enquiryForm").append(enquiry_script);
-  var enquiry_opf_uid = $("#enquiryForm script").attr("data-opf-uid");
-      $("#enquiryForm").attr("data-opf-trigger", enquiry_opf_uid);
-}
 
-openCtaPopup(CTAscript?, customCss?) {
-  if (!customCss) {
-    customCss = "bookAppointmentCustomClass";
+openPopupForm(formScript) {
+  if (formScript) {
+    const modalRef = this.modalService.open(PopupFormComponent, { centered: true, windowClass: "zohoPopupFormCustomCss" });
+    modalRef.componentInstance.script = formScript;
   }
-  var script = CTAscript;
-  const modalRef = this.modalService.open(PopupFormComponent, { centered: true, windowClass: customCss });
-  modalRef.componentInstance.script = '<iframe frameborder="0" style="height:700px;width:99%;border:none;" src="https://forms.zohopublic.com/9mmbeyondenergy/form/WhatsOnYourMind7/formperma/6RuZIyAW46ZBCYT3m5tifeDr-TgBikpnqUORbOcH9aU"></iframe>'//script;
 }
 }

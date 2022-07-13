@@ -119,12 +119,10 @@ export class FooterComponent implements OnInit {
     });
   }
 
-  openCtaPopup(CTAscript?, customCss?) {
-    if (!customCss) {
-      customCss = "bookAppointmentCustomClass";
+  openPopupForm(formScript) {
+    if (formScript) {
+      const modalRef = this.modalService.open(PopupFormComponent, { centered: true, windowClass: "zohoPopupFormCustomCss" });
+      modalRef.componentInstance.script = formScript;
     }
-    var script = CTAscript;
-    const modalRef = this.modalService.open(PopupFormComponent, { centered: true, windowClass: customCss });
-    modalRef.componentInstance.script = '<iframe frameborder="0" style="height:700px;width:99%;border:none;" src="https://forms.zohopublic.com/9mmbeyondenergy/form/WhatsOnYourMind4/formperma/LNQIafKpr8s4f1Hdrx9dIwnW1agfEilU235Fw-4-hy0"></iframe>'//script;
   }
 }

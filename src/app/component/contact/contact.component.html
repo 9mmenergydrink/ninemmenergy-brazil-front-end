@@ -93,7 +93,7 @@
                                     <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay03" data-animation="overlay-anim2"><a *ngIf="contactSection?.items[2]?.phone_number" [href]="'tel:'+contactSection?.items[0]?.phone_number">{{contactSection?.items[0]?.phone_number}}</a></span>
                                 </p>
                                 <p data-animation-child class="flip-btn-box fade-anim-box tr-delay04" data-animation="fade-anim">
-                                    <a id="hq0" class="pointer-large text-lowercase red-color" (click)="openCtaPopup()" [attr.data-text]="contactSection?.items[0]?.email">{{contactSection?.items[0]?.email}}</a>
+                                    <a id="hq0" class="pointer-large text-lowercase red-color" (click)="openPopupForm(contactSection?.items[0]?.popup_form_script)" [attr.data-text]="contactSection?.items[0]?.email">{{contactSection?.items[0]?.email}}</a>
                                 </p>
                                 <!-- <h6 data-animation-child class="flip-btn-box fade-anim-box tr-delay04" data-animation="fade-anim">
                                 <a  class="flip-btn pointer-large" data-text="email@xen_job.com">email@xen_job.com</a>
@@ -116,7 +116,7 @@
                                     <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay03" data-animation="overlay-anim2"><a *ngIf="contactSection?.items[2]?.phone_number" [href]="'tel:'+contactSection?.items[1]?.phone_number">{{contactSection?.items[1]?.phone_number}}</a></span>
                                 </p>
                                 <div data-animation-child class="flip-btn-box fade-anim-box tr-delay04" data-animation="fade-anim">
-                                    <a id="hq1" class="pointer-large text-lowercase red-color" (click)="openCtaPopup()" [attr.data-text]="contactSection?.items[1]?.email">{{contactSection?.items[1]?.email}}</a>
+                                    <a id="hq1" class="pointer-large text-lowercase red-color" (click)="openPopupForm(contactSection?.items[1]?.popup_form_script)" [attr.data-text]="contactSection?.items[1]?.email">{{contactSection?.items[1]?.email}}</a>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +137,7 @@
                                     <span data-animation-child class="overlay-anim-box2 overlay-light-bg-1 tr-delay03" data-animation="overlay-anim2"><a *ngIf="contactSection?.items[2]?.phone_number" [href]="'tel:'+contactSection?.items[2]?.phone_number">{{contactSection?.items[2]?.phone_number}}</a></span>
                                 </p>
                                 <h6 data-animation-child class="flip-btn-box fade-anim-box tr-delay04" data-animation="fade-anim">
-                                    <a id="hq2" class="pointer-large text-lowercase red-color" (click)="openCtaPopup()" [attr.data-text]="contactSection?.items[2]?.email">{{contactSection?.items[2]?.email}}</a>
+                                    <a id="hq2" class="pointer-large text-lowercase red-color" (click)="openPopupForm(contactSection?.items[2]?.popup_form_script)" [attr.data-text]="contactSection?.items[2]?.email">{{contactSection?.items[2]?.email}}</a>
                                 </h6>
                             </div>
                         </div>
@@ -157,8 +157,8 @@
             <div class="flex-min-height-inner">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="ontra-form">
-                            <h4 class="medium-title-oswald text-color-4 text-center mb-3 mt-25">{{messageSection?.primary?.title}}</h4>
+                        <div class="zoho-form">
+                            <h4 class="medium-title-oswald text-color-4 text-center mt-25 pt-6">{{messageSection?.primary?.title}}</h4>
                             <div class="zoho-contact-form" id="zohoContactFormId">
 
                             </div>
@@ -194,7 +194,7 @@
                             </h3>
                             <div class="border-btn-box border-btn-red pointer-large mt-3">
                                 <div class="border-btn-inner">
-                                    <a id="press0" (click)="openCtaPopup()" [attr.data-text]="'contactUs' | translate" class="border-btn">{{'contactUs' | translate}}</a>
+                                    <a id="press0" (click)="openPopupForm(memberSection?.items[0]?.popup_form_script)" [attr.data-text]="'contactUs' | translate" class="border-btn">{{'contactUs' | translate}}</a>
                                 </div>
                             </div>
                         </div>
@@ -211,7 +211,7 @@
                             </h3>
                             <div class="border-btn-box border-btn-red pointer-large mt-3">
                                 <div class="border-btn-inner">
-                                    <a id="press1" (click)="openCtaPopup()" [attr.data-text]="'contactUs' | translate" class="border-btn">{{'contactUs' | translate}}</a>
+                                    <a id="press1" (click)="openPopupForm(memberSection?.items[1]?.popup_form_script)" [attr.data-text]="'contactUs' | translate" class="border-btn">{{'contactUs' | translate}}</a>
                                 </div>
                             </div>
                         </div>

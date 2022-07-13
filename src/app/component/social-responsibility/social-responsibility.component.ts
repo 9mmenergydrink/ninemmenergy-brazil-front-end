@@ -70,15 +70,12 @@ export class SocialResponsibilityComponent implements OnInit {
             twitterSection = prismic;
             break;
           case 'banner_section':
-            console.log("banner_section:", prismic);
             this.bannerSection = prismic;
             break;
           case 'workssection':
-            console.log("works_section:", prismic)
             this.worksSection = prismic;
             break;
           case 'messagesection':
-            console.log("messagesection:", prismic);
             this.messageSection = prismic;
             break;
           default:
@@ -86,7 +83,10 @@ export class SocialResponsibilityComponent implements OnInit {
         }
       })
       this.commonMtd.addMetaTag(seoSection, ogSection, twitterSection);
-      this.desktopMobile();
+
+      var contactFormScript = this.messageSection?.primary?.contact_form_script;
+      $("#zohoContactFormId").append(contactFormScript);
+
     }).bind(this), function (err) {
       console.log("Something went wrong: ", err);
     });
@@ -99,18 +99,5 @@ export class SocialResponsibilityComponent implements OnInit {
   gotoReadMore(){
     // this.common.navigate('/read-more', "about");
     this.router.navigate([this.commonMtd.getRoutePath('shop')], { fragment: 'down' });
-  }
-
-  desktopMobile() {
-    // var isAndroid = navigator.userAgent.match(/Android/i);
-    // var isIOS = navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    var isMobile = navigator.userAgent.match(/Mobile|Android|iPhone|iPod/i);
-    var isIpad = navigator.userAgent.match(/iPad/i);
-    if(isMobile && (isIpad == null)) {
-      var message_script = this.messageSection?.primary?.mobile_script;
-    } else {
-      var message_script = this.messageSection?.primary?.desktop_script;
-    }
-    $("#ontrapoet").append(message_script);
   }
 }

@@ -338,7 +338,7 @@
                         <div data-animation-container class="container small bottom-padding-20 text-center overlay-text2">
                             <h4 data-animation-child class="title-style text-height-10 text-white overlay-anim-box2" data-animation="overlay-anim2">{{callToAction2?.primary?.title}}</h4><br>
                             <p data-animation-child class="fade-anim-box tr-delay02 text-white p-style-large text-height-13 top-margin-5" data-animation="fade-anim">{{callToAction2?.primary?.title2}}</p><br>
-                            <a (click)="openCtaPopup()" class="red-color mt-0 p-style-large" id="enquiryForm">{{callToAction2?.primary?.email}}</a>
+                            <a (click)="openPopupForm(callToAction2?.primary?.popup_form_script)" class="red-color mt-0 p-style-large" id="enquiryForm">{{callToAction2?.primary?.email}}</a>
 
                         </div>
                     </div>

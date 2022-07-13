@@ -3845,7 +3845,9 @@ background-color: #ebcc00 !important;
       .p-style-bold-up {
           font-size: 12px;
       }
-
+      .pt-6 {
+        padding-top: 10px !important;
+    }
   }
 
   @media only screen and (max-width: 549px) {
@@ -4730,7 +4732,13 @@ background-color: #ebcc00 !important;
       .overlay-btn {
           font-size: 40px;
       }
+      
+  }
 
+  @media only screen and (max-width: 370px) {
+    .contact-form-box iframe {
+        height: 800px !important;
+    }
   }
 
   @media only screen and (max-width: 399px) {
@@ -4739,6 +4747,9 @@ background-color: #ebcc00 !important;
           font-size: 30px;
       }
 
+      .contact-form-box iframe {
+        height: 745px !important;
+      }
   }
 
   /*--------------------------------------------------------------
@@ -10040,18 +10051,29 @@ img.hi:hover + figcaption.figcaption {
     .numberCircle{
       margin: 0px 0px 0px 10px;
     }
+    .zohoPopupForm iframe {
+        height: 845px !important;
+    }
   }
   @media only screen and (max-width: 400px) {
     .numberCircle{
       margin: 0px 0px 0px 25px;
     }
-    .contact-form-box iframe {
-        height: 580px !important;
+
+    /* .contact-form-box iframe {
+         height: 580px !important;
+    } */
+
+    .zohoPopupForm iframe {
+        /* height: 800px !important; */
+        height: 875px !important;
     }
-    .bookAppointment-cta iframe {
-        height: 800px !important;
+
+    .contact-form-box iframe {
+        height: 745px !important;
     }
   }
+
 @media only screen and (min-width: 999px) {
 .sponser-section{
     display: flex;
@@ -11795,7 +11817,8 @@ letter-spacing: 2px;
       text-transform: uppercase;
   }
   .contact-form-box .flex-min-height-inner {
-    min-height: 90vh;
+    /* min-height: 90vh; */
+    min-height: auto;
   }
   
   .yellow-checkbox input {
@@ -12390,18 +12413,18 @@ letter-spacing: 2px;
     background: transparent;
     border: 2px solid;
 }
-.ontra-form{
+/* .ontra-form */ .zoho-form {
     width: 100%;
 }
 .modal-header.d-block {
     padding: 0px;
     border: none;
 }
-.bookAppointmentCustomClass .modal-content{
+.zohoPopupFormCustomCss .modal-content{
     background: transparent;
     border: none;
 }
-.bookAppointment-cta .close {
+.zohoPopupForm .close {
     right: 40px;
     top: 35px;
     background-color: #fff !important;
@@ -13607,4 +13630,14 @@ ul.border-warning{
     .home-slider .scroll-btn{
         bottom: 15px;
     }
+}
+
+/* added by Kaviraj on 13-07-2022 */
+
+.pt-6{
+    padding-top: 35px;
+}
+
+.zohoPopupForm iframe {
+    height: 700px !important;
 }
