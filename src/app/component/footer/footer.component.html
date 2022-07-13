@@ -57,7 +57,7 @@
                             <i [class]="item?.contact_icon"></i>
                             <span  class="xsmall-title-oswald">{{item?.contact_title}}</span>
                         </li> -->
-                            <li class="xsmall-title-oswald"><i class="far fa-envelope"></i><a (click)="openCtaPopup()" class="xsmall-title-oswald">&nbsp;{{contactSection?.primary?.email}}</a></li>
+                            <li class="xsmall-title-oswald"><i class="far fa-envelope"></i><a (click)="openPopupForm(contactSection?.primary?.popup_form_script)" class="xsmall-title-oswald">&nbsp;{{contactSection?.primary?.email}}</a></li>
                             <li class="xsmall-title-oswald"><i class="fas fa-mobile-alt"></i>
                                 <a [href]="'tel:'+contactSection?.primary?.phone_number" class="xsmall-title-oswald">&nbsp;{{contactSection?.primary?.phone_number}}</a>
                                 <!-- <span  class="xsmall-title-oswald">{{contactSection?.primary.phone_number}}</span> -->

@@ -9,13 +9,9 @@ declare let $:any;
 export class PopupFormComponent implements OnInit {
 
   
-  ctaUrl;
   @Input() set script(script: any) {
-    this.ctaUrl = null;
     if (script) {
-    console.log("Script ", script);
-    $("#bookAppointmentId").append(script);
-    // this.ctaUrl = script;
+      $("#popupFormId").append(script);
     }
   }
 

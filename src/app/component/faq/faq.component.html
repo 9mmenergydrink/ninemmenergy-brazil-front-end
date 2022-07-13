@@ -99,7 +99,7 @@
                             <p class="mt-0 p-style-large">{{enquirySection?.primary?.email_title}}</p>
                             <span>
                                 <i class="fa fa-envelope mr-2"></i>
-                                <a (click)="openCtaPopup()" id="enquiryForm" class="p-style-large">{{enquirySection?.primary?.email}}</a>
+                                <a (click)="openPopupForm(enquirySection?.primary?.popup_form_script)" id="enquiryForm" class="p-style-large">{{enquirySection?.primary?.email}}</a>
                                 <!-- [href]="'mailto:'enquirySection?.primary?.email_address" -->
                             </span>
                         </div>

@@ -198,61 +198,17 @@ export class ContactComponent implements OnInit {
         }
       })
       this.commonMtd.addMetaTag(seoSection, ogSection, twitterSection);
-      //this.messageScript();
-      var contactFormScript = '<iframe frameborder="0" style="height:520px;width:99%;border:none;" src="https://forms.zohopublic.com/9mmbeyondenergy/form/9MMBEYONDENERGY/formperma/QIFfVz-Y8JHC2f-EIYLgb0aHRJboRUG2SX0tSmSFq1M"></iframe>'//this.messageSection?.primary?.contact_form_script;
+      var contactFormScript = this.messageSection?.primary?.contact_form_script;
       $("#zohoContactFormId").append(contactFormScript);
     }).bind(this), function (err) {
       console.log("Something went wrong: ", err);
     });
   }
 
-  messageScript() {
-    this.contactSection?.items.forEach((element, index) => {
-      $("#hq" + index).append(element.popup_form_script);
-      var hq_opf_uid = $("#hq" + index + " script").attr("data-opf-uid");
-      $("#hq" + index).attr("data-opf-trigger", hq_opf_uid);
-    });
-
-    this.desktopMobile();
-
-    this.memberSection?.items.forEach((element, index) => {
-      $("#press" + index).append(element.popup_form_script);
-      var press_opf_uid = $("#press" + index + " script").attr("data-opf-uid");
-      $("#press" + index).attr("data-opf-trigger", press_opf_uid);
-    });
-  }
-
-  desktopMobile() {
-    // var isAndroid = navigator.userAgent.match(/Android/i);
-    // var isIOS = navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    var isMobile = navigator.userAgent.match(/Mobile|Android|iPhone|iPod/i);
-    var isIpad = navigator.userAgent.match(/iPad/i);
-    if (isMobile && (isIpad == null)) {
-      var message_script = this.messageSection?.primary?.mobile_script;
-    } else {
-      var message_script = this.messageSection?.primary?.desktop_script;
+  openPopupForm(formScript) {
+    if(formScript){
+      const modalRef = this.modalService.open(PopupFormComponent, { centered: true, windowClass: "zohoPopupFormCustomCss" });
+      modalRef.componentInstance.script = formScript;
     }
-    $("#ontrapoet").append(message_script);
-  }
-
-  @HostListener('window:resize', [])
-  onResize(): void {
-    this.desktopMobile();
-  }
-  // open(contactPopup) {
-  //   this.modalService.open(contactPopup, { centered: true, windowClass: 'subs-popup'});
-  // }
-  open() {
-    // const modalRef = this.modalService.open(ContactEmailComponent, { size: 'md',centered: true,windowClass: 'contact-popup'});
-    //  modalRef.componentInstance.setVideoUrl = contactPopup;
-  }
-
-  openCtaPopup(CTAscript?, customCss?) {
-    if (!customCss) {
-      customCss = "bookAppointmentCustomClass";
-    }
-    var script = CTAscript;
-    const modalRef = this.modalService.open(PopupFormComponent, { centered: true, windowClass: customCss });
-    modalRef.componentInstance.script = '<iframe frameborder="0" style="height:700px;width:99%;border:none;" src="https://forms.zohopublic.com/9mmbeyondenergy/form/WhatsOnYourMind4/formperma/LNQIafKpr8s4f1Hdrx9dIwnW1agfEilU235Fw-4-hy0"></iframe>'//script;
   }
 }

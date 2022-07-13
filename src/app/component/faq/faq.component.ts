@@ -94,7 +94,6 @@ export class FaqComponent implements OnInit {
         }
       })
       this.commonMtd.addMetaTag(seoSection, ogSection, twitterSection);
-      this.messageScript();
 
       let tContent = [];
       let lIndex, oIndex;
@@ -186,13 +185,6 @@ export class FaqComponent implements OnInit {
   openDetail(item) {
     item.show = !item.show;
   }
-  messageScript() {
-    console.log("enquiry section ", this.enquirySection);
-    let enquiry_script = this.enquirySection?.primary?.popup_form_script;
-    $("#enquiryForm").append(enquiry_script);
-    var enquiry_opf_uid = $("#enquiryForm script").attr("data-opf-uid");
-    $("#enquiryForm").attr("data-opf-trigger", enquiry_opf_uid);
-  }
 
   addSchemaScript(){
 		/*schema script*/ 
@@ -222,12 +214,10 @@ export class FaqComponent implements OnInit {
 		/*schema script*/ 
 	  }
 
-    openCtaPopup(CTAscript?, customCss?) {
-      if (!customCss) {
-        customCss = "bookAppointmentCustomClass";
+    openPopupForm(formScript) {
+      if(formScript){
+        const modalRef = this.modalService.open(PopupFormComponent, { centered: true, windowClass: "zohoPopupFormCustomCss" });
+        modalRef.componentInstance.script = formScript;
       }
-      var script = CTAscript;
-      const modalRef = this.modalService.open(PopupFormComponent, { centered: true, windowClass: customCss });
-      modalRef.componentInstance.script = '<iframe frameborder="0" style="height:700px;width:99%;border:none;" src="https://forms.zohopublic.com/9mmbeyondenergy/form/WhatsOnYourMind8/formperma/cFhDTgZ1oSWd-gKstESD_eXbyuSnuSrpSGwQvB2po1I"></iframe>'//script;
     }
 }
