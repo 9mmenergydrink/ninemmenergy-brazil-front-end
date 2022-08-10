@@ -17,8 +17,8 @@
                     {{'trackOrder' |translate }}<i class="arrow down align-middle" *ngIf="!order?.showTrackOrder"></i>
                     <i class="arrow up align-middle" *ngIf="order?.showTrackOrder"></i>
                 </h6>
-                <div *ngIf="order?.showTrackOrder" class="d-flex mb-3 mt-3 ml-4">
-                    <div class="d-grid">
+                <div *ngIf="order?.showTrackOrder" class="d-flex mb-3 mt-3 ml-3">
+                    <!-- <div class="d-grid">
                         <div class="d-flex justify-content-center">
                             <div class="yellow-bg-color order-placed">
                                 <i class="fas fa-check-double trackcompIcon"></i>
@@ -72,6 +72,9 @@
                         <div>
                             <span class="order-place-date"></span>
                         </div>
+                    </div> -->
+                    <div class="arrow-btn-box">
+                        <a class="arrow-btn pointer-large" target="_blank" [href]="order?.order_status_url">{{'trackYourOrder' | translate}}</a>
                     </div>
                 </div>
                 <div class="mt-3">
@@ -118,7 +121,7 @@
           <i class="arrow up align-middle" *ngIf="order?.showDetails"></i>
         </span>
                 <div class="row" *ngIf="order?.showDetails">
-                    <div class="col-lg-6 mt-3">
+                    <div class="col-lg-6 mt-2">
                         <div>
                             <h6>
                                 {{'orderSummary' |translate }}

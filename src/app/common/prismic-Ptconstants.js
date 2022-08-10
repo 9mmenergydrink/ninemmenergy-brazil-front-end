@@ -1,5 +1,6 @@
 export const prismicPtConstants = {
     headerId: "Yr2SBhMAACIAVbZS", //10
+    homeNewId: "YvNVqRAAACEAzHKZ",
     homeDataId: "YrwGGxMAACQAMfmD", //14
     blogId: "Ysa1QxEAACcA5jx8",
     aboutId: "Yr2YwBMAACUAVdUa", //17
