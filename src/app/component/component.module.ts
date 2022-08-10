@@ -43,6 +43,7 @@ import { SocialResponsibilityComponent } from './social-responsibility/social-re
 import { NeuroClinicalStudiesComponent } from './brain-workout/clinical-studies/clinical-studies.component';
 import { NeuroClinicalStudiesInnerComponent } from './brain-workout/clinical-studies-inner/clinical-studies-inner.component';
 import { FaqComponent } from './faq/faq.component';
+import { HomeNewComponent } from './home-new/home-new.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -52,7 +53,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   declarations: [HeaderComponent, HomeComponent, FooterComponent, ShopComponent,
     CartPageComponent, CheckoutInformationComponent,
     CheckoutPaymentComponent, CheckoutShippingComponent, BlogComponent, WhatsActComponent,
-    ContactComponent, AboutComponent, BrainWorkoutComponent, BlogInnerComponent, EventsComponent, ReadMoreComponent, OurTeamComponent, ClinicalStudiesComponent, ClinicalStudiesInnerComponent, TermsConditionsComponent, PrivacyPolicyComponent, WebsiteDisclaimerComponent, CategoryBlogComponent, AffiliateComponent, SqueezeComponent, ClubComponent, ShopInnerComponent, OurProductsComponent, SocialResponsibilityComponent, NeuroClinicalStudiesComponent, NeuroClinicalStudiesInnerComponent, FaqComponent ],
+    ContactComponent, AboutComponent, BrainWorkoutComponent, BlogInnerComponent, EventsComponent, ReadMoreComponent, OurTeamComponent, ClinicalStudiesComponent, ClinicalStudiesInnerComponent, TermsConditionsComponent, PrivacyPolicyComponent, WebsiteDisclaimerComponent, CategoryBlogComponent, AffiliateComponent, SqueezeComponent, ClubComponent, ShopInnerComponent, OurProductsComponent, SocialResponsibilityComponent, NeuroClinicalStudiesComponent, NeuroClinicalStudiesInnerComponent, FaqComponent, HomeNewComponent ],
   imports: [
   //  TranslateModule.forRoot(),
     TranslateModule.forRoot({
