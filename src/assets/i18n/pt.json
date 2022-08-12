@@ -283,5 +283,8 @@
     "photoUploaded":"Foto enviada com sucesso",
     "uploadFailed":"Falha ao carregar",
     "commentPosted":"Comentário Postado",
-    "enterValidData":"Insira dados válidos"
+    "enterValidData":"Insira dados válidos",
+    "alphabetsOnlyAllowed" : "Alfabetos permitidos apenas",
+    "alreadyLoggedSomeone":"Alguém já está logado, por favor, saia",
+    "alreadyLogged":"Já está logado neste usuário"
 }

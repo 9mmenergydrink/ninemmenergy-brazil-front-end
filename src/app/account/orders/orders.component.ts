@@ -102,10 +102,12 @@ export class OrdersComponent implements OnInit {
           if (res.value[0].inventory_quantity < 1) {
             //inventory quantity is zero
             this.toastr.error(item.title + " - " + res.value[0].title + this.translate.instant('outOfStock'), this.translate.instant('error'));
+            this.apiService.isLoading.next(false);
             return;
           } else if ((item.quantity) > res.value[0].inventory_quantity) {
             //quantity exceeds inventory quantity
             this.toastr.error(this.translate.instant('all') + item.title + " - " + res.value[0].title + this.translate.instant('areCart'), this.translate.instant('error'));
+            this.apiService.isLoading.next(false);
             return;
           }
         }
@@ -165,4 +167,7 @@ export class OrdersComponent implements OnInit {
     let modalRef = this.modalService.open(CancelOrderComponent, { centered: true, windowClass: 'cancel-order-window'});
   }
 
+  ngOnDestroy() {
+    this.modalService.dismissAll();
+  }
 }

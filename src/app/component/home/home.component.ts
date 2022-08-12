@@ -406,7 +406,7 @@ export class HomeComponent implements OnInit {
     }
     else localStorage.setItem('categoryPost', JSON.stringify(catpost))
 
-    let title = item?.title?item.title.replaceAll(" ","_"):"";
+    let title = item?.title?item.title.replace(/\s/g,"_"):"";
     title = title.toLowerCase();
     this.common.navigateTitle(this.commonMtd.getRoutePath('blog'),title);
   }

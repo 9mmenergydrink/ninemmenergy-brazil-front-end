@@ -52,7 +52,12 @@ export class ProfilePwdComponent implements OnInit {
   }
 
   onClickSave(){
-    if(this.formGroup.valid){
+    if (this.formGroup.invalid) {
+      for (const control of Object.keys(this.formGroup.controls)) {
+        this.formGroup.controls[control].markAsTouched();
+      }
+      return;
+    } else if (this.formGroup.valid){
       this.formGroup.value.id = this.profileDetails.id;
       if(this.formGroup.value.oldPassword){
         this.verifyOldPass({email:this.profileDetails.email, password:this.formGroup.value.oldPassword});

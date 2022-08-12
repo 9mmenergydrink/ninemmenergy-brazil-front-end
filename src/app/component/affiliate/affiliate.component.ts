@@ -175,7 +175,7 @@ document.body.appendChild(chatScript);*/
            txt += item.text.substring(prev,item.text.length) + '</span>'; 
            item.text = txt;
            if(item.text.includes('\n')){
-             item.text = item.text.replaceAll('\n', "<br> &nbsp;&nbsp;&nbsp;");
+             item.text = item.text.replace(/\/n/g, "<br> &nbsp;&nbsp;&nbsp;");
            }
            
           }
@@ -183,7 +183,7 @@ document.body.appendChild(chatScript);*/
 
         if(item.text.includes('\n') && !item.isInnerHtml){
           item.isInnerHtml = true;
-          item.text = item.text.replaceAll('\n', "<br> &nbsp;&nbsp;&nbsp;");
+          item.text = item.text.replace(/\/n/g, "<br> &nbsp;&nbsp;&nbsp;");
           item.text = '<span>' + item.text + '</span>';
         }
 		         
@@ -250,5 +250,9 @@ openPopupForm(formScript) {
     const modalRef = this.modalService.open(PopupFormComponent, { centered: true, windowClass: "zohoPopupFormCustomCss" });
     modalRef.componentInstance.script = formScript;
   }
+}
+
+ngOnDestroy() {
+  this.modalService.dismissAll();
 }
 }

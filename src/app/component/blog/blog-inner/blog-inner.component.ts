@@ -60,6 +60,7 @@ export class BlogInnerComponent implements OnInit{
     private apiService: ApiService, private toastr: ToastrService, private datepipe: DatePipe,
     public commonMtd:CommonMethodsService, private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) {
       this.cartCount = commonMtd.getCartCountDetails();
+      debugger
       this.contentTitle = this.route.snapshot.params['title'];
       if(this.contentTitle == 'where-does-the-caffeine-in-energy-drinks-come-from' || 
       this.contentTitle == 'how-to-be-cognitively-healthy')

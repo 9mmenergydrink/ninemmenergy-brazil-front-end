@@ -85,24 +85,39 @@ export class LoginComponent implements OnInit {
     });
   }
   submit() {
-    this.service.isLoading.next(true);
-    localStorage.setItem('showUserMenu', 'false');
-    this.service.customerLogin(this.formGroup.value).subscribe((res: any) => {
-      if (res?.status === "7400" && res?.value?.accessToken)
-    {
-        localStorage.setItem('showUserMenu', 'true');
-        localStorage.setItem('email', this.formGroup.value.email);
-        localStorage.setItem('uToken', res?.value?.accessToken);
-
-        this.commonMtd.checkOrderStatus(this.commonMtd.getCurrentCartDetails(), this.formGroup.value.email);
-        this.common.navigate(this.commonMtd.getRoutePath('myaccount'));
-      }else{
-        this.toastr.error(this.translate.instant('loginFailed'), this.translate.instant('error'));
+    if (this.formGroup.invalid) {
+      for (const control of Object.keys(this.formGroup.controls)) {
+        this.formGroup.controls[control].markAsTouched();
       }
-      this.service.isLoading.next(false);
-    }, err => {
-      this.service.isLoading.next(false);
-    })
-  }
+      return;
+    } else if (this.formGroup.valid) {
+      let userEmail = localStorage.getItem('email');
+      let userToken = localStorage.getItem('uToken');
+      if (userToken && userToken != "null" && userEmail && userEmail != "null") {
+        if (userEmail == this.formGroup.value.email) {
+          this.toastr.error(this.translate.instant('alreadyLogged'), "Error");
+        } else if (userEmail != this.formGroup.value.email) {
+          this.toastr.error(this.translate.instant('alreadyLoggedSomeone'), "Error");
+        }
+      } else {
+        this.service.isLoading.next(true);
+        localStorage.setItem('showUserMenu', 'false');
+        this.service.customerLogin(this.formGroup.value).subscribe((res: any) => {
+          if (res?.status === "7400" && res?.value?.accessToken) {
+            localStorage.setItem('showUserMenu', 'true');
+            localStorage.setItem('email', this.formGroup.value.email);
+            localStorage.setItem('uToken', res?.value?.accessToken);
 
+            this.commonMtd.checkOrderStatus(this.commonMtd.getCurrentCartDetails(), this.formGroup.value.email);
+            this.common.navigate(this.commonMtd.getRoutePath('myaccount'));
+          } else {
+            this.toastr.error(this.translate.instant('loginFailed'), this.translate.instant('error'));
+          }
+          this.service.isLoading.next(false);
+        }, err => {
+          this.service.isLoading.next(false);
+        })
+      }
+    }
+  }
 }
