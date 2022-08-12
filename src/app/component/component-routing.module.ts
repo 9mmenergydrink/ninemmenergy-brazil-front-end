@@ -32,6 +32,7 @@ import { NeuroClinicalStudiesInnerComponent } from './brain-workout/clinical-stu
 import { CorporateComponent } from '../common/corporate/corporate.component';
 import { WhatsInsideComponent } from '../common/whats-inside/whats-inside.component';
 import { FaqComponent } from './faq/faq.component';
+import { HomeNewComponent } from './home-new/home-new.component';
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'shop', component: ShopComponent},
@@ -70,7 +71,7 @@ const routes: Routes = [
   {path:'corporate', component: CorporateComponent},
   {path:'whats-inside', component: WhatsInsideComponent},
   {path:'faq', component: FaqComponent},
-
+  {path:'home-new', component: HomeNewComponent},
   /**French Route*/
   // {path:'fr',component:HomeComponent},
   {path:'boutique', component: ShopComponent},
