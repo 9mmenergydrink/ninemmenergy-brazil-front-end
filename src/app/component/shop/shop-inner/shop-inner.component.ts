@@ -62,7 +62,7 @@ export class ShopInnerComponent implements OnInit {
       this.productSku = this.route.snapshot.params['key'];//this.route.snapshot.queryParams.key;
 
       this.shopinnerUrl = environment.uiUrl + 'shop/' + paramsTitle;
-      this.productTitle = paramsTitle != null ? paramsTitle.replaceAll("-", " ") : "";
+      this.productTitle = paramsTitle != null ? paramsTitle.replace(/-/g, " ") : "";
     } else {
       this.router.navigateByUrl("/**");
     }
@@ -498,7 +498,12 @@ export class ShopInnerComponent implements OnInit {
 
   addReview() {
     // this.formGroup.get('review_score').setValue(this.review_score>0?this.review_score:null);
-    if (this.formGroup.valid) {
+    if (this.formGroup.invalid) {
+      for (const control of Object.keys(this.formGroup.controls)) {
+        this.formGroup.controls[control].markAsTouched();
+      }
+      return;
+    } else if (this.formGroup.valid) {
       this.isSubmitted = false;
       this.apiService.isLoading.next(true);
       this.formGroup.value.sku = this.product.id;
@@ -535,5 +540,9 @@ export class ShopInnerComponent implements OnInit {
     this.isAddReviewShow = false;
     this.formGroup.reset();
     this.isSubmitted = false;
+  }
+
+  ngOnDestroy() {
+    this.modalService.dismissAll();
   }
 }

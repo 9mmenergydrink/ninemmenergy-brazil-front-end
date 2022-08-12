@@ -156,8 +156,8 @@ export class PageNotFoundComponent implements OnInit {
     localStorage.setItem('product', JSON.stringify(data));
     // this.apiService.product = data;
     // this.common.navigate('/shopinner');
-    let title = data.title ? data.title.replaceAll(" - ", "-") : "";
-    title = title ? title.replaceAll(" ", "-") : "";
+    let title = data.title ? data.title.replace(/ - /g, "-") : "";
+    title = title ? title.replace(/\s/g, "-") : "";
    // this.router.navigate([this.commonMtd.getRoutePath('shop'), title.toLowerCase()], { queryParams: { code: data.id,key:data.variants[0].sku?.toLowerCase()}});
     this.router.navigate([this.commonMtd.getRoutePath('shop'), title.toLowerCase(), data?.id, data?.variants[0]?.sku?.toLowerCase()]);
   }
@@ -232,4 +232,7 @@ export class PageNotFoundComponent implements OnInit {
     })
   }
 
+  ngOnDestroy() {
+    this.modalService.dismissAll();
+  }
 }

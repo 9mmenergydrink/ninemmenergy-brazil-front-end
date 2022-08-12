@@ -18,6 +18,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { OrderFilterPipe } from '../shared/pipes/order-filter.pipe';
+import { SharedModule } from '../shared/shared.module';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -44,6 +45,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ReactiveFormsModule,
     AuthenticationRoutingModule,
     ComponentModule,
+    SharedModule,
    // TranslateModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

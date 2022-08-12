@@ -143,8 +143,8 @@ export class ShopComponent implements OnInit {
   }
 
   onClickProduct(data) {
-    let title = data.title ? data.title.replaceAll(" - ", "-") : "";
-    title = title ? title.replaceAll(" ", "-") : "";
+    let title = data.title ? data.title.replace(/ - /g, "-") : "";
+    title = title ? title.replace(/\s/g, "-") : "";
    // this.router.navigate([this.commonMtd.getRoutePath('shop'), title.toLowerCase()], { queryParams: { code: data.id,key:data.variants[0].sku?.toLowerCase() } });
    this.router.navigate([this.commonMtd.getRoutePath('shop'), title.toLowerCase(), data?.id, data?.variants[0]?.sku?.toLowerCase()]);
   }
@@ -317,5 +317,9 @@ export class ShopComponent implements OnInit {
     }).bind(this), function (err) {
       console.log("Something went wrong: ", err);
     });
+  }
+
+  ngOnDestroy() {
+    this.modalService.dismissAll();
   }
 }

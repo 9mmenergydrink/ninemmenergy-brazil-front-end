@@ -84,7 +84,12 @@ export class RegisterComponent implements OnInit {
   }
 
   submit(){
-    if(this.formGroup.valid){
+    if (this.formGroup.invalid) {
+      for (const control of Object.keys(this.formGroup.controls)) {
+        this.formGroup.controls[control].markAsTouched();
+      }
+      return;
+    } else if (this.formGroup.valid){
       this.apiService.isLoading.next(true);
       this.subScription = this.apiService.inviteActivateAccount(this.formGroup.value).subscribe((res: any) => {
         console.log('cus res', res);

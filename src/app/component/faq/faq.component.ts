@@ -220,4 +220,8 @@ export class FaqComponent implements OnInit {
         modalRef.componentInstance.script = formScript;
       }
     }
+
+    ngOnDestroy() {
+      this.modalService.dismissAll();
+    }
 }

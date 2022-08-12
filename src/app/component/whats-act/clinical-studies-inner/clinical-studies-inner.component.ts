@@ -30,7 +30,7 @@ export class ClinicalStudiesInnerComponent implements OnInit {
     
     let studyName = this.route.snapshot.params['title'];
     if(studyName){ 
-      studyName = studyName!=null?studyName.replaceAll("-", " "):"";
+      studyName = studyName!=null?studyName.replace(/-/g, " "):"";
     if(localStorage.getItem('language') == 'fr'){
       this.constant = prismicFrConstants
       this.langkey = 'fr-fr'
@@ -56,7 +56,7 @@ export class ClinicalStudiesInnerComponent implements OnInit {
     for (let item of clinicalStudiesList) {
 
 
-      item.uid = item.uid!=null?item.uid.replaceAll("-", " "):"";
+      item.uid = item.uid!=null?item.uid.replace(/-/g, " "):"";
       
       if((environment.mainDomain.includes(window.location.origin) && item?.data?.en_uid?.toLowerCase() == studyName.toLowerCase())
         || item?.uid?.toLowerCase() == studyName.toLowerCase()){

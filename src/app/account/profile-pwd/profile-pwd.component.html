@@ -20,9 +20,10 @@
             <div class="col-lg-6">
                 <div class="">
                     <label> {{'firstName' |translate }}<span class="text-danger pl-1">*</span></label>
-                    <input type="text" formControlName="first_name" name="first_name" [ngClass]="{'error':f?.first_name?.errors&&f?.first_name?.touched}" class="form-control" placeholder="{{'enterFirstName' |translate }}">
-                    <div *ngIf="f?.first_name?.errors?.required && f?.first_name?.touched" class="text-danger">
-                        {{'enterFirstName' |translate }}
+                    <input type="text" formControlName="first_name" appAlphaSpace name="first_name" [ngClass]="{'error':f?.first_name?.errors&&f?.first_name?.touched}" class="form-control" placeholder="{{'enterFirstName' |translate }}">
+                    <div *ngIf="f.first_name.errors && f.first_name.touched">
+                        <div *ngIf="f.first_name.errors.required" class="text-danger">{{'enterFirstName' | translate}}</div>
+                        <div *ngIf="f.first_name.errors.pattern" class="text-danger">{{'alphabetsOnlyAllowed' | translate}}</div>
                     </div>
                 </div>
             </div>
@@ -30,9 +31,10 @@
             <div class="col-lg-6">
                 <div class="">
                     <label>{{'lastName' | translate }}<span class="text-danger pl-1">*</span></label>
-                    <input type="text" formControlName="last_name" name="last_name" class="form-control" placeholder="{{'enterLastName' |translate }}">
-                    <div *ngIf="f?.last_name?.errors?.required && f?.last_name?.touched" class="text-danger">
-                        {{'enterLastName' | translate }}
+                    <input type="text" formControlName="last_name" appAlphaSpace name="last_name" class="form-control" placeholder="{{'enterLastName' |translate }}">
+                    <div *ngIf="f.last_name.errors && f.last_name.touched">
+                        <div *ngIf="f.last_name.errors.required" class="text-danger">{{'enterLastName' | translate}}</div>
+                        <div *ngIf="f.last_name.errors.pattern" class="text-danger">{{'alphabetsOnlyAllowed' | translate}}</div>
                     </div>
                 </div>
             </div>
@@ -40,7 +42,7 @@
             <div class="col-lg-8"></div>
             <div class="col-lg-4 my-2 d-flex justify-content-end">
                 <button type="button" class="cancel-btn mr-2" (click)="onClickCancel()">{{'cancel' | translate}}</button>
-                <button type="button" class="save-btn" (click)="onClickSave()">{{'save' | translate}}</button>
+                <button type="button" class="save-btn" (click)="onClickSave()" [disabled]="!formGroup.valid">{{'save' | translate}}</button>
             </div>
         </div>
 
@@ -85,7 +87,7 @@
                     </div>
                     <div class="d-flex justify-content-end my-2">
                         <button type="button" class="cancel-btn mr-2" (click)="onClickCancel()">{{'cancel' | translate}}</button>
-                        <button type="button" class="save-btn" (click)="onClickSave()">{{'save' | translate}}</button>
+                        <button type="button" class="save-btn" (click)="onClickSave()" [disabled]="!formGroup.valid">{{'save' | translate}}</button>
                     </div>
                 </div>
             </div>
@@ -122,7 +124,7 @@
                 <div class="col-md-7 p-0">
                     <div class="">
                         <label> {{'phoneNumber' |translate }}<span class="text-danger pl-1">*</span></label>
-                        <input type="text" formControlName="phone" name="phone" [ngClass]="{'error':f?.phone?.errors&&f?.phone?.touched}" class="form-control" placeholder="{{'phoneNo' |translate }}">
+                        <input type="text" formControlName="phone" appNumeric name="phone" [ngClass]="{'error':f?.phone?.errors&&f?.phone?.touched}" class="form-control" placeholder="{{'phoneNo' |translate }}">
                         <div *ngIf="f?.phone?.errors && f?.phone?.touched" class="text-danger">
                             <div *ngIf="f?.phone?.errors?.required">{{'phoneNo' |translate }}</div>
                             <div *ngIf="f?.phone?.errors?.pattern || f?.phone?.errors?.minlength || f?.phone?.errors?.maxlength">
@@ -132,7 +134,7 @@
                     </div>
                     <div class="d-flex justify-content-end my-2">
                         <button type="button" class="cancel-btn mr-2" (click)="onClickCancel()">{{'cancel' | translate}}</button>
-                        <button type="button" class="save-btn" (click)="onClickSave()">{{'save' | translate}}</button>
+                        <button type="button" class="save-btn" (click)="onClickSave()" [disabled]="!formGroup.valid">{{'save' | translate}}</button>
                     </div>
                 </div>
             </div>
@@ -191,7 +193,7 @@
             <div class="col-lg-8"></div>
             <div class="col-lg-4 my-2 d-flex justify-content-end">
                 <button type="button" class="cancel-btn mr-2" (click)="onClickCancel()">{{'cancel' | translate}}</button>
-                <button type="button" class="save-btn" (click)="onClickSave()">{{'save' | translate}}</button>
+                <button type="button" class="save-btn" (click)="onClickSave()" [disabled]="!formGroup.valid">{{'save' | translate}}</button>
             </div>
         </div>
     </form>

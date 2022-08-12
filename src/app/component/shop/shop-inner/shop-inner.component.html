@@ -141,9 +141,12 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label> {{'name' | translate }} <span class="text-danger">*</span></label>
-                            <input type="text" formControlName="display_name" name="display_name" [ngClass]="{'error':f?.display_name?.errors&&(f?.display_name?.touched || isSubmitted)}" class="form-control" placeholder="{{'enterName' |translate }}">
-                            <div *ngIf="f?.display_name?.errors?.required && (f?.display_name?.touched || isSubmitted)" class="text-danger">
-                                {{'enterName' |translate }}
+                            <input type="text" formControlName="display_name" appAlphaSpace name="display_name" [ngClass]="{'error':f?.display_name?.errors&&(f?.display_name?.touched || isSubmitted)}" class="form-control" placeholder="{{'enterName' |translate }}">
+                            <div *ngIf="f.display_name.errors&& (f?.display_name?.touched || isSubmitted)" class="text-danger">
+                                <div *ngIf="f.display_name.errors.required">{{'enterName' | translate}}</div>
+                                <div *ngIf="f.display_name.errors.pattern">
+                                    {{'alphabetsOnlyAllowed' | translate}}
+                                </div>
                             </div>
                         </div>
 
@@ -197,7 +200,7 @@
                     </div>
                     <div class="col-lg-12 my-2 d-flex justify-content-end">
                         <button type="button" class="cancel-btn mr-2" (click)="cancelAddReview()"> {{'cancel' | translate}}</button>
-                        <button type="button" class="order-btn" (click)="addReview()"> {{'post' | translate}}</button>
+                        <button type="button" class="order-btn" (click)="addReview()" [disabled]="!formGroup.valid"> {{'post' | translate}}</button>
                     </div>
                 </div>
             </div>
