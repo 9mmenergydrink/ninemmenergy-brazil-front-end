@@ -60,7 +60,7 @@ export class AppComponent {
 			localStorage.setItem("language", "pt");
 		}
 
-		translate.use(localStorage.getItem('language') ? localStorage.getItem('language') : 'en');
+		translate.use(localStorage.getItem('language') ? localStorage.getItem('language') : 'pt');
 
 		let domainLanguage = this.commonMtd.getSubDomainLanguage();
 		console.log("app component domain lanugage ", domainLanguage);

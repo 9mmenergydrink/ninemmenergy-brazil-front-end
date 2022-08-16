@@ -175,4 +175,8 @@ export class BrainWorkoutComponent implements OnInit {
       return false;
     }
   }
+
+  ngOnDestroy() {
+    this.modalService.dismissAll();
+  }
 }

@@ -211,4 +211,8 @@ export class ContactComponent implements OnInit {
       modalRef.componentInstance.script = formScript;
     }
   }
+
+  ngOnDestroy() {
+    this.modalService.dismissAll();
+  }
 }

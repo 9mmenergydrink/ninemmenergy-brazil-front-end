@@ -135,7 +135,12 @@ export class ForgotPwdComponent implements OnInit {
   }
 
   submit() {
-    if (this.formGroup.valid) {
+    if (this.formGroup.invalid) {
+    for (const control of Object.keys(this.formGroup.controls)) {
+      this.formGroup.controls[control].markAsTouched();
+    }
+    return;
+  } else if (this.formGroup.valid) {
       if (!this.formGroup.value.password) {
         let obj = {
           email: this.formGroup.value.email,

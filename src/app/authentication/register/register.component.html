@@ -29,16 +29,18 @@
                             <form class="auto-fill" [formGroup]="formGroup" (ngSubmit)="submit()">
                                 <div class="form-group">
                                     <label> {{'firstName' |translate }}<span class="text-danger pl-1">*</span></label>
-                                    <input type="text" formControlName="first_name" name="first_name" [ngClass]="{'error':f?.first_name?.errors&&f?.first_name?.touched}" class="form-control" placeholder="{{'enterFirstName' |translate }}">
-                                    <div *ngIf="f?.first_name?.errors?.required && f?.first_name?.touched" class="text-danger">
-                                        {{'enterFirstName' |translate }}
+                                    <input type="text" formControlName="first_name" appAlphaSpace name="first_name" [ngClass]="{'error':f?.first_name?.errors&&f?.first_name?.touched}" class="form-control" placeholder="{{'enterFirstName' |translate }}">
+                                    <div *ngIf="f.first_name.errors && f.first_name.touched" class="text-danger err-msg">
+                                        <div *ngIf="f.first_name.errors?.required">{{'enterFirstName' | translate}}</div>
+                                        <div *ngIf="f.first_name.errors.pattern">{{'alphabetsOnlyAllowed' | translate}}</div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>{{'lastName' | translate }}<span class="text-danger pl-1">*</span></label>
-                                    <input type="text" formControlName="last_name" name="last_name" class="form-control" placeholder="{{'enterLastName' |translate }}">
-                                    <div *ngIf="f?.last_name?.errors?.required && f?.last_name?.touched" class="text-danger">
-                                        {{'enterLastName' | translate }}
+                                    <input type="text" formControlName="last_name" appAlphaSpace name="last_name" class="form-control" placeholder="{{'enterLastName' |translate }}">
+                                    <div *ngIf="f.last_name.errors && f.last_name.touched" class="text-danger err-msg">
+                                        <div *ngIf="f.last_name.errors?.required">{{'enterLastName' | translate}}</div>
+                                        <div *ngIf="f.last_name.errors.pattern">{{'alphabetsOnlyAllowed' | translate}}</div>
                                     </div>
                                 </div>
                                 <div class="form-group">

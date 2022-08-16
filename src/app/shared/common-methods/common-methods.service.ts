@@ -358,9 +358,6 @@ export class CommonMethodsService {
 
   goToInner(rt, item, flag?) {
     let title = item.uid;
-    if (environment.mainDomain.includes(window.location.origin) && item?.data?.en_uid) {
-      title = item.data.en_uid;
-    }
     title = title ? title.replace(/ /g, "-") : "";
     title = title.toLowerCase();
     this.router.navigate([this.getRoutePath(rt), title])
@@ -371,7 +368,7 @@ export class CommonMethodsService {
   }
 
   getConstant() {
-    let object = prismicEnConstants;
+    let object = prismicPtConstants;
     let origin = window.location.origin;
     if ((environment.europeDomain.includes(origin) || environment.motorFRDomain.includes(origin) ||
       environment.mmaFRDomain.includes(origin) ||

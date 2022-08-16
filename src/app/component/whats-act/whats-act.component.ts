@@ -107,4 +107,8 @@ export class WhatsActComponent implements OnInit{
   scroll(el: HTMLElement) {
     el.scrollIntoView();
   }
+
+  ngOnDestroy() {
+    this.modalService.dismissAll();
+  }
 }

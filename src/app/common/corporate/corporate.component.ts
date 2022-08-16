@@ -115,5 +115,8 @@ export class CorporateComponent implements OnInit {
     const modalRef = this.modalService.open(VideoPopupComponent, { size: 'xl',centered: true,windowClass: 'modal-custom'});
     modalRef.componentInstance.setVideoUrl = url;
   }
-
+  
+  ngOnDestroy() {
+    this.modalService.dismissAll();
+  }
 }

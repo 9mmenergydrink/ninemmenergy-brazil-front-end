@@ -80,7 +80,7 @@
 
                     <article class="bottom-padding-90">
                         <div class="light-bg-2" *ngIf="recentPosts[0]">
-                            <a (click)="onClickBlog(recentPosts[0])" class="pointer-large animsition-link hover-box d-block">
+                            <a (click)="onClickBlog(recentPosts[0])" class="pointer-large hover-box d-block">
                                 <div class="overlay-loading2 overlay-dark-bg-2" *ngIf="recentPosts[0]?.data?.image?.url">
                                     <img class="hover-img" [src]="recentPosts[0]?.data?.image?.url" [alt]="(recentPosts[0]?.data?.image?.alt)?recentPosts[0].data.image.alt:''">
                                 </div>
@@ -115,7 +115,7 @@
                     <!-- left image right content section -->
                     <article *ngFor="let item of contentSection | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;let i=index" class="bottom-padding-90">
                         <div class="light-bg-2">
-                            <a (click)="onClickBlog(item)" class="pointer-large animsition-link hover-box row">
+                            <a (click)="onClickBlog(item)" class="pointer-large hover-box row">
                                 <div class="col-md-5 p-0 overlay-loading2 overlay-dark-bg-2 blo-img">
                                     <img class="hover-img" [src]="item?.data?.image?.url" [alt]="(item?.data?.image?.alt)?item.data.image.alt:''">
                                 </div>
@@ -205,7 +205,7 @@
                                             <img [src]="item?.data?.image?.url" [alt]="(item?.data?.image?.alt)?item.data.image.alt:''">
                                         </a>
                                         <div class="recent-desc">
-                                            <a class="xsmall-title-oswald text-color-4 pointer-large animsition-link">{{item?.data?.title}}</a>
+                                            <a class="xsmall-title-oswald text-color-4 pointer-large">{{item?.data?.title}}</a>
                                             <div class="p-style-xsmall text-color-4 text-height-10 top-margin-5">
                                                 {{item?.data?.date}}</div>
                                         </div>
