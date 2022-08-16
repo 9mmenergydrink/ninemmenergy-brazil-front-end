@@ -283,5 +283,6 @@
     "photoUploaded":"Foto enviada com sucesso",
     "uploadFailed":"Falha ao carregar",
     "commentPosted":"Comentário Postado",
-    "enterValidData":"Insira dados válidos"
+    "enterValidData":"Insira dados válidos",
+    "inquire" : "Informe-se sobre nossos programas de afiliados"
 }

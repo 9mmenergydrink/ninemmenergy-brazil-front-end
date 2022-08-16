@@ -6783,6 +6783,8 @@ background-color: #ebcc00 !important;
   .testimonials-slider img {
       width: 130px;
       border-radius: 50%;
+      /* Added  on 29-07-2021 for sol requirement (https://3.basecamp.com/4852506/buckets/19149263/todos/4919305352#__recording_5175145994) */
+      border: 2px solid #fff;
   }
 
   .testimonials-content p {

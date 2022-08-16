@@ -304,7 +304,8 @@
                         <!-- <p [ngClass]="{'mb-3':programSection[i-1]?.type!='paragraph'}" *ngIf="!item.isInnerHtml" class=" text-color-1 mt-1">{{item?.text}}</p> -->
                         <p [ngClass]="{'mb-3':programSection[i-1]?.type!='paragraph'}" *ngIf="item?.isInnerHtml" [innerHtml]="item?.text" class="text-color-2 p-style-small mt-1"></p>
                         <div *ngIf="isShow(i)" class="my-3 d-flex justify-content-center">
-                            <a [href]="affiliateUrl" class="shop-btn m-0 py-2">{{'join' | translate}}</a>
+                            <!-- <a [href]="affiliateUrl" class="shop-btn m-0 py-2">{{'join' | translate}}</a> -->
+                            <a (click)="openPopupForm(callToAction2?.primary?.popup_form_script)" class="shop-btn m-0 py-2">{{'inquire' | translate}}</a>
                         </div>
                     </ng-container>
 
