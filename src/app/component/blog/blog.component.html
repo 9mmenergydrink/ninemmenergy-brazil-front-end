@@ -276,7 +276,7 @@
                                                     <img height="150" class="hover-img" [src]="item?.media_url" [alt]="'post' | translate">
                                                 </ng-container>
                                                 <ng-container *ngIf="item?.media_type=='VIDEO'">
-                                                    <video width="100%" height="150" [src]="item?.media_url" controls preload="metadata" playsinline></video>
+                                                    <video width="100%" height="150" [poster]="item?.thumbnail_url" [src]="item?.media_url" controls preload="metadata" playsinline></video>
                                                 </ng-container>
                                             </a>
                                         </div>
