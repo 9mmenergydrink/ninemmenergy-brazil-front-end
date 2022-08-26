@@ -13697,6 +13697,7 @@ ul.border-warning{
     position: absolute;
     top: -103px;
     left: 4%;
+    z-index: 1;
 }
 .top-logo-2 img {
     width: auto;
@@ -13704,6 +13705,7 @@ ul.border-warning{
     position: absolute;
     top: -80px;
     right: 15%;
+    z-index: 1;
 }
 .top-logo-3 img {
     width: auto;
@@ -13711,6 +13713,7 @@ ul.border-warning{
     position: absolute;
     top: -85px;
     left: 15%;
+    z-index: 1;
 }
 .top-logo-4 img {
     width: 220px;
@@ -13718,6 +13721,7 @@ ul.border-warning{
     position: absolute;
     top: -72px;
     right: 15%;
+    z-index: 1;
 }
 .full-height img {
     height: auto;
@@ -13767,6 +13771,68 @@ img.video-logo {
 }
 .video-box .border-btn-box {
     width: fit-content;
+}
+.hover-team {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0;
+    background-color: rgba(60,60,60,.95);
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+}
+.hover-team:hover {
+    opacity: 1;
+}
+.hover-team h3 {
+    display: inline-block;
+    padding: 0 20px;
+    position: relative;
+}
+.hover-team h3:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    width: 500px;
+    height: 2px;
+    top: 50%;
+    margin-top: -1px;
+    background-color: #ebcc00;
+}
+.hover-team h3:after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    width: 500px;
+    height: 2px;
+    top: 50%;
+    margin-top: -1px;
+    background-color: #ebcc00;
+}
+.hover-team span {
+    display: block;
+    color: #fff;
+    font-size: 15px;
+    padding: 0 20px;
+    font-weight: 300;
+}
+.hover-team h3{
+color: #fff;
+font-weight: 700;
+font-size: 25px;
+margin: 0 0 12px;
+}
+.box-img {
+    position: relative;
 }
 /* ....................home-new responsive......................  */
 @media only screen and (max-width: 1024px) {     
