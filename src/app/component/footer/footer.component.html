@@ -8,11 +8,11 @@
                         <ul class="footer-logo-icons">
                             <li [class]="logoSection?.primary?.logo?.url?'d-block':'d-none'"><img class="footer-logo" [src]="logoSection?.primary?.logo?.url" [alt]="(logoSection?.primary?.logo?.alt)?logoSection.primary.logo.alt:''"></li>
                             <li>
-                                <p class="pointer-large animsition-link small-title-oswald hover-color footer-text">{{socialLinkSection?.primary["social_title"]}}</p>
+                                <p class="small-title-oswald footer-text">{{socialLinkSection?.primary["social_title"]}}</p>
                             </li>
                             <li class="social-media-icons" *ngFor="let item of socialLinkSection?.items">
                                 <div class="footer-logos">
-                                    <img target="_blank" (click)="onClickSocial(item?.social_media_url)" class="footer-logo2" [src]="item?.social_icons?.url" [alt]="(item?.social_icons?.alt)?item.social_icons.alt:''">
+                                    <img target="_blank" (click)="onClickSocial(item?.social_media_url)" class="footer-logo2 pointer-large animsition-link" [src]="item?.social_icons?.url" [alt]="(item?.social_icons?.alt)?item.social_icons.alt:''">
                                 </div>
                             </li>
                         </ul>
