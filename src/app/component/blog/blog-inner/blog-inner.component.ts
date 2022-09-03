@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { CommonMethodsService } from 'src/app/shared/common-methods/common-methods.service';
 import { DatePipe, DOCUMENT } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
+declare let $: any;
 
 @Component({
   selector: 'app-blog-inner',
@@ -720,6 +721,37 @@ this.commonMtd.addMetaTag(lContentItem?.data.seoSection, lContentItem?.data.ogSe
  }else{
       this.router.navigate([this.commonMtd.getRoutePath(this.contentItem.data.cta_link)]);
     }
+    }
+  }
+
+  
+  selectedVideo = -1;
+  playVideo(index) {
+    if(this.selectedVideo > 0 && this.selectedVideo != index)
+    this.videoEnded(this.selectedVideo);
+    this.selectedVideo = index;
+    var video = $('#instaVideoId' + index).get(0);
+    if (video.paused) {
+      this.showHideId(index, 'play');
+      video.play();
+    } else {
+      this.showHideId(index);
+      video.pause();
+    }
+  }
+
+  videoEnded(index) {
+    $('#instaVideoId' + index).load();
+    this.showHideId(index);
+  }
+
+  showHideId(index, play?) {
+    if (play) {
+      $('#instaPlayId' + index).hide();
+      $('#instaPauseId' + index).show();
+    } else {
+      $('#instaPlayId' + index).show();
+      $('#instaPauseId' + index).hide();
     }
   }
 

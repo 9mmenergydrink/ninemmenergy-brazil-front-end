@@ -267,12 +267,12 @@
                             <!-- widget-instagram start -->
                             <div class="widget-instagram pt-4 pb-3">
                                 <h4 class="p-style-bold-up red-color pb-3">{{sideBarSection?.primary?.instagram_title}}</h4>
-                                <ul class="d-flex-wrap">
+                                <!-- <ul class="d-flex-wrap">
                                     <li *ngFor="let item of instagramSection">
                                         <div class="hover-box hidden-box99 pointer-small">
-                                            <a class="pointer-open d-block" (click)="onClickInstaPost(item?.username)">
+                                            <a class="pointer-open d-block" (click)="onClickInstaPost(item?.username)"> -->
                                                 <!-- <img class="hover-img" [src]="item?.media_url" [alt]="'post' | translate"> -->
-                                                <ng-container *ngIf="item?.media_type!='VIDEO'">
+                                                <!-- <ng-container *ngIf="item?.media_type!='VIDEO'">
                                                     <img height="150" class="hover-img" [src]="item?.media_url" [alt]="'post' | translate">
                                                 </ng-container>
                                                 <ng-container *ngIf="item?.media_type=='VIDEO'">
@@ -281,7 +281,27 @@
                                             </a>
                                         </div>
                                     </li>
-                                </ul>
+                                </ul> -->
+
+                                <div class="row px-15">
+                                    <div class="col-md-6 insta-col" *ngFor="let item of instagramSection">
+                                        <div class="insta-box">
+                                            <a class="hover-target" (click)="onClickInstaPost(item?.username)">
+                                                <ng-container *ngIf="item?.media_type!='VIDEO'">
+                                                    <img class="hover-img" [src]="item?.media_url" alt="instagram post">
+                                                </ng-container>
+                                                <ng-container *ngIf="item?.media_type=='VIDEO'">
+                                                    <video (ended)="videoEnded(i)" [attr.id]="'instaVideoId'+i" width="100%" [poster]="item?.thumbnail_url" [src]="item?.media_url" playsinline preload="metadata"></video>
+                                           
+                                                    <a class="insta-video-play-button" (click)="playVideo(i)">
+                                                        <span [attr.id]="'instaPlayId'+i"></span>
+                                                        <span class="pauseBtn" [attr.id]="'instaPauseId'+i" *ngIf="selectedVideo == i"></span>
+                                                    </a> 
+                                                </ng-container>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="instafeed"></div>
                             </div>
                             <!-- widget-instagram end -->

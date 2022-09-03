@@ -79,15 +79,41 @@
                             <thead>
                                 <tr>
                                     <th class="text-left pro-details">{{'productDetails' | translate}}</th>
-                                    <th></th>
+                                    <!-- <th></th> -->
                                     <!-- <th class="text-center pro-price">{{'price' | translate}}</th> -->
                                     <!-- <th class="text-center pro-quan">{{'quantity' | translate}}</th> -->
-                                    <th class="text-center pro-tot">{{'total' | translate}}</th>
+                                    <th class="text-right pro-tot">{{'total' | translate}}</th>
                                 </tr>
                             </thead>
                             <th></th>
                             <tr *ngFor="let data of cartList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
-                                <td class="product__image">
+                                <!-- New cart page mobile view product details design start -->
+                                <td class="pt-20">
+                                    <div class="prod-det-wrapper d-flex">
+                                        <div class="product__image">
+                                            <a (click)="onClickClose(data, i)" class="card-page-close close-thik hover-color"></a>
+                                            <div class="product-thumbnail ">
+                                                <div class="product-thumbnail__wrapper modal-pop-img">
+                                                    <img alt="energy drink pre workout" class="product-thumbnail__image" [src]="data?.image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="prod-det">
+                                            <h6 class="cart-p-td">{{data?.title}}</h6>
+                                            <span class="xsmall-title-oswald font-weight-normal text-capitalize">{{data?.variantTitle}}</span>
+                                            <div class="input-group">
+                                                <input type="button" (click)="minus(data,i)" class="button-minus" value="-">
+                                                <input type="text" [(ngModel)]="data.quantity" class="quantity-field" disabled>
+                                                <input type="button" (click)="plus(data,i)" class="button-plus" value="+">
+                                            </div>
+                                            <h6>${{data?.price}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <!-- New cart page mobile view product details design end -->
+
+                                <!-- Existing cart page mobile view product details design start  -->
+                                <!-- <td class="product__image">
                                     <a (click)="onClickClose(data, i)" class="card-page-close close-thik hover-color"></a>
                                     <div class="product-thumbnail ">
                                         <div class="product-thumbnail__wrapper modal-pop-img">
@@ -95,12 +121,12 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="cart-img-td">
+                                <td class="cart-img-td"> -->
                                     <!-- <div class="modal-pop-img">
                                         <img [src]="data.image" class="img-thumbnail2" alt="productimage">
                                         <a (click)="onClickClose(data, i)" class="card-page-close close-thik hover-color"></a>
                                     </div> -->
-                                    <h6 class="cart-p-td">{{data?.title}}</h6>
+                                    <!-- <h6 class="cart-p-td">{{data?.title}}</h6>
                                     <span class="xsmall-title-oswald font-weight-normal text-capitalize">{{data?.variantTitle}}</span>
                                     <div class="input-group">
                                         <input type="button" (click)="minus(data,i)" class="button-minus" value="-">
@@ -108,9 +134,11 @@
                                         <input type="button" (click)="plus(data,i)" class="button-plus" value="+">
                                     </div>
                                     <h6>${{data?.price}}</h6>
-                                </td>
+                                </td> -->
 
-                                <td class="text-center">
+                                <!-- Existing cart page mobile view product details design end -->
+                               
+                                <td class="text-right">
                                     <h6>${{data?.total}}</h6>
                                 </td>
                             </tr>

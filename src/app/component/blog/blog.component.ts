@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { CommonMethods } from 'src/app/common/common-methods';
 import { ApiService } from 'src/app/services/api.service';
 import { CommonMethodsService } from 'src/app/shared/common-methods/common-methods.service';
+declare let $: any;
 
 
 @Component({
@@ -244,5 +245,35 @@ export class BlogComponent implements OnInit {
 
   onClickInstaPost(userName){
     window.open("https://www.instagram.com/" + userName + "/");
+  }
+
+  selectedVideo = -1;
+  playVideo(index) {
+    if(this.selectedVideo > 0 && this.selectedVideo != index)
+    this.videoEnded(this.selectedVideo);
+    this.selectedVideo = index;
+    var video = $('#instaVideoId' + index).get(0);
+    if (video.paused) {
+      this.showHideId(index, 'play');
+      video.play();
+    } else {
+      this.showHideId(index);
+      video.pause();
+    }
+  }
+
+  videoEnded(index) {
+    $('#instaVideoId' + index).load();
+    this.showHideId(index);
+  }
+
+  showHideId(index, play?) {
+    if (play) {
+      $('#instaPlayId' + index).hide();
+      $('#instaPauseId' + index).show();
+    } else {
+      $('#instaPlayId' + index).show();
+      $('#instaPauseId' + index).hide();
+    }
   }
 }
