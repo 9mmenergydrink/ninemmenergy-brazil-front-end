@@ -13,7 +13,7 @@
     <!-- loading end -->
 
     <!-- animsition-overlay start -->
-    <main class="animsition-overlay" data-animsition-overlay="true">
+    <main class="animsition-overlay home-new" data-animsition-overlay="true">
         <!-- home-slider start -->
         <a class="to-top-btn pointer-small" (click)="scroll(up)">
             <span class="to-top-arrow"></span>
@@ -148,7 +148,7 @@
             <div class="swiper-pagination"></div>
 
             <!-- scroll-btn start -->
-            <a class="scroll-btn pointer-large">
+            <a (click)="scroll(down)" class="scroll-btn pointer-large">
                 <div class="scroll-arrow-box">
                     <span class="scroll-arrow"></span>
                 </div>
@@ -160,7 +160,7 @@
         </section>
         <!-- home-slider end -->
         <!-- logo-slider -->
-        <section class="dark-bg-1 flex-min-height-box">
+        <section id="down" #down class="dark-bg-1 flex-min-height-box">
             <div class="container-fluid">
                 <div class="row py-4">
                     <div class="col-nd-2" *ngFor="let item of sportsIcon?.items">
