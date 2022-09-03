@@ -286,5 +286,6 @@
     "enterValidData":"Insira dados válidos",
     "alphabetsOnlyAllowed" : "Alfabetos permitidos apenas",
     "alreadyLoggedSomeone":"Alguém já está logado, por favor, saia",
-    "alreadyLogged":"Já está logado neste usuário"
+    "alreadyLogged":"Já está logado neste usuário",
+    "inquire" : "Informe-se sobre nossos programas de afiliados"
 }

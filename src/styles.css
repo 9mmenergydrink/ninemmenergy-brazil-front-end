@@ -4738,7 +4738,7 @@ background-color: #ebcc00 !important;
 
   @media only screen and (max-width: 370px) {
     .contact-form-box iframe {
-        height: 800px !important;
+        /* height: 800px !important; For old zoho form 19-08-2022 */
     }
   }
 
@@ -4749,7 +4749,7 @@ background-color: #ebcc00 !important;
       }
 
       .contact-form-box iframe {
-        height: 745px !important;
+        /* height: 745px !important; For old zoho form 19-08-2022 */
       }
   }
 
@@ -6783,6 +6783,8 @@ background-color: #ebcc00 !important;
   .testimonials-slider img {
       width: 130px;
       border-radius: 50%;
+      /* Added  on 29-07-2021 for sol requirement (https://3.basecamp.com/4852506/buckets/19149263/todos/4919305352#__recording_5175145994) */
+      border: 2px solid #fff;
   }
 
   .testimonials-content p {
@@ -10048,13 +10050,18 @@ img.hi:hover + figcaption.figcaption {
     -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
     border-radius: 10px;
 }
+@media only screen and (max-width: 576px) {
+    .zohoPopupForm iframe {
+        height: 845px !important;
+    }
+}
 @media only screen and (max-width: 560px) {
     .numberCircle{
       margin: 0px 0px 0px 10px;
     }
-    .zohoPopupForm iframe {
+    /* .zohoPopupForm iframe {
         height: 845px !important;
-    }
+    } */
   }
   @media only screen and (max-width: 400px) {
     .numberCircle{
@@ -10071,7 +10078,7 @@ img.hi:hover + figcaption.figcaption {
     }
 
     .contact-form-box iframe {
-        height: 745px !important;
+        /* height: 745px !important; For old zoho form 17-08-2022 */
     }
   }
 
@@ -12448,8 +12455,11 @@ letter-spacing: 2px;
     border: none;
 }
 .zohoPopupForm .close {
-    right: 40px;
-    top: 35px;
+    right: 30px; /* For new GHL form 18-08-2022  */
+    top: 30px;  /* For new GHL form 18-08-2022  */
+
+    /* right: 40px; For old zoho form 19-08-2022
+    top: 35px; */
     background-color: #fff !important;
     opacity: 1 !important;
 }
@@ -13662,7 +13672,7 @@ ul.border-warning{
 }
 
 .zohoPopupForm iframe {
-    height: 700px !important;
+    height: 800px !important;
 }
 /* ....................home-new.................. */
 .video-content-bg-new{
@@ -13687,6 +13697,7 @@ ul.border-warning{
     position: absolute;
     top: -103px;
     left: 4%;
+    z-index: 1;
 }
 .top-logo-2 img {
     width: auto;
@@ -13694,6 +13705,7 @@ ul.border-warning{
     position: absolute;
     top: -80px;
     right: 15%;
+    z-index: 1;
 }
 .top-logo-3 img {
     width: auto;
@@ -13701,6 +13713,7 @@ ul.border-warning{
     position: absolute;
     top: -85px;
     left: 15%;
+    z-index: 1;
 }
 .top-logo-4 img {
     width: 220px;
@@ -13708,9 +13721,10 @@ ul.border-warning{
     position: absolute;
     top: -72px;
     right: 15%;
+    z-index: 1;
 }
 .full-height img {
-    height: 100vh;
+    height: auto;
 }
 /* img.product-img {
     width: 270px;
@@ -13757,6 +13771,68 @@ img.video-logo {
 }
 .video-box .border-btn-box {
     width: fit-content;
+}
+.hover-team {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0;
+    background-color: rgba(60,60,60,.95);
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+}
+.hover-team:hover {
+    opacity: 1;
+}
+.hover-team h3 {
+    display: inline-block;
+    padding: 0 20px;
+    position: relative;
+}
+.hover-team h3:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    width: 500px;
+    height: 2px;
+    top: 50%;
+    margin-top: -1px;
+    background-color: #ebcc00;
+}
+.hover-team h3:after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    width: 500px;
+    height: 2px;
+    top: 50%;
+    margin-top: -1px;
+    background-color: #ebcc00;
+}
+.hover-team span {
+    display: block;
+    color: #fff;
+    font-size: 15px;
+    padding: 0 20px;
+    font-weight: 300;
+}
+.hover-team h3{
+color: #fff;
+font-weight: 700;
+font-size: 25px;
+margin: 0 0 12px;
+}
+.box-img {
+    position: relative;
 }
 /* ....................home-new responsive......................  */
 @media only screen and (max-width: 1024px) {     
@@ -13824,7 +13900,7 @@ img.video-logo {
     text-align: center;
     height: 95px;
 }
-.top-bottom-padding-20 {
+.home-new .top-bottom-padding-20 {
     padding-top: 25px;
     padding-bottom: 0px;
 }
