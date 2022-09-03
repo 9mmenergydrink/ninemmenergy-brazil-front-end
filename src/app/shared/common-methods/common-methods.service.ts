@@ -16,7 +16,7 @@ import { BehaviorSubject } from 'rxjs';
 export class CommonMethodsService {
   currentURL: any;
   public cancelOrder = new BehaviorSubject({});
-  public cancelSuccess = new BehaviorSubject({});
+  public cancelSuccess = new BehaviorSubject(false);
   constructor(private router: Router, private apiService: ApiService,
     private metaTagService: Meta, @Inject(DOCUMENT) private doc: any, private datepipe: DatePipe,
     private titleService: Title) {

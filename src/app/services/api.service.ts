@@ -172,6 +172,14 @@ export class ApiService {
     return this.http.get(environment.apiUrl + `Customer/getOrderDetail/${id}`);
   }
 
+  getOrderDetailbyAdminGraphiql(id: string, pageno:any, pagecount:any, query:string): Observable<any> {
+    return this.http.get(environment.apiUrl + `Customer/getOrderDetailByAdminGraphiql/${id}/${pageno}/${pagecount}/${query}`);
+  }
+
+  getOrderStatusUrl(id: any): Observable<any> {
+    return this.http.get(environment.apiUrl + `Customer/getOrderStatusUrl/${id}`);
+  }
+  
   addCustomer(data: Object): Observable<any> {
     return this.http.post<any>(environment.apiUrl + "Customer/addCustomer", data);
   }

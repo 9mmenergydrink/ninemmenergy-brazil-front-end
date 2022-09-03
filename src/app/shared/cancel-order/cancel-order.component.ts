@@ -27,9 +27,9 @@ export class CancelOrderComponent implements OnInit {
   cancelReason() {
     this.apiService.isLoading.next(true);
     let object = {
-      "orderId": this.orderDetails.id,
+      "orderId": this.orderDetails?.id?.replace('gid://shopify/Order/', ''),
       "email": "true",
-      "reason": this.selectedReason.value
+      "reason": this.selectedReason?.value
     }
 
     this.apiService.getCancelOrder(object).subscribe((res: any) => {

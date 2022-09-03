@@ -117,7 +117,7 @@
                 <!-- Begin My account Active Tab Content -->
                 <!--*ngIf="accountData"-->
                 <div class="col-lg-8">
-                    <app-orders *ngIf="activeTab === 'orders'" [order]="order"></app-orders>
+                    <app-orders *ngIf="activeTab === 'orders'" [orderData]="orderData"></app-orders>
                     <app-profile-pwd *ngIf="activeTab === 'profile'" [profile]="profile"></app-profile-pwd>
                     <app-delivery-address *ngIf="activeTab === 'delivery'" [countries]="countries" [address]="address"></app-delivery-address>
                     <app-payment-method *ngIf="activeTab === 'payment'"></app-payment-method>
