@@ -9,6 +9,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { DatePipe, DOCUMENT } from '@angular/common';
 import Prismic from 'prismic-javascript';
 import { BehaviorSubject } from 'rxjs';
+declare let $: any;
 
 @Injectable({
   providedIn: 'root'
@@ -842,6 +843,16 @@ export class CommonMethodsService {
     }
     console.log("routing ", routing);
     this.router.navigate(routing);
+  }
+
+  showHidePlayPauseBtn(index, showPauseBtn?) {
+    if (showPauseBtn) {
+      $('#instaPlayId' + index).hide();
+      $('#instaPauseId' + index).show();
+    } else {
+      $('#instaPlayId' + index).show();
+      $('#instaPauseId' + index).hide();
+    }
   }
 
 

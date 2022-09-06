@@ -18,13 +18,7 @@ declare let $: any;
 export class BlogComponent implements OnInit {
   common: CommonMethods;
   articleMsg: string;
-  twitterSection: any;
-  constructor(public translate: TranslateService, private apiService:ApiService, private router: Router, private datepipe: DatePipe,
-    private route: ActivatedRoute, private commonMtd:CommonMethodsService) {
-      this.cartCount = commonMtd.getCartCountDetails();
-      commonMtd.addIndexMeta(true);
-    this.common = new CommonMethods(router);
-  }
+  twitterSection: any;  
   pageTitle = "";
   headerSection: any;
   footerSection: any;
@@ -42,18 +36,25 @@ export class BlogComponent implements OnInit {
   category: string;
   tag: string;
   searchTerm;
-
   page = 1;
   pageSize = 2;
   sideBarSection: any;
   shareSection: any;
+  selectedVideoIndex = -1;
+
+  constructor(public translate: TranslateService, private apiService:ApiService, private router: Router, private datepipe: DatePipe,
+    private route: ActivatedRoute, private commonMtd:CommonMethodsService) {
+      this.cartCount = commonMtd.getCartCountDetails();
+      commonMtd.addIndexMeta(true);
+    this.common = new CommonMethods(router);
+  }
+
   ngOnInit(): void {
-    
-   
     this.getPrismicDatas();
-    this.instaData();
+    this.getInstaPost();
     this.common.clear();
   }
+
   gotoReadMore(){
     // this.common.navigate('/read-more', "blog");
     this.router.navigate([this.commonMtd.getRoutePath('shop')], { fragment: 'down' });
@@ -198,7 +199,7 @@ export class BlogComponent implements OnInit {
     el.scrollIntoView();
   }
 
-  instaData() {
+  getInstaPost() {
     this.subScription = this.apiService.getInstaPost().subscribe((res: any) => {
       console.log('getInstaPost', res);
       if(res?.status== "7400" && res?.value?.data){
@@ -247,33 +248,22 @@ export class BlogComponent implements OnInit {
     window.open("https://www.instagram.com/" + userName + "/");
   }
 
-  selectedVideo = -1;
   playVideo(index) {
-    if(this.selectedVideo > 0 && this.selectedVideo != index)
-    this.videoEnded(this.selectedVideo);
-    this.selectedVideo = index;
+    if (this.selectedVideoIndex > -1 && this.selectedVideoIndex != index)
+      this.videoEnded(this.selectedVideoIndex);
+    this.selectedVideoIndex = index;
     var video = $('#instaVideoId' + index).get(0);
     if (video.paused) {
-      this.showHideId(index, 'play');
+      this.commonMtd.showHidePlayPauseBtn(index, true);
       video.play();
     } else {
-      this.showHideId(index);
+      this.commonMtd.showHidePlayPauseBtn(index);
       video.pause();
     }
   }
 
   videoEnded(index) {
     $('#instaVideoId' + index).load();
-    this.showHideId(index);
-  }
-
-  showHideId(index, play?) {
-    if (play) {
-      $('#instaPlayId' + index).hide();
-      $('#instaPauseId' + index).show();
-    } else {
-      $('#instaPlayId' + index).show();
-      $('#instaPauseId' + index).hide();
-    }
+    this.commonMtd.showHidePlayPauseBtn(index);
   }
 }

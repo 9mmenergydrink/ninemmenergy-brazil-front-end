@@ -57,11 +57,11 @@ export class BlogInnerComponent implements OnInit{
   apiUrl: any;
   sideBarSection: any;
   shareSection: any;
+  selectedVideoIndex = -1;
   constructor(public translate: TranslateService,private route: ActivatedRoute, private router: Router, private formBuilder: FormBuilder,
     private apiService: ApiService, private toastr: ToastrService, private datepipe: DatePipe,
     public commonMtd:CommonMethodsService, private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) {
       this.cartCount = commonMtd.getCartCountDetails();
-      debugger
       this.contentTitle = this.route.snapshot.params['title'];
       if(this.contentTitle == 'where-does-the-caffeine-in-energy-drinks-come-from' || 
       this.contentTitle == 'how-to-be-cognitively-healthy')
@@ -100,7 +100,7 @@ export class BlogInnerComponent implements OnInit{
     if(data == 'false')
     return;
     this.getPrismicDatas();
-    this.instaData();
+    this.getInstaPost();
     this.ngForm = this.formBuilder.group({
       author: ['', Validators.required],
       email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])],
@@ -111,13 +111,13 @@ export class BlogInnerComponent implements OnInit{
     })
   }
 
-  instaData() {
+  getInstaPost() {
+    this.apiService.isLoading.next(true);
     this.subScription = this.apiService.getInstaPost().subscribe((res: any) => {
-      console.log('getInstaPost', res);
       if(res?.status== "7400" && res?.value?.data){
         this.instagramSection = res.value.data.splice(0,4);
       }
-      
+      this.apiService.isLoading.next(false);
   }, err => {
     this.apiService.isLoading.next(false);
   })
@@ -156,7 +156,7 @@ interval;
       this.commonMtd.isLoading.next(false);
     });
   }
-    this.interval =    setInterval(() => {
+    this.interval =  setInterval(() => {
       let disqus = document.getElementById("disqus_thread");//.childNodes[0]['style']['display'] = 'none';
       if(disqus.childNodes[0] && !disqus.childNodes[0]['src']){
         clearInterval(this.interval);
@@ -714,45 +714,33 @@ this.commonMtd.addMetaTag(lContentItem?.data.seoSection, lContentItem?.data.ogSe
       this._renderer2.appendChild(this._document.head, schema);
   }
 
-  gotoCTALink(){
-    if(this.contentItem?.data?.cta_link){
- if(this.contentItem.data.cta_link.includes("http") || this.contentItem.data.cta_link.includes("www.")){
-  window.location.href = this.contentItem.data.cta_link;
- }else{
-      this.router.navigate([this.commonMtd.getRoutePath(this.contentItem.data.cta_link)]);
-    }
+  gotoCTALink() {
+    if (this.contentItem?.data?.cta_link) {
+      if (this.contentItem.data.cta_link.includes("http") || this.contentItem.data.cta_link.includes("www.")) {
+        window.location.href = this.contentItem.data.cta_link;
+      } else {
+        this.router.navigate([this.commonMtd.getRoutePath(this.contentItem.data.cta_link)]);
+      }
     }
   }
-
   
-  selectedVideo = -1;
   playVideo(index) {
-    if(this.selectedVideo > 0 && this.selectedVideo != index)
-    this.videoEnded(this.selectedVideo);
-    this.selectedVideo = index;
+    if (this.selectedVideoIndex > -1 && this.selectedVideoIndex != index)
+      this.videoEnded(this.selectedVideoIndex);
+    this.selectedVideoIndex = index;
     var video = $('#instaVideoId' + index).get(0);
     if (video.paused) {
-      this.showHideId(index, 'play');
+      this.commonMtd.showHidePlayPauseBtn(index, true);
       video.play();
     } else {
-      this.showHideId(index);
+      this.commonMtd.showHidePlayPauseBtn(index);
       video.pause();
     }
   }
 
   videoEnded(index) {
     $('#instaVideoId' + index).load();
-    this.showHideId(index);
-  }
-
-  showHideId(index, play?) {
-    if (play) {
-      $('#instaPlayId' + index).hide();
-      $('#instaPauseId' + index).show();
-    } else {
-      $('#instaPlayId' + index).show();
-      $('#instaPauseId' + index).hide();
-    }
+    this.commonMtd.showHidePlayPauseBtn(index);
   }
 
 }
