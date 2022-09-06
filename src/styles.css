@@ -11646,8 +11646,8 @@ letter-spacing: 2px;
         margin: 25px 5px;
     }
   .addtocart-close {
-    right: 13px;
-    top: 0px;
+    right: 13px!important;
+    top: 0px!important;
     background: transparent !important;
     font-size: 50px;
     font-weight: 100;
@@ -13355,6 +13355,14 @@ letter-spacing: 2px;
     .order-search .search-control::placeholder{
         font-size: 70%;
     }
+
+    .home-slider .slider-fade{
+        margin-top: 10px;
+    }
+
+    .home-slider .border-btn{
+        line-height: normal;
+    }
 }
 
 @media only screen and (max-width: 280px){
@@ -13979,10 +13987,13 @@ margin: 0 0 12px;
     transform: translateX(-50%) translateY(-50%);
     box-sizing: initial;
     display: block!important;
-    width: 32px;
-    height: 44px;
+    /* width: 32px;
+    height: 44px; */
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    padding: 18px 20px 18px 28px;
+    /* padding: 18px 20px 18px 28px; */
+    padding: 0;
     background-color: #fff;
 }
 .insta-video-play-button:after, .insta-video-play-button:before {
@@ -13994,8 +14005,10 @@ margin: 0 0 12px;
 	-webkit-transform: translateX(-50%) translateY(-50%);
 	-ms-transform: translateX(-50%) translateY(-50%);
     display: block;
-    width: 80px;
-    height: 80px;
+    /* width: 80px;
+    height: 80px; */
+    width: 50px;
+    height: 50px;
     background: #ebcc00;
     border-radius: 50%;
 }
@@ -14013,23 +14026,33 @@ margin: 0 0 12px;
     z-index: 3;
     width: 0;
     height: 0;
-    border-left: 32px solid #fff;
+    /* border-left: 32px solid #fff;
     border-top: 22px solid transparent;
-    border-bottom: 22px solid transparent;
+    border-bottom: 22px solid transparent; */
+    border-left: 18px solid #fff;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 18px;
+    margin-top: 13px;
 }
 .insta-video-play-button span.pauseBtn {
     margin-top: 5px;
     position: relative;
     z-index: 3;
-    width: 35px;
-    height: 35px;
+    /* width: 35px;
+    height: 35px; */
+    width: 20px;
+    height: 20px;
     border-style: double;
-    border-width: 0px 0px 0px 25px;
+    /* border-width: 0px 0px 0px 25px; */
+    border-width: 0px 0px 0px 14px;
     border-color: #fff;
+    margin-left: 17px;
+    margin-top: 14px;
 }
 
 @media (min-width: 768px) and (max-width: 991px) { 
-    .insta-video-play-button{
+    /* .insta-video-play-button{
         padding: 10px;
         height: 32px;
     }
@@ -14053,13 +14076,17 @@ margin: 0 0 12px;
         border-width: 0px 0px 0px 15px;
         margin-left: 8px;
         margin-top: 5px;
-    }
+    } */
 }
 
 @supports (-webkit-touch-callout: none) {
     /* CSS specific to iOS devices */ 
     .dropdown .nav-btn {
         pointer-events: unset;
+    }
+
+    .close-thik:after{
+        padding: 2px;
     }
 }
 
@@ -14069,4 +14096,8 @@ margin: 0 0 12px;
 
 .about-wrapper .arrow-btn{
     line-height: 1.5;
+}
+
+.w-20{
+    width: 20%;
 }
