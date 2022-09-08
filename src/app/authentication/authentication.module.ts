@@ -19,6 +19,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { OrderFilterPipe } from '../shared/pipes/order-filter.pipe';
 import { SharedModule } from '../shared/shared.module';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -46,6 +47,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AuthenticationRoutingModule,
     ComponentModule,
     SharedModule,
+    NgxIntlTelInputModule,
    // TranslateModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

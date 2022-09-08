@@ -122,13 +122,27 @@
         <div class="my-3" *ngIf="isEditPhone">
             <div class="col-md-12 p-0">
                 <div class="col-md-7 p-0">
-                    <div class="">
+                    <!-- <div class="">
                         <label> {{'phoneNumber' |translate }}<span class="text-danger pl-1">*</span></label>
                         <input type="text" formControlName="phone" appNumeric name="phone" [ngClass]="{'error':f?.phone?.errors&&f?.phone?.touched}" class="form-control" placeholder="{{'phoneNo' |translate }}">
                         <div *ngIf="f?.phone?.errors && f?.phone?.touched" class="text-danger">
                             <div *ngIf="f?.phone?.errors?.required">{{'phoneNo' |translate }}</div>
                             <div *ngIf="f?.phone?.errors?.pattern || f?.phone?.errors?.minlength || f?.phone?.errors?.maxlength">
                                 {{'pleaseEnterValidPhoneNo' |translate }}
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="tel-input">
+                        <ngx-intl-tel-input [ngClass]="f.phone.errors && f.phone.touched ? 'ng-invalid-phone':''" [cssClass]="'customcss'" [preferredCountries]="preferredCountries" [enableAutoCountrySelect]="true"
+                            [enablePlaceholder]="true" [searchCountryFlag]="true"
+                            [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]" [selectFirstCountry]="false"
+                            [selectedCountryISO]="regionCode" [maxLength]="15" [phoneValidation]="true"
+                            [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National" name="phone"
+                            formControlName="phone"></ngx-intl-tel-input>
+                        <div *ngIf="f.phone.errors && f.phone.touched" class="text-danger">
+                            <div *ngIf="f.phone.errors.required">{{'phoneNo' | translate}}</div>
+                            <div *ngIf="f.phone.invalid && !f.phone.errors.required">
+                                {{'pleaseEnterValidPhoneNo' | translate}}
                             </div>
                         </div>
                     </div>
