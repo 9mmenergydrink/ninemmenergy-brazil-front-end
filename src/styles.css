@@ -14101,3 +14101,15 @@ margin: 0 0 12px;
 .w-20{
     width: 20%;
 }
+
+ngx-intl-tel-input.ng-invalid-phone input {
+	border: 1px solid #c0392b;
+}
+
+.iti__dial-code{
+	float: right;
+}
+
+.tel-input ngx-intl-tel-input .iti__flag-container{
+    margin-left: 0px !important;
+}
