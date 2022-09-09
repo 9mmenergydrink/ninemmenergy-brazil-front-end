@@ -2,7 +2,7 @@
     <h5 class="my-3">{{'purchaseHistory' |translate }}</h5>
     <form class="order-search col-md-6 mt-3" [formGroup]="orderGroup">
         <input type="text" class="search-control pointer-small" [readonly]="disableSearchInputBox"
-            formControlName="ordersearch" (input)="searchInput()" placeholder="{{'itemOrder' |translate }}">
+            formControlName="ordersearch" (input)="searchInput()" placeholder="{{'searchOrder' |translate }}">
         <button class="search-btn pointer-large" type="button" (click)="searchInput()"><i
                 class="fas fa-search"></i></button>
     </form>

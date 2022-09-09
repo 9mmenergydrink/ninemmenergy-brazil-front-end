@@ -649,8 +649,12 @@ this.commonMtd.addMetaTag(lContentItem?.data.seoSection, lContentItem?.data.ogSe
    // this.setArticleContent(title);
   }
 
-  onClickInstaPost(userName){
-    window.open("https://www.instagram.com/" + userName + "/");
+  onClickInstaPost(item){
+    if(item?.userName){
+      window.open("https://www.instagram.com/" + item.userName + "/");
+    }else if(item?.permalink){
+      window.open(item?.permalink);
+    }
   }
 
   addSchemaScript() {

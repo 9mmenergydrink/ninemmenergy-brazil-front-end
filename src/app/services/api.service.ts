@@ -172,8 +172,8 @@ export class ApiService {
     return this.http.get(environment.apiUrl + `Customer/getOrderDetail/${id}`);
   }
 
-  getOrderDetailbyAdminGraphiql(id: string, pageno:any, pagecount:any, query:string): Observable<any> {
-    return this.http.get(environment.apiUrl + `Customer/getOrderDetailByAdminGraphiql/${id}/${pageno}/${pagecount}/${query}`);
+  getOrdersDetails(id: string, pageno:any, pagecount:any, searchByOrderNo:string): Observable<any> {
+    return this.http.get(environment.apiUrl + `Customer/getOrdersDetails/${id}/${pageno}/${pagecount}/${searchByOrderNo}`);
   }
 
   getOrderStatusUrl(id: any): Observable<any> {

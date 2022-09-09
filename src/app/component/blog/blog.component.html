@@ -287,16 +287,17 @@
                                     <div class="col-md-6 insta-col" *ngFor="let item of instagramSection; let i=index">
                                         <div class="insta-box">
                                             <a class="hover-target">
-                                                <img *ngIf="item?.media_type!='VIDEO'" class="hover-img" [src]="item?.media_url" alt="instagram post"
-                                                    (click)="onClickInstaPost(item?.username)">
+                                                <img *ngIf="item?.media_type!='VIDEO'" class="hover-img" [src]="item?.media_url" [alt]="item?.caption || ''"
+                                                    (click)="onClickInstaPost(item)">
                                                 <ng-container *ngIf="item?.media_type=='VIDEO'">
-                                                    <video (ended)="videoEnded(i)" [attr.id]="'instaVideoId'+i" width="100%" (click)="onClickInstaPost(item?.username)"
+                                                    <video (ended)="videoEnded(i)" [attr.id]="'instaVideoId'+i" width="100%" (click)="onClickInstaPost(item)"
                                                         [poster]="item?.thumbnail_url" [src]="item?.media_url" playsinline preload="metadata"></video>
                                             
-                                                    <a class="insta-video-play-button" (click)="playVideo(i)">
+                                                    <!-- We have hidden the play/pause button in the Instagram section because added redirection logic for the selected Instagram image/video on 08-09-2022 -->
+                                                    <!-- <a class="insta-video-play-button" (click)="playVideo(i)">
                                                         <span [attr.id]="'instaPlayId'+i"></span>
                                                         <span class="pauseBtn" [attr.id]="'instaPauseId'+i" *ngIf="selectedVideoIndex == i"></span>
-                                                    </a>
+                                                    </a> -->
                                                 </ng-container>
                                             </a>
                                         </div>

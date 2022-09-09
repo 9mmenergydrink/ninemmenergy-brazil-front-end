@@ -150,7 +150,7 @@ export class AccountComponent implements OnInit {
           addresses:this.accountData?.addresses
         }
         this.customerId = this.accountData?.id;
-        this.getOrderDetails(this.customerId);
+        this.getOrdersDetails(this.customerId);
       }
       else{
         if(res.status != "7407")
@@ -166,7 +166,7 @@ export class AccountComponent implements OnInit {
   // Get tab click event
   tabClickEvent(name) {
     if(name == 'orders') {
-      this.getOrderDetails(this.customerId);
+      this.getOrdersDetails(this.customerId);
       this.activeTab = name;
     }
     if (name !== this.activeTab)
@@ -188,8 +188,8 @@ export class AccountComponent implements OnInit {
     })
   }
 
-  getOrderDetails(customerId) {
-    this.apiService.getOrderDetailbyAdminGraphiql(customerId, "after:null", "first:2", 'null').subscribe((res: any) => {
+  getOrdersDetails(customerId) {
+    this.apiService.getOrdersDetails(customerId, "after:null", "first:2", 'null').subscribe((res: any) => {
       if (res.status === "7400" && res?.value?.data?.customer?.orders) {
         res.value.data.customer.orders.customerId = customerId;
         this.orderData = res.value.data.customer.orders;

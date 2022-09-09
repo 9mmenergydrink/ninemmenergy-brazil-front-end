@@ -66,13 +66,13 @@ export class OrdersComponent implements OnInit {
   isSearchData = false;
   prevOrderDetails = null;
   disableSearchInputBox = false;
-  pageChanged(searchByName?) {
+  pageChanged(searchByOrderNo?) {
     this.disableSearchInputBox = true;
     let pageNo;
     let pageCount = "first:1";
-    if(!searchByName){
+    if(!searchByOrderNo){
       this.isSearchData = false;
-      searchByName = 'null';
+      searchByOrderNo = 'null';
      if(this.prevPage < this.page){
         let lastOrderId = this.orderDetails?.edges[this.orderDetails?.edges.length-1]?.node?.id?.replace('gid://shopify/Order/', '');
         pageNo = 'after:"' + window.btoa(JSON.stringify({"last_id":parseInt(lastOrderId),"last_value":parseInt(lastOrderId)}))  + '"';
@@ -85,14 +85,14 @@ export class OrdersComponent implements OnInit {
     }else{
       this.isSearchData = true;
       pageNo = "after:null";
-      searchByName = searchByName?("name:"+searchByName.replaceAll('#','')):'null';
+      searchByOrderNo = searchByOrderNo?("name:"+searchByOrderNo.replaceAll('#','')):'null';
     }
     
     this.prevPage = this.page;
     this.apiService.isLoading.next(true);
-    this.apiService.getOrderDetailbyAdminGraphiql(this.orderDetails?.customerId, pageNo, pageCount, searchByName).subscribe((res: any) => {
+    this.apiService.getOrdersDetails(this.orderDetails?.customerId, pageNo, pageCount, searchByOrderNo).subscribe((res: any) => {
       if (res.status === "7400" && res?.value?.data?.customer?.orders) {
-        if(searchByName && searchByName != 'null'){
+        if(searchByOrderNo && searchByOrderNo != 'null'){
           if(!this.prevOrderDetails)
              this.prevOrderDetails = Object.assign({}, this.orderDetails);
           if(!res?.value?.data?.customer?.orders?.edges?.length)

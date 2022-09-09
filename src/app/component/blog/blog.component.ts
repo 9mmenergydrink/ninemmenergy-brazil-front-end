@@ -244,8 +244,12 @@ export class BlogComponent implements OnInit {
    // this.router.navigate([this.commonMtd.getRoutePath('blog'), title]);
   }
 
-  onClickInstaPost(userName){
-    window.open("https://www.instagram.com/" + userName + "/");
+  onClickInstaPost(item){
+    if(item?.userName){
+      window.open("https://www.instagram.com/" + item.userName + "/");
+    }else if(item?.permalink){
+      window.open(item?.permalink);
+    }
   }
 
   playVideo(index) {
