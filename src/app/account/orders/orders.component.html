@@ -1,13 +1,15 @@
 <div>
     <h5 class="my-3">{{'purchaseHistory' |translate }}</h5>
+    <!-- Order search -->
     <form class="order-search col-md-6 mt-3" [formGroup]="orderGroup">
         <input type="text" class="search-control pointer-small" [readonly]="disableSearchInputBox"
             formControlName="ordersearch" (input)="searchInput()" placeholder="{{'searchOrder' |translate }}">
         <button class="search-btn pointer-large" type="button" (click)="searchInput()"><i
                 class="fas fa-search"></i></button>
     </form>
-    <!-- *ngIf="order?.orderId" -->
-    <div class="border-lightgray mt-4" *ngFor="let order of orderDetails?.edges | orderFilter: searchTerm : 'name'">
+    <!-- End -->
+    <!-- Orders Details  -->
+    <div class="border-lightgray mt-4" *ngFor="let order of orderDetails?.edges">
         <div class="order-date">
             <span class="font-weight-bold ml-3 mt-3">{{order?.node.createdAt | date: 'MMM dd,yyyy' }}</span>
             <span class="ml-3 mt-1 mb-3">{{'order' |translate }} {{order?.node?.name }}</span>
@@ -216,19 +218,21 @@
             </div>
         </div>
     </div>
-
-    <div class="text-center" *ngIf="!isSearchData && orderDetails?.pageInfo?.totalOrders > pageSize">
+       <!-- End -->
+       <!--Pagination -->
+       <div class="text-center" *ngIf="!isSearchData && orderDetails?.pageInfo?.totalOrders > pageSize">
         <div class="border-btn-box border-btn-red pointer-large mt-3 mb-3">
             <div class="border-btn-inner pagination-common">
-                <ngb-pagination [collectionSize]="orderDetails?.pageInfo?.totalOrders" [(page)]="page"
-                    [pageSize]="pageSize" [maxSize]="1" [rotate]="true" (pageChange)="pageChanged()"></ngb-pagination>
+                <ngb-pagination [collectionSize]="orderDetails?.pageInfo?.totalOrders" [(page)]="page" [pageSize]="pageSize" [maxSize]="1" [rotate]="true" (pageChange)="pageChanged()"></ngb-pagination>
             </div>
         </div>
     </div>
-
+    <!-- End -->
+    <!-- No Orders Message-->
     <div *ngIf="orderDetails && !orderDetails?.edges?.length" style="margin-top: 20px; border: black solid 1px;">
         <div style="display: grid; background-color: #e2e2e2">
-            <span style="margin-left: 10px; margin-bottom: 10px">No Order</span>
+            <span style="margin-left: 10px; margin-bottom: 10px">{{'noOrder' || translate}}</span>
         </div>
     </div>
+    <!-- End -->
 </div>
