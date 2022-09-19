@@ -16,6 +16,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CorporateComponent } from './common/corporate/corporate.component';
 import { WhatsInsideComponent } from './common/whats-inside/whats-inside.component';
+import { UrlSerializer } from '@angular/router';
+import { CustomUrlSerializer } from './shared/common/custom-url-serializer/custom-url-serializer';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -46,7 +48,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     BrowserAnimationsModule,
     DisqusModule.forRoot('9mm-energy-drink')
   ],
-  providers: [ApiService, Meta],
+  providers: [ApiService, Meta,
+    { provide: UrlSerializer, useClass: CustomUrlSerializer }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
