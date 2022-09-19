@@ -13030,6 +13030,9 @@ letter-spacing: 2px;
     font-size : 15px;
 }
 
+.home-slider .border-btn{
+    line-height: normal;
+}
 
 }
 
