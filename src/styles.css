@@ -10050,11 +10050,6 @@ img.hi:hover + figcaption.figcaption {
     -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
     border-radius: 10px;
 }
-@media only screen and (max-width: 576px) {
-    .zohoPopupForm iframe {
-        height: 845px !important;
-    }
-}
 @media only screen and (max-width: 560px) {
     .numberCircle{
       margin: 0px 0px 0px 10px;
@@ -12459,13 +12454,11 @@ letter-spacing: 2px;
     border: none;
 }
 .zohoPopupForm .close {
-    right: 30px; /* For new GHL form 18-08-2022  */
-    top: 30px;  /* For new GHL form 18-08-2022  */
-
-    /* right: 40px; For old zoho form 19-08-2022
-    top: 35px; */
+    right: 4px;
+    top: 43px;  
     background-color: #fff !important;
     opacity: 1 !important;
+    position: relative;
 }
 /* Media Query Only */
 @media only screen and (min-width: 769px) and (max-width: 991px) {
@@ -13589,8 +13582,8 @@ ul.border-warning{
 
 /*My Account - Order CSS*/
 .cancel-order-window .close{
-	top: 5px;
-	right: 5px;
+    top: -1px;
+    right: -1px;
 }
 
 /* target for across all mobile device */
@@ -13688,6 +13681,20 @@ ul.border-warning{
 
 .zohoPopupForm iframe {
     height: 800px !important;
+}
+
+@media only screen and (max-width: 576px) {
+    .zohoPopupForm iframe {
+        height: 845px !important;
+    }
+    .cancel-order-window .modal-dialog {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .cancel-order-window .close {
+        top: -6px;
+        right: -5px;
+    }
 }
 /* ....................home-new.................. */
 .video-content-bg-new{
