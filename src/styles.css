@@ -13907,6 +13907,10 @@ margin: 0 0 12px;
         padding-top: 20px;
         padding-bottom: 20px;
     }
+    .top-logo-2 img{
+        width: 200px;
+        top: -60px;
+    }
 }
 @media only screen and (max-width: 767px) {   
 .affiliate-shop-btn{
