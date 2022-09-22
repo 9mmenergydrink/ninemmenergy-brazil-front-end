@@ -13760,6 +13760,7 @@ img.product-img:hover {
 } */
 img.logo-slider-new {
     width: 200px;
+    height: 100% !important;
 }
 .col-nd-2 {
     width: 20%;
