@@ -13760,6 +13760,7 @@ img.product-img:hover {
 } */
 img.logo-slider-new {
     width: 200px;
+    height: 100% !important;
 }
 .col-nd-2 {
     width: 20%;
@@ -13906,6 +13907,10 @@ margin: 0 0 12px;
     .shop-testimonial-top-bottom-padding{
         padding-top: 20px;
         padding-bottom: 20px;
+    }
+    .top-logo-2 img{
+        width: 200px;
+        top: -60px;
     }
 }
 @media only screen and (max-width: 767px) {   
