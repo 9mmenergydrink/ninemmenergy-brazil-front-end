@@ -1,14 +1,18 @@
 <div>
     <h5 class="my-3">{{'purchaseHistory' |translate }}</h5>
+    <!-- Order search -->
     <form class="order-search col-md-6 mt-3" [formGroup]="orderGroup">
-        <input type="text" class="search-control pointer-small" formControlName="ordersearch" (input)="searchInput()" placeholder="{{'itemOrder' |translate }}">
-        <button class="search-btn pointer-large" type="button" (click)="searchInput()"><i class="fas fa-search"></i></button>
+        <input type="text" class="search-control pointer-small" [readonly]="disableSearchInputBox"
+            formControlName="ordersearch" (input)="searchInput()" placeholder="{{'searchOrder' |translate }}">
+        <button class="search-btn pointer-large" type="button" (click)="searchInput()"><i
+                class="fas fa-search"></i></button>
     </form>
-    <!-- *ngIf="order?.orderId" -->
-    <div class="border-lightgray mt-4" *ngFor="let order of orderDetails?.orderList | orderFilter: searchTerm : 'name'">
+    <!-- End -->
+    <!-- Orders Details  -->
+    <div class="border-lightgray mt-4" *ngFor="let order of orderDetails?.edges">
         <div class="order-date">
-            <span class="font-weight-bold ml-3 mt-3">{{order?.created_at | date: 'MMM dd,yyyy' }}</span>
-            <span class="ml-3 mt-1 mb-3">{{'order' |translate }}  {{order?.name }}</span>
+            <span class="font-weight-bold ml-3 mt-3">{{order?.node.createdAt | date: 'MMM dd,yyyy' }}</span>
+            <span class="ml-3 mt-1 mb-3">{{'order' |translate }} {{order?.node?.name }}</span>
         </div>
         <div class="d-grid mb-3">
             <div class="mt-3">
@@ -74,104 +78,109 @@
                         </div>
                     </div> -->
                     <div class="arrow-btn-box">
-                        <a class="arrow-btn pointer-large" target="_blank" [href]="order?.order_status_url">{{'trackYourOrder' | translate}}</a>
+                        <a class="arrow-btn pointer-large" target="_blank"
+                            (click)="trackYourOrder(order?.node)">{{'trackYourOrder' | translate}}</a>
                     </div>
                 </div>
                 <div class="mt-3">
                     <h6 class="mt-3 ml-3">
-                        {{'arrives' |translate }} {{order?.closed_at |date: 'EEE, MMM dd'}}
-                        <span class="font-weight-normal pl-2">({{'package' |translate }} {{order?.line_items?.length}}
-             of 1)</span>
+                        {{'arrives' |translate }} {{order?.node?.closedAt |date: 'EEE, MMM dd'}}
+                        <span class="font-weight-normal pl-2">({{'package' |translate }}
+                            {{order?.node?.lineItems?.edges?.length}}
+                            of 1)</span>
                     </h6>
                 </div>
                 <div class="col-lg-12 col-md-12 p-0">
-                    <div class=" d-flex align-items-center mt-3" *ngFor="let item of order?.line_items">
+                    <div class=" d-flex align-items-center mt-3" *ngFor="let item of order?.node?.lineItems?.edges">
                         <div class="col-md-1">
                             <div class="border-lightgray order-pro-img position-relative">
-                                <img [src]="item?.image" [alt]="(item?.alt)?item.alt:''">
-                                <span class="badge order-badge">{{item?.quantity}}</span>
+                                <img [src]="item?.node?.variant?.image?.url"
+                                    [alt]="item?.node?.variant?.image?.altText ||''">
+                                <span class="badge order-badge">{{item?.node?.quantity}}</span>
                             </div>
                         </div>
                         <div class="col-md-4 order-pro-title">
                             <div class="">
                                 <h6 class="d-grid font-weight-normal">
-                                    {{item?.title}}
-                                    <p class="margin-top-3">{{item?.variant_title}}</p>
+                                    {{item?.node?.title}}
+                                    <p class="margin-top-3">{{item?.node?.variantTitle}}</p>
                                 </h6>
                             </div>
                         </div>
                         <div class="col-md-2 text-center">
                             <span class="order-price">
-                                ${{item?.price }}
+                                ${{item?.node?.variant?.price }}
                             </span>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-7 d-flex justify-content-center">
-                    <button type="submit" class="order-btn mr-3" (click)="reOrder(order)"><span>{{'reorder' |translate }}</span></button>
+                    <button type="submit" class="order-btn mr-3" (click)="reOrder(order)"><span>{{'reorder' |translate
+                            }}</span></button>
                     <!-- <button type="submit" class="cancel-btn" *ngIf="!order.financial_status == 'paid' || !order?.fulfillment_status == 'fulfilled'"><span>{{'cancel' |translate }}</span></button> -->
-                    <button type="submit" class="cancel-btn" *ngIf="!(order?.financial_status == 'paid' && order?.fulfillment_status == 'fulfilled')" (click)="cancelModal(order)"><span>{{'cancel' |translate }}</span></button>
+                    <button type="submit" class="cancel-btn"
+                        *ngIf="!(order?.node?.displayFinancialStatus == 'paid' && order?.node?.displayFulfillmentStatus == 'fulfilled')"
+                        (click)="cancelModal(order?.node)"><span>{{'cancel' |translate }}</span></button>
                 </div>
             </div>
             <div class="mb-3 mt-3 ml-3">
                 <span style="font-weight: bold;" (click)="openDetail(order)">
-          <ng-contaniner *ngIf="order?.showDetails">{{'hideDetails' | translate}}</ng-contaniner>
-          <ng-contaniner *ngIf="!order?.showDetails">{{'showDetails' | translate}}</ng-contaniner>
-          <i class="arrow down align-middle" *ngIf="!order?.showDetails"></i>
-          <i class="arrow up align-middle" *ngIf="order?.showDetails"></i>
-        </span>
+                    <ng-contaniner *ngIf="order?.showDetails">{{'hideDetails' | translate}}</ng-contaniner>
+                    <ng-contaniner *ngIf="!order?.showDetails">{{'showDetails' | translate}}</ng-contaniner>
+                    <i class="arrow down align-middle" *ngIf="!order?.showDetails"></i>
+                    <i class="arrow up align-middle" *ngIf="order?.showDetails"></i>
+                </span>
                 <div class="row" *ngIf="order?.showDetails">
                     <div class="col-lg-6 mt-2">
                         <div>
                             <h6>
-                                {{'orderSummary' |translate }}
+                                {{'orderSummary' |translate}}
                             </h6>
                             <hr class="m-0 mt-2">
                             <div class="d-flex justify-content-between mt-2">
                                 <span>
-                  {{'subTotal' |translate }} &nbsp; ({{order?.line_items?.length}} {{'item' |translate }})
-                </span>
+                                    {{'subTotal' |translate }} &nbsp; ({{order?.node?.lineItems?.edges?.length}}
+                                    {{'item' |translate }})
+                                </span>
                                 <span class="mr-3">
-                  ${{order?.subtotal_price}}
-                </span>
+                                    ${{order?.node?.subtotalPrice}}
+                                </span>
                             </div>
-                            <div class="d-flex justify-content-between" *ngFor="let ship of order?.shipping_lines">
+                            <div class="d-flex justify-content-between" *ngIf="order?.node?.shippingLine?.price && order?.node?.shippingLine?.price != 0.00">
                                 <span class="text-capitalize">
-                  {{'shipping' |translate }}
-                </span>
+                                    {{'shipping' |translate }}
+                                </span>
                                 <span class="mr-3">
-                  ${{ship?.price }}
-                </span>
+                                    ${{order?.node?.shippingLine?.price }}
+                                </span>
                             </div>
-                            <div class="d-flex justify-content-between" *ngIf="!order?.shipping_lines?.length">
+                            <div class="d-flex justify-content-between" *ngIf="order?.node?.shippingLine?.price && order?.node?.shippingLine?.price == 0.00">
                                 <span class="text-capitalize">
-                  {{'shipping' |translate }}
-                </span>
+                                    {{'shipping' |translate }}
+                                </span>
                                 <span class="mr-3">
-                  {{'free' |translate }}
-                </span>
+                                    {{'free' |translate }}
+                                </span>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <span>
-                  {{'tax' |translate }}
-                </span>
+                                    {{'tax' |translate }}
+                                </span>
                                 <span class="mr-3">
-                  ${{order?.total_tax }}
-                </span>
+                                    ${{order?.node?.totalTax }}
+                                </span>
                             </div>
                             <hr class="m-0 mt-2">
                             <div class="d-flex justify-content-between mt-2">
                                 <span style="font-weight: bold;" class="text-capitalize">
-                  {{'total' |translate }}
-                </span>
-                                <span class="mr-3">
-                  ${{order?.total_price }}
-                </span>
+                                    {{'total' |translate }}
+                                </span>
+                                <span class="mr-3">${{order?.node?.totalPrice }}</span>
                             </div>
                             <div class="mt-3">
                                 <span>
-                  {{'order' |translate }}  {{order?.name}}
-                </span>
+                                    {{'order' |translate }} {{order?.node?.name}}
+                                </span>
                             </div>
                             <div class="mt-3">
                                 <h6>
@@ -181,11 +190,16 @@
                             <hr class="m-0 mt-2">
                             <div class="mt-2">
                                 <!-- <span>Mr John Smith. 132,</span><br><span>R.K Street, Kingston,</span><br><span> New York 12401.</span> -->
-                                <div>{{order?.shipping_address?.name}}</div>
-                                <div *ngIf="order?.shipping_address?.address1">{{order?.shipping_address?.address1}}</div>
-                                <div *ngIf="order?.shipping_address?.address2">{{order?.shipping_address?.address2}}</div>
-                                <div *ngIf="order?.shipping_address?.city">{{order?.shipping_address?.zip}} {{order?.shipping_address?.city}}, {{order?.shipping_address?.province}}</div>
-                                <div *ngIf="order?.shipping_address?.country">{{order?.shipping_address?.country}}</div>
+                                <div>{{order?.node?.shippingAddress?.name}}</div>
+                                <div *ngIf="order?.node?.shippingAddress?.address1">
+                                    {{order?.node?.shippingAddress?.address1}}</div>
+                                <div *ngIf="order?.node?.shippingAddress?.address2">
+                                    {{order?.node?.shippingAddress?.address2}}</div>
+                                <div *ngIf="order?.node?.shippingAddress?.city">{{order?.node?.shippingAddress?.zip}}
+                                    {{order?.node?.shippingAddress?.city}}, {{order?.node?.shippingAddress?.province}}
+                                </div>
+                                <div *ngIf="order?.node?.shippingAddress?.country">
+                                    {{order?.node?.shippingAddress?.country}}</div>
                             </div>
                         </div>
                     </div>
@@ -197,17 +211,28 @@
                         </div>
                         <hr class="m-0 mt-2">
                         <div class="mt-2">
-                            <span>{{order?.gateway}}</span>
+                            <span>{{order?.node?.paymentGatewayNames[0]}}</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div *ngIf="orderDetails?.orderList.length == 0" style="margin-top: 20px; border: black solid 1px;">
-        <div style="display: grid; background-color: #e2e2e2">
-            <span style="margin-left: 10px; margin-bottom: 10px">No Order</span>
+       <!-- End -->
+       <!--Pagination -->
+       <div class="text-center" *ngIf="!isSearchData && orderDetails?.pageInfo?.totalOrders > pageSize">
+        <div class="border-btn-box border-btn-red pointer-large mt-3 mb-3">
+            <div class="border-btn-inner pagination-common">
+                <ngb-pagination [collectionSize]="orderDetails?.pageInfo?.totalOrders" [(page)]="page" [pageSize]="pageSize" [maxSize]="1" [rotate]="true" (pageChange)="pageChanged()"></ngb-pagination>
+            </div>
         </div>
     </div>
+    <!-- End -->
+    <!-- No Orders Message-->
+    <div *ngIf="orderDetails && !orderDetails?.edges?.length" style="margin-top: 20px; border: black solid 1px;">
+        <div style="display: grid; background-color: #e2e2e2">
+            <span style="margin-left: 10px; margin-bottom: 10px">{{'noOrder' || translate}}</span>
+        </div>
+    </div>
+    <!-- End -->
 </div>

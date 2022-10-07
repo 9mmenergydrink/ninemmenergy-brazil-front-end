@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { CommonMethods } from 'src/app/common/common-methods';
 import { ApiService } from 'src/app/services/api.service';
 import { CommonMethodsService } from 'src/app/shared/common-methods/common-methods.service';
+declare let $: any;
 
 
 @Component({
@@ -17,13 +18,7 @@ import { CommonMethodsService } from 'src/app/shared/common-methods/common-metho
 export class BlogComponent implements OnInit {
   common: CommonMethods;
   articleMsg: string;
-  twitterSection: any;
-  constructor(public translate: TranslateService, private apiService:ApiService, private router: Router, private datepipe: DatePipe,
-    private route: ActivatedRoute, private commonMtd:CommonMethodsService) {
-      this.cartCount = commonMtd.getCartCountDetails();
-      commonMtd.addIndexMeta(true);
-    this.common = new CommonMethods(router);
-  }
+  twitterSection: any;  
   pageTitle = "";
   headerSection: any;
   footerSection: any;
@@ -41,18 +36,25 @@ export class BlogComponent implements OnInit {
   category: string;
   tag: string;
   searchTerm;
-
   page = 1;
   pageSize = 2;
   sideBarSection: any;
   shareSection: any;
+  selectedVideoIndex = -1;
+
+  constructor(public translate: TranslateService, private apiService:ApiService, private router: Router, private datepipe: DatePipe,
+    private route: ActivatedRoute, private commonMtd:CommonMethodsService) {
+      this.cartCount = commonMtd.getCartCountDetails();
+      commonMtd.addIndexMeta(true);
+    this.common = new CommonMethods(router);
+  }
+
   ngOnInit(): void {
-    
-   
     this.getPrismicDatas();
-    this.instaData();
+    this.getInstaPost();
     this.common.clear();
   }
+
   gotoReadMore(){
     // this.common.navigate('/read-more', "blog");
     this.router.navigate([this.commonMtd.getRoutePath('shop')], { fragment: 'down' });
@@ -197,7 +199,7 @@ export class BlogComponent implements OnInit {
     el.scrollIntoView();
   }
 
-  instaData() {
+  getInstaPost() {
     this.subScription = this.apiService.getInstaPost().subscribe((res: any) => {
       console.log('getInstaPost', res);
       if(res?.status== "7400" && res?.value?.data){
@@ -242,7 +244,30 @@ export class BlogComponent implements OnInit {
    // this.router.navigate([this.commonMtd.getRoutePath('blog'), title]);
   }
 
-  onClickInstaPost(userName){
-    window.open("https://www.instagram.com/" + userName + "/");
+  onClickInstaPost(item){
+    if(item?.userName){
+      window.open("https://www.instagram.com/" + item.userName + "/");
+    }else if(item?.permalink){
+      window.open(item?.permalink);
+    }
+  }
+
+  playVideo(index) {
+    if (this.selectedVideoIndex > -1 && this.selectedVideoIndex != index)
+      this.videoEnded(this.selectedVideoIndex);
+    this.selectedVideoIndex = index;
+    var video = $('#instaVideoId' + index).get(0);
+    if (video.paused) {
+      this.commonMtd.showHidePlayPauseBtn(index, true);
+      video.play();
+    } else {
+      this.commonMtd.showHidePlayPauseBtn(index);
+      video.pause();
+    }
+  }
+
+  videoEnded(index) {
+    $('#instaVideoId' + index).load();
+    this.commonMtd.showHidePlayPauseBtn(index);
   }
 }

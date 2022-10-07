@@ -9,6 +9,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { DatePipe, DOCUMENT } from '@angular/common';
 import Prismic from 'prismic-javascript';
 import { BehaviorSubject } from 'rxjs';
+declare let $: any;
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ import { BehaviorSubject } from 'rxjs';
 export class CommonMethodsService {
   currentURL: any;
   public cancelOrder = new BehaviorSubject({});
-  public cancelSuccess = new BehaviorSubject({});
+  public cancelSuccess = new BehaviorSubject(false);
   constructor(private router: Router, private apiService: ApiService,
     private metaTagService: Meta, @Inject(DOCUMENT) private doc: any, private datepipe: DatePipe,
     private titleService: Title) {
@@ -842,6 +843,16 @@ export class CommonMethodsService {
     }
     console.log("routing ", routing);
     this.router.navigate(routing);
+  }
+
+  showHidePlayPauseBtn(index, showPauseBtn?) {
+    if (showPauseBtn) {
+      $('#instaPlayId' + index).hide();
+      $('#instaPauseId' + index).show();
+    } else {
+      $('#instaPlayId' + index).show();
+      $('#instaPauseId' + index).hide();
+    }
   }
 
 

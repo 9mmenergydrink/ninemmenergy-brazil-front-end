@@ -5,6 +5,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/services/api.service';
 import { CommonMethodsService } from 'src/app/shared/common-methods/common-methods.service';
+import { PhoneNumberUtil } from "google-libphonenumber";
+import { CountryISO, PhoneNumberFormat, SearchCountryField } from 'ngx-intl-tel-input';
 
 @Component({
   selector: 'app-profile-pwd',
@@ -26,7 +28,11 @@ export class ProfilePwdComponent implements OnInit {
   isUpdatePhone = false;
   closeResult = '';
   formGroup;
-  
+  SearchCountryField = SearchCountryField;
+  CountryISO = CountryISO;
+  PhoneNumberFormat = PhoneNumberFormat;
+	preferredCountries: CountryISO[] = [CountryISO.UnitedStates, CountryISO.UnitedKingdom];
+  regionCode = 'us';
   profileDetails;
   @Input() set profile(val: any) {
     if (val != null) {
@@ -62,6 +68,8 @@ export class ProfilePwdComponent implements OnInit {
       if(this.formGroup.value.oldPassword){
         this.verifyOldPass({email:this.profileDetails.email, password:this.formGroup.value.oldPassword});
       }else{
+        if(this.formGroup?.value?.phone?.e164Number)
+        this.formGroup.value.phone = this.formGroup.value.phone.e164Number;
         this.updateUser(this.formGroup.value);
       }
     
@@ -97,7 +105,15 @@ export class ProfilePwdComponent implements OnInit {
       if (res.status === "7400") {
         this.updateProfileLocal(data);
         this.clear();
-      }else
+      }else{
+        let message = 'Invalid Phone Number';
+        if(res?.message?.phone[0] && typeof(res?.message?.phone[0] == 'string')){
+          message = res.message.phone[0];
+        }else if(res?.message?.phone && typeof(res?.message?.phone == 'string')){
+          message = res.message.phone;
+        }
+        this.toastr.error(message, this.translate.instant('error'));
+      }
         this.toastr.error(res.message, this.translate.instant('error'));
       this.apiService.isLoading.next(false);
     }, err => {
@@ -160,7 +176,7 @@ export class ProfilePwdComponent implements OnInit {
     }else if(btn == 3){
       this.isEditPhone = true;
       this.formGroup = this.formBuilder.group({ // ("^[0-9]*$")
-        'phone':[null, Validators.compose([Validators.required,Validators.pattern('^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$')])]
+        'phone':[this.parsePhoneNumber(), Validators.compose([Validators.required])]
       });
     }else if(btn == 4){
       this.isEditPass = true;
@@ -189,4 +205,14 @@ export class ProfilePwdComponent implements OnInit {
    this.isUpdatePhone = true;
   }
 
+  parsePhoneNumber() {
+    let phoneNumber;
+    if (this.profileDetails?.phone) {
+      let phoneUtil = PhoneNumberUtil.getInstance();
+      let numberProto = phoneUtil.parse(this.profileDetails?.phone, "");
+      this.regionCode = (phoneUtil.getRegionCodeForNumber(numberProto))?.toLowerCase();
+      phoneNumber = this.profileDetails?.phone?.toString()?.replace('+' + numberProto?.getCountryCode(), '');
+    }
+    return phoneNumber;
+  }
 }
