@@ -12,7 +12,7 @@
                             </li>
                             <li class="social-media-icons" *ngFor="let item of socialLinkSection?.items">
                                 <div class="footer-logos">
-                                    <img target="_blank" (click)="onClickSocial(item?.social_media_url)" class="footer-logo2" [src]="item?.social_icons?.url" [alt]="(item?.social_icons?.alt)?item.social_icons.alt:''">
+                                    <img [class.disabled]="!item?.social_media_url || !item?.social_icons?.url" target="_blank" (click)="onClickSocial(item?.social_media_url)" class="footer-logo2" [src]="item?.social_icons?.url" [alt]="(item?.social_icons?.alt)?item.social_icons.alt:''">
                                 </div>
                             </li>
                         </ul>

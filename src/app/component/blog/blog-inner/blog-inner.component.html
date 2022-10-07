@@ -1,4 +1,5 @@
 <app-header [headerSection]="headerSection" [cartCount]="cartCount"></app-header>
+
 <body class="loader">
     <div class="loading">
         <img class="logo-loading" src="assets/images/HOME/LOGO/logo-loader.png" alt="logo">
@@ -142,7 +143,7 @@
                                 <span class="xsmall-title-oswald text-color-2">{{'shareThisArticle' | translate}}: </span>
                                 <ul class="post-share-social text-color-1">
                                     <li *ngFor="let item of shareSection?.items">
-                                        <a class="pointer-small hover-color" target="_blank" (click)="socialShare(item?.social_id)"><img [src]="item?.image?.url" [alt]="item?.image?.alt || ''"></a>
+                                        <a [class.disabled]="!item?.social_id || !item?.image?.url" class="pointer-small hover-color" target="_blank" (click)="socialShare(item?.social_id)"><img [src]="item?.image?.url" [alt]="item?.image?.alt || ''"></a>
                                     </li>
 
                                     <!--  <li><a class="pointer-small hover-color" target="_blank" href="https://behance.net"><i
