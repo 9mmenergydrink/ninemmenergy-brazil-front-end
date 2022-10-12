@@ -181,8 +181,8 @@ export class AppComponent {
 	}
 
 	getPrismicDatas() {
-		return Prismic.api("https://9mmenergydrink.prismic.io/api/v2").then(function (api) {
-			return api.query(Prismic.Predicates.at('document.id', "YjwWNhIAACgAeoRf"));
+		return Prismic.api("https://9mmenergydrink-brazil.prismic.io/api/v2").then(function (api) {
+			return api.query(Prismic.Predicates.at('document.id', "Yz_vlREAACMAjcu_"));
 		}).then((function (response) {
 			let prismicData = response.results[0].data;
 
@@ -203,6 +203,13 @@ export class AppComponent {
 										$(prismic.primary.gtm_noscript).appendTo(document.body);
 									}
 									break;
+									case 'intercom_section':
+                      if (prismic?.primary?.intercom_script) {
+                        $(prismic.primary.intercom_script).appendTo(
+                          document.body
+                        );
+                      }
+                      break;
 								case 'organization_schema':
 									this.addSchemaScript(prismic.primary.schema_script);
 									break;

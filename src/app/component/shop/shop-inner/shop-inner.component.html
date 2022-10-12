@@ -118,7 +118,7 @@
                             <p class="shopinner-text">{{'share' | translate}}</p>
                             <div class="shopinner-icons">
                                 <ng-container *ngFor="let item of shareSection?.items">
-                                    <img [src]="item?.image?.url" class="footer-logo2" [alt]="(item?.social_id)?item?.social_id:''" (click)="socialShare(item?.social_id)">
+                                    <img [class.disabled]="!item?.social_id || !item?.image?.url" [src]="item?.image?.url" class="footer-logo2" [alt]="(item?.social_id)?item?.social_id:''" (click)="socialShare(item?.social_id)">
                                 </ng-container>
                             </div>
                         </div>

@@ -61,7 +61,7 @@ export class ShopInnerComponent implements OnInit {
       this.productId = this.route.snapshot.params['code'];//this.route.snapshot.queryParams.code;
       this.productSku = this.route.snapshot.params['key'];//this.route.snapshot.queryParams.key;
 
-      this.shopinnerUrl = environment.uiUrl + 'shop/' + paramsTitle;
+      this.shopinnerUrl = environment.uiUrl + 'shop/' + paramsTitle+ '?code=' + this.productId + '&key='+ this.productSku;
       this.productTitle = paramsTitle != null ? paramsTitle.replace(/-/g, " ") : "";
     } else {
       this.router.navigateByUrl("/**");
@@ -452,16 +452,14 @@ export class ShopInnerComponent implements OnInit {
     // const url = encodeURIComponent(window.location.href);
     switch (media) {
       case 'facebook':
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${this.shopinnerUrl}`);
-        break;
-      case 'instagram':
-        window.open(`https://www.instagram.com/9mmenergydrink1/`);
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(this.shopinnerUrl)}`);
         break;
       case 'pinterest':
-        window.open(`https://www.pinterest.com/pin/create/button/?url=${this.shopinnerUrl}`);
+        if(this.productImage.src)
+        window.open(`https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(this.shopinnerUrl)}&media=${this.productImage.src}`);
         break;
       case 'twitter':
-        window.open(`https://twitter.com/intent/tweet?source=tweetbutton&url=${this.shopinnerUrl}`);
+        window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(this.shopinnerUrl)}`);
         break;
       default:
         break;

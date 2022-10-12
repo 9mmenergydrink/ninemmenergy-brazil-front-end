@@ -588,7 +588,7 @@ this.commonMtd.addMetaTag(lContentItem?.data.seoSection, lContentItem?.data.ogSe
         window.open(`https://twitter.com/intent/tweet?source=tweetbutton&url=${environment.uiUrl}blog/${this.route.snapshot.params['title']}`);
         break;
       case 'pinterest':
-        window.open(`https://www.pinterest.com/pin/create/button/?url=${environment.uiUrl}blog/${this.route.snapshot.params['title']}`);
+        window.open(`https://www.pinterest.com/pin/create/button/?url=${environment.uiUrl}blog/${this.route.snapshot.params['title']}&media=${this.contentItem?.data?.image?.url}`);
         break;
       case 'instagram':
         window.open(`https://www.instagram.com/9mmenergydrink1/`);
