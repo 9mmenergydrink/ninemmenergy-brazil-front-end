@@ -191,15 +191,13 @@ export class ProfilePwdComponent implements OnInit {
   onClickToInput(){
    this.isUpdateEmail = true;
   }
-  // onClickEmailVerify(content) {
-  //     this.modalService.open(content,{ centered: true, windowClass: 'emailverify-popup'});
-  // }
+  
   onClickEmailVerify(content) {
-    this.modalService.open(content,{ centered: true, windowClass: 'emailverify-popup'});
+    this.modalService.open(content,{windowClass: 'emailverify-popup'});
   }
 
   onClickPhoneVerify(ContentPhone) {
-    this.modalService.open(ContentPhone,{ centered: true, windowClass: 'phoneverify-popup'});
+    this.modalService.open(ContentPhone,{windowClass: 'phoneverify-popup'});
   }
   onClickToPhoneInput(){
    this.isUpdatePhone = true;

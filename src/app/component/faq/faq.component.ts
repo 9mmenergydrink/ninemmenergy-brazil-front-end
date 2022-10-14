@@ -216,7 +216,7 @@ export class FaqComponent implements OnInit {
 
     openPopupForm(formScript) {
       if(formScript){
-        const modalRef = this.modalService.open(PopupFormComponent, { centered: true, windowClass: "zohoPopupFormCustomCss" });
+        const modalRef = this.modalService.open(PopupFormComponent, {windowClass: "zohoPopupFormCustomCss"});
         modalRef.componentInstance.script = formScript;
       }
     }

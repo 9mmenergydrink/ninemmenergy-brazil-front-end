@@ -242,7 +242,7 @@ export class OrdersComponent implements OnInit {
 
   cancelModal(order) {
     this.commonMtd.cancelOrder.next(order);
-    let modalRef = this.modalService.open(CancelOrderComponent, { centered: true, windowClass: 'cancel-order-window'});
+    let modalRef = this.modalService.open(CancelOrderComponent, {windowClass: 'cancel-order-window'});
   }
 
   ngOnDestroy() {

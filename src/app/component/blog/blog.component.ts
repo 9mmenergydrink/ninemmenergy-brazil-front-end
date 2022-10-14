@@ -245,10 +245,10 @@ export class BlogComponent implements OnInit {
   }
 
   onClickInstaPost(item){
-    if(item?.userName){
-      window.open("https://www.instagram.com/" + item.userName + "/");
-    }else if(item?.permalink){
+    if(item?.permalink){
       window.open(item?.permalink);
+    }else if(item?.username){
+      window.open("https://www.instagram.com/" + item.username + "/");
     }
   }
 
