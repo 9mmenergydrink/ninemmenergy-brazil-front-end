@@ -222,6 +222,13 @@ export class CommonMethodsService {
 
   getSubDomainLanguage() {
     let res: any = {};
+    res.constant = prismicPtConstants;
+    res.apiUrl = environment.prismicbrazil;
+    //localStorage.getItem('language') == 'pt' ? res.langkey = 'pt-br' : res.langkey = 'en-us';
+    res.langkey = 'pt-br';
+
+    return res;
+    
     /*if(localStorage.getItem('language') == 'fr') {
       if(environment.mmaDomain.indexOf(this.currentURL) >= 0) { // MMA For testing
         res.constant = prismicMmaFrConstants;
@@ -308,9 +315,9 @@ export class CommonMethodsService {
       res.apiUrl = environment.prismic9mm;
     }
 
-    localStorage.getItem('language') == 'pt' ? res.langkey = 'pt-br' : res.langkey = 'en-us';
+    // localStorage.getItem('language') == 'pt' ? res.langkey = 'pt-br' : res.langkey = 'en-us';
 
-    return res;
+    // return res;
   }
 
   getRoutePath(menuname, lang?, isLngChanged?) {
