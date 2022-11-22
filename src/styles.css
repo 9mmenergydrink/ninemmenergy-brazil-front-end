@@ -10508,6 +10508,8 @@ width: 425px;
             margin: 0px 10px 0px 0px;
             resize: vertical;
             border: 1px solid #eeeeee;
+            color: #000;
+            opacity: 1;
         }
         
         .button-plus {
@@ -13127,6 +13129,14 @@ width: 425px;
         }
         
         @media only screen and (max-width: 1030px) {
+            /* @media not all and (min-resolution:.001dpcm)
+            { @supports (-webkit-appearance:none) {
+                    .title-fill:before,
+                    .title-fill:after {
+                        white-space: break-spaces;
+                        width: 100% !important;
+                    }
+            }} */
             .title-fill:before,
             .title-fill:after {
                 white-space: break-spaces;
@@ -13265,6 +13275,11 @@ width: 425px;
         }
         
         @media only screen and (max-width: 600px) {
+            @supports (-webkit-touch-callout: none) {
+                .cart-table .close-thik:after {
+                    padding: 5px 5px;
+                }
+            }
             .enquiry-sec .enquiry-mail span,
             .enquiry-sec .enquiry-mail span .p-style-large {
                 font-size: 22px !important;
@@ -14881,3 +14896,6 @@ img.product-img:hover {
         .tel-input ngx-intl-tel-input .iti__flag-container {
             margin-left: 0px !important;
         }
+
+
+       
