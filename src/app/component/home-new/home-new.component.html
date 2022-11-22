@@ -286,7 +286,7 @@
                     </div>
                     <div class="box-img">
                         <img [src]="item?.image?.url" [alt]="item?.image?.url ||''">
-                        <div class="hover-team"><ul class="social-team"></ul><h3>{{item?.name}}</h3>
+                        <div class="hover-team" tabindex="0"><ul class="social-team"></ul><h3>{{item?.name}}</h3>
                         <span>{{item?.description}}</span></div>
                     </div>
                 </div>
@@ -306,7 +306,7 @@
                     <li *ngFor="let item of folksSection?.items">
                         <a class="pointer-large dblock">
                             <div class="brand-box">
-                                <img [src]="item?.image1?.url" [alt]="(item?.image1?.alt)?item.image1.alt:''" class="hover-opac-img">
+                                <img [src]="item?.image1?.url" [alt]="(item?.image1?.alt)?item.image1.alt:''" class="hover-opac-img" tabindex="0">
                                 <!-- <img *ngIf="item?.json.url==null" [src]="item?.image2?.url" [alt]="item?.image2?.alt" class="opac-img"> -->
                                 <lottie-player class="opac-img" *ngIf="item?.json?.url!=null" autoplay loop mode="normal" [src]="item?.json?.url"></lottie-player>
                             </div>
