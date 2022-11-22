@@ -14856,6 +14856,10 @@ img.product-img:hover {
             .close-thik:after {
                 padding: 2px;
             }
+            #down .white-space-break, #down .white-space-break:before, #down .white-space-break:after{
+                white-space: unset!important;
+                overflow: visible;
+            }
         }
         
         .min-vh-82 {
