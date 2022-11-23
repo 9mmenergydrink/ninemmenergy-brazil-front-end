@@ -16,6 +16,8 @@ export class CategoryBlogComponent implements OnInit {
   footerSection: any;
   cartCount;
   categoryInfo;// = JSON.parse(localStorage.getItem('cartCount'));
+  page = 1;
+  pageSize = 6;
   constructor(private router: Router, public commonMtd: CommonMethodsService, private route: ActivatedRoute,
     private apiService:ApiService) { 
     this.cartCount = commonMtd.getCartCountDetails();
