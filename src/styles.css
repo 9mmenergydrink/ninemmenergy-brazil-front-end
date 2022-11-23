@@ -13180,7 +13180,8 @@ width: 425px;
             }
             .title-fill {
                 width: 100%;
-                white-space: break-spaces;
+                white-space: pre-wrap;
+                word-wrap: normal;
             }
             .prograss-sec .title-fill {
                 width: inherit;
@@ -13552,7 +13553,7 @@ width: 425px;
             }
             /* .custom-banner-height .flex-min-height-inner {min-height: 100vh !important;} */
             .home-slider-content .large-title-bold {
-                font-size: 30px;
+                font-size: 23px;
             }
             .custom-banner-height .large-title-bold {
                 font-size: 30px !important;
@@ -13695,6 +13696,9 @@ width: 425px;
             }
             .medium-title {
                 font-size: 17px;
+            }
+            .home-slider-content .large-title-bold {
+                font-size: 15px;
             }
             .mobile-footer .grid2,
             .mobile-footer .grid3 {
