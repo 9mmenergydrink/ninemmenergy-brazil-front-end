@@ -20,10 +20,10 @@
             <div class="container my-5">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-4" *ngFor="let item of categoryPost">
+                        <div class="col-md-4 mb-4" *ngFor="let item of categoryPost | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
                             <article class="">
                                 <div class="light-bg-2">
-                                    <a (click)="commonMtd.goToInner('blog', item)" class="pointer-large animsition-link hover-box d-block">
+                                    <a (click)="commonMtd.goToInner('blog', item)" class="pointer-large hover-box d-block">
                                         <div class="overlay-loading2 overlay-dark-bg-2">
                                             <img class="hover-img" [src]="item?.data?.image?.url" [alt]="(item?.data?.image?.alt)?item.data.image.alt:''">
                                         </div>
@@ -59,6 +59,15 @@
                             </article>
                         </div>
                     </div>
+                    <!--Pagination -->
+                    <div class="text-center" *ngIf="categoryPost?.length > pageSize">
+                        <div class="border-btn-box border-btn-red pointer-large">
+                            <div class="border-btn-inner pagination-common">
+                                <ngb-pagination [collectionSize]="categoryPost?.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="2" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
                 </div>
             </div>
         </div>
