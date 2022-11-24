@@ -4576,18 +4576,20 @@
         }
         
         @media only screen and (max-width: 370px) {
-            .contact-form-box iframe {
-                height: 800px !important;
-            }
+            /* commented for affecting contact page form height while click the submit button without input.  by Balakumar on 23.11.2022 */
+            /* .contact-form-box iframe {
+                height: 800px !important; 
+            } */
         }
         
         @media only screen and (max-width: 399px) {
             .overlay-btn {
                 font-size: 30px;
             }
-            .contact-form-box iframe {
-                height: 745px !important;
-            }
+            /* commented for affecting contact page form height while click the submit button without input.  by Balakumar on 23.11.2022 */
+            /* .contact-form-box iframe {
+                height: 745px !important; 
+            } */
         }
         /*--------------------------------------------------------------
   9. Animations
@@ -12391,7 +12393,8 @@ width: 425px;
             display: -webkit-box;
             -webkit-line-clamp: 1;
             -webkit-box-orient: vertical;
-            line-height: 2;
+            line-height: 2; 
+            height: 55px; /* added the height for align the blog post box height equally in all iPad and Mac devices of home page by Balakumar on 22.11.2022 */
         }
         
         .overlay-text {
@@ -13366,9 +13369,12 @@ width: 425px;
                 width: 100%;
                 margin-top: 10px !important;
             }
+
             .footer-copyright {
-                margin-top: 10px;
+                margin-top: 10px; 
+                padding: 0 5px; /* added for all pages footer section copy right section from 375 to 385 dimension.  by Balakumar on 23.11.2022 */
             }
+            
             .copy-right {
                 flex-direction: column-reverse;
             }
@@ -13715,9 +13721,11 @@ width: 425px;
             }
         }
         
-        .home-slider .border-btn {
+        /* commented for affecting home page banner buttons height  by Balakumar on 22.11.2022 */
+        /* .home-slider .border-btn {
             line-height: normal;
-        }
+        } */
+
         /* Begin Order button styles */
         
         .order-btn {
