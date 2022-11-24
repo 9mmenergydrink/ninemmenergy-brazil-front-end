@@ -644,6 +644,7 @@ export class CommonMethodsService {
         image: productImage.src,
         total: total.toFixed(2),
         totalQuantity: variants.inventory_quantity,
+        inventoryPolicy: variants.inventory_policy,
         variantTitle: variants.title,
         variantId: variants.id,
         variantsGraphqlId: variants.admin_graphql_api_id,
