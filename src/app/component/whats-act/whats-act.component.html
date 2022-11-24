@@ -608,7 +608,7 @@
                 <ul class="client-list d-flex-wrap top-padding-60">
                     <li *ngFor="let item of clientSection?.items">
                         <a class="pointer-large dblock">
-                            <div class="brand-box">
+                            <div class="brand-box" tabindex="0">
                                 <img [src]="item?.image?.url" [alt]="(item?.image?.alt)?item.image.alt:''" class="hover-opac-img">
                                 <!-- <img *ngIf="item?.json.url==null" [src]="item?.image2?.url" [alt]="item?.image2?.alt" class="opac-img"> -->
                                 <lottie-player class="opac-img" *ngIf="item?.json?.url!=null" autoplay loop mode="normal" [src]="item?.json?.url"></lottie-player>

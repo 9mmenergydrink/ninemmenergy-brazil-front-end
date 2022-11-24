@@ -14887,6 +14887,9 @@ img.product-img:hover {
                 white-space: unset!important;
                 overflow: visible;
             }
+            input:disabled{
+                opacity: 1;
+            }
         }
         
         .min-vh-82 {
