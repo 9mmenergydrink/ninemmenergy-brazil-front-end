@@ -184,7 +184,9 @@ export class AppComponent {
 		return Prismic.api("https://9mmenergydrink-brazil.prismic.io/api/v2").then(function (api) {
 			return api.query(Prismic.Predicates.at('document.id', "Yz_vlREAACMAjcu_"),{ lang : 'pt-br'});
 		}).then((function (response) {
-			for (let obj in response?.results[0]?.data) {
+
+			let prismicData = response?.results[0]?.data;
+			for (let obj in prismicData) {
 				if (obj != null && obj.indexOf('body') > -1 && !Number.isNaN(obj.replace("body", ""))) {
 					response?.results[0]?.data[obj]?.forEach(prismic => {
 						if (prismic) {
