@@ -17,7 +17,8 @@
         </div>
         <b *ngIf="categoryPost?.length == 0 && categoryInfo" style="min-height: 154px;" class="d-flex justify-content-center p-2">{{'emptyBlogCategory' | translate}}</b>
         <div *ngIf="categoryPost?.length">
-            <div class="container my-5">
+            <div class="container mb-4">
+                <h1 style="font-size: 35px;" class="ml-3 mb-4">{{categoryInfo?.data?.name}}</h1>
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-4 mb-4" *ngFor="let item of categoryPost | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
