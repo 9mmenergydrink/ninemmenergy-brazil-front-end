@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Renderer2, Inject, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Renderer2, Inject } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -17,8 +17,7 @@ import { TranslateService } from '@ngx-translate/core';
   selector: 'app-shop-inner',
   templateUrl: './shop-inner.component.html',
   styleUrls: ['./shop-inner.component.css'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  encapsulation: ViewEncapsulation.None
 })
 export class ShopInnerComponent implements OnInit {
   pageTitle = "";
@@ -50,7 +49,7 @@ export class ShopInnerComponent implements OnInit {
     public router: Router, private toastr: ToastrService, private formBuilder: FormBuilder,
     private route: ActivatedRoute, private metaTagService: Meta, private titleService: Title,
     public commonMtd: CommonMethodsService, private _renderer2: Renderer2,
-    @Inject(DOCUMENT) private _document: Document, private ref: ChangeDetectorRef,
+    @Inject(DOCUMENT) private _document: Document,
     private location:Location) {
     this.cartCount = commonMtd.getCartCountDetails();
     commonMtd.addIndexMeta(true);
