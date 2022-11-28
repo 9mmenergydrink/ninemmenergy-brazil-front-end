@@ -182,20 +182,20 @@ export class AppComponent {
 
 	getPrismicDatas() {
 		return Prismic.api("https://9mmenergydrink-brazil.prismic.io/api/v2").then(function (api) {
-			return api.query(Prismic.Predicates.at('document.id', "Yz_vlREAACMAjcu_"));
+			return api.query(Prismic.Predicates.at('document.id', "Yz_vlREAACMAjcu_"),{ lang : 'pt-br'});
 		}).then((function (response) {
-			let prismicData = response?.results[0]?.data;
 
+			let prismicData = response?.results[0]?.data;
 			for (let obj in prismicData) {
 				if (obj != null && obj.indexOf('body') > -1 && !Number.isNaN(obj.replace("body", ""))) {
-					prismicData[obj]?.forEach(prismic => {
+					response?.results[0]?.data[obj]?.forEach(prismic => {
 						if (prismic) {
 							switch (prismic.slice_type) {
 								case 'head_section':
 									if (prismic?.primary?.gtm_script) {
-
 										$(prismic.primary.gtm_script).appendTo(document.head);
 									}
+									console.log("head_section", prismic)
 									break;
 								case 'body_section':
 									if (prismic?.primary?.gtm_noscript) {
@@ -203,29 +203,32 @@ export class AppComponent {
 										$(prismic.primary.gtm_noscript).appendTo(document.body);
 									}
 									break;
-									case 'intercom_section':
-                      if (prismic?.primary?.intercom_script) {
-                        $(prismic.primary.intercom_script).appendTo(
-                          document.body
-                        );
-                      }
-                      break;
+								case 'intercom_section':
+									if (prismic?.primary?.intercom_script) {
+										$(prismic.primary.intercom_script).appendTo(
+											document.body
+										);
+									}
+									break;
 								case 'organization_schema':
 									this.addSchemaScript(prismic.primary.schema_script);
 									break;
 								case 'website_schema':
 									this.addSchemaScript(prismic.primary.schema_script);
 									break;
-									case 'facebook_pixel':
+								case 'facebook_pixel':
 									if (prismic?.primary?.meta_pixel_code) {
 										$(prismic.primary.meta_pixel_code).appendTo(document.head);
 									}
 									break;
-									case 'adroll_pixel':
-									if (prismic?.primary?.adroll_pixel_script) {								
+								case 'adroll_pixel':
+									if (prismic?.primary?.adroll_pixel_script) {
 										$(prismic.primary.adroll_pixel_script).appendTo(document.head);
 									}
 									break;
+								default:
+									console.log('type', prismic)
+								break;
 							}
 						}
 					})
