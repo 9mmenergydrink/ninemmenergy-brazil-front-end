@@ -28,7 +28,7 @@
                         <ul class="footer-menu text-color-4" [ngClass]="[menuSection?.items.length > 4 ? 'footermenu1 border-warning border-right': '']">
                             <ng-container *ngFor="let item of menuSection?.items;let i=index">
                                 <li *ngIf="i<5">
-                                    <a (click)="onClick(item.nav_link)" [ngClass]="{active:menu==item?.nav_link?.toLowerCase()}" class=" pointer-large small-title-oswald hover-color">
+                                    <a [routerLink]="getRouterLink(item?.nav_link)" [ngClass]="{active:menu==item?.nav_link?.toLowerCase()}" class=" pointer-large small-title-oswald hover-color">
                                     {{item?.menu_name}}
                                 </a>
                                 </li>
@@ -37,7 +37,7 @@
                         <ul class="footer-menu text-color-4" [ngClass]="[menuSection?.items.length > 4 ? 'footermenu2': '']">
                             <ng-container *ngFor="let item of menuSection?.items;let i=index">
                                 <li *ngIf="i>=5">
-                                    <a (click)="onClick(item.nav_link)" [ngClass]="{active:menu==item?.nav_link?.toLowerCase()}" class="pointer-large small-title-oswald hover-color">
+                                    <a [routerLink]="getRouterLink(item?.nav_link)" [ngClass]="{active:menu==item?.nav_link?.toLowerCase()}" class="pointer-large small-title-oswald hover-color">
                                 {{item?.menu_name}}
                             </a>
                                 </li>

@@ -34,7 +34,7 @@ export class ForgotPwdComponent implements OnInit {
   apiUrl: any;
 
   constructor(public translate: TranslateService, private formBuilder: FormBuilder, private service: ApiService, private route: ActivatedRoute,
-    private toastr: ToastrService, private router: Router, private commonMtd:CommonMethodsService) {
+    private toastr: ToastrService, private router: Router, public commonMtd: CommonMethodsService) {
       this.cartCount = commonMtd.getCartCountDetails();
       commonMtd.addIndexMeta();
     this.route.queryParams.subscribe(params => {

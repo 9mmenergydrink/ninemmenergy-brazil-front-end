@@ -54,7 +54,7 @@ export class HomeNewComponent implements OnInit {
   pageSize = 6;
 
   private subScription: Subscription;
-  constructor(public translate: TranslateService, private datepipe: DatePipe,private apiService: ApiService, private modalService: NgbModal, private formBuilder: FormBuilder, private router: Router, private commonMtd:CommonMethodsService, private toastr: ToastrService) 
+  constructor(public translate: TranslateService, private datepipe: DatePipe,private apiService: ApiService, private modalService: NgbModal, private formBuilder: FormBuilder, private router: Router, public commonMtd: CommonMethodsService, private toastr: ToastrService) 
   {
     this.cartCount = commonMtd.getCartCountDetails();
     commonMtd.addIndexMeta(false,false);      

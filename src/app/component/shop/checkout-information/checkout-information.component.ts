@@ -50,7 +50,7 @@ export class CheckoutInformationComponent implements OnInit {
   profile;
 
   constructor(private apiService: ApiService, public router: Router, public translate: TranslateService,
-    private commonMtd: CommonMethodsService) {
+    public commonMtd: CommonMethodsService) {
     commonMtd.addIndexMeta();
     this.common = new CommonMethods(router);  translate.use(localStorage.getItem('language'));
     self = this;

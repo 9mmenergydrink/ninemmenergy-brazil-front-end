@@ -42,7 +42,7 @@ export class ProfilePwdComponent implements OnInit {
  
  constructor(public translate: TranslateService,private modalService: NgbModal,
   private apiService: ApiService, private formBuilder: FormBuilder, private toastr: ToastrService, 
-  private commonMtd:CommonMethodsService) {
+  public commonMtd: CommonMethodsService) {
   translate.use(localStorage.getItem('language'));
   }
 

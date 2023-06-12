@@ -35,7 +35,7 @@ export class EventsComponent implements OnInit {
   motorEvent: boolean = false;
   cartCount;// = JSON.parse(localStorage.getItem('cartCount'));
   common: CommonMethods;
-  constructor(private router: Router,private datePipe: DatePipe, private commonMtd:CommonMethodsService) {
+  constructor(private router: Router,private datePipe: DatePipe, public commonMtd: CommonMethodsService) {
     this.cartCount = commonMtd.getCartCountDetails();
     commonMtd.addIndexMeta(true);
     this.common = new CommonMethods(router);

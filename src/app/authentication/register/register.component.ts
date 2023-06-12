@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
   url: any;
   constructor(public translate: TranslateService, private formBuilder: FormBuilder,private apiService:ApiService,
     private route: ActivatedRoute, private toastr: ToastrService, public router: Router,
-    public commonMtd:CommonMethodsService) {
+    public commonMtd: CommonMethodsService) {
       this.cartCount = commonMtd.getCartCountDetails();
       commonMtd.addIndexMeta();
       this.common = new CommonMethods(router);

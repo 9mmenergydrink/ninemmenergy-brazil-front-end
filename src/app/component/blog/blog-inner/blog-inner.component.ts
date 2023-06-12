@@ -60,7 +60,7 @@ export class BlogInnerComponent implements OnInit{
   selectedVideoIndex = -1;
   constructor(public translate: TranslateService,private route: ActivatedRoute, private router: Router, private formBuilder: FormBuilder,
     private apiService: ApiService, private toastr: ToastrService, private datepipe: DatePipe,
-    public commonMtd:CommonMethodsService, private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) {
+    public commonMtd: CommonMethodsService, private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) {
       this.cartCount = commonMtd.getCartCountDetails();
       this.contentTitle = this.route.snapshot.params['title'];
       if(this.contentTitle == 'where-does-the-caffeine-in-energy-drinks-come-from' || 
@@ -614,11 +614,7 @@ this.commonMtd.addMetaTag(lContentItem?.data.seoSection, lContentItem?.data.ogSe
     this.articleSection = Object.assign({}, this.articleSection);
     if (this.articleSection?.items?.length == 0)
       this.articleMsg =  this.translate.instant('noarticle') +this.category+ this.translate.instant('category');
-    console.log("article", this.articleSection);
     localStorage.setItem('categoryPost', JSON.stringify(this.articleSection?.items));
-
-    this.commonMtd.goToInner('category', category);
-    //this.router.navigate([this.commonMtd.getRoutePath('category'), category.category]);  
   }
 
   loadingArticle(category, type) {
@@ -640,13 +636,6 @@ this.commonMtd.addMetaTag(lContentItem?.data.seoSection, lContentItem?.data.ogSe
 
   scroll(el: HTMLElement) {
     el.scrollIntoView();
-  }
-
-  onClickBlog(item){
-    this.commonMtd.goToInner('blog', item, true);
-   // title = title?title.replaceAll(" ","-"):"";
-   // title = title.toLowerCase();
-   // this.setArticleContent(title);
   }
 
   onClickInstaPost(item){

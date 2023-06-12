@@ -68,7 +68,7 @@
                                 
                                 <p data-animation-child="" data-animation="fade-anim" class="p-style-xsmall text-color-1 hover-content fade-anim-box tr-delay02 animated fade-anim mb-2">{{item?.primary?.content}}</p>
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <div class="shop-btn m-0" (click)="commonMtd.goToInner('clinical', item)">{{'readFullClinicalStudy' | translate}}</div>
+                                    <div class="shop-btn m-0" [routerLink]="[commonMtd.getRoutePath('clinical'), commonMtd.routerPathReplace(item)]">{{'readFullClinicalStudy' | translate}}</div>
                                 </div>
                             </div>
                         </a>

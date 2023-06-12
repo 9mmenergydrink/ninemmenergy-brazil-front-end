@@ -36,7 +36,7 @@ export class AccountComponent implements OnInit {
   langkey: any;
   apiUrl: any;
   constructor(private apiService: ApiService, private toastr: ToastrService, public router: Router, public translate: TranslateService, 
-    private commonMtd:CommonMethodsService){
+    public commonMtd: CommonMethodsService){
     this.cartCount = commonMtd.getCartCountDetails();
     commonMtd.addIndexMeta();
     this.email = localStorage.getItem('email');

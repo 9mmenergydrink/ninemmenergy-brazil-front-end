@@ -314,11 +314,12 @@ export class CommonMethodsService {
   }
 
   getRoutePath(menuname, lang?, isLngChanged?) {
+    menuname = menuname?.toLowerCase().replace(/\s/g, '');
     if (!lang) {
       lang = localStorage.getItem('language');
     }
     let rtPath;
-    if (menuname != '' && menuname.includes('/')) {
+    if (menuname != '' && menuname?.includes('/')) {
       rtPath = menuname;
     } else {
       rtPath = prismicEnConstants[menuname] == null ? '/' : prismicEnConstants[menuname];
@@ -856,5 +857,7 @@ export class CommonMethodsService {
     }
   }
 
-
+  routerPathReplace(item) {
+    return item?.uid?.replace(/ - /g, "-")?.replace(/\s/g, "-")?.toLowerCase();
+  }
 }

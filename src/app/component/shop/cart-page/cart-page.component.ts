@@ -30,7 +30,7 @@ export class CartPageComponent implements OnInit {
   cartDetailIndex = -1;
 
   constructor(public translate: TranslateService, private apiService: ApiService, private router: Router, private toastr:ToastrService,
-    public commonMtd:CommonMethodsService) {
+    public commonMtd: CommonMethodsService) {
     commonMtd.addIndexMeta(false,true);
     this.common = new CommonMethods(router);
     this.apiService.cartDetails.subscribe((v) => {

@@ -143,29 +143,15 @@ export class HeaderComponent implements OnInit {
     this.isShowLang == true?this.isShowLang = false: this.isShowLang = true;
   }
 
-  onClick(menuname, isNavigate?,item?) {
-    if(item)
-    item.isOpenSubMenu=false;
-
-    menuname = menuname.replace(/ /g, "");
-    menuname = menuname.toLowerCase();
-    localStorage.setItem('menu', menuname);
-    let name = "/";
-   
-    name = this.commonMtd.getRoutePath(menuname, this.language);
-
-    if (isNavigate || this.router.url != name) {
-      this.router.navigate([name])
-        .then(() => {
-     //     window.location.reload();
-        });
-    }
+  getRouterLink(navLink: string): any[] {
+    let language = localStorage.getItem('language');
+    let routePath = this.commonMtd.getRoutePath(navLink, language);
+    return [routePath];
   }
 
   onClickLogOut(){  
     this.isShowUserMenu = false;
     this.common.clearAccountInformation();
-    this.router.navigate([this.commonMtd.getRoutePath('home')]);
   }
 
   @HostListener('document:scroll', ['$event'])

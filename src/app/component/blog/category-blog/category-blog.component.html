@@ -24,7 +24,7 @@
                         <div class="col-md-4 mb-4" *ngFor="let item of categoryPost | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
                             <article class="">
                                 <div class="light-bg-2">
-                                    <a (click)="commonMtd.goToInner('blog', item)" class="pointer-large hover-box d-block">
+                                    <a [routerLink]="['/blog', commonMtd.routerPathReplace(item)]" class="pointer-large hover-box d-block">
                                         <div class="overlay-loading2 overlay-dark-bg-2">
                                             <img class="hover-img" [src]="item?.data?.image?.url" [alt]="(item?.data?.image?.alt)?item.data.image.alt:''">
                                         </div>

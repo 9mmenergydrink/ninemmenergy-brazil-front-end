@@ -43,7 +43,7 @@
                                     <div class="slider-fade slider-tr-delay07 top-margin-30">
                                         <div class="border-btn-box border-btn-red pointer-large">
                                             <div class="border-btn-inner">
-                                                <a class="border-btn" [attr.data-text]="'shopNow' | translate" (click)="gotoShop()">{{ 'shopNow' | translate }}</a>
+                                                <a class="border-btn" [attr.data-text]="'shopNow' | translate" [routerLink]="commonMtd.getRoutePath('shop')" [fragment]="'down'">{{ 'shopNow' | translate }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -78,7 +78,7 @@
                                     <div class="slider-fade slider-tr-delay07 top-margin-30">
                                         <div class="border-btn-box border-btn-red pointer-large">
                                             <div class="border-btn-inner">
-                                                <a class="border-btn" [attr.data-text]="'shopNow' | translate" (click)="gotoShop()">{{ 'shopNow' | translate }}</a>
+                                                <a class="border-btn" [attr.data-text]="'shopNow' | translate" [routerLink]="commonMtd.getRoutePath('shop')" [fragment]="'down'">{{ 'shopNow' | translate }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@
                                     <div class="slider-fade slider-tr-delay07 top-margin-30">
                                         <div class="border-btn-box border-btn-red pointer-large">
                                             <div class="border-btn-inner">
-                                                <a class="border-btn" [attr.data-text]="'shopNow' | translate" (click)="gotoShop()">{{ 'shopNow' | translate }}</a>
+                                                <a class="border-btn" [attr.data-text]="'shopNow' | translate" [routerLink]="commonMtd.getRoutePath('shop')" [fragment]="'down'">{{ 'shopNow' | translate }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -171,7 +171,7 @@
         </section>
         <!-- logo-slider end -->
         <!-- video-content-bg start -->
-			<div class="video-content-bg-new" style="background-image:url({{videoSection1?.primary?.image_2?.url}})">
+			<div class="video-content-bg-new" [style.background-image]="'url(' + videoSection1?.primary?.image_2?.url + ')'">
 				<div class="bg-overlay"></div>
 				<a (click)="playVideo(videoSection1?.primary?.video_url?.url)" class="video-play-button popup-youtube pointer-large">
 					<span></span>
@@ -182,7 +182,7 @@
                     <p class="video-text" *ngIf="item?.type == 'paragraph'">{{item?.text}}</p>
                     </ng-container>
                     <div class="border-btn-box border-btn-red pointer-large mt-3">
-                        <div class="border-btn-inner"><a (click)="gotoShop()" [attr.data-text]="'shopNow' | translate"  class="border-btn">{{'shopNow' | translate}}</a></div>
+                        <div class="border-btn-inner"><a [routerLink]="commonMtd.getRoutePath('shop')" [fragment]="'down'" [attr.data-text]="'shopNow' | translate"  class="border-btn">{{'shopNow' | translate}}</a></div>
                     </div>
                 </div>
 			</div>
@@ -210,10 +210,10 @@
                         <div *ngIf="empty" style="color: antiquewhite;text-align: center;">{{'comingZoon' | translate}}</div>
                         <div class="row mx-md-5 px-md-5 d-flex justify-content-center">
                             <div class="col-lg-4 top-padding-75 pointer-large" *ngFor="let item of products  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i=index">
-                                <div class="product-back" [ngClass]="getProductClass(i)" (click)="onClickProduct(item)">
+                                <div class="product-back" [ngClass]="getProductClass(i)" [routerLink]="['/shop', commonMtd.routerPathReplace({uid : item?.title})]" [queryParams]="{code: item?.id, key : item?.variants[0]?.sku?.toLowerCase()}">
                                     <div class="total-hover">
                                         <div class="img-hover">
-                                            <img class="product-img" [src]="item?.image?.src" [alt]="(item?.image?.alt)?item.image.alt:''" (click)="onClickProduct(item)">
+                                            <img class="product-img" [src]="item?.image?.src" [alt]="(item?.image?.alt)?item.image.alt:''" [routerLink]="['/shop', commonMtd.routerPathReplace({uid : item?.title})]" [queryParams]="{code: item?.id, key : item?.variants[0]?.sku?.toLowerCase()}">
                                         </div>
                                         <div class="details text-center">
                                             <p class="d-flex flex-column margin-seven mt-0">
@@ -229,7 +229,7 @@
                                                 <div class="d-flex p-1 mb-2">
                                                     <span class="title3-shop-hover flex-shop-90">${{item?.variants[0]?.price}}</span>
                                                     <ul class="ml-auto flex-shop-10 cart-click cart-hover">
-                                                        <li class="d-none"><a (click)="onClickProduct(item)" class="hover-color  " style="cursor: pointer;"><i class="fas fa-eye p-0"></i></a></li>
+                                                        <li class="d-none"><a [routerLink]="['/shop', commonMtd.routerPathReplace({uid : item?.title})]" [queryParams]="{code: item?.id, key : item?.variants[0]?.sku?.toLowerCase()}" class="hover-color  " style="cursor: pointer;"><i class="fas fa-eye p-0"></i></a></li>
                                                         <li class="hover-color cart-hover">
                                                             <a (click)="onClickCart(item, $event)" class="cart-hover"><img class="cartImg" src="assets/images/HOME/icons/add-cart.svg" alt="cart"></a>
                                                         </li>
@@ -459,7 +459,7 @@
                     <div class="row">
                         <div class="col-lg-4 bottom-padding-20">
                             <article class="content-right-margin-20 light-bg-2" data-animation-container>
-                                <a (click)="onClickBlog(blogSection?.items[0])" class="pointer-large animsition-link hover-box dblock">
+                                <a [routerLink]="['/blog', commonMtd.routerPathReplace(blogSection?.items[0])]" class="pointer-large animsition-link hover-box dblock">
                                     <div class="overlay-anim-box2 overlay-dark-bg-2" data-animation="overlay-anim2">
                                         <img class="hover-img" [src]="blogSection?.items[0]?.data?.image?.url" [alt]="(blogSection?.items[0]?.data?.image?.alt)?blogSection.items[0].data.image.alt:''">
                                     </div>
@@ -485,7 +485,7 @@
                         </div>
                         <div class="col-lg-4 bottom-padding-20" [class]="(blogSection?.items[1]!=null)?'d-block':'d-none'">
                             <article class="content-right-margin-20 light-bg-2" data-animation-container>
-                                <a (click)="onClickBlog(blogSection?.items[1])" class="pointer-large animsition-link hover-box dblock">
+                                <a [routerLink]="['/blog', commonMtd.routerPathReplace(blogSection?.items[1])]" class="pointer-large animsition-link hover-box dblock">
                                     <div class="overlay-anim-box2 overlay-dark-bg-2" data-animation="overlay-anim2">
                                         <img class="hover-img" [src]="blogSection?.items[1]?.data?.image?.url" [alt]="(blogSection?.items[1]?.data?.image?.alt)?blogSection.items[1].data.image.alt:''">
                                     </div>
@@ -511,7 +511,7 @@
                         </div>
                         <div class="col-lg-4 bottom-padding-20" [class]="(blogSection?.items[2]!=null)?'d-block':'d-none'">
                             <article class="content-right-margin-20 light-bg-2" data-animation-container>
-                                <a (click)="onClickBlog(blogSection?.items[2])" class="pointer-large animsition-link hover-box dblock">
+                                <a [routerLink]="['/blog', commonMtd.routerPathReplace(blogSection?.items[2])]" class="pointer-large animsition-link hover-box dblock">
                                     <div class="overlay-anim-box2 overlay-dark-bg-2" data-animation="overlay-anim2">
                                         <img class="hover-img" [src]="blogSection?.items[2]?.data?.image?.url" [alt]="(blogSection?.items[2]?.data?.image?.alt)?blogSection.items[2].data.image.alt:''">
                                     </div>

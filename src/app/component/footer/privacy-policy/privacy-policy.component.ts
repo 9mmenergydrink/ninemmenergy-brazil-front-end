@@ -20,7 +20,7 @@ export class PrivacyPolicyComponent implements OnInit {
   constant: any;
   langkey: any;
   apiUrl: any;
-  constructor(private commonMtd:CommonMethodsService) {
+  constructor(public commonMtd: CommonMethodsService) {
     this.cartCount = commonMtd.getCartCountDetails();
   }
 

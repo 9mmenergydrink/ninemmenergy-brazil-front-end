@@ -47,7 +47,7 @@
                                 <span class="overlay-loading2 overlay-light-bg-1 tr-delay03 banner-3text" [attr.data-text]="bannerSection?.primary?.content3">{{bannerSection?.primary?.content3}}</span>
                             </p>
                             <div class="border-btn-box border-btn-red pointer-large mt-3">
-                                <div class="border-btn-inner"><a [attr.data-text]="'shopNow' | translate" class="border-btn" (click)="gotoShop()">{{'shopNow' | translate}}</a>
+                                <div class="border-btn-inner"><a [attr.data-text]="'shopNow' | translate" class="border-btn" [routerLink]="commonMtd.getRoutePath('shop')" [fragment]="'down'">{{'shopNow' | translate}}</a>
                                 </div>
                             </div>
                         </div>
@@ -178,7 +178,7 @@
                                     {{productSection?.items[1]?.image_content}}
                                 </p>
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <div class="shop-btn" (click)="gotoShop()">{{'tryFreeNow' | translate}}</div>
+                                    <div class="shop-btn" [routerLink]="commonMtd.getRoutePath('shop')" [fragment]="'down'">{{'tryFreeNow' | translate}}</div>
                                 </div>
                             </div>
                         </div>
@@ -275,7 +275,7 @@
                                     {{productSection?.items[2]?.image_content}}
                                 </p>
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <div class="shop-btn" (click)="gotoShop()">{{'tryFreeNow' | translate}}</div>
+                                    <div class="shop-btn" [routerLink]="commonMtd.getRoutePath('shop')" [fragment]="'down'">{{'tryFreeNow' | translate}}</div>
                                 </div>
                             </div>
                         </div>

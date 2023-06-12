@@ -27,7 +27,7 @@ export class OurProductsComponent implements OnInit {
   constant: any;
   langkey: any;
   apiUrl: any;
-  constructor(private router: Router,private commonMtd:CommonMethodsService) {
+  constructor(private router: Router,public commonMtd: CommonMethodsService) {
     this.cartCount = commonMtd.getCartCountDetails();
     commonMtd.addIndexMeta(true, true);
    }

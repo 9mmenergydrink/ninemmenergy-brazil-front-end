@@ -28,7 +28,7 @@ export class FaqComponent implements OnInit {
 
   cartCount;// = JSON.parse(localStorage.getItem('cartCount'));
 
-  constructor(private router: Router, private commonMtd: CommonMethodsService,private modalService: NgbModal,
+  constructor(private router: Router, public commonMtd: CommonMethodsService,private modalService: NgbModal,
     private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) {
     this.cartCount = commonMtd.getCartCountDetails();
     this.common = new CommonMethods(router);

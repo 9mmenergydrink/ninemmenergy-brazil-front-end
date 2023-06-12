@@ -39,7 +39,7 @@ export class ContactComponent implements OnInit {
   submitted = false;
   subScription: Subscription;
   constructor(public translate: TranslateService, private renderer2: Renderer2, @Inject(DOCUMENT) private apiService: ApiService, private formBuilder: FormBuilder, private toastr: ToastrService,
-    private router: Router, private modalService: NgbModal, private commonMtd: CommonMethodsService) {
+    private router: Router, private modalService: NgbModal, public commonMtd: CommonMethodsService) {
     this.cartCount = commonMtd.getCartCountDetails();
     commonMtd.addIndexMeta();
     this.common = new CommonMethods(router);

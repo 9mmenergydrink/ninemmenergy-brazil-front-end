@@ -38,7 +38,7 @@ export class OrdersComponent implements OnInit {
     }    
   }
 
-  constructor(public translate: TranslateService, private modalService: NgbModal, private toastr: ToastrService, private commonMtd: CommonMethodsService, private apiService: ApiService) { 
+  constructor(public translate: TranslateService, private modalService: NgbModal, private toastr: ToastrService, public commonMtd: CommonMethodsService, private apiService: ApiService) { 
     this.cartCount = commonMtd.getCartCountDetails();
   }
 

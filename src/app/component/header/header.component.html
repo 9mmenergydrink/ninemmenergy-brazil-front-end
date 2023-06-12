@@ -35,7 +35,7 @@
                                     <ul>
                                         <!-- <li>OVer{{ 'HOME.TITLE' | translate }}</li> -->
                                         <!-- <li *ngFor="let item of header?.items;">
-                                            <a *ngIf="item.navlink != 'Zone'" (click)="onClick(item.navlink)" class="hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}">{{item?.menuname}}</a>
+                                            <a *ngIf="item.navlink != 'Zone'" [routerLink]="getRouterLink(item?.navlink)" class="hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}">{{item?.menuname}}</a>
                                             <div *ngIf="item.navlink == 'Zone'" ngbDropdown class="dropdown hidden-arrow">
                                                 <a class="dropdown-toggle" role="button" id="dropdownBasic2" ngbDropdownToggle>
                                                     Zone
@@ -50,12 +50,12 @@
                                             </div>
                                         </li> -->
                                         <li class="dropdown header-dropdown" *ngFor="let item of menus; let i=index">
-                                            <a *ngIf="!item?.subMenus?.length" (click)="onClick(item.navlink)" class="hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}">{{item?.menuname}}</a>
+                                            <a *ngIf="!item?.subMenus?.length" [routerLink]="getRouterLink(item?.navlink)" class="hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}">{{item?.menuname}}</a>
                                             <ng-container *ngIf="item?.subMenus?.length">
-                                                <a (click)="onClick(item.navlink)" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item?.menuname}} <span class="caret"></span></a>
+                                                <a [routerLink]="getRouterLink(item?.navlink)" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item?.menuname}} <span class="caret"></span></a>
                                                 <ul class="dropdown-menu shadow">
     
-                                                  <li *ngFor="let subMenu of item?.subMenus;"><a (click)="onClick(subMenu.navlink)">{{subMenu?.menuname}}</a></li>
+                                                  <li *ngFor="let subMenu of item?.subMenus;"><a [routerLink]="getRouterLink(subMenu.navlink)">{{subMenu?.menuname}}</a></li>
                                                   
                                                 </ul>
                                             </ng-container>
@@ -96,7 +96,7 @@
                                                     <!-- <a class="dropdown-item "><i class="far fa-user" style="font-size: large; letter-spacing: 8px;"></i>{{userName}}</a> -->
                                                     <li><a class="  " [routerLink]="commonMtd.getRoutePath('myaccount')"><i class="far fa-user" style="font-size: large; letter-spacing: 8px;"></i>{{'myAccount' | translate}}</a></li>
                                                     <li><a class="  "><i class="far fa-question-circle" style="font-size:large; letter-spacing: 8px;"></i> {{'help' | translate}}</a></li>
-                                                    <li><a class="  " (click)="onClickLogOut()" style="border-bottom: none!important;"><i class="fa fa-power-off" style="font-size: large; letter-spacing: 8px;"></i> {{'logOut' | translate}}</a></li>
+                                                    <li><a class="  " [routerLink]="commonMtd.getRoutePath('home')" (click)="onClickLogOut()" style="border-bottom: none!important;"><i class="fa fa-power-off" style="font-size: large; letter-spacing: 8px;"></i> {{'logOut' | translate}}</a></li>
                                                 <!-- </div> -->
                                             </ul>
                                         </li>
@@ -114,16 +114,16 @@
                                             <ul class="dropdown-menu shadow">
                                                     <li><a [routerLink]="commonMtd.getRoutePath('myaccount')"><i class="far fa-user" style="font-size: large; letter-spacing: 8px;"></i>{{'myAccount' | translate}}</a></li>
                                                     <li><a><i class="far fa-question-circle" style="font-size:large; letter-spacing: 8px;"></i> {{'help' | translate}}</a></li>
-                                                    <li><a (click)="onClickLogOut()" style="border-bottom: none!important;"><i class="fa fa-power-off" style="font-size: large; letter-spacing: 8px;"></i> {{'logOut' | translate}}</a></li>
+                                                    <li><a [routerLink]="commonMtd.getRoutePath('home')" (click)="onClickLogOut()" style="border-bottom: none!important;"><i class="fa fa-power-off" style="font-size: large; letter-spacing: 8px;"></i> {{'logOut' | translate}}</a></li>
                                             </ul>
                                         </li>
 
                                         <li class="cart pr-0">
-                                            <a (click)="onClick('cart')" class="hover-color">
+                                            <a [routerLink]="getRouterLink('cart')" class="hover-color">
                                                 <div class="numberCircle">{{cCount}}</div><img class="cartImg" src="assets/images/HOME/icons/Group 44.svg" alt="cart"></a>
                                         </li>
                                         <li class="cart2 pr-0">
-                                            <a (click)="onClick('cart')" class="hover-color">
+                                            <a [routerLink]="getRouterLink('cart')" class="hover-color">
                                                 <div class="numberCircle">{{cCount}}</div><img class="cartImg" src="assets/images/HOME/icons/Group 44 (1).svg" alt="cart"></a>
                                         </li>
                                         <!-- <li class="cart pl-0">
@@ -166,7 +166,7 @@
                                 <span class="dropdown-menu-arrow-mobile"></span>
                                 <a class="dropdown-item" [routerLink]="commonMtd.getRoutePath('myaccount')"><i class="far fa-user" style="font-size: large;letter-spacing: 5px;"></i> {{'myAccount' | translate}}</a>
                                 <a class="dropdown-item"><i class="far fa-question-circle" style="font-size:large;letter-spacing: 5px;"></i> {{'help' | translate}}</a>
-                                <a class="dropdown-item" (click)="onClickLogOut()" style="border-bottom: none!important;"><i class="fa fa-power-off" style="font-size: large;letter-spacing: 5px;"></i> {{'logOut' | translate}}</a>
+                                <a class="dropdown-item" [routerLink]="commonMtd.getRoutePath('home')" (click)="onClickLogOut()" style="border-bottom: none!important;"><i class="fa fa-power-off" style="font-size: large;letter-spacing: 5px;"></i> {{'logOut' | translate}}</a>
                             </div>
                         </div>
                     </li>
@@ -186,7 +186,7 @@
                                 <span class="dropdown-menu-arrow-mobile"></span>
                                 <a class="dropdown-item" [routerLink]="commonMtd.getRoutePath('myaccount')"><i class="far fa-user" style="font-size: large; letter-spacing: 5px;"></i> {{'myAccount' | translate}}</a>
                                 <a class="dropdown-item"><i class="far fa-question-circle" style="font-size:large;letter-spacing: 5px;"></i> {{'help' | translate}}</a>
-                                <a class="dropdown-item" (click)="onClickLogOut()" style="border-bottom: none!important;"><i class="fa fa-power-off" style="font-size: large;letter-spacing: 5px;"></i> {{'logOut' | translate}}</a>
+                                <a class="dropdown-item" [routerLink]="commonMtd.getRoutePath('home')" (click)="onClickLogOut()" style="border-bottom: none!important;"><i class="fa fa-power-off" style="font-size: large;letter-spacing: 5px;"></i> {{'logOut' | translate}}</a>
                             </div>
                         </div>
                     </li>
@@ -194,11 +194,11 @@
                 <div class=" text-center">
                     <!-- cart3 -->
                     <li class="cart3 m-0">
-                        <a (click)="onClick('cart')" class="hover-color">
+                        <a [routerLink]="getRouterLink('cart')" class="hover-color">
                             <div class="numberCircle">{{cCount}}</div><img class="cartImg" src="assets/images/HOME/icons/Group 44.svg" alt="cart"></a>
                     </li>
                     <li class="cart4 m-0">
-                        <a (click)="onClick('cart')" class="hover-color">
+                        <a [routerLink]="getRouterLink('cart')" class="hover-color">
                             <div class="numberCircle">{{cCount}}</div><img class="cartImg" src="assets/images/HOME/icons/Group 44 (1).svg" alt="cart"></a>
                     </li>
 
@@ -306,7 +306,7 @@
         <!-- nav-box start -->
         
          <!-- <li class="dropdown header-dropdown nav-box nav-bg-change" *ngFor="let item of menus; let i=index">
-            <a *ngIf="!item?.subMenus?.length" (click)="onClick(item.navlink)" class="animsition-link pointer-large nav-link nav-btn hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}">{{item?.menuname}}</a>
+            <a *ngIf="!item?.subMenus?.length" [routerLink]="getRouterLink(item?.navlink)" class="animsition-link pointer-large nav-link nav-btn hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}">{{item?.menuname}}</a>
             <ng-container *ngIf="item?.subMenus?.length">
                 <div class="d-flex">
                     <a (click)="onClick(item.navlink, null, item)" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}" class="dropdown-toggle animsition-link pointer-large nav-link nav-btn hover-color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item?.menuname}} </a>
@@ -323,15 +323,15 @@
         </li> -->
 
         <li class="dropdown header-dropdown sub-menu nav-box nav-bg-change" *ngFor="let item of menus; let i=index">
-            <a *ngIf="!item?.subMenus?.length" (click)="onClick(item.navlink)" class="pointer-large nav-link nav-btn hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}">{{item?.menuname}}</a>
+            <a *ngIf="!item?.subMenus?.length" [routerLink]="getRouterLink(item?.navlink)" class="pointer-large nav-link nav-btn hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}">{{item?.menuname}}</a>
             <ng-container *ngIf="item?.subMenus?.length">
-                <a (click)="onClick(item.navlink, null, item)" class="animsition-link pointer-large nav-link nav-btn hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}" >{{item?.menuname}}</a>
+                <a [routerLink]="getRouterLink(item?.navlink)" class="animsition-link pointer-large nav-link nav-btn hover-color" [ngClass]="{'yellow-color':menu==item?.navlink?.toLowerCase()}" >{{item?.menuname}}</a>
                 <button class="navbar-toggler text-white" type="button" (click)="onToggle(item, i)" [attr.aria-expanded]="!item?.isOpenSubMenu">
                     <i class="fa fa-angle-up" *ngIf="!item.isOpenSubMenu"></i>
                     <i class="fa fa-angle-down" *ngIf="item.isOpenSubMenu"></i>
                 </button>
                 <ul class="collapse navbar-collapse" #collapse="ngbCollapse" [(ngbCollapse)]="item.isOpenSubMenu">
-                    <li *ngFor="let subMenu of item?.subMenus;"><a class="animsition-link pointer-large nav-link nav-btn hover-color" (click)="onClick(subMenu.navlink)">{{subMenu?.menuname}}</a></li>
+                    <li *ngFor="let subMenu of item?.subMenus;"><a class="animsition-link pointer-large nav-link nav-btn hover-color" [routerLink]="getRouterLink(subMenu?.navlink)">{{subMenu?.menuname}}</a></li>
                 </ul>
             </ng-container>
         </li>

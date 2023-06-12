@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
   private subScription: Subscription;
   constructor(public translate: TranslateService, private datepipe: DatePipe, private modalService: NgbModal, private formBuilder: FormBuilder,
     private toastr: ToastrService, private service: ApiService, private router: Router,
-    private commonMtd:CommonMethodsService, private _renderer2: Renderer2, 
+    public commonMtd: CommonMethodsService, private _renderer2: Renderer2, 
     @Inject(DOCUMENT) private _document: Document) {
       this.cartCount = commonMtd.getCartCountDetails();
       commonMtd.addIndexMeta(true);      

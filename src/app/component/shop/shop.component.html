@@ -112,12 +112,12 @@
                                         <div class="cart-icon d-flex justify-content-center ml-5 m-0">
                                             <p class="zoom-content3 text-dark ml-auto ">${{item?.variants[0]?.price}}</p>
                                             <ul class=" ml-auto">
-                                                <li class="d-none"><a (click)="onClickProduct(item)" class="hover-color  " style="cursor: pointer;"><i class="fas fa-eye p-0"></i></a></li>
+                                                <li class="d-none"><a [routerLink]="commonMtd.routerPathReplace({uid : item?.title})" [queryParams]="{code: item?.id, key : item?.variants[0]?.sku?.toLowerCase()}" class="hover-color  " style="cursor: pointer;"><i class="fas fa-eye p-0"></i></a></li>
                                                 <li (click)="onClickCart(item)" class="hover-color  "><a  style="cursor: pointer;"><i class="fas fa-shopping-cart p-0"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
-                                    <img [src]="item?.image?.src" [alt]="product" (click)="onClickProduct(item)">
+                                    <img [src]="item?.image?.src" [alt]="product" [routerLink]="commonMtd.routerPathReplace({uid : item?.title})" [queryParams]="{code: item?.id, key : item?.variants[0]?.sku?.toLowerCase()}">
                                     
                                     <div class="product-title">
                                         <p class="zoom-content d-grid">{{item?.title}} &nbsp;<span class="zoom-content3 d-grid py-2">9MM ENERGY DRINK</span><span class="sponser-content d-grid pt-1">{{item?.variants[0]?.title}}</span></p>
@@ -129,10 +129,10 @@
                 </div>   -->
                 <div class="row mx-md-5 px-md-5 d-flex justify-content-center">
                     <div class="col-lg-4 top-padding-75 pointer-large" *ngFor="let item of products  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i=index">
-                        <div class="product-back" [ngClass]="getProductClass(i)" (click)="onClickProduct(item)">
+                        <div class="product-back" [ngClass]="getProductClass(i)" [routerLink]="commonMtd.routerPathReplace({uid : item?.title})" [queryParams]="{code: item?.id, key : item?.variants[0]?.sku?.toLowerCase()}">
                             <div class="total-hover">
                                 <!-- <div class="imgnew-hover">
-                                    <img class="shopnew-img" src="assets/images/HOME/9mm-beyond3.png" alt="product" (click)="onClickProduct(item)">
+                                    <img class="shopnew-img" src="assets/images/HOME/9mm-beyond3.png" alt="product" [routerLink]="commonMtd.routerPathReplace({uid : item?.title})" [queryParams]="{code: item?.id, key : item?.variants[0]?.sku?.toLowerCase()}">
                                 </div>
                                 <div class="text-center">
                                     <p class="d-flex flex-column margin-seven m-0">
@@ -141,11 +141,11 @@
                                         <span class="title3new-shop">${{item?.variants[0]?.price}}</span>
                                     </p>
                                 </div> -->
-                                <!-- <img  class="product-img" height="280" [src]="item?.image?.src" alt="product" (click)="onClickProduct(item)"> -->
+                                <!-- <img  class="product-img" height="280" [src]="item?.image?.src" alt="product" [routerLink]="commonMtd.routerPathReplace({uid : item?.title})" [queryParams]="{code: item?.id, key : item?.variants[0]?.sku?.toLowerCase()}"> -->
 
                                 <div class="img-hover">
-                                    <img class="product-img" [src]="item?.image?.src" [alt]="(item?.image?.alt)?item.image.alt:''" (click)="onClickProduct(item)">
-                                    <!-- <img class="product-img" src="assets/images/HOME/9mm-beyond3.png" alt="product" height="280" (click)="onClickProduct(item)"> -->
+                                    <img class="product-img" [src]="item?.image?.src" [alt]="(item?.image?.alt)?item.image.alt:''" [routerLink]="commonMtd.routerPathReplace({uid : item?.title})" [queryParams]="{code: item?.id, key : item?.variants[0]?.sku?.toLowerCase()}">
+                                    <!-- <img class="product-img" src="assets/images/HOME/9mm-beyond3.png" alt="product" height="280" [routerLink]="commonMtd.routerPathReplace({uid : item?.title})" [queryParams]="{code: item?.id, key : item?.variants[0]?.sku?.toLowerCase()}"> -->
                                 </div>
                                 <div class="details text-center">
                                     <p class="d-flex flex-column margin-seven mt-0">
@@ -163,7 +163,7 @@
                                         <div class="d-flex p-1 mb-2">
                                             <span class="title3-shop-hover flex-shop-90">${{item?.variants[0]?.price}}</span>
                                             <ul class="ml-auto flex-shop-10 cart-click cart-hover">
-                                                <li class="d-none"><a (click)="onClickProduct(item)" class="hover-color  " style="cursor: pointer;"><i class="fas fa-eye p-0"></i></a></li>
+                                                <li class="d-none"><a [routerLink]="commonMtd.routerPathReplace({uid : item?.title})" [queryParams]="{code: item?.id, key : item?.variants[0]?.sku?.toLowerCase()}" class="hover-color  " style="cursor: pointer;"><i class="fas fa-eye p-0"></i></a></li>
                                                 <li class="hover-color cart-hover">
                                                     <a (click)="onClickCart(item, $event)" class="cart-hover"><img class="cartImg" src="assets/images/HOME/icons/add-cart.svg" alt="cart"></a>
                                                 </li>
@@ -172,7 +172,7 @@
                                     </div>
 
                                     <!-- <ul class="ml-auto">
-                                        <li class="d-none"><a (click)="onClickProduct(item)" class="hover-color  " style="cursor: pointer;"><i class="fas fa-eye p-0"></i></a></li>
+                                        <li class="d-none"><a [routerLink]="commonMtd.routerPathReplace({uid : item?.title})" [queryParams]="{code: item?.id, key : item?.variants[0]?.sku?.toLowerCase()}" class="hover-color  " style="cursor: pointer;"><i class="fas fa-eye p-0"></i></a></li>
                                         <li (click)="onClickCart(item)" class="hover-color  "><a  style="cursor: pointer;"><i class="fas fa-shopping-cart p-0"></i></a></li>
                                     </ul> -->
                                 </div>
@@ -190,7 +190,7 @@
                 <!--				
                     <div class="works">
                         <div *ngIf="empty" style="color: antiquewhite;text-align: center;"> Coming Soon</div>                        
-                        <a *ngFor="let item of products; let i =index" (click)="onClickProduct(item)" routerLink="/shopinner"  class="animsition-link grid-item uiux">                            
+                        <a *ngFor="let item of products; let i =index" [routerLink]="commonMtd.routerPathReplace({uid : item?.title})" [queryParams]="{code: item?.id, key : item?.variants[0]?.sku?.toLowerCase()}" routerLink="/shopinner"  class="animsition-link grid-item uiux">                            
                             <div class="work_item pointer-large hover-box hidden-box container-zoom" [ngClass]="getProductClass(i)">
                                 <img [src]="item?.image?.src" [alt]="product">
                                 <p class="zoom-content">{{item?.vendor}} &nbsp;<span class="zoom-content2">{{item?.variants[0]?.title}}</span></p>

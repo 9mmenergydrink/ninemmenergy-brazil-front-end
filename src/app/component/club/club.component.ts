@@ -19,7 +19,7 @@ export class ClubComponent implements OnInit {
   apiUrl: any;
   cartCount;// = JSON.parse(localStorage.getItem('cartCount'));
   common: CommonMethods;
-  constructor(private router: Router, private commonMtd:CommonMethodsService) { 
+  constructor(private router: Router, public commonMtd: CommonMethodsService) { 
     this.cartCount = commonMtd.getCartCountDetails();
     commonMtd.addIndexMeta();
     this.common = new CommonMethods(router);

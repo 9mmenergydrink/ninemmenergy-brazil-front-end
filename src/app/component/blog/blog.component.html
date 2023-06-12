@@ -80,7 +80,7 @@
 
                     <article class="bottom-padding-90">
                         <div class="light-bg-2" *ngIf="recentPosts[0]">
-                            <a (click)="onClickBlog(recentPosts[0])" class="pointer-large hover-box d-block">
+                            <a [routerLink]="['/blog', commonMtd.routerPathReplace(recentPosts[0])]" class="pointer-large hover-box d-block">
                                 <div class="overlay-loading2 overlay-dark-bg-2" *ngIf="recentPosts[0]?.data?.image?.url">
                                     <img class="hover-img" [src]="recentPosts[0]?.data?.image?.url" [alt]="(recentPosts[0]?.data?.image?.alt)?recentPosts[0].data.image.alt:''">
                                 </div>
@@ -108,14 +108,14 @@
                                     <a class="xsmall-title-oswald pointer-small hover-color">{{recentPosts[0]?.data?.author_name}}</a>
                                     <a class="xsmall-title-oswald pointer-small hover-color">{{recentPosts[0]?.data?.date}}</a>
                                 </div>
-                                <div class="shop-btn ml-0" (click)="onClickBlog(recentPosts[0])">{{'readMore' | translate}}</div>
+                                <div class="shop-btn ml-0" [routerLink]="['/blog', commonMtd.routerPathReplace(recentPosts[0])]">{{'readMore' | translate}}</div>
                             </div>
                         </div>
                     </article>
                     <!-- left image right content section -->
                     <article *ngFor="let item of contentSection | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;let i=index" class="bottom-padding-90">
                         <div class="light-bg-2">
-                            <a (click)="onClickBlog(item)" class="pointer-large hover-box row">
+                            <a [routerLink]="['/blog', commonMtd.routerPathReplace(item)]" class="pointer-large hover-box row">
                                 <div class="col-md-5 p-0 overlay-loading2 overlay-dark-bg-2 blo-img">
                                     <img class="hover-img" [src]="item?.data?.image?.url" [alt]="(item?.data?.image?.alt)?item.data.image.alt:''">
                                 </div>
@@ -178,7 +178,7 @@
                                 <h4 class="p-style-bold-up red-color pb-2">{{sideBarSection?.primary?.category_title}}</h4>
                                 <ul class="red-color">
                                     <li *ngFor="let item of categorySection">
-                                        <a (click)="getCategoryPost(item)" class="pointer-small small-title-oswald">{{item?.data?.name}}
+                                        <a [routerLink]="['/category', commonMtd.routerPathReplace(item)]" class="pointer-small small-title-oswald">{{item?.data?.name}}
                                             ({{item?.count}})</a>
                                         <!-- <a [ngStyle]="{'display': category!=item?.category ? 'block':'none'}"
                                             class="pointer-small small-title-oswald"
@@ -200,12 +200,12 @@
                                 <!-- recent posts content start -->
                                 <div class="">
                                     <!-- recent-entry start -->
-                                    <div class="recent-entry" *ngFor="let item of recentPosts" (click)="onClickBlog(item)">
-                                        <a class="recent-entry-img-box pointer-large ">
+                                    <div class="recent-entry" *ngFor="let item of recentPosts">
+                                        <a class="recent-entry-img-box pointer-large " [routerLink]="['/blog', commonMtd.routerPathReplace(item)]">
                                             <img [src]="item?.data?.image?.url" [alt]="(item?.data?.image?.alt)?item.data.image.alt:''">
                                         </a>
                                         <div class="recent-desc">
-                                            <a class="xsmall-title-oswald text-color-4 pointer-large">{{item?.data?.title}}</a>
+                                            <a class="xsmall-title-oswald text-color-4 pointer-large" [routerLink]="['/blog', commonMtd.routerPathReplace(item)]">{{item?.data?.title}}</a>
                                             <div class="p-style-xsmall text-color-4 text-height-10 top-margin-5">
                                                 {{item?.data?.date}}</div>
                                         </div>

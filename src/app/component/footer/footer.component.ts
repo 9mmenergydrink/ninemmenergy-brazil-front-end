@@ -61,28 +61,11 @@ export class FooterComponent implements OnInit {
     this.getFooterDatas();
   }
 
-  onClick(menuname, isNavigate?){
-
-    menuname = menuname.replace(/ /g, "");
-    menuname = menuname.toLowerCase();
-    this.menu = menuname;
-    localStorage.setItem('menu', menuname);
-    let name = "/";
-   /* if (menuname != '' && menuname.includes('/')) {
-      name = menuname;
-    }else{
-      name = prismicEnConstants[menuname] == null? '/': prismicEnConstants[menuname]
-    }*/
-
-    name = this.commonMtd.getRoutePath(menuname, localStorage.getItem('language'));
-
-    if( isNavigate || this.router.url != name){
-      this.router.navigate([name])
-      .then(() => {
-    //    window.location.reload();
-      });
-    }
-  }
+  getRouterLink(navLink: string): any[] {
+    let language = localStorage.getItem('language');
+    let routePath = this.commonMtd.getRoutePath(navLink, language);
+    return [routePath];
+  }  
 
   onClickSocial(url){
     window.open(url);

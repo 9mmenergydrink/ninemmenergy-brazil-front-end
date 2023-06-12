@@ -22,7 +22,7 @@ export class AppComponent {
 	hasPreviousNavigation;
 	apiUrl: any;
 	constructor(private loaderService: ApiService, private router: Router, translate: TranslateService,
-		private commonMtd: CommonMethodsService, private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) {
+		public commonMtd: CommonMethodsService, private _renderer2: Renderer2, @Inject(DOCUMENT) private _document: Document) {
 		//call the find order status method  and use below cartDetils clear method for clear cart information
 		this.commonMtd.checkOrderStatus(this.commonMtd.getCurrentCartDetails());
 		let cartDetails = this.commonMtd.checkEmpty(JSON.parse(localStorage.getItem('cartDetails')), []);

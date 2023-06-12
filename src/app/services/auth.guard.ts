@@ -8,7 +8,7 @@ import { CommonMethodsService } from '../shared/common-methods/common-methods.se
 })
 export class AuthGuard implements CanActivate, CanDeactivate<unknown> {
 
-  constructor(private router : Router, private commonMtd:CommonMethodsService){}
+  constructor(private router : Router, public commonMtd: CommonMethodsService){}
 
   canActivate(
     route: ActivatedRouteSnapshot,

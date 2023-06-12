@@ -30,7 +30,7 @@ export class PageNotFoundComponent implements OnInit {
   products=[];
   empty = false;
 
-  constructor(public translate: TranslateService, private apiService: ApiService, public router: Router,private commonMtd: CommonMethodsService,
+  constructor(public translate: TranslateService, private apiService: ApiService, public router: Router,public commonMtd: CommonMethodsService,
     private modalService: NgbModal, private toastr: ToastrService) {
     this.cartCount = commonMtd.getCartCountDetails();
 

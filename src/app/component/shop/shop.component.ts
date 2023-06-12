@@ -41,7 +41,7 @@ export class ShopComponent implements OnInit {
   fragment: any;
   apiUrl: any;
   constructor(public translate: TranslateService, private route: ActivatedRoute, private apiService: ApiService, public router: Router,
-    private modalService: NgbModal, private toastr: ToastrService, private commonMtd: CommonMethodsService) {
+    private modalService: NgbModal, private toastr: ToastrService, public commonMtd: CommonMethodsService) {
       this.cartCount = commonMtd.getCartCountDetails();
     commonMtd.addIndexMeta(true);
     this.common = new CommonMethods(router);

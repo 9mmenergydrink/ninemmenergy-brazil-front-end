@@ -23,7 +23,7 @@ export class AddToCartComponent implements OnInit {
   cartData;
 
   constructor(public translate: TranslateService,public activeModal: NgbActiveModal, public router: Router,
-    private commonMtd: CommonMethodsService, private toastr: ToastrService) {
+    public commonMtd: CommonMethodsService, private toastr: ToastrService) {
     this.common = new CommonMethods(router);
     
   }

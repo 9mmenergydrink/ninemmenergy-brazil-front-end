@@ -28,7 +28,7 @@ export class WhatsActComponent implements OnInit{
   clientSection;
   apiUrl;
   common: CommonMethods;
-  constructor(private router:Router,private modalService: NgbModal, public commonMtd:CommonMethodsService) {
+  constructor(private router:Router,private modalService: NgbModal, public commonMtd: CommonMethodsService) {
     this.cartCount = commonMtd.getCartCountDetails();
     commonMtd.addIndexMeta(true);
     this.common = new CommonMethods(router);

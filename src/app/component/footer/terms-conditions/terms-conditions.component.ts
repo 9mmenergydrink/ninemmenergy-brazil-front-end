@@ -20,7 +20,7 @@ export class TermsConditionsComponent implements OnInit {
   langkey: any;
   apiUrl: any;
   isReg;
-  constructor( private formBuilder: FormBuilder,private apiService: ApiService, private commonMtd:CommonMethodsService) {
+  constructor( private formBuilder: FormBuilder,private apiService: ApiService, public commonMtd: CommonMethodsService) {
     this.cartCount = commonMtd.getCartCountDetails();
     this.isReg = localStorage.getItem("termPage");
 

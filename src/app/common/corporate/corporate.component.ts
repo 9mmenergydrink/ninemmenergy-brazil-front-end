@@ -30,7 +30,7 @@ export class CorporateComponent implements OnInit {
   constant: any;
   langkey: any;
   apiUrl: any;
-  constructor(private router: Router,private commonMtd:CommonMethodsService,private modalService: NgbModal) {
+  constructor(private router: Router,public commonMtd: CommonMethodsService,private modalService: NgbModal) {
     this.cartCount = commonMtd.getCartCountDetails();
     commonMtd.addIndexMeta(true, true);
    }

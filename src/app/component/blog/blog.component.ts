@@ -43,7 +43,7 @@ export class BlogComponent implements OnInit {
   selectedVideoIndex = -1;
 
   constructor(public translate: TranslateService, private apiService:ApiService, private router: Router, private datepipe: DatePipe,
-    private route: ActivatedRoute, private commonMtd:CommonMethodsService) {
+    private route: ActivatedRoute, public commonMtd: CommonMethodsService) {
       this.cartCount = commonMtd.getCartCountDetails();
       commonMtd.addIndexMeta(true);
     this.common = new CommonMethods(router);

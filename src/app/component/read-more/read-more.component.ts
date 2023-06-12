@@ -29,7 +29,7 @@ export class ReadMoreComponent implements OnInit {
   langkey: any;
   cartCount;// = JSON.parse(localStorage.getItem('cartCount'));
   constructor(private route: ActivatedRoute, private router: Router, private formBuilder: FormBuilder,
-    private service: ApiService, private toastr: ToastrService, private commonMtd: CommonMethodsService) {
+    private service: ApiService, private toastr: ToastrService, public commonMtd: CommonMethodsService) {
     this.cartCount = commonMtd.getCartCountDetails();
     commonMtd.addIndexMeta();
     this.common = new CommonMethods(router);

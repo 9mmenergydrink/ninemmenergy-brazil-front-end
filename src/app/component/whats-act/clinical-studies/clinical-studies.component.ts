@@ -25,7 +25,7 @@ export class ClinicalStudiesComponent implements OnInit {
   common: CommonMethods;
   apiUrl: any;
 
-  constructor(private router: Router, private commonMtd:CommonMethodsService) { 
+  constructor(private router: Router, public commonMtd: CommonMethodsService) { 
     this.cartCount = commonMtd.getCartCountDetails();
     commonMtd.addIndexMeta(true);
     this.common = new CommonMethods(router);

@@ -26,7 +26,7 @@ export class WhatsInsideComponent implements OnInit {
   constant: any;
   langkey: any;
   apiUrl: any;
-  constructor(private router: Router,private commonMtd:CommonMethodsService) { }
+  constructor(private router: Router,public commonMtd: CommonMethodsService) { }
 
   ngOnInit(): void {
     let domainLanguage = this.commonMtd.getSubDomainLanguage();
